@@ -82,7 +82,7 @@ return {
 			{ "nushell/tree-sitter-nu" },
 		},
 	},
-	{ "m-demare/hlargs.nvim", config = true },
+	-- { "m-demare/hlargs.nvim", config = true },
 	{ "echasnovski/mini.ai", config = true },
 	{ "windwp/nvim-ts-autotag", ft = { "typescriptreact", "javascriptreact", "html" } },
 	{

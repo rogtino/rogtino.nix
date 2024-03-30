@@ -36,7 +36,6 @@ return {
 		"stevearc/oil.nvim",
 		opts = { keymaps = { ["<TAB>"] = "actions.select" } },
 		keys = { { "<leader>oo", vim.cmd.Oil, desc = "open oil" } },
-		lazy = false,
 	},
 	{ "kaarmu/typst.vim", ft = "typst" },
 	{
