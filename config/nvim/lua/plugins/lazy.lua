@@ -273,7 +273,7 @@ return {
 		},
 	},
 
-	-- (pack :rcarriga/nvim-notify)
+	"rcarriga/nvim-notify",
 	-- NOTE:is this required now?
 	"antoinemadec/FixCursorHold.nvim",
 

@@ -1,6 +1,8 @@
 return {
-	"folke/tokyonight.nvim",
+	{ "folke/tokyonight.nvim", priority = 1000 },
 	"nyoom-engineering/oxocarbon.nvim",
+	"olimorris/onedarkpro.nvim",
+	"ellisonleao/gruvbox.nvim",
 	{ "rose-pine/neovim", name = "rose-pine" },
 	{
 		"folke/noice.nvim",

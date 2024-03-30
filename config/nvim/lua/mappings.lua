@@ -11,6 +11,8 @@ wk.register({ g = { name = "git" } }, { prefix = "<leader>" })
 wk.register({ h = { name = "help" } }, { prefix = "<leader>" })
 wk.register({ r = { name = "run" } }, { prefix = "<leader>" })
 
+vim.keymap.set("n", "<leader>td", "<cmd>SwitchTheme dark<CR>")
+vim.keymap.set("n", "<leader>tl", "<cmd>SwitchTheme light<CR>")
 vim.keymap.set("n", "<A-j>", "yyp")
 vim.keymap.set("n", "<A-k>", "yyP")
 vim.keymap.set("i", "<A-j>", "<esc>yypI")

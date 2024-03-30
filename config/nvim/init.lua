@@ -32,8 +32,30 @@ require("lazy").setup("plugins", {
 	-- },
 })
 require("core")
-vim.cmd.colorscheme("rose-pine")
--- vim.cmd.colorscheme "tokyonight-moon"
+local theme = "tokyonight-night"
+vim.g.current_theme = theme
+vim.g.all_colors = {
+	dark = {
+		"onedark",
+		"rose-pine-main",
+		"rose-pine-moon",
+		"onedark_dark",
+		"onedark_vivid",
+		"gruvbox",
+		"oxocarbon",
+		"tokyonight-storm",
+		"tokyonight-night",
+		"tokyonight-moon",
+	},
+	light = {
+		"onelight",
+		"gruvbox",
+		"oxocarbon",
+		"rose-pine-dawn",
+		"tokyonight-day",
+	},
+}
+vim.cmd.colorscheme(theme)
 
 -- NOTE:detecting node type to disable parenthesis completion
 vim.keymap.set({ "n", "i" }, "<F12>", function()
