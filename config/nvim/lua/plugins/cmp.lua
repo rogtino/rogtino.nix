@@ -162,6 +162,7 @@ local function config()
 		experimental = { ghost_text = true },
 	})
 	require("luasnip.loaders.from_lua").lazy_load({ paths = (vim.fn.stdpath("config") .. "/snippets") })
+	require("luasnip.loaders.from_vscode").lazy_load()
 end
 return {
 	"hrsh7th/nvim-cmp",
@@ -172,6 +173,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-nvim-lua",
+		"rafamadriz/friendly-snippets",
 		"hrsh7th/cmp-cmdline",
 		"f3fora/cmp-spell",
 		"L3MON4D3/LuaSnip",
