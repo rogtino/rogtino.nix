@@ -1,0 +1,659 @@
+return {
+	{ "NvChad/nvim-colorizer.lua", config = true, event = "VeryLazy" },
+	"folke/neodev.nvim",
+	-- "ziontee113/deliberate.nvim"
+	-- TODO: not stable for nightly
+	-- {
+	--   "nvim-zh/colorful-winsep.nvim",
+	--   config = true,
+	-- },
+	-- {
+	--   "LintaoAmons/bookmarks.nvim",
+	--   dependencies = {
+	--     { "stevearc/dressing.nvim" }, -- optional: to have the same UI shown in the GIF
+	--   },
+	--   keys = {
+	--     { "ms", "<Cmd>BookmarksGoto<CR>", mode = { "n" }, desc = "select a bookmark" },
+	--     { "ma", "<Cmd>BookmarksMark<CR>", mode = { "n" }, desc = "add a bookmark" },
+	--   },
+	--   lazy = false,
+	-- },
+	{
+		"NoahTheDuke/vim-just",
+		ft = { "just" },
+	},
+	"mfussenegger/nvim-jdtls",
+	{
+		"kawre/neotab.nvim",
+		event = "InsertEnter",
+		opts = {
+			-- configuration goes here
+		},
+	},
+	--WARNING: wait for alacritty sixel support
+	-- (pack :3rd/image.nvim {:config true})
+	{
+		"stevearc/oil.nvim",
+		opts = { keymaps = { ["<TAB>"] = "actions.select" } },
+		keys = { { "<leader>oo", vim.cmd.Oil, desc = "open oil" } },
+		lazy = false,
+	},
+	{ "kaarmu/typst.vim", ft = "typst" },
+	{
+		"chomosuke/typst-preview.nvim",
+		ft = "typst",
+		opts = {
+			dependencies_bin = {
+				["typst-preview"] = "typst-preview",
+				["websocat"] = nil,
+			},
+		},
+	},
+	{ "Weissle/persistent-breakpoints.nvim", opts = { load_breakpoints_event = { "BufReadPost" } } },
+	{
+		"Mythos-404/xmake.nvim",
+		lazy = true,
+		event = "BufReadPost xmake.lua",
+		opts = {
+			compile_command = {
+				lsp = "clangd",
+				dir = ".",
+			},
+		},
+		dependencies = { "MunifTanjim/nui.nvim" },
+	},
+	{ "theHamsta/nvim-dap-virtual-text", config = true },
+	{
+		"mrcjkb/rustaceanvim",
+		ft = "rust",
+		version = "^3",
+		init = function()
+			vim.g.rustaceanvim = {
+				server = {
+					on_attach = function(client)
+						if client.server_capabilities.inlayHintProvider then
+							vim.lsp.inlay_hint.enable()
+						end
+					end,
+				},
+			}
+		end,
+		keys = {
+			{
+				"<F1>",
+				function()
+					vim.cmd.RustLsp("runnables")
+				end,
+				ft = "rust",
+			},
+			{
+				"<leader>re",
+				function()
+					vim.cmd.RustLsp("expandMacro")
+				end,
+				ft = "rust",
+				desc = "expand-macro",
+			},
+		},
+	},
+	{ "kylechui/nvim-surround", config = true, event = "VeryLazy" },
+	{
+		"windwp/nvim-autopairs",
+		opts = { check_ts = true, disable_filetype = { "apl", "TelescopePrompt" } },
+		event = "InsertEnter",
+	},
+	{
+		"mbbill/undotree",
+		keys = { { "<leader>tu", vim.cmd.UndotreeToggle, desc = "toggle undo tree" } },
+	},
+	"tpope/vim-eunuch",
+	{
+		"ellisonleao/carbon-now.nvim",
+		opts = {
+			options = {
+				theme = "one-dark",
+				bg = "pink",
+				font_family = "Cascadia Code",
+				titlebar = "made by pypro",
+				drop_shadow = true,
+			},
+		},
+		cmd = "CarbonNow",
+	},
+	{
+		"cshuaimin/ssr.nvim",
+		keys = {
+			{
+				"<leader>sr",
+				function()
+					require("ssr").open()
+				end,
+				desc = "open-ssr",
+			},
+		},
+		config = function()
+			require("ssr").setup({
+				min_width = 50,
+				min_height = 5,
+				keymaps = { close = "q", next_match = "n", prev_match = "N", replace_all = "<leader><cr>" },
+			})
+		end,
+	},
+
+	--(pack :AckslD/nvim-neoclip.lua {:dependencies [:kkharji/sqlite.lua]
+	--                                :config true})
+	{
+		"pwntester/octo.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim", "nvim-tree/nvim-web-devicons" },
+		config = true,
+		cmd = "Octo",
+	},
+	{
+		"numToStr/Comment.nvim",
+		config = function()
+			-- BUG: fix this hint
+			---@diagnostic disable-next-line: missing-fields
+			require("Comment").setup({
+				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+			})
+		end,
+		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+	},
+	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		config = function()
+			vim.g.skip_ts_context_commentstring_module = true
+			---@diagnostic disable-next-line: missing-fields
+			require("ts_context_commentstring").setup({
+				enable_autocmd = false,
+			})
+		end,
+	},
+	{
+		"lewis6991/gitsigns.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		event = "VeryLazy",
+		config = function()
+			require("gitsigns").setup({ current_line_blame = true, current_line_blame_opts = { virt_text = "true" } })
+		end,
+	},
+	{ "kevinhwang91/nvim-bqf", ft = "qf" },
+	"onsails/lspkind.nvim",
+	{ "roobert/tailwindcss-colorizer-cmp.nvim", opts = { color_square_width = 2 } },
+	--BUG:can't find tsserver on nixos
+	--https://github.com/pmizio/typescript-tools.nvim/issues/252
+	-- {
+	-- 	"pmizio/typescript-tools.nvim",
+	-- 	ft = { "typescriptreact", "javascriptreact", "javascript", "typescript" },
+	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	-- 	-- config = true,
+	-- 	opts = {
+	-- 		settings = {
+	-- 			tsserver_path = "/nix/store/n3nczhyz5aqxwjkq2qcn966r17l4ah3i-typescript-5.4.2/lib/node_modules/typescript/lib/tsserver.js",
+	-- 		},
+	-- 	},
+	-- },
+	{
+		"danymat/neogen",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		opts = { snippet_engine = "luasnip" },
+		keys = {
+			{
+				"<leader>rf",
+				":Neogen func<cr>",
+				desc = "neogen function",
+				mode = { "n" },
+			},
+			{
+				"<leader>rt",
+				":Neogen type<cr>",
+				desc = "neogen type",
+				mode = { "n" },
+			},
+			{
+				"<leader>ri",
+				":Neogen file<cr>",
+				desc = "neogen file",
+				mode = { "n" },
+			},
+			{
+				"<leader>rc",
+				":Neogen class<cr>",
+				desc = "neogen class",
+				mode = { "n" },
+			},
+		},
+	},
+	{
+		"folke/flash.nvim",
+		opts = { label = { uppercase = false } },
+		event = "VeryLazy",
+		keys = {
+			{
+				"s",
+				function()
+					require("flash").jump()
+				end,
+				desc = "Flash",
+				mode = { "n", "x", "o" },
+			},
+			{
+				"S",
+				function()
+					require("flash").treesitter()
+				end,
+				desc = "Flash Treesitter",
+				mode = { "n" },
+			},
+			{
+				"R",
+				mode = { "o", "x" },
+				function()
+					require("flash").treesitter_search()
+				end,
+				desc = "Treesitter Search",
+			},
+			{
+				"r",
+				function()
+					require("flash").remote()
+				end,
+				desc = "Remote Flash",
+				mode = "o",
+			},
+		},
+	},
+	{
+		"sindrets/diffview.nvim",
+		config = true,
+		event = "VeryLazy",
+		keys = {
+			{ "<leader>go", vim.cmd.DiffviewOpen, desc = "open diffview" },
+			{ "<leader>gc", vim.cmd.DiffviewClose, desc = "close diffview" },
+		},
+	},
+
+	-- (pack :rcarriga/nvim-notify)
+	-- NOTE:is this required now?
+	"antoinemadec/FixCursorHold.nvim",
+
+	{
+		"ThePrimeagen/refactoring.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-telescope/telescope.nvim",
+		},
+		opts = {
+			prompt_func_return_type = {
+				go = true,
+				cpp = true,
+				c = true,
+				java = true,
+				python = true,
+				hpp = true,
+				cxx = true,
+			},
+			prompt_func_param_type = {
+				go = true,
+				cpp = true,
+				python = true,
+				c = true,
+				java = true,
+				hpp = true,
+				cxx = true,
+			},
+		},
+		keys = {
+			{
+				"<leader>rr",
+				"<ESC>:Telescope refactoring refactors<CR>",
+				desc = "refactorings",
+			},
+		},
+		config = true,
+	},
+	{
+		"akinsho/bufferline.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		keys = {
+			{ "<leader>bo", vim.cmd.BufferLineCloseOthers, desc = "delete other buffers" },
+			{ "<leader>bp", vim.cmd.BufferLinePick, desc = "pick a buffer by buf's name" },
+			{ "<leader>bd", vim.cmd.Bdelete, desc = "delete current buffer" },
+			{ "<s-l>", vim.cmd.BufferLineCycleNext },
+			{ "<s-h>", vim.cmd.BufferLineCyclePrev },
+		},
+		opts = {
+			options = {
+				diagnostics = "nvim_lsp",
+				diagnostics_indicator = function(count, level, _, _)
+					local icon = ((level:match("error") and " ") or " ")
+					return (" " .. icon .. count)
+				end,
+			},
+		},
+		lazy = false,
+	},
+	{ "chrisgrieser/nvim-early-retirement", config = true },
+	{
+		"ziontee113/icon-picker.nvim",
+		cmd = "IconPickerInsert",
+		opts = { disable_legacy_commands = true },
+	},
+	{ "gennaro-tedesco/nvim-jqx", ft = { "json", "yaml" } },
+	{
+		"nvim-pack/nvim-spectre",
+		config = true,
+		keys = {
+			{ "<leader>ssp", vim.cmd.Spectre, desc = "open-spectre" },
+			{
+				"<leader>ssc",
+				function()
+					return vim.cmd.Spectre({ "path", vim.fn.expand("%:t:p") })
+				end,
+				desc = "open-spectre-with-current-buffer",
+			},
+		},
+	},
+	{ "folke/twilight.nvim", config = true, cmd = { "Twilight" } },
+
+	--not free :(
+	--( pack :zbirenbaum/copilot.lua {:cmd :Copilot :event :InsertEnter :config true })
+	{ "glepnir/lspsaga.nvim", branch = "main", event = "BufEnter", opts = { lightbulb = { sign = false } } },
+	"folke/lsp-colors.nvim",
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		event = "VeryLazy",
+		config = true,
+	},
+	{ "stevearc/dressing.nvim", config = true },
+	{ "anuvyklack/pretty-fold.nvim", config = true },
+	{
+		"anuvyklack/fold-preview.nvim",
+		dependencies = { "anuvyklack/keymap-amend.nvim" },
+		config = true,
+		event = "VeryLazy",
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+		event = "VeryLazy",
+		config = true,
+	},
+	{ "elkowar/yuck.vim", ft = "yuck" },
+	{ "echasnovski/mini.cursorword", config = true },
+	"p00f/clangd_extensions.nvim",
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		config = true,
+		keys = {
+			{ "<leader>tn", "<cmd>Neotree toggle dir=./<CR>", desc = "neotree-root-toggle" },
+			{ "<leader>tr", "<cmd>Neotree reveal toggle<CR>", desc = "neotree-reveal-toggle" },
+		},
+	},
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = { "kevinhwang91/promise-async" },
+		event = "VeryLazy",
+		opts = {
+			provider_selector = function()
+				return { "treesitter", "indent" }
+			end,
+		},
+	},
+	{ "ziontee113/color-picker.nvim", config = true },
+	"famiu/bufdelete.nvim",
+	"mong8se/actually.nvim",
+	{ "chrisgrieser/nvim-early-retirement", config = true, event = "VeryLazy" },
+	{
+		"stevearc/overseer.nvim",
+		opts = {
+			templates = { "builtin", "cpp", "run_script", "xmake" },
+			actions = {
+				["30vsplit"] = {
+					desc = "open terminal in a vertical split",
+					condition = function(task)
+						local bufnr = task:get_bufnr()
+						return bufnr and vim.api.nvim_buf_is_valid(bufnr)
+					end,
+					run = function(task)
+						local util = require("overseer.util")
+						vim.cmd([[30vsplit]])
+						util.set_term_window_opts()
+						vim.api.nvim_win_set_buf(0, task:get_bufnr())
+						util.scroll_to_end(0)
+					end,
+				},
+			},
+		},
+		keys = {
+			{
+				"<leader>ra",
+				vim.cmd.OverseerQuickAction,
+				mode = "n",
+				desc = "run quickAction(overseer)",
+			},
+			{
+				"<leader>rs",
+				vim.cmd.OverseerRunScript,
+				mode = "n",
+				desc = "run script(overseer)",
+			},
+			{
+				"<leader>rx",
+				"<CMD>OverseerXmake<CR>",
+				mode = "n",
+				desc = " run xmake(overseer)",
+			},
+		},
+	},
+	{
+		"folke/edgy.nvim",
+		event = "VeryLazy",
+		opts = {
+			bottom = {
+				{
+					filter = function(_, win)
+						return (vim.api.nvim_win_get_config(win).relative == "")
+					end,
+					ft = "toggleterm",
+					size = { height = 0.4 },
+				},
+				{
+					filter = function(buf)
+						return not vim.b[buf].lazyterm_cmd
+					end,
+					ft = "lazyterm",
+					size = { height = 0.4 },
+					title = "LazyTerm",
+				},
+				"Trouble",
+				{ ft = "qf", title = "QuickFix" },
+				{
+					filter = function(buf)
+						return (vim.bo[buf].buftype == "help")
+					end,
+					ft = "help",
+					size = { height = 20 },
+				},
+				{ ft = "spectre_panel", size = { height = 0.4 } },
+			},
+			left = {
+				{
+					filter = function(buf)
+						return (vim.b[buf].neo_tree_source == "filesystem")
+					end,
+					ft = "neo-tree",
+					size = { height = 0.5 },
+					title = "Neo-Tree",
+				},
+				{
+					filter = function(buf)
+						return (vim.b[buf].neo_tree_source == "git_status")
+					end,
+					ft = "neo-tree",
+					open = "Neotree position=right git_status",
+					pinned = true,
+					title = "Neo-Tree Git",
+				},
+				{
+					filter = function(buf)
+						return (vim.b[buf].neo_tree_source == "buffers")
+					end,
+					ft = "neo-tree",
+					open = "Neotree position=top buffers",
+					pinned = true,
+					title = "Neo-Tree Buffers",
+				},
+				{ ft = "Outline", open = "Lspsaga outline", pinned = true },
+				"neo-tree",
+			},
+		},
+	},
+	-- {
+	-- 	"rogtino/codebase.nvim",
+	-- 	config = true,
+	-- 	keys = { { "<leader>sc", ":Telescope codebase<CR>", desc = "search a piece of code" } },
+	-- },
+	{
+		"stevearc/conform.nvim",
+		opts = {
+			formatters_by_ft = {
+				lua = { "stylua" },
+				sh = { "shfmt" },
+				javascript = { "deno_fmt" },
+				java = { "google-java-format" },
+				json = { "deno_fmt" },
+				c = { "clang_format" },
+				cpp = { "clang_format" },
+				typescript = { "deno_fmt" },
+				go = { "gofmt" },
+				rust = { "rustfmt" },
+				toml = { "taplo" },
+				typst = { "typstfmt" },
+				javascriptreact = { "deno_fmt", "rustywind" },
+				typescriptreact = { "deno_fmt", "rustywind" },
+				python = { "black" },
+				fennel = { "fnlfmt" },
+				nix = { "alejandra" },
+			},
+			formatters = {
+				fnlfmt = { command = "fnlfmt", args = { "$FILENAME" }, stdin = true },
+			},
+			format_after_save = { lsp_fallback = true },
+		},
+	},
+	{ "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim", config = true },
+	"folke/which-key.nvim",
+	{
+		"mfussenegger/nvim-lint",
+		config = function()
+			require("lint")["linters_by_ft"] = {
+				cpp = { "clangtidy" },
+				-- typescriptreact = { "eslint_d" },
+				-- javascript = { "eslint_d" },
+				-- typescript = { "eslint_d" },
+				-- javascriptreact = { "eslint_d" },
+			}
+		end,
+	},
+	{
+		"JuanZoran/Trans.nvim",
+		keys = {
+			{
+				"mm",
+				"<Cmd>Translate<CR>",
+				mode = { "n", "x" },
+				desc = "󰊿 Translate",
+			},
+			{ "mk", "<Cmd>TransPlay<CR>", mode = { "n", "x" }, desc = " autoplay" },
+			{ "mi", "<Cmd>TranslateInput<CR>", desc = "󰊿 Translate From Input" },
+		},
+		build = function()
+			require("Trans").install()
+		end,
+		config = true,
+		-- TODO:is this affecting nixos?
+		dependencies = "kkharji/sqlite.lua",
+	},
+	{
+		"prochri/telescope-all-recent.nvim",
+		config = true,
+		dependencies = "kkharji/sqlite.lua",
+	},
+	{
+		"kkharji/sqlite.lua",
+		config = function()
+			if string.find(vim.uv.os_uname().version, "NixOS") then
+				local Job = require("plenary.job")
+				local sqlite3_path = vim.fn.stdpath("config") .. "/sqlite3.path"
+				-- NOTE:find a way to make this run first
+				-- if not vim.fn.exists(sqlite3_path) then
+				-- 	vim.notify("generating sqlite path on nixos...", vim.log.levels.WARN)
+				-- 	vim.system({ "./locate-sqlite3.sh" }):wait()
+				-- else
+				Job:new({
+					command = "cat",
+					args = { sqlite3_path },
+					on_exit = function(j, _)
+						for _, value in ipairs(j:result()) do
+							vim.g.sqlite_clib_path = value
+						end
+					end,
+				}):sync()
+				-- end
+			end
+		end,
+	},
+	{
+		"williamboman/mason.nvim",
+		config = true,
+		event = "VeryLazy",
+		enabled = string.find(vim.uv.os_uname().version, "NixOS") == nil,
+	},
+	{
+		dir = "~/dev-nvim/tslt.nvim",
+	},
+	{
+		"chrisgrieser/nvim-spider",
+		keys = {
+			{
+				"w",
+				"<cmd>lua require('spider').motion('w')<CR>",
+				mode = { "n", "o", "x" },
+				desc = "Spider-w",
+			},
+			{
+				"e",
+				"<cmd>lua require('spider').motion('e')<CR>",
+				mode = { "n", "o", "x" },
+				desc = "Spider-e",
+			},
+			{
+				"b",
+				"<cmd>lua require('spider').motion('b')<CR>",
+				mode = { "n", "o", "x" },
+				desc = "Spider-b",
+			},
+		},
+	},
+
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim", -- optional - Diff integration
+			"nvim-telescope/telescope.nvim", -- optional
+		},
+		config = true,
+		keys = {
+			{
+				"<leader>gn",
+				"<cmd>Neogit<CR>",
+				mode = "n",
+				desc = "Neogit",
+			},
+		},
+	},
+}

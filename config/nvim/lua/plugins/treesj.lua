@@ -1,0 +1,32 @@
+-- [; (pack :Wansmer/treesj
+--  ;       {:dependencies [:nvim-treesitter/nvim-treesitter]
+--  ;        :keys :<TAB>
+--  ;        :config (fn [_ _]
+--  ;                  (map! [n] :<TAB> #((. (require :treesj) :toggle))))
+--  ;        :opts {:use_default_keymaps false}})
+--  ;; Edit language injection
+--  ; (pack :AckslD/nvim-FeMaco.lua {:config true})
+--  ; (pack :abecodes/tabout.nvim
+--  ;       {:dependencies [:nvim-treesitter :nvim-cmp]
+--  ;        :config true
+--  ;        :event :VeryLazy
+--  ;        :opts {:act_as_shift_tab false
+--  ;               :act_as_tab true
+--  ;               :backwards_tabkey :<S-Tab>
+--  ;               :completion true
+--  ;               :default_shift_tab :<C-d>
+--  ;               :default_tab :<C-t>
+--  ;               :enable_backwards true
+--  ;               :exclude {}
+--  ;               :ignore_beginning true
+--  ;               :tabkey :<Tab>
+--  ;               :tabouts [{:close "'" :open "'"}
+--  ;                         {:close "\"" :open "\""}
+--  ;                         {:close "`" :open "`"}
+--  ;                         {:close ")" :open "("}
+--  ;                         {:close "]" :open "["}
+--  ;                         {:close "}" :open "{"}]}})
+--  ; Align text interactively
+--  ;TODO learn how to use it
+--  (pack :echasnovski/mini.align {:config true})]
+return { "trmckay/based.nvim", "nmac427/guess-indent.nvim", { "echasnovski/mini.align", config = true } }

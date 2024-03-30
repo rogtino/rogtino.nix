@@ -1,0 +1,107 @@
+{
+  "layer": "top",
+  "height": 35,
+  "width":1880,
+  "spacing": 5,
+  "modules-left": [
+      "custom/powermenu",
+      "cpu",
+      "memory",
+      "temperature",
+      "network",
+  ],
+  "modules-center": [
+      "hyprland/workspaces",
+  ],
+  "modules-right": [
+      "custom/wallpaper",
+      "pulseaudio",
+      "backlight",
+      "battery",
+      "clock",
+      "tray",
+  ],
+  "custom/wallpaper": {
+      "format":" ",
+      "on-click":"~/.config/bgscripts/change_bg.sh",
+      "tooltip":false
+  },
+  "hyprland/submap": {
+    "format": "✌️ {}",
+    "max-length": 8,
+    "tooltip": false
+  },
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "sort-by-number": true
+  },
+  "tray": {
+    "spacing": 10,
+    "icon-size":20
+  },
+  "clock": {
+    "interval" : 1,
+    "format": "󰥔 {:%H:%M}",
+    "tooltip" : true,
+    "tooltip-format": "<tt><big>{calendar}</big></tt>",
+    "format-alt": "󰃭 {:%Y-%m-%d}"
+  },
+  "cpu": {
+    "format": "{usage}% 󰍛",
+    "interval": 1
+  },
+  "memory": {
+    "format": "{percentage}% 󰘚",
+    "interval": 1
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "{temperatureC}°C {icon}",
+    "format-icons": [""]
+  },
+  "backlight": {
+    "format": "󰌵 {percent}%",
+    "on-scroll-up":"light -A 1",
+    "on-scroll-down":"light -U 1"
+  },
+  "custom/powermenu" : {
+    "format" : " ",
+    "on-click" : "reboot",
+    "tooltip" : false
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "network": {
+    "interval":1,
+    "format-wifi": " {signalStrength}%  {bandwidthUpBytes}↑ {bandwidthDownBytes}↓",
+    "format-ethernet": " {ipaddr}/{cidr} {bandwidthUpBytes}↑ {bandwidthDownBytes}↓",
+    "tooltip-format": "{ifname} via {gwaddr} on {essid} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected ",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}󰏰",
+    "format-bluetooth": " {volume}%",
+    "format-muted":"",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol"
+  }
+}

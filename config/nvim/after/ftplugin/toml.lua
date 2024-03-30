@@ -1,0 +1,18 @@
+-- local crates = require "crates"
+-- local opts = { silent = true }
+--
+-- vim.api.nvim_buf_set_keymap(0, "n", "<leader>ct", crates.toggle, opts)
+-- vim.api.nvim_buf_set_keymap(0, "n", "<leader>cr", crates.reload, opts)
+-- vim.api.nvim_buf_set_keymap(0, "n", "<leader>cv", crates.show_versions_popup, opts)
+-- vim.api.nvim_buf_set_keymap(0, "n", "<leader>cf", crates.show_features_popup, opts)
+-- vim.api.nvim_buf_set_keymap(0, "n", "<leader>cd", crates.show_dependencies_popup, opts)
+-- vim.api.nvim_buf_set_keymap(0, "n", "<leader>cu", crates.update_crate, opts)
+-- vim.api.nvim_buf_set_keymap(0, "v", "<leader>cu", crates.update_crates, opts)
+-- vim.api.nvim_buf_set_keymap(0, "n", "<leader>ca", crates.update_all_crates, opts)
+-- vim.api.nvim_buf_set_keymap(0, "n", "<leader>cU", crates.upgrade_crate, opts)
+-- vim.api.nvim_buf_set_keymap(0, "v", "<leader>cU", crates.upgrade_crates, opts)
+-- vim.api.nvim_buf_set_keymap(0, "n", "<leader>cA", crates.upgrade_all_crates, opts)
+-- vim.api.nvim_buf_set_keymap(0, "n", "<leader>cH", crates.open_homepage, opts)
+-- vim.api.nvim_buf_set_keymap(0, "n", "<leader>cR", crates.open_repository, opts)
+-- vim.api.nvim_buf_set_keymap(0, "n", "<leader>cD", crates.open_documentation, opts)
+-- vim.api.nvim_buf_set_keymap(0, "n", "<leader>cC", crates.open_crates_io, opts)

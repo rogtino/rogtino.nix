@@ -1,0 +1,5 @@
+require("mappings")
+require("opt")
+require("probe")
+require("autocmd")
+require("diagnostic")

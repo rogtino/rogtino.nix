@@ -1,0 +1,132 @@
+* {
+  font-family: "FiraCode Nerd Font";
+  font-size: 14px;
+  min-height: 10px;
+  font-weight: bold;
+  border-radius: 8px;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+@keyframes blink_red {
+  to {
+    background-color: #f28fad;
+    color: #1a1826;
+  }
+}
+.warning,
+.critical,
+.urgent {
+  animation-name: blink_red;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+window#waybar {
+  background-color: transparent;
+}
+window > box {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+#workspaces {
+  padding-left: 0px;
+  padding-right: 4px;
+  margin-top: 10px;
+}
+#workspaces button {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #f34065;
+  background: #1a281e;
+}
+#workspaces button.active {
+  background-color: #dfb7ff;
+  color: #1a1826;
+}
+#workspaces button.urgent {
+  color: #1a1826;
+}
+#workspaces button:hover {
+  background-color: #f8bd96;
+  color: #1a1826;
+}
+tooltip {
+  color: #302d41;
+}
+tooltip label {
+  color: #d9e0ee;
+}
+#mode,
+#clock,
+#memory,
+#temperature,
+#cpu,
+#temperature,
+#backlight,
+#pulseaudio,
+#network,
+#battery,
+#tray,
+#custom-powermenu,
+#custom-wallpaper {
+  margin-top: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background: #000000;
+}
+#memory {
+  color: #b5e8e0;
+}
+#cpu {
+  color: #f5c2e7;
+}
+#clock {
+  color: #d9e085;
+}
+#idle_inhibitor {
+  color: #ddb6f2;
+}
+#temperature {
+  color: #96cdfb;
+}
+#backlight {
+  color: #f8bd96;
+}
+#pulseaudio {
+  color: #f5e0dc;
+}
+#network {
+  color: #abe9b3;
+}
+
+#network.disconnected {
+  color: #ffffff;
+}
+#battery.charging,
+#battery.full,
+#battery.plugged,
+#battery.discharging {
+  color: #fae3b0;
+}
+#battery.critical:not(.charging) {
+  color: #f28fad;
+}
+#custom-powermenu {
+  color: #f43b47;
+}
+#custom-wallpaper {
+  margin-left: 8px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+  color: #dfcdff;
+}
+#tray {
+  padding-right: 8px;
+  padding-left: 10px;
+  font-size: 4px;
+}

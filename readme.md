@@ -1,0 +1,4 @@
+## my config
+
+- neovim
+- hyprland

@@ -1,0 +1,24 @@
+@document.meta
+title: todo description: things to be done 
+authors: gus
+categories: GTD
+created: 2024-03-22T07:50:31+0800
+updated: 2024-03-22T07:50:31+0800
+version: 1.1.1
+@end
+
+
+* (x) use rtl8821ce instead
+* (x) use nvidia driver
+* (x) appropriate modularize folder
+* (x) flake-parts
+* (x) xdg configs
+* (x) hyprland (hyprwg cursor etc.)
+* (_) remove hardware-configuration.nix
+* (x) secrets dae subscription
+* (x) change mappings in norg buffer
+* (-) add some useful flakes
+* ( ) yazi config
+* ( ) rewrite possible config with nix expr
+* ( ) cache nixpkgs in github actions
+* ( ) move waybar to ags
