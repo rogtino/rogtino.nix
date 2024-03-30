@@ -52,4 +52,4 @@ local function config()
 		require("lspconfig")[client].setup(setup)
 	end
 end
-return { "neovim/nvim-lspconfig", config = config }
+return { "neovim/nvim-lspconfig", config = config, event = "VeryLazy" }

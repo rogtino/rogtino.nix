@@ -157,10 +157,12 @@ return {
 				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
 			})
 		end,
+		event = "VeryLazy",
 		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
 	},
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
+		event = "VeryLazy",
 		config = function()
 			vim.g.skip_ts_context_commentstring_module = true
 			---@diagnostic disable-next-line: missing-fields
@@ -266,7 +268,6 @@ return {
 	{
 		"sindrets/diffview.nvim",
 		config = true,
-		event = "VeryLazy",
 		keys = {
 			{ "<leader>go", vim.cmd.DiffviewOpen, desc = "open diffview" },
 			{ "<leader>gc", vim.cmd.DiffviewClose, desc = "close diffview" },
@@ -402,9 +403,25 @@ return {
 			end,
 		},
 	},
-	{ "ziontee113/color-picker.nvim", config = true },
-	"famiu/bufdelete.nvim",
-	"mong8se/actually.nvim",
+	-- { "ziontee113/color-picker.nvim", config = true },
+	{
+		"max397574/colortils.nvim",
+		cmd = "Colortils",
+		config = true,
+		keys = {
+			{
+				"<leader>pc",
+				function()
+					return vim.cmd.Colortils
+				end,
+			},
+		},
+	},
+	{
+		"famiu/bufdelete.nvim",
+		cmd = "Bdelete",
+	},
+	-- "mong8se/actually.nvim",
 	{ "chrisgrieser/nvim-early-retirement", config = true, event = "VeryLazy" },
 	{
 		"stevearc/overseer.nvim",
@@ -574,25 +591,21 @@ return {
 			require("Trans").install()
 		end,
 		config = true,
-		-- TODO:is this affecting nixos?
 		dependencies = "kkharji/sqlite.lua",
 	},
 	{
 		"prochri/telescope-all-recent.nvim",
 		config = true,
 		dependencies = "kkharji/sqlite.lua",
+		lazy = true,
 	},
 	{
 		"kkharji/sqlite.lua",
+		lazy = true,
 		config = function()
 			if string.find(vim.uv.os_uname().version, "NixOS") then
 				local Job = require("plenary.job")
 				local sqlite3_path = vim.fn.stdpath("config") .. "/sqlite3.path"
-				-- NOTE:find a way to make this run first
-				-- if not vim.fn.exists(sqlite3_path) then
-				-- 	vim.notify("generating sqlite path on nixos...", vim.log.levels.WARN)
-				-- 	vim.system({ "./locate-sqlite3.sh" }):wait()
-				-- else
 				Job:new({
 					command = "cat",
 					args = { sqlite3_path },
@@ -602,7 +615,6 @@ return {
 						end
 					end,
 				}):sync()
-				-- end
 			end
 		end,
 	},

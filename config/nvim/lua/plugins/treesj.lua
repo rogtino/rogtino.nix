@@ -29,4 +29,8 @@
 --  ; Align text interactively
 --  ;TODO learn how to use it
 --  (pack :echasnovski/mini.align {:config true})]
-return { "trmckay/based.nvim", "nmac427/guess-indent.nvim", { "echasnovski/mini.align", config = true } }
+return {
+	-- "trmckay/based.nvim",
+	"nmac427/guess-indent.nvim",
+	{ "echasnovski/mini.align", config = true },
+}

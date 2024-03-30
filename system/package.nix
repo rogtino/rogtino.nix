@@ -24,6 +24,7 @@
     typst
     typst-preview
     cargo
+    rustup
     clang
     luajit
     clang-tools

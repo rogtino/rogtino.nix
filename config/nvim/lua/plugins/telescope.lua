@@ -55,6 +55,7 @@ return {
 		"LinArcX/telescope-env.nvim",
 		"olacin/telescope-gitmoji.nvim",
 		"LinArcX/telescope-ports.nvim",
+		"prochri/telescope-all-recent.nvim",
 	},
 	cmd = "Telescope",
 	keys = {
@@ -99,13 +100,6 @@ return {
 				return vim.cmd.Telescope("man_pages")
 			end,
 			desc = "pick-man-page",
-		},
-		{
-			"<leader>pc",
-			function()
-				return vim.cmd.Telescope("git_commits")
-			end,
-			desc = "pick-git-commits",
 		},
 	},
 	config = config,

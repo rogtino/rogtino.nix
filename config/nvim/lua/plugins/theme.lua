@@ -1,9 +1,18 @@
 return {
 	{ "folke/tokyonight.nvim", priority = 1000 },
-	"nyoom-engineering/oxocarbon.nvim",
-	"olimorris/onedarkpro.nvim",
-	"ellisonleao/gruvbox.nvim",
-	{ "rose-pine/neovim", name = "rose-pine" },
+	{
+		"nyoom-engineering/oxocarbon.nvim",
+		lazy = true,
+	},
+	{
+		"olimorris/onedarkpro.nvim",
+		lazy = true,
+	},
+	{
+		"ellisonleao/gruvbox.nvim",
+		lazy = true,
+	},
+	{ "rose-pine/neovim", name = "rose-pine", lazy = true },
 	{
 		"folke/noice.nvim",
 
@@ -13,6 +22,9 @@ return {
 					["cmp.entry.get_documentation"] = true,
 					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 					["vim.lsp.util.stylize_markdown"] = true,
+				},
+				hover = {
+					silent = true,
 				},
 			},
 			routes = {

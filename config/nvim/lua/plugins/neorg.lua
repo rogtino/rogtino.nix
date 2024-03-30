@@ -13,7 +13,7 @@ return {
 		-- 	{ "<leader>j", ":Neorg journal " },
 		-- 	{ "<localleader>tg", ":Neorg tangle current-file<CR>" },
 		-- },
-		-- ft = "norg",
+		ft = "norg",
 		-- version = "*",
 		-- build = ":Neorg sync-parsers",
 		-- config = function()
