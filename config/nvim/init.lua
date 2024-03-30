@@ -19,7 +19,7 @@ local function boot(name, url)
 end
 
 boot("lazy.nvim", "https://github.com/folke/lazy.nvim.git")
-
+-- TODO:https://github.com/CKolkey/ts-node-action add some node-action
 -- NOTE:this bug bothers me for a long time,if I mapleader after lazy.setup ,the keys map in spec won't work
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","

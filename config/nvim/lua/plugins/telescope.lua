@@ -8,19 +8,18 @@ local function config()
 			path_display = { "smart" },
 			file_ignore_patterns = { ".git/", "node_modules" },
 			layout_strategy = "center",
-			-- layout_config = { height = 0.5, center = { height = 0.5 } },
+			border = false,
 			layout_config = {
 				anchor = "N",
 				preview_cutoff = 1,
 				prompt_position = "top",
 				width = 0.95,
-				-- results_height = 5,
 			},
 		},
-		pickers = {
-			find_files = { theme = "ivy", find_command = { "rg", "--hidden", "--glob", "!.git", "--files" } },
-			live_grep = { theme = "ivy", find_command = { "rg", "--hidden", "--glob", "!.git", "--files" } },
-		},
+		-- pickers = {
+		-- 	find_files = { theme = "ivy", find_command = { "rg", "--hidden", "--glob", "!.git", "--files" } },
+		-- 	live_grep = { theme = "ivy", find_command = { "rg", "--hidden", "--glob", "!.git", "--files" } },
+		-- },
 		-- extensions = {
 		-- 	codebase = {
 		-- 		path = vim.fn.stdpath("config") .. "/codebase",

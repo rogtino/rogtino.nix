@@ -1,6 +1,11 @@
 return {
 	{ "NvChad/nvim-colorizer.lua", config = true, event = "VeryLazy" },
-	"folke/neodev.nvim",
+	{
+		"folke/neodev.nvim",
+		opts = {
+			library = { plugins = { "nvim-dap-ui" }, types = true },
+		},
+	},
 	-- "ziontee113/deliberate.nvim"
 	-- TODO: not stable for nightly
 	-- {
@@ -23,6 +28,7 @@ return {
 		ft = { "just" },
 	},
 	"mfussenegger/nvim-jdtls",
+	-- or tabout?
 	{
 		"kawre/neotab.nvim",
 		event = "InsertEnter",
@@ -174,9 +180,63 @@ return {
 		"lewis6991/gitsigns.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		event = "VeryLazy",
-		config = function()
-			require("gitsigns").setup({ current_line_blame = true, current_line_blame_opts = { virt_text = "true" } })
-		end,
+		opts = {
+			current_line_blame = true,
+			on_attach = function(bufnr)
+				local gs = package.loaded.gitsigns
+
+				local function map(mode, l, r, opts)
+					opts = opts or {}
+					opts.buffer = bufnr
+					vim.keymap.set(mode, l, r, opts)
+				end
+
+				-- Navigation
+				map("n", "]c", function()
+					if vim.wo.diff then
+						return "]c"
+					end
+					vim.schedule(function()
+						gs.next_hunk()
+					end)
+					return "<Ignore>"
+				end, { expr = true })
+
+				map("n", "[c", function()
+					if vim.wo.diff then
+						return "[c"
+					end
+					vim.schedule(function()
+						gs.prev_hunk()
+					end)
+					return "<Ignore>"
+				end, { expr = true })
+
+				-- Actions
+				map("n", "<leader>gs", gs.stage_hunk, { desc = "stage hunk" })
+				map("n", "<leader>gr", gs.reset_hunk, { desc = "reset hunk" })
+				map("v", "<leader>gs", function()
+					gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+				end, { desc = "stage hunk" })
+				map("v", "<leader>gr", function()
+					gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+				end, { desc = "reset hunk" })
+				map("n", "<leader>gS", gs.stage_buffer, { desc = "stage buffer" })
+				map("n", "<leader>gR", gs.reset_buffer, { desc = "reset buffer" })
+				map("n", "<leader>gp", gs.preview_hunk, { desc = "preview hunk" })
+				map("n", "<leader>gb", function()
+					gs.blame_line({ full = true })
+				end, { desc = "blame line" })
+				map("n", "<leader>gd", gs.diffthis, { desc = "diff this" })
+				map("n", "<leader>gD", function()
+					gs.diffthis("~")
+				end, { desc = "diff ~" })
+				map("n", "<leader>gt", gs.toggle_deleted, { desc = "toggle deleted" })
+
+				-- Text object
+				map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+			end,
+		},
 	},
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	"onsails/lspkind.nvim",
@@ -381,7 +441,7 @@ return {
 		event = "VeryLazy",
 		config = true,
 	},
-	{ "elkowar/yuck.vim", ft = "yuck" },
+	-- { "elkowar/yuck.vim", ft = "yuck" },
 	{ "echasnovski/mini.cursorword", config = true },
 	"p00f/clangd_extensions.nvim",
 	{
@@ -666,5 +726,9 @@ return {
 				desc = "Neogit",
 			},
 		},
+	},
+	{
+		"tzachar/highlight-undo.nvim",
+		config = true,
 	},
 }

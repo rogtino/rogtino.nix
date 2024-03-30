@@ -1,9 +1,3 @@
--- [; (pack :Wansmer/treesj
---  ;       {:dependencies [:nvim-treesitter/nvim-treesitter]
---  ;        :keys :<TAB>
---  ;        :config (fn [_ _]
---  ;                  (map! [n] :<TAB> #((. (require :treesj) :toggle))))
---  ;        :opts {:use_default_keymaps false}})
 --  ;; Edit language injection
 --  ; (pack :AckslD/nvim-FeMaco.lua {:config true})
 --  ; (pack :abecodes/tabout.nvim
@@ -28,9 +22,17 @@
 --  ;                         {:close "}" :open "{"}]}})
 --  ; Align text interactively
 --  ;TODO learn how to use it
---  (pack :echasnovski/mini.align {:config true})]
 return {
-	-- "trmckay/based.nvim",
 	"nmac427/guess-indent.nvim",
 	{ "echasnovski/mini.align", config = true },
+	{
+		"Wansmer/treesj",
+		keys = { {
+			"<space>j",
+			":TSJToggle<CR>",
+			desc = "join or split",
+		} },
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		opts = { use_default_keymaps = false },
+	},
 }
