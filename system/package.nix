@@ -23,6 +23,9 @@
     just
     typst
     typst-preview
+    telegram-desktop
+    # this is super useful
+    ngrok
     cargo
     rustup
     clang
