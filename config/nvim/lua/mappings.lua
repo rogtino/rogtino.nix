@@ -11,6 +11,8 @@ wk.register({ g = { name = "git" } }, { prefix = "<leader>" })
 wk.register({ h = { name = "help" } }, { prefix = "<leader>" })
 wk.register({ r = { name = "run" } }, { prefix = "<leader>" })
 
+vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 vim.keymap.set("n", "<leader>td", "<cmd>SwitchTheme dark<CR>", { desc = "toggle random dark theme" })
 vim.keymap.set("n", "<leader>tl", "<cmd>SwitchTheme light<CR>", { desc = "toggle random light theme" })
 vim.keymap.set("n", "<A-j>", "yyp")
@@ -53,3 +55,9 @@ vim.keymap.set({ "o", "x" }, "ac", "<cmd>lua require('various-textobjs').multiCo
 vim.keymap.set({ "n", "v" }, "<C-b>", function()
 	require("based").convert()
 end, { desc = "convert-between-hex-and-dec" })
+vim.keymap.set("n", "K", function()
+	local winid = require("ufo").peekFoldedLinesUnderCursor()
+	if not winid then
+		vim.lsp.buf.hover()
+	end
+end, { desc = "hover doc" })

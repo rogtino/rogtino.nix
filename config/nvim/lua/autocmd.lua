@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", { desc = "go to definition" })
 		vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { desc = "go to implementation" })
 		-- vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "hover doc" })
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "hover doc" })
+		-- vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "hover doc" })
 		vim.keymap.set("n", "<c-leftmouse>", "<cmd>Lspsaga goto_definition<CR>")
 		vim.keymap.set("n", "<c-rightmouse>", "<c-o>")
 		vim.keymap.set("n", "<rightmouse>", "<cmd>Lspsaga hover_doc<CR>")

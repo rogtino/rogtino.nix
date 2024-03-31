@@ -422,13 +422,6 @@ return {
 		config = true,
 	},
 	{ "stevearc/dressing.nvim", config = true },
-	{ "anuvyklack/pretty-fold.nvim", config = true },
-	{
-		"anuvyklack/fold-preview.nvim",
-		dependencies = { "anuvyklack/keymap-amend.nvim" },
-		config = true,
-		event = "VeryLazy",
-	},
 	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
@@ -448,12 +441,41 @@ return {
 	},
 	{
 		"kevinhwang91/nvim-ufo",
-		dependencies = { "kevinhwang91/promise-async" },
+		dependencies = {
+			"kevinhwang91/promise-async",
+			{
+				"luukvbaal/statuscol.nvim",
+				config = function()
+					local builtin = require("statuscol.builtin")
+					require("statuscol").setup({
+						relculright = true,
+						segments = {
+							{ text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+							{ text = { "%s" }, click = "v:lua.ScSa" },
+							{ text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+						},
+					})
+				end,
+			},
+		},
 		event = "VeryLazy",
 		opts = {
 			provider_selector = function()
 				return { "treesitter", "indent" }
 			end,
+			preview = {
+				win_config = {
+					border = { "", "─", "", "", "", "─", "", "" },
+					winhighlight = "Normal:Folded",
+					winblend = 0,
+				},
+				mappings = {
+					scrollU = "<C-u>",
+					scrollD = "<C-d>",
+					jumpTop = "[",
+					jumpBot = "]",
+				},
+			},
 		},
 	},
 	{

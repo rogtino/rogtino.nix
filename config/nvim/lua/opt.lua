@@ -53,10 +53,12 @@ opt.cmdheight = 0
 opt.virtualedit = "block"
 opt.timeoutlen = 500
 opt.foldlevel = 99
+opt.foldlevelstart = 99
 opt.splitkeep = "screen"
 opt.foldcolumn = "1"
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr"
+-- opt.foldmethod = "expr"
+-- opt.foldexpr = "nvim_treesitter#foldexpr"
+-- opt.statuscolumn = "%s%C"
 opt.showbreak = "  󰘍"
 opt.shell = "nu"
 opt.shortmess:append({ I = true, r = true })
