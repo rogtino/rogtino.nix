@@ -570,6 +570,7 @@ alias cdtmp = cd (mktemp -d)
 alias zj = zellij
 alias pc = proxychains -q
 alias ca = cargo
+alias n = neovide
 alias activate-python-venv = overlay use .venv/bin/activate.nu
 source ~/.cache/starship/init.nu
 source ~/.zoxide.nu

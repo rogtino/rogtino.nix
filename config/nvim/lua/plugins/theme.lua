@@ -1,5 +1,8 @@
 return {
-	{ "folke/tokyonight.nvim", priority = 1000 },
+	{
+		"folke/tokyonight.nvim",
+		lazy = true,
+	},
 	{
 		"nyoom-engineering/oxocarbon.nvim",
 		lazy = true,
@@ -9,9 +12,22 @@ return {
 		lazy = true,
 	},
 	{
-		"ellisonleao/gruvbox.nvim",
+		"luisiacc/gruvbox-baby",
 		lazy = true,
 	},
+	{
+		"EdenEast/nightfox.nvim",
+		lazy = true,
+	},
+	{
+		"ribru17/bamboo.nvim",
+		priority = 1000,
+		lazy = false,
+		config = function()
+			require("bamboo").load()
+		end,
+	},
+	{ "catppuccin/nvim", name = "catppuccin", lazy = true },
 	{ "rose-pine/neovim", name = "rose-pine", lazy = true },
 	{
 		"folke/noice.nvim",

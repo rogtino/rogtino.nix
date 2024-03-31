@@ -5,7 +5,7 @@ opt.list = true
 opt.listchars = { tab = "> ", nbsp = "␣", trail = "•" }
 opt.guicursor = "n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20"
 opt.fillchars = {
-	eob = " ",
+	-- eob = " ",
 	vert = "║",
 	horiz = "═",
 	horizup = "╩",
