@@ -39,7 +39,8 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"benfowler/telescope-luasnip.nvim",
-		-- FIXME:https://github.com/mlvzk/manix/issues/25 not compatiable with flake
+		-- not compatiable with flake
+		-- see:https://github.com/mlvzk/manix/issues/25
 		-- {
 		-- 	"MrcJkb/telescope-manix",
 		-- 	keys = {

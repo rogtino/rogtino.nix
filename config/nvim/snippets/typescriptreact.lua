@@ -36,7 +36,6 @@ export default {};
 				d(1, function(_, snip)
 					local path = snip.env.TM_FILENAME
 					local name = string.match(path, "(%a+).tsx")
-					---@diagnostic disable-next-line: param-type-mismatch
 					name = name:sub(1, 1):upper() .. name:sub(2)
 					return sn(nil, {
 						i(1, name),
@@ -47,7 +46,6 @@ export default {};
 				d(3, function(_, snip)
 					local path = snip.env.TM_FILENAME
 					local name = string.match(path, "(%a+).tsx")
-					---@diagnostic disable-next-line: param-type-mismatch
 					name = name:sub(1, 1):upper() .. name:sub(2)
 					return sn(nil, {
 						i(1, "<div>" .. name .. "</div>"),

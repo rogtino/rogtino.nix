@@ -1,8 +1,6 @@
 local function config()
 	vim.cmd("hi TreesitterContext guibg=#210102")
 	require("orgmode").setup_ts_grammar()
-	--- NOTE: remove this
-	---@diagnostic disable-next-line: missing-fields
 	require("nvim-treesitter.configs").setup({
 		ensure_installed = {
 			"astro",

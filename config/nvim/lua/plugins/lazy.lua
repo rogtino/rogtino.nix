@@ -156,8 +156,6 @@ return {
 	{
 		"numToStr/Comment.nvim",
 		config = function()
-			-- BUG: fix this hint
-			---@diagnostic disable-next-line: missing-fields
 			require("Comment").setup({
 				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
 			})
@@ -170,7 +168,6 @@ return {
 		event = "VeryLazy",
 		config = function()
 			vim.g.skip_ts_context_commentstring_module = true
-			---@diagnostic disable-next-line: missing-fields
 			require("ts_context_commentstring").setup({
 				enable_autocmd = false,
 			})
@@ -334,9 +331,6 @@ return {
 	},
 
 	"rcarriga/nvim-notify",
-	-- NOTE:is this required now?
-	"antoinemadec/FixCursorHold.nvim",
-
 	{
 		"ThePrimeagen/refactoring.nvim",
 		dependencies = {
@@ -462,7 +456,6 @@ return {
 			end,
 		},
 	},
-	-- { "ziontee113/color-picker.nvim", config = true },
 	{
 		"max397574/colortils.nvim",
 		cmd = "Colortils",
@@ -471,8 +464,9 @@ return {
 			{
 				"<leader>pc",
 				function()
-					return vim.cmd.Colortils
+					vim.cmd.Colortils()
 				end,
+				desc = "Colortils",
 			},
 		},
 	},

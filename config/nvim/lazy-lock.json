@@ -1,6 +1,5 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
-  "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
   "LuaSnip": { "branch": "master", "commit": "a7a4b4682c4b3e2ba82b82a4e6e5f5a0e79dec32" },
   "Trans.nvim": { "branch": "v2", "commit": "98507facfe5acbb55d51bc12e8c80a88a81bb319" },
   "bamboo.nvim": { "branch": "master", "commit": "5c826c8ad27010ac2fcaf7deb4c36b16d00ef5a1" },

@@ -3,9 +3,9 @@ return {
 	"shellRaining/hlchunk.nvim",
 	event = "UIEnter",
 	opts = {
-		blank = { exclude_filetype = ex, enable = false },
-		chunk = { enable = true, exclude_filetype = ex },
-		line_num = { enable = true, exclude_filetype = ex },
+		blank = { exclude_filetypes = ex, enable = false },
+		chunk = { enable = true, exclude_filetypes = ex },
+		line_num = { enable = true, exclude_filetypes = ex },
 		indent = { support_filetypes = { python = true }, enable = false },
 	},
 }
