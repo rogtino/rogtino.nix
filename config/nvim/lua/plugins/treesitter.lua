@@ -1,6 +1,5 @@
 local function config()
 	vim.cmd("hi TreesitterContext guibg=#210102")
-	require("orgmode").setup_ts_grammar()
 	require("nvim-treesitter.configs").setup({
 		ensure_installed = {
 			"astro",

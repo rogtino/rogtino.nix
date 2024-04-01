@@ -1,4 +1,12 @@
-local ex = { help = true, yuck = true, alpha = true, oil = true, dapui_scopes = true, NeogitCommitMessage = true }
+local ex = {
+	help = true,
+	yuck = true,
+	alpha = true,
+	oil = true,
+	dapui_scopes = true,
+	NeogitCommitMessage = true,
+	text = true,
+}
 return {
 	"shellRaining/hlchunk.nvim",
 	event = "UIEnter",
