@@ -20,5 +20,5 @@ version: 1.1.1
 * (-) add some useful flakes
 * ( ) yazi config
 * ( ) rewrite possible config with nix expr
-* ( ) cache nixpkgs in github actions
+* (x) cache nixpkgs in github actions
 * ( ) move waybar to ags
