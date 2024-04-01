@@ -5,6 +5,7 @@ local ex = {
 	oil = true,
 	dapui_scopes = true,
 	NeogitCommitMessage = true,
+	NeogitConsole = true,
 	text = true,
 }
 return {
