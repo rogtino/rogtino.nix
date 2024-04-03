@@ -51,6 +51,7 @@
     slurp
     swaybg
     wlsunset
+    # nodePackages.vscode-html-languageserver-bin
     wget
     flameshot
     # nvtop

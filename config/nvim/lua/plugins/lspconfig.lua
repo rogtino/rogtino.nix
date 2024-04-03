@@ -15,7 +15,7 @@ local function config()
 		},
 		ruff_lsp = {},
 		pyright = {},
-		html = {},
+		-- html = {},
 		taplo = {},
 		prismals = {},
 		emmet_language_server = {},

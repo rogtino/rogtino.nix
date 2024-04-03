@@ -52,8 +52,9 @@ in {
         ];
 
         monospace = [
+          # "BlexMono Nerd Font"
+          "IBM Plex Mono"
           "Intel One Mono"
-          "BlexMono Nerd Font"
           "JetBrainsMonoNL Nerd Font"
           "Maple Mono NF"
           "Noto Color Emoji"
@@ -83,6 +84,7 @@ in {
         ];
       })
       noto-fonts-emoji
+      ibm-plex
       # source-serif-pro
       source-han-sans
       noto-fonts-cjk

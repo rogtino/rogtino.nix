@@ -81,13 +81,13 @@ return {
 	},
 	-- { "m-demare/hlargs.nvim", config = true },
 	{ "echasnovski/mini.ai", config = true },
-	{
-		"echasnovski/mini.animate",
-		opts = {
-			-- cursor = { enable = false },
-			-- scroll = { enable = true },
-		},
-	},
+	-- {
+	-- 	"echasnovski/mini.animate",
+	-- 	opts = {
+	-- 		-- cursor = { enable = false },
+	-- 		-- scroll = { enable = true },
+	-- 	},
+	-- },
 	{ "windwp/nvim-ts-autotag", ft = { "typescriptreact", "javascriptreact", "html" } },
 	{
 		"chrisgrieser/nvim-various-textobjs",

@@ -416,8 +416,18 @@ return {
 	{ "chrisgrieser/nvim-early-retirement", config = true },
 	{
 		"ziontee113/icon-picker.nvim",
-		cmd = "IconPickerInsert",
 		opts = { disable_legacy_commands = true },
+		keys = {
+			{
+
+				"<leader>si",
+				function()
+					vim.cmd.IconPickerInsert("nerd_font_v3")
+				end,
+				desc = "search a icon",
+				mode = "n",
+			},
+		},
 	},
 	{ "gennaro-tedesco/nvim-jqx", ft = { "json", "yaml" } },
 	{
@@ -661,7 +671,19 @@ return {
 			format_after_save = { lsp_fallback = true },
 		},
 	},
-	{ "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim", config = true },
+	{
+		"folke/todo-comments.nvim",
+		dependencies = "nvim-lua/plenary.nvim",
+		config = true,
+		lazy = false,
+		keys = {
+			{
+				"<leader>st",
+				vim.cmd.TodoTrouble,
+				desc = "search all todo comments",
+			},
+		},
+	},
 	"folke/which-key.nvim",
 	{
 		"mfussenegger/nvim-lint",

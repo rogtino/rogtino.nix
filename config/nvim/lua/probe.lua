@@ -7,5 +7,6 @@ if vim.g.neovide then
 	vim.g["neovide_fullscreen"] = false
 	vim.g["neovide_cursor_animation_length"] = 0.1
 	vim.g["neovide_cursor_vfx_mode"] = "ripple"
-	vim.o["guifont"] = "Intel_One_Mono,Noto_Color_Emoji:h18"
+	-- vim.o["guifont"] = "Intel_One_Mono,Noto_Color_Emoji:h18"
+	vim.o["guifont"] = "IBM_PLEX_MONO,Noto_Color_Emoji:h18"
 end
