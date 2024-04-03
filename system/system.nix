@@ -32,6 +32,7 @@ in {
   sops.secrets."config.dae" = {
     owner = config.users.users.gus.name;
   };
+  sops.secrets."gh" = {};
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gus = {
     isNormalUser = true;
@@ -111,6 +112,7 @@ in {
     networkmanager.enable = true; # Easiest to use and most distros use this by default.
     networkmanager.wifi.backend = "iwd"; # Easiest to use and most distros use this by default.
     firewall.allowedTCPPorts = [3000 8000];
+    firewall.trustedInterfaces = ["lxdbr0"];
   };
 
   # Set your time zone.
@@ -224,6 +226,9 @@ in {
     variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
+    };
+    sessionVariables = {
+      NIXOS_OZONE_WL = "1";
     };
   };
   virtualisation = {

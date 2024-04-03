@@ -1,11 +1,15 @@
 {
   lib,
   nixpkgs,
+  config,
   ...
 }: {
   environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
 
   nix = {
+    extraOptions = ''
+      !include ${config.sops.secrets."gh".path}
+    '';
     gc = {
       automatic = true;
       dates = "weekly";

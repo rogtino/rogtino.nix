@@ -37,7 +37,7 @@
     waybar
     deno
     virt-manager
-    neovim
+    # neovim
     neovide
     rizin
     rofi-wayland

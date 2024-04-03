@@ -9,8 +9,8 @@ return {
 		"nvim-neorg/neorg",
 		cmd = "Neorg",
 		keys = {
-			{ "<leader>n", ":Neorg workspace learn<CR>" },
-			{ "<leader>j", ":Neorg journal " },
+			{ "<leader>nn", ":Neorg workspace learn<CR>" },
+			{ "<leader>nj", ":Neorg journal " },
 			{ "<localleader>tg", ":Neorg tangle current-file<CR>" },
 		},
 		ft = "norg",

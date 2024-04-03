@@ -11,8 +11,9 @@ return {
 		"axelvc/template-string.nvim",
 		config = true,
 	},
-	{
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		config = true,
-	},
+	-- BUG: polute input
+	-- {
+	-- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+	-- 	config = true,
+	-- },
 }
