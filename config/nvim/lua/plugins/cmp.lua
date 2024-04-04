@@ -56,7 +56,7 @@ local function config()
 		{ "╰", "FoldColumn" },
 		{ "│", "FoldColumn" },
 	}
-	local ts_utils = require("nvim-treesitter.ts_utils")
+	-- local ts_utils = require("nvim-treesitter.ts_utils")
 	luasnip.config.setup({
 		update_events = "TextChanged,TextChangedI",
 		store_selection_keys = "<TAB>",
@@ -116,14 +116,17 @@ local function config()
 			ai = require("luasnip.nodes.absolute_indexer"),
 		},
 	})
-	cmp.event:on("confirm_done", function(evt)
-		local name = ts_utils.get_node_at_cursor():type()
-		if (name ~= "named_imports") and (name ~= "source_file") then
-			return cmp_autopairs.on_confirm_done()(evt)
-		else
-			return nil
-		end
-	end)
+	-- TODO:make this work
+	-- cmp.event:on("confirm_done", function(evt)
+	-- 	local name = ts_utils.get_node_at_cursor():type()
+	-- 	if (name ~= "named_imports") and (name ~= "source_file") then
+	-- 		return cmp_autopairs.on_confirm_done()(evt)
+	-- 	else
+	-- 		return nil
+	-- 	end
+	-- end)
+	-- If you want insert `(` after select function or method item
+	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 	cmp.setup({
 		snippet = {
 			expand = function(args)

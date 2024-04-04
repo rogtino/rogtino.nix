@@ -16,10 +16,10 @@ local function config()
 				width = 0.95,
 			},
 		},
-		-- pickers = {
-		-- 	find_files = { theme = "ivy", find_command = { "rg", "--hidden", "--glob", "!.git", "--files" } },
-		-- 	live_grep = { theme = "ivy", find_command = { "rg", "--hidden", "--glob", "!.git", "--files" } },
-		-- },
+		pickers = {
+			find_files = { find_command = { "rg", "--hidden", "--glob", "!.git", "--files" } },
+			live_grep = { find_command = { "rg", "--hidden", "--glob", "!.git", "--files" } },
+		},
 		-- extensions = {
 		-- 	codebase = {
 		-- 		path = vim.fn.stdpath("config") .. "/codebase",

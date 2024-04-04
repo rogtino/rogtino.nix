@@ -28,7 +28,7 @@ local function config()
 				require("clangd_extensions.inlay_hints").set_inlay_hints()
 			end,
 		},
-		tailwindcss = { filetypes = { "typescriptreact", "javascriptreact" } },
+		tailwindcss = {},
 		bashls = {},
 		nil_ls = {},
 		cmake = {},

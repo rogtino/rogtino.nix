@@ -72,7 +72,26 @@ vim.g.all_colors = {
 vim.keymap.set({ "n", "i" }, "<F12>", function()
 	local ts_utils = require("nvim-treesitter.ts_utils")
 	local s = ts_utils.get_node_at_cursor():type()
-	vim.print(s)
+	-- local a = ts_utils.get_previous_node(s):type()
+	-- vim.print(a)
+	-- local r = vim.inspect(s)
+	-- vim.print(s)
+	-- vim.print(vim.treesitter.get_captures_at_cursor())
+	local bufnr = vim.api.nvim_get_current_buf()
+	local cursor = vim.treesitter.get_node({
+		bufnr = bufnr,
+		ignore_injections = false,
+	})
+	if cursor == nil then
+		print("cursor is nil")
+	else
+		local parent = cursor:parent()
+		if parent ~= nil then
+			print(parent:type())
+		else
+			print("parent is nil")
+		end
+	end
 end)
 --TODO: vimtex autopairs octo textobject(treesitter) chatgpt nabla edgy neotest
 --TODO: conceal some text
