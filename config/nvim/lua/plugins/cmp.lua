@@ -143,6 +143,7 @@ local function config()
 			format = lspkind.cmp_format({
 				mode = "symbol_text",
 				menu = {
+					-- TODO: fields should take priority before snip
 					buffer = "[BUF]",
 					nvim_lsp = "[LSP]",
 					luasnip = "[SNIP]",

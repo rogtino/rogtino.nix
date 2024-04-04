@@ -41,7 +41,7 @@ export default {};
 						i(1, name),
 					})
 				end, {}),
-				i(2, "null"),
+				i(2, "{}"),
 				i(3),
 				d(3, function(_, snip)
 					local path = snip.env.TM_FILENAME
@@ -56,14 +56,6 @@ export default {};
 		)
 	),
 	s("arr", fmt("({}) => {{{}}}", { i(1), i(2) })),
-	s("clo", fmt("console.log({})", { i(1) })),
-	s("div", fmt("<div className='{}'>{}</div>", { i(1), i(2) })),
-	s("h1", fmt("<h1 className='{}'>{}</h1>", { i(1), i(2) })),
-	s("h2", fmt("<h2 className='{}'>{}</h2>", { i(1), i(2) })),
-	s("h3", fmt("<h3 className='{}'>{}</h3>", { i(1), i(2) })),
-	s("p", fmt("<p className='{}'>{}</p>", { i(1), i(2) })),
-	s("span", fmt("<span className='{}'>{}</span>", { i(1), i(2) })),
-	s("header", fmt("<header className='{}'>{}</header>", { i(1), i(2) })),
 	s(
 		"car",
 		fmt(

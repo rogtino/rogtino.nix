@@ -16,6 +16,7 @@
     ffmpeg
     # emacs
     nodePackages.pnpm
+    nodePackages_latest.prisma
     nodejs
     cachix
     aircrack-ng

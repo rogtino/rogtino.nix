@@ -8,6 +8,7 @@ with pkgs; let
   lsp = [
     nil
     nodePackages."@astrojs/language-server"
+    nodePackages."@prisma/language-server"
     typst-lsp
     marksman
     nodePackages_latest.typescript-language-server
