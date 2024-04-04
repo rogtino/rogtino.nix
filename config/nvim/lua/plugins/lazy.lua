@@ -263,19 +263,12 @@ return {
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	"onsails/lspkind.nvim",
 	{ "roobert/tailwindcss-colorizer-cmp.nvim", opts = { color_square_width = 2 } },
-	--BUG:can't find tsserver on nixos
-	--https://github.com/pmizio/typescript-tools.nvim/issues/252
-	-- {
-	-- 	"pmizio/typescript-tools.nvim",
-	-- 	ft = { "typescriptreact", "javascriptreact", "javascript", "typescript" },
-	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-	-- 	-- config = true,
-	-- 	opts = {
-	-- 		settings = {
-	-- 			tsserver_path = "/nix/store/n3nczhyz5aqxwjkq2qcn966r17l4ah3i-typescript-5.4.2/lib/node_modules/typescript/lib/tsserver.js",
-	-- 		},
-	-- 	},
-	-- },
+	{
+		"pmizio/typescript-tools.nvim",
+		ft = { "typescriptreact", "javascriptreact", "javascript", "typescript" },
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		config = true,
+	},
 	{
 		"danymat/neogen",
 		dependencies = "nvim-treesitter/nvim-treesitter",

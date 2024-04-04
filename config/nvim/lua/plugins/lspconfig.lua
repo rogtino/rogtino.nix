@@ -21,7 +21,6 @@ local function config()
 		emmet_language_server = {},
 		gopls = {},
 		marksman = {},
-		tsserver = {},
 		clangd = {
 			on_attach = function()
 				require("clangd_extensions.inlay_hints").setup_autocmd()
