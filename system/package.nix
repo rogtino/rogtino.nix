@@ -32,6 +32,7 @@
     clang
     luajit
     clang-tools
+    yt-dlp
     gcc
     sqlite
     wl-clipboard

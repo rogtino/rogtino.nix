@@ -39,6 +39,15 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"benfowler/telescope-luasnip.nvim",
+		{
+			"AckslD/nvim-neoclip.lua",
+			dependencies = "kkharji/sqlite.lua",
+			config = true,
+			lazy = false,
+			keys = {
+				{ "<leader>pn", ":Telescope neoclip<CR>", desc = "pick neoclip" },
+			},
+		},
 		-- not compatiable with flake
 		-- see:https://github.com/mlvzk/manix/issues/25
 		-- {

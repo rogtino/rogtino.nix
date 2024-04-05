@@ -170,8 +170,6 @@ return {
 		end,
 	},
 
-	--(pack :AckslD/nvim-neoclip.lua {:dependencies [:kkharji/sqlite.lua]
-	--                                :config true})
 	{
 		"pwntester/octo.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim", "nvim-tree/nvim-web-devicons" },
@@ -465,6 +463,7 @@ return {
 		keys = {
 			{ "<leader>tn", "<cmd>Neotree toggle dir=./<CR>", desc = "neotree-root-toggle" },
 			{ "<leader>tr", "<cmd>Neotree reveal toggle<CR>", desc = "neotree-reveal-toggle" },
+			{ "<leader>tf", "<cmd>Neotree reveal toggle position=float<CR>", desc = "neotree-float-toggle" },
 		},
 	},
 	{
@@ -568,69 +567,70 @@ return {
 			},
 		},
 	},
-	{
-		"folke/edgy.nvim",
-		event = "VeryLazy",
-		opts = {
-			bottom = {
-				{
-					filter = function(_, win)
-						return (vim.api.nvim_win_get_config(win).relative == "")
-					end,
-					ft = "toggleterm",
-					size = { height = 0.4 },
-				},
-				{
-					filter = function(buf)
-						return not vim.b[buf].lazyterm_cmd
-					end,
-					ft = "lazyterm",
-					size = { height = 0.4 },
-					title = "LazyTerm",
-				},
-				"Trouble",
-				{ ft = "qf", title = "QuickFix" },
-				{
-					filter = function(buf)
-						return (vim.bo[buf].buftype == "help")
-					end,
-					ft = "help",
-					size = { height = 20 },
-				},
-				{ ft = "spectre_panel", size = { height = 0.4 } },
-			},
-			left = {
-				{
-					filter = function(buf)
-						return (vim.b[buf].neo_tree_source == "filesystem")
-					end,
-					ft = "neo-tree",
-					size = { height = 0.5 },
-					title = "Neo-Tree",
-				},
-				{
-					filter = function(buf)
-						return (vim.b[buf].neo_tree_source == "git_status")
-					end,
-					ft = "neo-tree",
-					open = "Neotree position=right git_status",
-					pinned = true,
-					title = "Neo-Tree Git",
-				},
-				{
-					filter = function(buf)
-						return (vim.b[buf].neo_tree_source == "buffers")
-					end,
-					ft = "neo-tree",
-					open = "Neotree position=top buffers",
-					pinned = true,
-					title = "Neo-Tree Buffers",
-				},
-				{ ft = "Outline", open = "Lspsaga outline", pinned = true },
-				"neo-tree",
-			},
-		},
-	},
+	-- no need :(
+	-- {
+	-- 	"folke/edgy.nvim",
+	-- 	event = "VeryLazy",
+	-- 	opts = {
+	-- 		bottom = {
+	-- 			{
+	-- 				filter = function(_, win)
+	-- 					return (vim.api.nvim_win_get_config(win).relative == "")
+	-- 				end,
+	-- 				ft = "toggleterm",
+	-- 				size = { height = 0.4 },
+	-- 			},
+	-- 			{
+	-- 				filter = function(buf)
+	-- 					return not vim.b[buf].lazyterm_cmd
+	-- 				end,
+	-- 				ft = "lazyterm",
+	-- 				size = { height = 0.4 },
+	-- 				title = "LazyTerm",
+	-- 			},
+	-- 			"Trouble",
+	-- 			{ ft = "qf", title = "QuickFix" },
+	-- 			{
+	-- 				filter = function(buf)
+	-- 					return (vim.bo[buf].buftype == "help")
+	-- 				end,
+	-- 				ft = "help",
+	-- 				size = { height = 20 },
+	-- 			},
+	-- 			{ ft = "spectre_panel", size = { height = 0.4 } },
+	-- 		},
+	-- 		left = {
+	-- 			{
+	-- 				filter = function(buf)
+	-- 					return (vim.b[buf].neo_tree_source == "filesystem")
+	-- 				end,
+	-- 				ft = "neo-tree",
+	-- 				size = { height = 0.5 },
+	-- 				title = "Neo-Tree",
+	-- 			},
+	-- 			{
+	-- 				filter = function(buf)
+	-- 					return (vim.b[buf].neo_tree_source == "git_status")
+	-- 				end,
+	-- 				ft = "neo-tree",
+	-- 				open = "Neotree position=right git_status",
+	-- 				pinned = true,
+	-- 				title = "Neo-Tree Git",
+	-- 			},
+	-- 			{
+	-- 				filter = function(buf)
+	-- 					return (vim.b[buf].neo_tree_source == "buffers")
+	-- 				end,
+	-- 				ft = "neo-tree",
+	-- 				open = "Neotree position=top buffers",
+	-- 				pinned = true,
+	-- 				title = "Neo-Tree Buffers",
+	-- 			},
+	-- 			{ ft = "Outline", open = "Lspsaga outline", pinned = true },
+	-- 			"neo-tree",
+	-- 		},
+	-- 	},
+	-- },
 	-- {
 	-- 	"rogtino/codebase.nvim",
 	-- 	config = true,
@@ -789,4 +789,21 @@ return {
 		config = true,
 	},
 	{ "max397574/better-escape.nvim", config = true },
+	{
+		"smoka7/multicursors.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"smoka7/hydra.nvim",
+		},
+		opts = {},
+		cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
+		keys = {
+			{
+				mode = { "v", "n" },
+				"<Leader>m",
+				"<cmd>MCstart<cr>",
+				desc = "Create a selection for selected text or word under the cursor",
+			},
+		},
+	},
 }

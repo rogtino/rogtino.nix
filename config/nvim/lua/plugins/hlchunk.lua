@@ -6,6 +6,7 @@ local ex = {
 	dapui_scopes = true,
 	NeogitCommitMessage = true,
 	NeogitConsole = true,
+	["neo-tree-popup"] = true,
 	text = true,
 }
 return {
