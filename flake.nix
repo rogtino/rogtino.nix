@@ -16,7 +16,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     nur.url = "github:nix-community/NUR";
     daeuniverse.url = "github:daeuniverse/flake.nix";
-    hyprland.url = "github:hyprwm/Hyprland/?rev=c5e28ebcfe00a510922779b2c568cfa52a317445";
+    hyprland.url = "github:hyprwm/Hyprland";
     hypridle.url = "github:hyprwm/hypridle";
     hyprlock.url = "github:hyprwm/hyprlock";
     # flake-root.url = "github:srid/flake-root";
