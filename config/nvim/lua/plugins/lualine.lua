@@ -129,7 +129,7 @@ local function config()
 		end,
 		color = { fg = colors.red },
 	})
-	ins_right({ "overseer" })
+	-- ins_right({ "overseer" })
 	ins_right({
 		"diff",
 		symbols = { added = " ", modified = " ", removed = " " },

@@ -31,6 +31,7 @@
     rustup
     clang
     luajit
+    devenv
     clang-tools
     yt-dlp
     gcc

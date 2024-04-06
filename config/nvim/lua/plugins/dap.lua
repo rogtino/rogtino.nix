@@ -39,17 +39,39 @@ return {
 		dap.configurations.c = dap.configurations.cpp
 		dap.configurations.rust = dap.configurations.cpp
 		vim.fn.sign_define("DapBreakpoint", { text = "🐞" })
-		vim.keymap.set(
-			"n",
+	end,
+	lazy = true,
+	keys = {
+		{
+			"<F5>",
+			":lua require'dap'.continue()<CR>",
+		},
+		{
+			"<F8>",
+			":lua require'dap'.step_over()<CR>",
+		},
+		{
+			"<F7>",
+			":lua require'dap'.step_into()<CR>",
+		},
+		{
+			"<F9>",
+			":lua require'dap'.repl.toggle()<CR>",
+		},
+		{
+			"do",
+			":lua require'dapui'.toggle()<CR>",
+		},
+		{
 			"<F2>",
 			":lua require'persistent-breakpoints.api'.toggle_breakpoint()<CR>",
-			{ silent = true }
-		)
-		vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>", { silent = true })
-		vim.keymap.set("n", "<F8>", ":lua require'dap'.step_over()<CR>", { silent = true })
-		vim.keymap.set("n", "<F7>", ":lua require'dap'.step_into()<CR>", { silent = true })
-		vim.keymap.set("n", "<F9>", ":lua require'dap'.repl.toggle()<CR>", { silent = true })
-		vim.keymap.set("n", "do", ":lua require'dapui'.toggle()<CR>", { silent = true })
-	end,
-	event = "VeryLazy",
+		},
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+		lazy = true,
+		config = true,
+	},
+	{ "theHamsta/nvim-dap-virtual-text", config = true },
 }

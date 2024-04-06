@@ -95,6 +95,7 @@
           packages = with pkgs; [
             git
             vim
+            sops
           ];
           shellHook = ''
             ${config.pre-commit.installationScript}

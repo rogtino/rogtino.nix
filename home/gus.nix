@@ -323,6 +323,7 @@ in {
           helper = "store";
         };
       };
+      ignores = [".direnv" "node_modules"];
     };
     zoxide = {
       enable = true;

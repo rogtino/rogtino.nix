@@ -92,7 +92,6 @@ return {
 		},
 		dependencies = { "MunifTanjim/nui.nvim" },
 	},
-	{ "theHamsta/nvim-dap-virtual-text", config = true },
 	{
 		"mrcjkb/rustaceanvim",
 		ft = "rust",
@@ -302,7 +301,6 @@ return {
 	{
 		"folke/flash.nvim",
 		opts = { label = { uppercase = false } },
-		event = "VeryLazy",
 		keys = {
 			{
 				"s",
@@ -440,7 +438,7 @@ return {
 
 	--not free :(
 	--( pack :zbirenbaum/copilot.lua {:cmd :Copilot :event :InsertEnter :config true })
-	{ "glepnir/lspsaga.nvim", branch = "main", event = "BufEnter", opts = { lightbulb = { sign = false } } },
+	{ "glepnir/lspsaga.nvim", branch = "main", cmd = "Lspsaga", opts = { lightbulb = { sign = false } } },
 	"folke/lsp-colors.nvim",
 	{
 		"folke/trouble.nvim",
@@ -449,12 +447,6 @@ return {
 		config = true,
 	},
 	{ "stevearc/dressing.nvim", config = true },
-	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-		event = "VeryLazy",
-		config = true,
-	},
 	-- { "elkowar/yuck.vim", ft = "yuck" },
 	{ "echasnovski/mini.cursorword", config = true },
 	"p00f/clangd_extensions.nvim",
@@ -669,7 +661,7 @@ return {
 		"folke/todo-comments.nvim",
 		dependencies = "nvim-lua/plenary.nvim",
 		config = true,
-		lazy = false,
+		event = "VeryLazy",
 		keys = {
 			{
 				"<leader>st",
@@ -789,10 +781,10 @@ return {
 		"tzachar/highlight-undo.nvim",
 		config = true,
 	},
-	{ "max397574/better-escape.nvim", config = true },
+	-- { "max397574/better-escape.nvim", config = true },
 	{
 		"smoka7/multicursors.nvim",
-		event = "VeryLazy",
+		-- event = "VeryLazy",
 		dependencies = {
 			"smoka7/hydra.nvim",
 		},

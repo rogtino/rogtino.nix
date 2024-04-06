@@ -11,7 +11,7 @@ local ex = {
 }
 return {
 	"shellRaining/hlchunk.nvim",
-	event = "UIEnter",
+	event = "VeryLazy",
 	opts = {
 		blank = { exclude_filetypes = ex, enable = false },
 		chunk = { enable = true, exclude_filetypes = ex },

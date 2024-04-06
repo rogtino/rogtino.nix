@@ -43,7 +43,7 @@ require("lazy").setup({
 	-- 	end,
 	-- },
 }, {
-	-- defaults = { lazy = true },
+	defaults = { lazy = true },
 	-- checker = { enabled = true },
 	-- dev = {
 	--   path = "~/dev-nvim/",
