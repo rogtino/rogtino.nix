@@ -80,6 +80,12 @@ with pkgs; let
 in {
   home.username = "gus";
   home.homeDirectory = "/home/gus";
+  home.file.".npmrc" = {
+    text = ''
+      prefix=~/.npm-packages
+      registry=https://registry.npmmirror.com
+    '';
+  };
   # home.pointerCursor = {
   #   package = pkgs.bibata-cursors;
   #   name = "Bibata-Modern-Classic";

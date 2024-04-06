@@ -168,9 +168,9 @@ in {
     light.enable = true;
     npm = {
       enable = true;
-      npmrc = ''
-        registry=http://registry.npmmirror.com/
-      '';
+      # npmrc = ''
+      #   registry = https://registry.npmmirror.com/
+      # '';
     };
     # TODO:learn gpg
     gnupg.agent = {

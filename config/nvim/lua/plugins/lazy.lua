@@ -96,8 +96,8 @@ return {
 	{
 		"mrcjkb/rustaceanvim",
 		ft = "rust",
-		version = "^3",
-		init = function()
+		version = "^4",
+		config = function()
 			vim.g.rustaceanvim = {
 				server = {
 					on_attach = function(client)
@@ -110,14 +110,15 @@ return {
 		end,
 		keys = {
 			{
-				"<F1>",
+				"<localleader>r",
 				function()
 					vim.cmd.RustLsp("runnables")
 				end,
 				ft = "rust",
+				desc = "runnables",
 			},
 			{
-				"<leader>re",
+				"<localleader>e",
 				function()
 					vim.cmd.RustLsp("expandMacro")
 				end,

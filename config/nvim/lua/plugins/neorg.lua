@@ -11,7 +11,7 @@ return {
 		keys = {
 			{ "<leader>nn", ":Neorg workspace learn<CR>", desc = "open workspace" },
 			{ "<leader>nj", ":Neorg journal ", desc = "journal" },
-			{ "<localleader>tg", ":Neorg tangle current-file<CR>" },
+			{ "<localleader>tg", ":Neorg tangle current-file<CR>", ft = "norg" },
 		},
 		ft = "norg",
 		version = "v7.0.0",
