@@ -43,7 +43,8 @@ return {
 			"AckslD/nvim-neoclip.lua",
 			dependencies = "kkharji/sqlite.lua",
 			config = true,
-			lazy = false,
+			-- lazy = false,
+			event = "TextYankPost",
 			keys = {
 				{ "<leader>pn", ":Telescope neoclip<CR>", desc = "pick neoclip" },
 			},

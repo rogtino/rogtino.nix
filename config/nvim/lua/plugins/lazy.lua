@@ -384,6 +384,7 @@ return {
 	},
 	{
 		"akinsho/bufferline.nvim",
+		event = "VeryLazy",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
 			{ "<leader>bo", vim.cmd.BufferLineCloseOthers, desc = "delete other buffers" },
@@ -401,7 +402,6 @@ return {
 				end,
 			},
 		},
-		lazy = false,
 	},
 	{ "chrisgrieser/nvim-early-retirement", config = true },
 	{
@@ -732,9 +732,9 @@ return {
 		event = "VeryLazy",
 		enabled = string.find(vim.uv.os_uname().version, "NixOS") == nil,
 	},
-	{
-		dir = "~/dev-nvim/tslt.nvim",
-	},
+	-- {
+	-- 	dir = "~/dev-nvim/tslt.nvim",
+	-- },
 	{
 		"chrisgrieser/nvim-spider",
 		keys = {
