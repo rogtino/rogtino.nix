@@ -40,20 +40,11 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-	pattern = { "*.mpp", "*.ixx" },
-	callback = function()
-		vim.opt.filetype = "cpp"
-	end,
+vim.filetype.add({
+	extension = {
+		lock = "json",
+	},
 })
-
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-	pattern = { "cargo.lock", "flake.lock" },
-	callback = function()
-		vim.opt.filetype = "json"
-	end,
-})
-
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
 		"help",
