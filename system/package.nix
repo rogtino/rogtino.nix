@@ -17,7 +17,11 @@
     # emacs
     nodePackages.pnpm
     nodePackages_latest.prisma
+    python311Packages.torch-bin
+    # cudaPackages.cudatoolkit
+    python312
     nodejs
+    grim
     cachix
     aircrack-ng
     cliphist

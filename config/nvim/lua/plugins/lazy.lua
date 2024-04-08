@@ -640,6 +640,7 @@ return {
 				java = { "google-java-format" },
 				json = { "deno_fmt" },
 				c = { "clang_format" },
+				css = { "prettier" },
 				cpp = { "clang_format" },
 				typescript = { "deno_fmt" },
 				go = { "gofmt" },

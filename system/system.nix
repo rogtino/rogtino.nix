@@ -26,6 +26,7 @@ in {
     ./hardware-configuration.nix
   ];
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.cudaSupport = true;
   sops.defaultSopsFile = ../secrets/mimi.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/gus/.config/sops/age/keys.txt";
