@@ -1,10 +1,10 @@
 return {
-	-- BUG: unable to use in niox
-	-- {
-	-- 	"vhyrro/luarocks.nvim",
-	-- 	priority = 1000,
-	-- 	config = true,
-	-- },
+	-- BUG: unable to use in nixos
+	{
+		"vhyrro/luarocks.nvim",
+		priority = 1000,
+		config = true,
+	},
 	{
 		"nvim-neorg/neorg",
 		cmd = "Neorg",
@@ -14,8 +14,9 @@ return {
 			{ "<localleader>tg", ":Neorg tangle current-file<CR>", ft = "norg" },
 		},
 		ft = "norg",
-		version = "v7.0.0",
-		build = ":Neorg sync-parsers",
+		-- version = "v7.0.0",
+		version = "*",
+		-- build = ":Neorg sync-parsers",
 		opts = {
 			load = {
 				["core.defaults"] = {},
@@ -42,7 +43,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-neorg/neorg-telescope",
-			-- "luarocks.nvim",
+			"luarocks.nvim",
 		},
 	},
 }
