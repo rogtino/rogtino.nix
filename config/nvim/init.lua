@@ -51,7 +51,7 @@ require("lazy").setup({
 	-- },
 })
 require("core")
-local theme = "bamboo-vulgaris"
+local theme = "oxocarbon"
 vim.g.current_theme = theme
 vim.g.all_colors = {
 	dark = {
@@ -86,7 +86,7 @@ vim.g.all_colors = {
 		"dawnfox",
 	},
 }
--- vim.cmd.colorscheme(theme)
+vim.cmd.colorscheme(theme)
 
 -- NOTE:detecting node type to disable parenthesis completion
 vim.keymap.set({ "n", "i" }, "<F12>", function()

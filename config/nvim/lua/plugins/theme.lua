@@ -5,7 +5,8 @@ return {
 	},
 	{
 		"nyoom-engineering/oxocarbon.nvim",
-		lazy = true,
+		priority = 1000,
+		lazy = false,
 	},
 	{
 		"olimorris/onedarkpro.nvim",
@@ -21,11 +22,10 @@ return {
 	},
 	{
 		"ribru17/bamboo.nvim",
-		priority = 1000,
-		lazy = false,
-		config = function()
-			require("bamboo").load()
-		end,
+		lazy = true,
+		-- config = function()
+		-- 	require("bamboo").load()
+		-- end,
 	},
 	{ "catppuccin/nvim", name = "catppuccin", lazy = true },
 	{ "rose-pine/neovim", name = "rose-pine", lazy = true },
