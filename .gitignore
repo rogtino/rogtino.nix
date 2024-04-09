@@ -1,3 +1,4 @@
 .direnv/
 sqlite3.path
 .pre-commit-config.yaml
+history.txt

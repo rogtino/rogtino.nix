@@ -38,8 +38,8 @@ def get_des_path(name: str) -> Optional[str]:
 
 
 def init():
-    for dir in os.listdir("xdg"):
-        s = os.path.abspath(os.path.join("xdg", dir))
+    for dir in os.listdir("config"):
+        s = os.path.abspath(os.path.join("config", dir))
         d = get_des_path(dir)
         if d is None:
             continue
