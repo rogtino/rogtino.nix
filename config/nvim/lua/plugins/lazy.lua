@@ -390,6 +390,13 @@ return {
 			{ "<leader>bo", vim.cmd.BufferLineCloseOthers, desc = "delete other buffers" },
 			{ "<leader>bp", vim.cmd.BufferLinePick, desc = "pick a buffer by buf's name" },
 			{ "<leader>bd", vim.cmd.Bdelete, desc = "delete current buffer" },
+			{
+				"<leader>ba",
+				function()
+					vim.cmd("%bd")
+				end,
+				desc = "delete all buffers",
+			},
 			{ "<s-l>", vim.cmd.BufferLineCycleNext },
 			{ "<s-h>", vim.cmd.BufferLineCyclePrev },
 		},
@@ -438,7 +445,7 @@ return {
 
 	--not free :(
 	--( pack :zbirenbaum/copilot.lua {:cmd :Copilot :event :InsertEnter :config true })
-	{ "glepnir/lspsaga.nvim", branch = "main", cmd = "Lspsaga", opts = { lightbulb = { sign = false } } },
+	{ "glepnir/lspsaga.nvim", branch = "main", opts = { lightbulb = { sign = false } }, event = "VeryLazy" },
 	"folke/lsp-colors.nvim",
 	{
 		"folke/trouble.nvim",

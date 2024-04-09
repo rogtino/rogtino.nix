@@ -18,7 +18,7 @@ local function config()
 		-- html = {},
 		taplo = {},
 		prismals = {},
-		emmet_language_server = {},
+		-- emmet_language_server = {},
 		gopls = {},
 		marksman = {},
 		clangd = {

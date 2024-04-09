@@ -90,8 +90,8 @@ vim.cmd.colorscheme(theme)
 
 -- NOTE:detecting node type to disable parenthesis completion
 vim.keymap.set({ "n", "i" }, "<F12>", function()
-	local ts_utils = require("nvim-treesitter.ts_utils")
-	local s = ts_utils.get_node_at_cursor():type()
+	-- local ts_utils = require("nvim-treesitter.ts_utils")
+	-- local s = ts_utils.get_node_at_cursor():type()
 	-- local a = ts_utils.get_previous_node(s):type()
 	-- vim.print(a)
 	-- local r = vim.inspect(s)

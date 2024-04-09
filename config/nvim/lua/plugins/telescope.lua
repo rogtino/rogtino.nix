@@ -107,7 +107,7 @@ return {
 		{
 			"<leader>pm",
 			function()
-				return vim.cmd.Telescope("man_pages")
+				return vim.cmd("Telescope man_pages sections=ALL")
 			end,
 			desc = "pick-man-page",
 		},
