@@ -74,6 +74,7 @@ return {
 			function()
 				return vim.cmd.Telescope("find_files")
 			end,
+			desc = "find files",
 		},
 		{
 			"<leader>f",

@@ -60,7 +60,7 @@ vim.api.nvim_create_user_command("OverseerXmake", function()
 				sequential = true,
 			})
 			task:add_component({ "restart_on_save", paths = { vim.fn.expand("%:p") } })
-			overseer.run_action(task, "30vsplit")
+			overseer.run_action(task, "70vsplit")
 			vim.api.nvim_set_current_win(main_win)
 		end
 	end)
@@ -73,8 +73,26 @@ vim.api.nvim_create_user_command("OverseerRunScript", function()
 			return vim.notify(("WatchRun not supported for filetype " .. vim.bo.filetype), vim.log.levels.ERROR)
 		else
 			task:add_component({ "restart_on_save", paths = { vim.fn.expand("%:p") } })
-			overseer.run_action(task, "30vsplit")
+			overseer.run_action(task, "70vsplit")
 			vim.api.nvim_set_current_win(main_win)
 		end
 	end)
 end, {})
+
+vim.api.nvim_create_user_command("FormatDisable", function(args)
+	if args.bang then
+		-- FormatDisable! will disable formatting globally
+		vim.g.disable_autoformat = true
+	else
+		vim.b.disable_autoformat = true
+	end
+end, {
+	desc = "Disable autoformat-on-save",
+	bang = true,
+})
+vim.api.nvim_create_user_command("FormatEnable", function()
+	vim.b.disable_autoformat = false
+	vim.g.disable_autoformat = false
+end, {
+	desc = "Re-enable autoformat-on-save",
+})

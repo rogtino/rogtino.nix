@@ -40,11 +40,19 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.norg",
+	callback = function()
+		vim.cmd("norm ggVG=")
+	end,
+})
+
 vim.filetype.add({
 	extension = {
 		lock = "json",
 	},
 })
+
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
 		"help",
@@ -58,6 +66,13 @@ vim.api.nvim_create_autocmd("FileType", {
 	},
 	callback = function()
 		vim.keymap.set("n", "q", vim.cmd.close)
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = "xmake.lua",
+	callback = function()
+		vim.diagnostic.disable(0)
 	end,
 })
 

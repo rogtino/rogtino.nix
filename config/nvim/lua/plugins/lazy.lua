@@ -31,7 +31,6 @@ return {
 			library = { plugins = { "nvim-dap-ui" }, types = true },
 		},
 	},
-	-- "ziontee113/deliberate.nvim"
 	-- TODO: not stable for nightly
 	-- {
 	--   "nvim-zh/colorful-winsep.nvim",
@@ -66,7 +65,8 @@ return {
 	{
 		"stevearc/oil.nvim",
 		opts = { keymaps = { ["<TAB>"] = "actions.select" } },
-		keys = { { "<leader>oo", vim.cmd.Oil, desc = "open oil" } },
+		lazy = false,
+		keys = { { "<leader>o", vim.cmd.Oil, desc = "open oil" } },
 	},
 	{ "kaarmu/typst.vim", ft = "typst" },
 	{
@@ -126,7 +126,23 @@ return {
 			},
 		},
 	},
-	{ "kylechui/nvim-surround", config = true, event = "VeryLazy" },
+	{
+		"kylechui/nvim-surround",
+		opts = {
+			surrounds = {
+				["F"] = {
+					add = function()
+						local config = require("nvim-surround.config")
+						local result = config.get_input("Enter the generic type name: ")
+						if result then
+							return { { result .. "<" }, { ">" } }
+						end
+					end,
+				},
+			},
+		},
+		event = "VeryLazy",
+	},
 	{
 		"windwp/nvim-autopairs",
 		opts = { check_ts = true, disable_filetype = { "apl", "TelescopePrompt" } },
@@ -136,7 +152,10 @@ return {
 		"mbbill/undotree",
 		keys = { { "<leader>tu", vim.cmd.UndotreeToggle, desc = "toggle undo tree" } },
 	},
-	"tpope/vim-eunuch",
+	{
+		"tpope/vim-eunuch",
+		cmd = "Mkdir",
+	},
 	{
 		"ellisonleao/carbon-now.nvim",
 		opts = {
@@ -410,7 +429,6 @@ return {
 			},
 		},
 	},
-	{ "chrisgrieser/nvim-early-retirement", config = true },
 	{
 		"ziontee113/icon-picker.nvim",
 		opts = { disable_legacy_commands = true },
@@ -431,9 +449,9 @@ return {
 		"nvim-pack/nvim-spectre",
 		config = true,
 		keys = {
-			{ "<leader>ssp", vim.cmd.Spectre, desc = "open-spectre" },
+			{ "<leader>sp", vim.cmd.Spectre, desc = "open-spectre" },
 			{
-				"<leader>ssc",
+				"<leader>sc",
 				function()
 					return vim.cmd.Spectre({ "path", vim.fn.expand("%:t:p") })
 				end,
@@ -455,7 +473,7 @@ return {
 	},
 	{ "stevearc/dressing.nvim", config = true },
 	-- { "elkowar/yuck.vim", ft = "yuck" },
-	{ "echasnovski/mini.cursorword", config = true },
+	{ "echasnovski/mini.cursorword", config = true, event = "VeryLazy" },
 	"p00f/clangd_extensions.nvim",
 	{
 		"nvim-neo-tree/neo-tree.nvim",
@@ -524,13 +542,13 @@ return {
 		cmd = "Bdelete",
 	},
 	-- "mong8se/actually.nvim",
-	{ "chrisgrieser/nvim-early-retirement", config = true, event = "VeryLazy" },
+	-- { "chrisgrieser/nvim-early-retirement", config = true, event = "VeryLazy" },
 	{
 		"stevearc/overseer.nvim",
 		opts = {
 			templates = { "builtin", "cpp", "run_script", "xmake" },
 			actions = {
-				["30vsplit"] = {
+				["70vsplit"] = {
 					desc = "open terminal in a vertical split",
 					condition = function(task)
 						local bufnr = task:get_bufnr()
@@ -538,7 +556,7 @@ return {
 					end,
 					run = function(task)
 						local util = require("overseer.util")
-						vim.cmd([[30vsplit]])
+						vim.cmd([[70vsplit]])
 						util.set_term_window_opts()
 						vim.api.nvim_win_set_buf(0, task:get_bufnr())
 						util.scroll_to_end(0)
@@ -638,7 +656,7 @@ return {
 	-- },
 	{
 		"stevearc/conform.nvim",
-		event = "BufWritePost",
+		event = "BufWritePre",
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
@@ -663,7 +681,14 @@ return {
 			formatters = {
 				fnlfmt = { command = "fnlfmt", args = { "$FILENAME" }, stdin = true },
 			},
-			format_after_save = { lsp_fallback = true },
+			-- format_after_save = { lsp_fallback = true },
+			format_on_save = function(bufnr)
+				-- Disable with a global or buffer-local variable
+				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+					return
+				end
+				return { timeout_ms = 500, lsp_fallback = true }
+			end,
 		},
 	},
 	{
@@ -776,7 +801,8 @@ return {
 			"nvim-telescope/telescope.nvim", -- optional
 		},
 		config = true,
-		branch = "nightly",
+		-- BUG:mess commit buffer
+		-- branch = "nightly",
 		keys = {
 			{
 				"<leader>gn",
@@ -807,5 +833,42 @@ return {
 				desc = "Create a selection for selected text or word under the cursor",
 			},
 		},
+	},
+	{
+		"mmarchini/bpftrace.vim",
+		lazy = false,
+	},
+	-- {
+	-- 	"ziontee113/deliberate.nvim",
+	-- 	dependencies = {
+	-- 		{
+	-- 			"anuvyklack/hydra.nvim",
+	-- 		},
+	-- 	},
+	-- 	lazy = false,
+	-- 	config = function()
+	-- 		local supported_filetypes = { "typescriptreact" }
+	-- 		local augroup = vim.api.nvim_create_augroup("DeliberateEntryPoint", { clear = true })
+	-- 		vim.api.nvim_create_autocmd({ "FileType" }, {
+	-- 			pattern = supported_filetypes,
+	-- 			group = augroup,
+	-- 			callback = function()
+	-- 				local bufnr = vim.api.nvim_get_current_buf()
+	-- 				if vim.tbl_contains(supported_filetypes, vim.bo.ft) then
+	-- 					vim.keymap.set("n", "<leader>d", function()
+	-- 						vim.api.nvim_input("<Plug>DeliberateHydraEsc")
+	-- 					end, { buffer = bufnr, desc = "toggle deliberate" })
+	-- 					vim.keymap.set("i", "<Plug>DeliberateHydraEsc", "<Nop>", {})
+	-- 				end
+	-- 			end,
+	-- 		})
+	--
+	-- 		require("deliberate.hydra")
+	-- 	end,
+	-- },
+	{
+		"VidocqH/lsp-lens.nvim",
+		config = true,
+		event = "LspAttach",
 	},
 }

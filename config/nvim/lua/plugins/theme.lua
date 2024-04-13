@@ -5,8 +5,7 @@ return {
 	},
 	{
 		"nyoom-engineering/oxocarbon.nvim",
-		priority = 1000,
-		lazy = false,
+		lazy = true,
 	},
 	{
 		"olimorris/onedarkpro.nvim",
@@ -28,7 +27,7 @@ return {
 		-- end,
 	},
 	{ "catppuccin/nvim", name = "catppuccin", lazy = true },
-	{ "rose-pine/neovim", name = "rose-pine", lazy = true },
+	{ "rose-pine/neovim", name = "rose-pine", lazy = false, priority = 1000 },
 	{
 		"folke/noice.nvim",
 
@@ -59,6 +58,7 @@ return {
 				long_message_to_split = true,
 				lsp_doc_border = true,
 			},
+			-- cmdline = { view = "cmdline" },
 		},
 		event = "VeryLazy",
 		dependencies = { "MunifTanjim/nui.nvim" },

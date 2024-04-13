@@ -22,20 +22,21 @@ boot("lazy.nvim", "https://github.com/folke/lazy.nvim.git")
 -- TODO:https://github.com/CKolkey/ts-node-action add some node-action
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
+vim.g.disable_autoformat = false
 require("lazy").setup({
 	{ import = "plugins" },
-	-- {
-	-- 	dir = "~/neovim/heyoo/",
-	-- 	lazy = false,
-	-- 	config = function(_, opts)
-	-- 		print("config")
-	-- 		require("heyoo").setup(opts)
-	-- 	end,
-	-- 	opts = function(_, opts)
-	-- 		opts.final_string = "daddy"
-	-- 		print("opts")
-	-- 	end,
-	-- },
+	{
+		dir = "~/dev/neovim/heyoo/",
+		lazy = false,
+		-- config = function(_, opts)
+		-- 	print("config")
+		-- 	require("heyoo").setup(opts)
+		-- end,
+		-- opts = function(_, opts)
+		-- 	opts.final_string = "daddy"
+		-- 	print("opts")
+		-- end,
+	},
 	-- {
 	-- 	dir = "~/neovim/heyoo/",
 	-- 	opts = function(_, opts)
@@ -51,8 +52,6 @@ require("lazy").setup({
 	-- },
 })
 require("core")
-local theme = "oxocarbon"
-vim.g.current_theme = theme
 vim.g.all_colors = {
 	dark = {
 		"onedark",
@@ -86,6 +85,10 @@ vim.g.all_colors = {
 		"dawnfox",
 	},
 }
+-- local colors = vim.g.all_colors["dark"]
+-- local theme = colors[math.random(#colors)]
+local theme = "rose-pine-main"
+vim.g.current_theme = theme
 vim.cmd.colorscheme(theme)
 
 -- NOTE:detecting node type to disable parenthesis completion

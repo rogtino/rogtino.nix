@@ -9,7 +9,7 @@
  )
 ; (((declaration type: (primitive_type) @type) (#eq? @type "char")) (#set! conceal "c"))
 ; (((declaration (type_qualifier) @keyword) (#eq? @keyword "const")) (#set! conceal "🏅"))
-(("const" @keyword) (#set! conceal ""))
+; (("const" @keyword) (#set! conceal ""))
 (("->" @operator) (#set! conceal "►"))
 (("struct" @keyword) (#set! conceal "𝓢"))
 (("enum" @keyword) (#set! conceal "𝓔"))

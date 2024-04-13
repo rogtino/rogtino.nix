@@ -14,14 +14,14 @@ local function config()
 		["<C-n>"] = cmp.mapping.select_next_item(),
 		["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-		["<C-j>"] = cmp.mapping(function(fallback)
+		["<A-n>"] = cmp.mapping(function(fallback)
 			if ls.choice_active() then
 				ls.change_choice(1)
 			else
 				fallback()
 			end
 		end, { "i", "s" }),
-		["<C-k>"] = cmp.mapping(function(fallback)
+		["<A-p>"] = cmp.mapping(function(fallback)
 			if ls.choice_active() then
 				ls.change_choice(-1)
 			else

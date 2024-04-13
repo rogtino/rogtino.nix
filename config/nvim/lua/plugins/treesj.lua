@@ -24,7 +24,22 @@
 --  ;TODO learn how to use it
 return {
 	"nmac427/guess-indent.nvim",
-	{ "echasnovski/mini.align", config = true },
+	{
+		"echasnovski/mini.align",
+		config = true,
+		keys = {
+			{
+				"ga",
+				mode = "v",
+				desc = "Align",
+			},
+			{
+				"gA",
+				mode = "v",
+				desc = "Align with preview",
+			},
+		},
+	},
 	{
 		"Wansmer/treesj",
 		keys = { {

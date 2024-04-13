@@ -21,7 +21,18 @@ return {
 		})
 	),
 	s(
-		"edf",
+		"ef",
+		fmt(
+			[[
+        export function {}({}){{
+            return {}
+        }}
+        ]],
+			ins_generate()
+		)
+	),
+	s(
+		"redf",
 		fmt(
 			[[
 import React from "react";
@@ -43,7 +54,7 @@ export default {};
 				end, {}),
 				i(2, "{}"),
 				i(3),
-				d(3, function(_, snip)
+				d(4, function(_, snip)
 					local path = snip.env.TM_FILENAME
 					local name = string.match(path, "(%a+).tsx")
 					name = name:sub(1, 1):upper() .. name:sub(2)
