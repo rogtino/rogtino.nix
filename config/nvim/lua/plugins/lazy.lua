@@ -61,10 +61,17 @@ return {
 		},
 	},
 	--WARNING: wait for alacritty sixel support
-	-- (pack :3rd/image.nvim {:config true})
+	-- https://codeberg.org/dnkl/foot/issues/481 waiting for foot
+	-- { "3rd/image.nvim", config = true, lazy = false, dependencies = { "luarocks.nvim" } },
 	{
 		"stevearc/oil.nvim",
-		opts = { keymaps = { ["<TAB>"] = "actions.select" } },
+		opts = {
+			keymaps = { ["<TAB>"] = "actions.select" },
+			experimental_watch_for_changes = true,
+			view_options = {
+				show_hidden = true,
+			},
+		},
 		lazy = false,
 		keys = { { "<leader>o", vim.cmd.Oil, desc = "open oil" } },
 	},

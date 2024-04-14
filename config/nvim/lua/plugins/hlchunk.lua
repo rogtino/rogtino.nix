@@ -8,6 +8,7 @@ local ex = {
 	NeogitConsole = true,
 	["neo-tree-popup"] = true,
 	text = true,
+	conf = true,
 }
 return {
 	"shellRaining/hlchunk.nvim",
