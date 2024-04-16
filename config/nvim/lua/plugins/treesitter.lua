@@ -182,4 +182,10 @@ return {
 		"lewis6991/satellite.nvim",
 	},
 	{ "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
+	{
+		"davidmh/mdx.nvim",
+		config = true,
+		ft = "mdx",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+	},
 }

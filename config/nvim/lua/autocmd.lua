@@ -43,13 +43,15 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*.norg",
 	callback = function()
-		vim.cmd("norm ggVG=")
+		-- TODO: find a elegant way to do so
+		vim.cmd("norm ggVG='.")
 	end,
 })
 
 vim.filetype.add({
 	extension = {
 		lock = "json",
+		mdx = "mdx",
 	},
 })
 

@@ -21,6 +21,9 @@ local function config()
 		emmet_language_server = {},
 		gopls = {},
 		marksman = {},
+		mdx_analyzer = {
+			filetypes = "mdx",
+		},
 		clangd = {
 			on_attach = function()
 				require("clangd_extensions.inlay_hints").setup_autocmd()
