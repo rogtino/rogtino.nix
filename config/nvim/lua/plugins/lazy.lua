@@ -849,7 +849,7 @@ return {
 	},
 	{
 		"mmarchini/bpftrace.vim",
-		lazy = false,
+		ft = "bpftrace",
 	},
 	-- {
 	-- 	"ziontee113/deliberate.nvim",

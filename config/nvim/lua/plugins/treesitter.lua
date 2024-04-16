@@ -160,7 +160,7 @@ return {
 		config = config,
 		event = { "BufReadPost", "BufNewFile" },
 		dependencies = {
-			{ "nushell/tree-sitter-nu", "nvim-treesitter/nvim-treesitter-textobjects" },
+			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 	},
 	-- { "m-demare/hlargs.nvim", config = true },
@@ -178,6 +178,7 @@ return {
 		opts = { useDefaultKeymaps = true, disabledKeymaps = { "gc" } },
 		event = "VeryLazy",
 	},
+	{ "nushell/tree-sitter-nu", ft = "nu" },
 	{
 		"lewis6991/satellite.nvim",
 	},

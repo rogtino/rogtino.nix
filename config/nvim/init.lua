@@ -1,5 +1,3 @@
---TODO: lazy load plugins which can be lazy load
--- make all config in opts table
 vim.loader.enable()
 local plugins_path = vim.fn.stdpath("data") .. "/lazy"
 
