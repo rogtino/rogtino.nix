@@ -66,7 +66,13 @@ return {
 	{
 		"stevearc/oil.nvim",
 		opts = {
-			keymaps = { ["<TAB>"] = "actions.select" },
+
+			use_default_keymaps = true,
+			keymaps = {
+				["<TAB>"] = "actions.select",
+				["<C-s>"] = false,
+				["<C-v>"] = "actions.select_vsplit",
+			},
 			experimental_watch_for_changes = true,
 			view_options = {
 				show_hidden = true,

@@ -31,6 +31,7 @@ return {
 					config = {
 						hook = function(keybinds)
 							keybinds.remap_event("norg", "n", ",e", "core.looking-glass.magnify-code-block")
+							keybinds.map("norg", "n", "q", vim.cmd.q)
 						end,
 					},
 				},

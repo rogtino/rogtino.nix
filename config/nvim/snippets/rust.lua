@@ -106,16 +106,4 @@ return {
 			ins_generate()
 		)
 	),
-
-	s(
-		"ilet",
-		fmt(
-			[[
-if let {} = {} {{
-    {}
-}}
-         ]],
-			{ i(2), i(1), i(3) }
-		)
-	),
 }
