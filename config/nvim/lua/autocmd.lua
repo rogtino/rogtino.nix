@@ -44,7 +44,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*.norg",
 	callback = function()
 		-- TODO: find a elegant way to do so
-		vim.cmd("norm ggVG='.")
+		-- vim.cmd("norm ggVG='.")
+		vim.cmd("norm ggVG=")
 	end,
 })
 

@@ -37,6 +37,7 @@ opt.splitright = true
 opt.termguicolors = true
 opt.showmode = false
 opt.undofile = true
+opt.laststatus = 0
 opt.signcolumn = "number"
 opt.clipboard = "unnamedplus"
 opt.numberwidth = 4

@@ -62,7 +62,12 @@ return {
 	},
 	--WARNING: wait for alacritty sixel support
 	-- https://codeberg.org/dnkl/foot/issues/481 waiting for foot
-	-- { "3rd/image.nvim", config = true, lazy = false, dependencies = { "luarocks.nvim" } },
+	{
+		"3rd/image.nvim",
+		config = true,
+		ft = { "markdown", "norg" },
+		dependencies = { "luarocks.nvim" },
+	},
 	{
 		"stevearc/oil.nvim",
 		opts = {
@@ -884,4 +889,9 @@ return {
 		config = true,
 		event = "LspAttach",
 	},
+	-- {
+	-- 	"edluffy/hologram.nvim",
+	-- 	opts = { auto_display = true },
+	-- 	event = "VeryLazy",
+	-- },
 }

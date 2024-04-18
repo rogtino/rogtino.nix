@@ -20,10 +20,12 @@ local function config()
 		prismals = {},
 		emmet_language_server = {},
 		gopls = {},
+		cssls = {},
 		marksman = {},
-		mdx_analyzer = {
-			filetypes = "mdx",
-		},
+		-- BUG:no idea why this triggers an error in :LspInfo
+		-- mdx_analyzer = {
+		-- 	filetypes = "mdx",
+		-- },
 		clangd = {
 			on_attach = function()
 				require("clangd_extensions.inlay_hints").setup_autocmd()

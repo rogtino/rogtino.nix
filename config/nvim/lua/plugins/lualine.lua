@@ -152,9 +152,10 @@ local function config()
 	})
 	lualine.setup(cfg)
 end
-return {
-	"nvim-lualine/lualine.nvim",
-	config = config,
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-	event = "VeryLazy",
-}
+-- return {
+-- 	"nvim-lualine/lualine.nvim",
+-- 	config = config,
+-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
+-- 	event = "VeryLazy",
+-- }
+return {}
