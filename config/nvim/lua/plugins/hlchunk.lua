@@ -9,6 +9,7 @@ local ex = {
 	["neo-tree-popup"] = true,
 	text = true,
 	conf = true,
+	trouble = true,
 }
 return {
 	"shellRaining/hlchunk.nvim",

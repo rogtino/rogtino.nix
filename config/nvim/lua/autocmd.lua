@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "previous diagnostic" })
 		vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "next diagnostic" })
 		-- vim.keymap.set("n", "<leader>sd", vim.diagnostic.setloclist, { desc = "search diagnostic loclist" })
-		vim.keymap.set("n", "<leader>sd", vim.cmd.TroubleToggle, { desc = "search diagnostic in trouble" })
+		-- vim.keymap.set("n", "<leader>sd", vim.cmd.TroubleToggle, { desc = "search diagnostic in trouble" })
 		vim.keymap.set("n", "<leader>lf", "<cmd>Lspsaga finder<CR>", { desc = "lsp finder" })
 		vim.keymap.set("n", "<leader>lp", "<cmd>Lspsaga peek_definition<CR>", { desc = "peek definition" })
 		vim.keymap.set("n", "<leader>lc", "<cmd>Lspsaga code_action<CR>", { desc = "code action" })
@@ -75,7 +75,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "xmake.lua",
 	callback = function()
-		vim.diagnostic.disable(0)
+		vim.diagnostic.enable(false)
 	end,
 })
 

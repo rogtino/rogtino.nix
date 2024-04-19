@@ -9,7 +9,7 @@ local function config()
 					runtime = { version = "LuaJIT" },
 					completion = { callSnippet = "Replace" },
 					hint = { enable = true },
-					workspace = { library = { vim.env.VIMRUNTIME }, checkThirdParty = false },
+					workspace = { library = { require("neodev.config").types() }, checkThirdParty = false },
 				},
 			},
 		},
@@ -53,4 +53,14 @@ local function config()
 		require("lspconfig")[client].setup(setup)
 	end
 end
-return { "neovim/nvim-lspconfig", config = config, event = { "BufReadPre", "BufNewFile" } }
+return {
+	"neovim/nvim-lspconfig",
+	config = config,
+	event = { "BufReadPre", "BufNewFile" },
+	dependencies = {
+		{
+			"folke/neodev.nvim",
+			config = true,
+		},
+	},
+}

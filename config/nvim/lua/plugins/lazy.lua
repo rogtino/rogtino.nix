@@ -25,12 +25,6 @@ return {
 		},
 		event = "VeryLazy",
 	},
-	{
-		"folke/neodev.nvim",
-		opts = {
-			library = { plugins = { "nvim-dap-ui" }, types = true },
-		},
-	},
 	-- TODO: not stable for nightly
 	-- {
 	--   "nvim-zh/colorful-winsep.nvim",
@@ -206,7 +200,7 @@ return {
 			})
 		end,
 	},
-
+	-- NOTE:use octo if pull
 	{
 		"pwntester/octo.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim", "nvim-tree/nvim-web-devicons" },
@@ -215,23 +209,17 @@ return {
 	},
 	{
 		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup({
-				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-			})
+		opts = function(_, opts)
+			opts.pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
 		end,
 		event = "VeryLazy",
-		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
-	},
-	{
-		"JoosepAlviste/nvim-ts-context-commentstring",
-		event = "VeryLazy",
-		config = function()
-			vim.g.skip_ts_context_commentstring_module = true
-			require("ts_context_commentstring").setup({
-				enable_autocmd = false,
-			})
-		end,
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+			opts = function(_, opts)
+				vim.g.skip_ts_context_commentstring_module = true
+				opts.enable_autocmd = false
+			end,
+		},
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -481,13 +469,46 @@ return {
 
 	--not free :(
 	--( pack :zbirenbaum/copilot.lua {:cmd :Copilot :event :InsertEnter :config true })
+	-- TODO:deprecate this to use trouble.nvim
 	{ "glepnir/lspsaga.nvim", branch = "main", opts = { lightbulb = { sign = false } }, event = "VeryLazy" },
 	"folke/lsp-colors.nvim",
 	{
 		"folke/trouble.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		event = "VeryLazy",
-		config = true,
+		branch = "dev", -- IMPORTANT!
+		cmd = "Trouble",
+		keys = {
+			{
+				"<leader>sd",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+			{
+				"<leader>sb",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Buffer Diagnostics (Trouble)",
+			},
+			{
+				"<leader>ls",
+				"<cmd>Trouble symbols toggle focus=false<cr>",
+				desc = "Symbols (Trouble)",
+			},
+			{
+				"<leader>cl",
+				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				desc = "LSP Definitions / references / ... (Trouble)",
+			},
+			{
+				"<leader>xL",
+				"<cmd>Trouble loclist toggle<cr>",
+				desc = "Location List (Trouble)",
+			},
+			{
+				"<leader>xQ",
+				"<cmd>Trouble qflist toggle<cr>",
+				desc = "Quickfix List (Trouble)",
+			},
+		},
+		opts = {}, -- for default options, refer to the configuration section for custom setup.
 	},
 	{ "stevearc/dressing.nvim", config = true },
 	-- { "elkowar/yuck.vim", ft = "yuck" },
