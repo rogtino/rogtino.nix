@@ -7,6 +7,9 @@ vim.api.nvim_create_user_command("SwitchTheme", function(tb)
 			return it ~= previous_theme
 		end, vim.g.all_colors[theme])
 		local random_selected = tmp_table[math.random(#tmp_table)]
+		if string.match(random_selected, "bamboo") then
+			vim.cmd.colorscheme("bamboo")
+		end
 		vim.cmd.colorscheme(random_selected)
 		vim.g.current_theme = random_selected
 		vim.notify("switching to dark theme: " .. random_selected, vim.log.levels.INFO, {})
@@ -17,6 +20,9 @@ vim.api.nvim_create_user_command("SwitchTheme", function(tb)
 			return it ~= previous_theme
 		end, vim.g.all_colors[theme])
 		local random_selected = tmp_table[math.random(#tmp_table)]
+		if string.match(random_selected, "bamboo") then
+			vim.cmd.colorscheme("bamboo")
+		end
 		vim.cmd.colorscheme(random_selected)
 		vim.g.current_theme = random_selected
 		vim.notify("switching to light theme: " .. random_selected, vim.log.levels.INFO, {})

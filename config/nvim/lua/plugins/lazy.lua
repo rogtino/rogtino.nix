@@ -76,7 +76,7 @@ return {
 			keymaps = {
 				["<TAB>"] = "actions.select",
 				["<C-s>"] = false,
-				["<C-v>"] = "actions.select_vsplit",
+				["<C-e>"] = "actions.select_vsplit",
 			},
 			experimental_watch_for_changes = true,
 			view_options = {
@@ -819,8 +819,7 @@ return {
 			"nvim-telescope/telescope.nvim", -- optional
 		},
 		config = true,
-		-- BUG:mess commit buffer
-		-- branch = "nightly",
+		branch = "nightly",
 		keys = {
 			{
 				"<leader>gn",
