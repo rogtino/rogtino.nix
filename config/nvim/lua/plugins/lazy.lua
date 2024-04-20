@@ -368,17 +368,22 @@ return {
 			-- 	mode = "o",
 			-- },
 		},
-		{
-			"sindrets/diffview.nvim",
-			config = true,
-			keys = {
-				{ "<leader>go", vim.cmd.DiffviewOpen, desc = "open diffview" },
-				{ "<leader>gc", vim.cmd.DiffviewClose, desc = "close diffview" },
-			},
+	},
+	{
+		"sindrets/diffview.nvim",
+		config = true,
+		keys = {
+			{ "<leader>go", vim.cmd.DiffviewOpen, desc = "open diffview" },
+			{ "<leader>gc", vim.cmd.DiffviewClose, desc = "close diffview" },
 		},
 	},
 
-	"rcarriga/nvim-notify",
+	{
+		"rcarriga/nvim-notify",
+		opts = {
+			fps = 60,
+		},
+	},
 	{
 		"ThePrimeagen/refactoring.nvim",
 		dependencies = {

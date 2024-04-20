@@ -112,6 +112,13 @@ return {
 			end,
 			desc = "pick-man-page",
 		},
+		{
+			"<leader>sn",
+			function()
+				return vim.cmd("Telescope notify")
+			end,
+			desc = "search notify",
+		},
 	},
 	config = config,
 }

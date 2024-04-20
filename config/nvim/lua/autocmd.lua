@@ -11,6 +11,26 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("RecordingEnter", {
+	callback = function()
+		vim.notify("󰻃 to " .. vim.fn.reg_recording(), vim.log.levels.INFO, {
+			title = "Recording",
+			render = "compact",
+			stages = "fade",
+		})
+	end,
+})
+
+vim.api.nvim_create_autocmd("RecordingLeave", {
+	callback = function()
+		vim.notify("󰻃 exits", vim.log.levels.INFO, {
+			title = "Recording",
+			render = "compact",
+			stages = "fade",
+		})
+	end,
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	pattern = "*",
 	group = userlspocnfig,
