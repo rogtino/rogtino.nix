@@ -1,4 +1,16 @@
 local userlspocnfig = vim.api.nvim_create_augroup("UserLspConfig", {})
+-- this is to fix bug: https://github.com/folke/which-key.nvim/issues/476
+vim.api.nvim_create_autocmd("FileType", {
+	desc = "Set up neorg Which-Key descriptions",
+	group = vim.api.nvim_create_augroup("neorg_mapping_descriptions", { clear = true }),
+	pattern = "norg",
+	callback = function()
+		vim.keymap.set("n", "<localleader>", function()
+			require("which-key").show(",")
+		end, { buffer = true })
+	end,
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	pattern = "*",
 	group = userlspocnfig,
@@ -40,15 +52,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*.norg",
-	callback = function()
-		-- TODO: find a elegant way to do so
-		-- vim.cmd("norm ggVG='.")
-		vim.cmd("norm ggVG=")
-	end,
-})
-
 vim.filetype.add({
 	extension = {
 		lock = "json",
@@ -67,9 +70,10 @@ vim.api.nvim_create_autocmd("FileType", {
 		"checkhealth",
 		"toggleterm",
 		"NeogitCommitMessage",
+		"norg",
 	},
 	callback = function()
-		vim.keymap.set("n", "q", vim.cmd.close)
+		vim.keymap.set("n", "q", vim.cmd.quit, { buffer = true })
 	end,
 })
 
@@ -77,22 +81,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "xmake.lua",
 	callback = function()
 		vim.diagnostic.enable(false)
-	end,
-})
-
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = "*",
-	callback = function()
-		if vim.bo.filetype == "" then
-			vim.keymap.set("n", "q", vim.cmd.bdelete, { buffer = true })
-		end
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "oil", "markdown" },
-	callback = function()
-		vim.keymap.set("n", "q", vim.cmd.Bdelete, { buffer = true })
 	end,
 })
 

@@ -162,6 +162,7 @@ local function config()
 			{ name = "nvim_lua" },
 			{ name = "path" },
 			{ name = "crates" },
+			{ name = "neorg" },
 		},
 		confirm_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false },
 		experimental = { ghost_text = true },

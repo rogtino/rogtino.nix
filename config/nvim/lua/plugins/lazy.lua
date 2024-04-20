@@ -75,6 +75,8 @@ return {
 				["<TAB>"] = "actions.select",
 				["<C-s>"] = false,
 				["<C-e>"] = "actions.select_vsplit",
+				["<C-c>"] = false,
+				["q"] = "actions.close",
 			},
 			experimental_watch_for_changes = true,
 			view_options = {

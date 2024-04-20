@@ -26,21 +26,32 @@ return {
 				["core.dirman"] = { config = { workspaces = { learn = "~/some-notes" } } },
 				["core.summary"] = {},
 				["core.ui.calendar"] = {},
-				["core.concealer"] = {},
+				["core.concealer"] = { config = { icon_preset = "diamond" } },
 				["core.keybinds"] = {
 					config = {
 						hook = function(keybinds)
 							keybinds.remap_event("norg", "n", ",e", "core.looking-glass.magnify-code-block")
-							keybinds.map("norg", "n", "q", vim.cmd.q)
+							-- keybinds.map("norg", "n", "q", vim.cmd.q)
+							keybinds.map("norg", "n", ",s", "<cmd>Neorg generate-workspace-summary<CR>")
+							-- keybinds.map_to_mode("ui", {
+							-- 	n = {
+							-- 		{
+							-- 			"q",
+							-- 			vim.cmd.q,
+							-- 			opts = { desc = "[neorg] quit" },
+							-- 		},
+							-- 	},
+							-- }, {
+							-- 	silent = true,
+							-- 	noremap = true,
+							-- })
 						end,
 					},
 				},
 				["core.completion"] = { config = { engine = "nvim-cmp" } },
 				["core.journal"] = { config = { workspace = "learn" } },
-				["core.qol.toc"] = {},
 				["core.presenter"] = { config = { zen_mode = "zen-mode" } },
 				["core.export.markdown"] = {},
-				["core.integrations.telescope"] = {},
 				["core.export"] = {},
 			},
 		},
