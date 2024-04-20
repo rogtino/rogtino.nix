@@ -331,6 +331,10 @@ return {
 		"folke/flash.nvim",
 		opts = { label = { uppercase = false } },
 		keys = {
+			"f",
+			"F",
+			"t",
+			"T",
 			{
 				"s",
 				function()
@@ -347,30 +351,30 @@ return {
 				desc = "Flash Treesitter",
 				mode = { "n" },
 			},
-			{
-				"R",
-				mode = { "o", "x" },
-				function()
-					require("flash").treesitter_search()
-				end,
-				desc = "Treesitter Search",
-			},
-			{
-				"r",
-				function()
-					require("flash").remote()
-				end,
-				desc = "Remote Flash",
-				mode = "o",
-			},
+			-- {
+			-- 	"R",
+			-- 	mode = { "o", "x" },
+			-- 	function()
+			-- 		require("flash").treesitter_search()
+			-- 	end,
+			-- 	desc = "Treesitter Search",
+			-- },
+			-- {
+			-- 	"r",
+			-- 	function()
+			-- 		require("flash").remote()
+			-- 	end,
+			-- 	desc = "Remote Flash",
+			-- 	mode = "o",
+			-- },
 		},
-	},
-	{
-		"sindrets/diffview.nvim",
-		config = true,
-		keys = {
-			{ "<leader>go", vim.cmd.DiffviewOpen, desc = "open diffview" },
-			{ "<leader>gc", vim.cmd.DiffviewClose, desc = "close diffview" },
+		{
+			"sindrets/diffview.nvim",
+			config = true,
+			keys = {
+				{ "<leader>go", vim.cmd.DiffviewOpen, desc = "open diffview" },
+				{ "<leader>gc", vim.cmd.DiffviewClose, desc = "close diffview" },
+			},
 		},
 	},
 
