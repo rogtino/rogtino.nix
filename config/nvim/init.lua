@@ -83,9 +83,7 @@ vim.g.all_colors = {
 		"dawnfox",
 	},
 }
--- local colors = vim.g.all_colors["dark"]
--- local theme = colors[math.random(#colors)]
-local theme = "rose-pine-main"
+local theme = "catppuccin-mocha"
 vim.g.current_theme = theme
 vim.cmd.colorscheme(theme)
 

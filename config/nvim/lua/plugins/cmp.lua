@@ -134,11 +134,12 @@ local function config()
 			end,
 		},
 		window = {
-			completion = { border = border, scrollbar = "║" },
-			documentation = { border = border, scrollbar = "║" },
+			completion = { border = border, scrollbar = true },
+			documentation = { border = border },
 		},
 		mapping = mapping,
 		formatting = {
+			expandable_indicator = true,
 			fields = { cmp.ItemField.Menu, cmp.ItemField.Abbr, cmp.ItemField.Kind },
 			format = lspkind.cmp_format({
 				mode = "symbol_text",
@@ -165,7 +166,7 @@ local function config()
 		confirm_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false },
 		experimental = { ghost_text = true },
 	})
-	require("luasnip.loaders.from_lua").lazy_load({ paths = (vim.fn.stdpath("config") .. "/snippets") })
+	require("luasnip.loaders.from_lua").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
 	require("luasnip.loaders.from_vscode").lazy_load()
 end
 return {
@@ -182,6 +183,7 @@ return {
 		"f3fora/cmp-spell",
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
+		"onsails/lspkind.nvim",
 	},
 	event = "InsertEnter",
 	config = config,

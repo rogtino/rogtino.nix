@@ -1,5 +1,5 @@
 local function config()
-	-- vim.cmd("hi TreesitterContext guibg=#210102")
+	---@diagnostic disable-next-line: missing-fields
 	require("nvim-treesitter.configs").setup({
 		ensure_installed = {
 			"astro",
@@ -181,6 +181,7 @@ return {
 	{ "nushell/tree-sitter-nu", ft = "nu" },
 	{
 		"lewis6991/satellite.nvim",
+		event = "VeryLazy",
 	},
 	{ "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
 	{

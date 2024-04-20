@@ -13,7 +13,7 @@ local function config()
 				},
 			},
 		},
-		ruff_lsp = {},
+		-- ruff_lsp = {},
 		pyright = {},
 		-- html = {},
 		taplo = {},
@@ -61,6 +61,21 @@ return {
 		{
 			"folke/neodev.nvim",
 			config = true,
+		},
+		{
+			"mfussenegger/nvim-lint",
+			config = function()
+				require("lint")["linters_by_ft"] = {
+					markdown = { "vale" },
+					cpp = { "clangtidy" },
+					python = { "ruff" },
+					-- lua = { "luacheck" },
+					-- typescriptreact = { "eslint_d" },
+					-- javascript = { "eslint_d" },
+					-- typescript = { "eslint_d" },
+					-- javascriptreact = { "eslint_d" },
+				}
+			end,
 		},
 	},
 }

@@ -45,7 +45,10 @@ return {
 		"NoahTheDuke/vim-just",
 		ft = { "just" },
 	},
-	"mfussenegger/nvim-jdtls",
+	{
+		"mfussenegger/nvim-jdtls",
+		ft = "java",
+	},
 	-- or tabout?
 	{
 		"kawre/neotab.nvim",
@@ -60,6 +63,7 @@ return {
 		"3rd/image.nvim",
 		config = true,
 		ft = { "markdown", "norg" },
+		enabled = false,
 		dependencies = { "luarocks.nvim" },
 	},
 	{
@@ -91,7 +95,6 @@ return {
 			},
 		},
 	},
-	{ "Weissle/persistent-breakpoints.nvim", opts = { load_breakpoints_event = { "BufReadPost" } } },
 	{
 		"Mythos-404/xmake.nvim",
 		lazy = true,
@@ -284,7 +287,6 @@ return {
 		},
 	},
 	{ "kevinhwang91/nvim-bqf", ft = "qf" },
-	"onsails/lspkind.nvim",
 	{ "roobert/tailwindcss-colorizer-cmp.nvim", opts = { color_square_width = 2 } },
 	{
 		"pmizio/typescript-tools.nvim",
@@ -471,7 +473,6 @@ return {
 	--( pack :zbirenbaum/copilot.lua {:cmd :Copilot :event :InsertEnter :config true })
 	-- TODO:deprecate this to use trouble.nvim
 	{ "glepnir/lspsaga.nvim", branch = "main", opts = { lightbulb = { sign = false } }, event = "VeryLazy" },
-	"folke/lsp-colors.nvim",
 	{
 		"folke/trouble.nvim",
 		branch = "dev", -- IMPORTANT!
@@ -487,8 +488,9 @@ return {
 				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
 				desc = "Buffer Diagnostics (Trouble)",
 			},
+			--BUG:why ss does not appear in which-key while sk appear?
 			{
-				"<leader>ls",
+				"<leader>ss",
 				"<cmd>Trouble symbols toggle focus=false<cr>",
 				desc = "Symbols (Trouble)",
 			},
@@ -510,7 +512,8 @@ return {
 		},
 		opts = {}, -- for default options, refer to the configuration section for custom setup.
 	},
-	{ "stevearc/dressing.nvim", config = true },
+	-- NOTE:which plugin needs this ?
+	{ "stevearc/dressing.nvim", config = true, event = "VeryLazy" },
 	-- { "elkowar/yuck.vim", ft = "yuck" },
 	{ "echasnovski/mini.cursorword", config = true, event = "VeryLazy" },
 	"p00f/clangd_extensions.nvim",
@@ -745,18 +748,6 @@ return {
 	},
 	"folke/which-key.nvim",
 	{
-		"mfussenegger/nvim-lint",
-		config = function()
-			require("lint")["linters_by_ft"] = {
-				cpp = { "clangtidy" },
-				-- typescriptreact = { "eslint_d" },
-				-- javascript = { "eslint_d" },
-				-- typescript = { "eslint_d" },
-				-- javascriptreact = { "eslint_d" },
-			}
-		end,
-	},
-	{
 		"JuanZoran/Trans.nvim",
 		keys = {
 			{
@@ -853,6 +844,8 @@ return {
 	{
 		"tzachar/highlight-undo.nvim",
 		config = true,
+		keys = { "u", "<c-r>" },
+		-- event = "VeryLazy",
 	},
 	-- { "max397574/better-escape.nvim", config = true },
 	{

@@ -66,6 +66,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		"query",
 		"checkhealth",
 		"toggleterm",
+		"NeogitCommitMessage",
 	},
 	callback = function()
 		vim.keymap.set("n", "q", vim.cmd.close)
