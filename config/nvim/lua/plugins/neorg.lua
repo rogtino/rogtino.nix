@@ -14,7 +14,6 @@ return {
 			{ "<leader>nn", ":Neorg workspace learn<CR>", desc = "open workspace" },
 			{ "<leader>nj", ":Neorg journal ", desc = "journal" },
 			{ "<leader>nt", ":Neorg journal today<CR>", desc = "today's journal" },
-			{ "<localleader>tg", ":Neorg tangle current-file<CR>", ft = "norg" },
 		},
 		ft = "norg",
 		-- version = "v7.0.0",
@@ -32,7 +31,8 @@ return {
 						hook = function(keybinds)
 							keybinds.remap_event("norg", "n", ",e", "core.looking-glass.magnify-code-block")
 							-- keybinds.map("norg", "n", "q", vim.cmd.q)
-							keybinds.map("norg", "n", ",s", "<cmd>Neorg generate-workspace-summary<CR>")
+							keybinds.map("norg", "n", ",ms", "<cmd>Neorg generate-workspace-summary<CR>")
+							keybinds.map("norg", "n", "<localleader>tg", ":Neorg tangle current-file<CR>")
 							-- keybinds.map_to_mode("ui", {
 							-- 	n = {
 							-- 		{
@@ -53,6 +53,7 @@ return {
 				["core.presenter"] = { config = { zen_mode = "zen-mode" } },
 				["core.export.markdown"] = {},
 				["core.export"] = {},
+				["core.integrations.telescope"] = {},
 			},
 		},
 		dependencies = {
