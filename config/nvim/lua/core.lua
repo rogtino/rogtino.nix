@@ -1,3 +1,4 @@
+require("theme")
 require("mappings")
 require("opt")
 require("probe")

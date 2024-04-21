@@ -202,6 +202,9 @@ return {
 	{
 		"stevearc/conform.nvim",
 		event = "BufWritePre",
+		init = function()
+			vim.g.disable_autoformat = false
+		end,
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
