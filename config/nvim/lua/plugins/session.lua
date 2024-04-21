@@ -4,17 +4,17 @@ return {
 		{
 			"<leader>le",
 			"<cmd>SessionManager load_session<CR>",
-			{ desc = "load session" },
+			desc = "load session",
 		},
 		{
 			"<leader>ld",
 			"<cmd>SessionManager load_current_dir_session<CR>",
-			{ desc = "load current session" },
+			desc = "load current session",
 		},
 		{
 			"<leader>la",
 			"<cmd>SessionManager load_last_session<CR>",
-			{ desc = "load last session" },
+			desc = "load last session",
 		},
 	},
 	config = function()
