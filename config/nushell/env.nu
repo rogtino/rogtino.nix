@@ -81,7 +81,7 @@ $env.VCPKG_DOWNLOADS = "/var/cache/vcpkg"
 if $nu.os-info.name == "windows" {
     $env.Path = ($env.Path | append '~/.local/bin' |append '~/.cargo/bin')
 } else {
-    $env.PATH = ($env.PATH | append '~/.local/bin' |prepend '~/.local/share/bob/nvim-bin'| append '~/.cargo/bin'| append '~/.local/share/solana/install/active_release/bin'|append '~/.rye/shims/' | append '~/.config/emacs/bin/')
+    $env.PATH = ($env.PATH | append '~/.local/bin' |prepend '~/.local/share/bob/nvim-bin'| append '~/.cargo/bin'| append '~/.local/share/solana/install/active_release/bin'|append '~/.rye/shims/' | append '~/.config/emacs/bin/' | append '/usr/bin/vendor_perl/')
     $env.PKG_CONFIG_PATH = "/usr/lib/pkgconfig:/usr/local/lib/pkgconfig"
     $env.LD_LIBRARY_PATH = "/usr/lib:/usr/local/lib/"
     # TODO: add nixos check here

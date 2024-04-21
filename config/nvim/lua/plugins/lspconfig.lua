@@ -9,7 +9,13 @@ local function config()
 					runtime = { version = "LuaJIT" },
 					completion = { callSnippet = "Replace" },
 					hint = { enable = true },
-					workspace = { library = { require("neodev.config").types() }, checkThirdParty = false },
+					workspace = {
+						library = {
+							require("neodev.config").types(),
+							-- vim.env.VIMRUNTIME,
+						},
+						checkThirdParty = false,
+					},
 				},
 			},
 		},

@@ -91,6 +91,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		"toggleterm",
 		"NeogitCommitMessage",
 		"norg",
+		"markdown",
 	},
 	callback = function()
 		vim.keymap.set("n", "q", vim.cmd.quit, { buffer = true })
