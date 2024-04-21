@@ -23,18 +23,18 @@ vim.g.maplocalleader = ","
 vim.g.disable_autoformat = false
 require("lazy").setup({
 	{ import = "plugins" },
-	{
-		dir = "~/dev/neovim/heyoo/",
-		lazy = false,
-		-- config = function(_, opts)
-		-- 	print("config")
-		-- 	require("heyoo").setup(opts)
-		-- end,
-		-- opts = function(_, opts)
-		-- 	opts.final_string = "daddy"
-		-- 	print("opts")
-		-- end,
-	},
+	-- {
+	-- 	dir = "~/dev/neovim/heyoo/",
+	-- 	lazy = false,
+	-- 	-- config = function(_, opts)
+	-- 	-- 	print("config")
+	-- 	-- 	require("heyoo").setup(opts)
+	-- 	-- end,
+	-- 	-- opts = function(_, opts)
+	-- 	-- 	opts.final_string = "daddy"
+	-- 	-- 	print("opts")
+	-- 	-- end,
+	-- },
 	-- {
 	-- 	dir = "~/neovim/heyoo/",
 	-- 	opts = function(_, opts)
@@ -43,6 +43,22 @@ require("lazy").setup({
 	-- },
 }, {
 	defaults = { lazy = true },
+	performance = {
+		rtp = {
+			reset = true, -- reset the runtime path to $VIMRUNTIME and your config directory
+			disabled_plugins = {
+				--NOTE: can't make zip work,disable all of them ATM
+				"gzip",
+				"matchit",
+				"matchparen",
+				"netrwPlugin",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
+			},
+		},
+	},
 	-- checker = { enabled = true },
 	-- dev = {
 	--   path = "~/dev-nvim/",
