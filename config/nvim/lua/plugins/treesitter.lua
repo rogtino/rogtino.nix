@@ -175,7 +175,10 @@ return {
 	{ "windwp/nvim-ts-autotag", ft = { "typescriptreact", "javascriptreact", "html" } },
 	{
 		"chrisgrieser/nvim-various-textobjs",
-		opts = { useDefaultKeymaps = true, disabledKeymaps = { "gc" } },
+		opts = {
+			useDefaultKeymaps = true,
+			-- disabledKeymaps = { "gc" },
+		},
 		event = "VeryLazy",
 	},
 	{ "nushell/tree-sitter-nu", ft = "nu" },

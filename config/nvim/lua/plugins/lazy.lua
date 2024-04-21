@@ -77,6 +77,8 @@ return {
 				["<C-e>"] = "actions.select_vsplit",
 				["<C-c>"] = false,
 				["q"] = "actions.close",
+				[".."] = "actions.toggle_hidden",
+				["g."] = false,
 			},
 			experimental_watch_for_changes = true,
 			view_options = {
@@ -158,7 +160,11 @@ return {
 				},
 			},
 		},
-		event = "VeryLazy",
+		keys = {
+			"ys",
+			{ "S", mode = "x" },
+		},
+		-- event = "VeryLazy",
 	},
 	{
 		"windwp/nvim-autopairs",
@@ -215,9 +221,20 @@ return {
 	{
 		"numToStr/Comment.nvim",
 		opts = function(_, opts)
+			-- vim.keymap.set("n", "gc", "<nop>")
+			-- vim.keymap.set("n", "gcc", "<nop>")
 			opts.pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
 		end,
-		event = "VeryLazy",
+		-- event = "VeryLazy",
+		keys = {
+			{
+				"gc",
+				mode = {
+					"n",
+					"v",
+				},
+			},
+		},
 		dependencies = {
 			"JoosepAlviste/nvim-ts-context-commentstring",
 			opts = function(_, opts)
@@ -349,7 +366,7 @@ return {
 					require("flash").treesitter()
 				end,
 				desc = "Flash Treesitter",
-				mode = { "n" },
+				mode = { "n", "o" },
 			},
 			-- {
 			-- 	"R",
