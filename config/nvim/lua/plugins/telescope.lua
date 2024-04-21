@@ -1,39 +1,3 @@
-local function config()
-	local telescope = require("telescope")
-	telescope.setup({
-		defaults = {
-			sorting_strategy = "ascending",
-			prompt_prefix = " ",
-			selection_caret = " ",
-			path_display = { "smart" },
-			file_ignore_patterns = { ".git/", "node_modules" },
-			layout_strategy = "center",
-			border = false,
-			layout_config = {
-				anchor = "N",
-				preview_cutoff = 1,
-				prompt_position = "top",
-				width = 0.95,
-			},
-		},
-		pickers = {
-			find_files = { find_command = { "rg", "--hidden", "--glob", "!.git", "--files" } },
-			live_grep = { find_command = { "rg", "--hidden", "--glob", "!.git", "--files" } },
-		},
-		-- extensions = {
-		-- 	codebase = {
-		-- 		path = vim.fn.stdpath("config") .. "/codebase",
-		-- 	},
-		-- },
-	})
-	telescope.load_extension("ui-select")
-	telescope.load_extension("luasnip")
-	telescope.load_extension("env")
-	telescope.load_extension("gitmoji")
-	telescope.load_extension("ports")
-	-- telescope.load_extension("codebase")
-	-- telescope.load_extension("manix")
-end
 return {
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
@@ -65,7 +29,29 @@ return {
 		"LinArcX/telescope-env.nvim",
 		"olacin/telescope-gitmoji.nvim",
 		"LinArcX/telescope-ports.nvim",
-		"prochri/telescope-all-recent.nvim",
+		{
+			"prochri/telescope-all-recent.nvim",
+			config = true,
+			dependencies = {
+				"kkharji/sqlite.lua",
+				lazy = true,
+				config = function()
+					if string.find(vim.uv.os_uname().version, "NixOS") then
+						local Job = require("plenary.job")
+						local sqlite3_path = vim.fn.stdpath("config") .. "/sqlite3.path"
+						Job:new({
+							command = "cat",
+							args = { sqlite3_path },
+							on_exit = function(j, _)
+								for _, value in ipairs(j:result()) do
+									vim.g.sqlite_clib_path = value
+								end
+							end,
+						}):sync()
+					end
+				end,
+			},
+		},
 	},
 	cmd = "Telescope",
 	keys = {
@@ -120,5 +106,40 @@ return {
 			desc = "search notify",
 		},
 	},
-	config = config,
+	config = function()
+		local telescope = require("telescope")
+		telescope.setup({
+			defaults = {
+				sorting_strategy = "ascending",
+				prompt_prefix = " ",
+				selection_caret = " ",
+				path_display = { "smart" },
+				file_ignore_patterns = { ".git/", "node_modules" },
+				layout_strategy = "center",
+				border = false,
+				layout_config = {
+					anchor = "N",
+					preview_cutoff = 1,
+					prompt_position = "top",
+					width = 0.95,
+				},
+			},
+			pickers = {
+				find_files = { find_command = { "rg", "--hidden", "--glob", "!.git", "--files" } },
+				live_grep = { find_command = { "rg", "--hidden", "--glob", "!.git", "--files" } },
+			},
+			-- extensions = {
+			-- 	codebase = {
+			-- 		path = vim.fn.stdpath("config") .. "/codebase",
+			-- 	},
+			-- },
+		})
+		telescope.load_extension("ui-select")
+		telescope.load_extension("luasnip")
+		telescope.load_extension("env")
+		telescope.load_extension("gitmoji")
+		telescope.load_extension("ports")
+		-- telescope.load_extension("codebase")
+		-- telescope.load_extension("manix")
+	end,
 }

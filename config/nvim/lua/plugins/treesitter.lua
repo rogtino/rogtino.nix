@@ -194,9 +194,13 @@ return {
 	},
 	{ "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
 	{
-		"davidmh/mdx.nvim",
-		config = true,
-		ft = "mdx",
+		"Wansmer/treesj",
+		keys = { {
+			"<space>j",
+			":TSJToggle<CR>",
+			desc = "join or split",
+		} },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		opts = { use_default_keymaps = false },
 	},
 }

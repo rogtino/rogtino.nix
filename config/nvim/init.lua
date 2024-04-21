@@ -50,7 +50,7 @@ require("lazy").setup({
 				--NOTE: can't make zip work,disable all of them ATM
 				"gzip",
 				"matchit",
-				"matchparen",
+				-- "matchparen",
 				"netrwPlugin",
 				"tarPlugin",
 				"tohtml",

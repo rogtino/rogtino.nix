@@ -85,6 +85,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		"NeogitCommitMessage",
 		"norg",
 		"markdown",
+		"spectre_panel",
 	},
 	callback = function()
 		vim.keymap.set("n", "q", vim.cmd.quit, { buffer = true })
