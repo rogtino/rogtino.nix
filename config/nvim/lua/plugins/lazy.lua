@@ -148,6 +148,19 @@ return {
 	{
 		"kylechui/nvim-surround",
 		opts = {
+			keymaps = {
+				insert = false,
+				insert_line = false,
+				normal = false,
+				normal_cur = false,
+				normal_line = false,
+				normal_cur_line = false,
+				visual = "S",
+				visual_line = false,
+				delete = "ds",
+				change = "cs",
+				change_line = false,
+			},
 			surrounds = {
 				["F"] = {
 					add = function()
@@ -161,7 +174,14 @@ return {
 			},
 		},
 		keys = {
-			"ys",
+			{
+				"ds",
+				desc = "delete surround",
+			},
+			{
+				"cs",
+				desc = "change surround",
+			},
 			{ "S", mode = "x" },
 		},
 		-- event = "VeryLazy",
@@ -220,9 +240,11 @@ return {
 	},
 	{
 		"numToStr/Comment.nvim",
+		-- init = function()
+		-- 	vim.keymap.set({ "n", "v", "o" }, "gc", "<nop>")
+		-- 	vim.keymap.set({ "n", "v", "o" }, "gcc", "<nop>")
+		-- end,
 		opts = function(_, opts)
-			-- vim.keymap.set("n", "gc", "<nop>")
-			-- vim.keymap.set("n", "gcc", "<nop>")
 			opts.pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
 		end,
 		-- event = "VeryLazy",
@@ -233,8 +255,10 @@ return {
 					"n",
 					"v",
 				},
+				desc = "comment line",
 			},
 		},
+		ft = { "typescriptreact", "javascriptreact" },
 		dependencies = {
 			"JoosepAlviste/nvim-ts-context-commentstring",
 			opts = function(_, opts)

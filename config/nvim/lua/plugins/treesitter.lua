@@ -175,10 +175,16 @@ return {
 	{ "windwp/nvim-ts-autotag", ft = { "typescriptreact", "javascriptreact", "html" } },
 	{
 		"chrisgrieser/nvim-various-textobjs",
-		opts = {
-			useDefaultKeymaps = true,
-			-- disabledKeymaps = { "gc" },
-		},
+		opts = function(_, opts)
+			opts.useDefaultKeymaps = true
+			opts.disabledKeymaps = { "gc" }
+			vim.keymap.set(
+				{ "o" },
+				"gc",
+				"<cmd>lua require('various-textobjs').multiCommentedLines()<CR>",
+				{ desc = "multi Comment lines" }
+			)
+		end,
 		event = "VeryLazy",
 	},
 	{ "nushell/tree-sitter-nu", ft = "nu" },

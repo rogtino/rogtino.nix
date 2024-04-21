@@ -1,6 +1,5 @@
 return {
 	"Shatur/neovim-session-manager",
-	event = "VeryLazy",
 	keys = {
 		{
 			"<leader>le",
