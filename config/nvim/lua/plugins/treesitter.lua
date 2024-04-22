@@ -3,6 +3,8 @@ local function config()
 	require("nvim-treesitter.configs").setup({
 		ensure_installed = {
 			"astro",
+			"asm",
+			"nasm",
 			"c",
 			"lua",
 			"vim",

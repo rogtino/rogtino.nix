@@ -27,6 +27,7 @@ local function config()
 		emmet_language_server = {},
 		gopls = {},
 		cssls = {},
+		asm_lsp = {},
 		marksman = {},
 		-- BUG:no idea why this triggers an error in :LspInfo
 		-- mdx_analyzer = {
