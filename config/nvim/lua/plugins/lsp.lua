@@ -128,7 +128,7 @@ return {
 		keys = {
 			{
 				"<leader>sd",
-				"<cmd>Trouble diagnostics toggle focus=true<cr>",
+				"<cmd>Trouble diagnostics preview focus=true<cr>",
 				desc = "Diagnostics (Trouble)",
 			},
 			{

@@ -11,6 +11,7 @@ local ex = {
 	text = true,
 	conf = true,
 	trouble = true,
+	swayconfig = true,
 }
 return {
 	-- {

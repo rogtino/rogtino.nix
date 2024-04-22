@@ -11,6 +11,7 @@
       "network",
   ],
   "modules-center": [
+      "sway/workspaces",
       "hyprland/workspaces",
   ],
   "modules-right": [
@@ -37,6 +38,19 @@
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
     "sort-by-number": true
+  },
+  "sway/mode": {
+    "format": " {}",
+    "max-length": 50
+  },
+  "sway/window": {
+    "format": "{title}",
+    "max-length": 50,
+    "rewrite": {
+      "(.*) - Mozilla Firefox": "🌎 $1",
+      "(.*) - vim": " $1",
+      "(.*) - zsh": " [$1]"
+    }
   },
   "tray": {
     "spacing": 10,
@@ -103,5 +117,21 @@
       "default": ["", "", ""]
     },
     "on-click": "pavucontrol"
+  },
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{name}: {icon}",
+    "format-icons": {
+      "1": "",
+      "2": "󰈹",
+      "3": "",
+      "4": "",
+      "5": "󰝚",
+      "urgent": "",
+      "focused": "",
+      "default": "",
+      "high-priority-named": ["1", "2"]
+    }
   }
 }
