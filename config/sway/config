@@ -8,19 +8,20 @@ client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
 # bar
-bar {
-  colors {
-    background         $base
-    statusline         $text
-    focused_statusline $text
-    focused_separator  $base
-    focused_workspace  $base $base $green
-    active_workspace   $base $base $blue
-    inactive_workspace $base $base $surface1
-    urgent_workspace   $base $base $surface1
-    binding_mode       $base $base $surface1
-  }
-}
+# bar {
+#   # separator_symbol "a"
+#   colors {
+#     background         $base
+#     statusline         $text
+#     focused_statusline $text
+#     focused_separator  $base
+#     focused_workspace  $base $base $green
+#     active_workspace   $base $base $blue
+#     inactive_workspace $base $base $surface1
+#     urgent_workspace   $base $base $surface1
+#     binding_mode       $base $base $surface1
+#   }
+# }
 font pango:monospace 14
 # Default config for sway
 #
@@ -116,6 +117,11 @@ input "type:keyboard" {
 # Moving around:
 #
     # Move your focus around
+    bindsym $mod+shift+a workspace number 1
+    bindsym $mod+shift+s workspace number 2
+    bindsym $mod+shift+d workspace number 3
+    bindsym $mod+shift+c workspace number 4
+    bindsym $mod+shift+m workspace number 5
     bindsym alt+Tab focus left
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down

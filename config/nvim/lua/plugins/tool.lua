@@ -444,6 +444,13 @@ return {
 				end,
 				desc = "open third term",
 			},
+			{
+				"<leader>t0",
+				function()
+					vim.cmd("99ToggleTerm direction=float")
+				end,
+				desc = "open float term",
+			},
 			"<c-t>",
 		},
 		cmd = "ToggleTerm",
