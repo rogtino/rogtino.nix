@@ -3,6 +3,7 @@
   font-size: 14px;
   min-height: 10px;
   font-weight: bold;
+  border-radius: 8px;
   transition-property: background-color;
   transition-duration: 0.5s;
 }
@@ -22,13 +23,12 @@
   animation-direction: alternate;
 }
 window#waybar {
-  background-color: black;
-  /* border-top: 3px solid rgba(83, 19, 18, 0.5); */
+  background-color: transparent;
 }
 window > box {
   margin-left: 5px;
   margin-right: 5px;
-  margin-top: 1px;
+  margin-top: 5px;
 }
 #workspaces {
   padding-left: 0px;
@@ -40,18 +40,19 @@ window > box {
   padding-bottom: 5px;
   padding-left: 6px;
   padding-right: 6px;
-  margin-right: 6px;
-  color: #dfb7ff;
+  color: #f34065;
   background: #1a281e;
 }
-#workspaces button.focused {
-  color: #f34065;
+#workspaces button.active {
+  background-color: #dfb7ff;
+  color: #1a1826;
 }
 #workspaces button.urgent {
-  color: #f31826;
+  color: #1a1826;
 }
 #workspaces button:hover {
-  color: #f8bd96;
+  background-color: #f8bd96;
+  color: #1a1826;
 }
 tooltip {
   color: #302d41;
@@ -101,9 +102,6 @@ tooltip label {
 #network {
   color: #abe9b3;
 }
-#mode {
-  color: #96cdfb;
-}
 
 #network.disconnected {
   color: #ffffff;
@@ -119,6 +117,13 @@ tooltip label {
 }
 #custom-powermenu {
   color: #f43b47;
+}
+#custom-wallpaper {
+  margin-left: 8px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  transition: none;
+  color: #dfcdff;
 }
 #tray {
   padding-right: 8px;

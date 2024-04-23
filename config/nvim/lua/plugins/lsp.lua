@@ -1,6 +1,6 @@
 local function config()
-	local capabilities = require("cmp_nvim_lsp").default_capabilities()
-	capabilities.offsetEncoding = { "utf-16" }
+	-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	-- capabilities.offsetEncoding = { "utf-16" }
 	local servers = {
 		astro = {},
 		lua_ls = {
@@ -11,8 +11,8 @@ local function config()
 					hint = { enable = true },
 					workspace = {
 						library = {
-							require("neodev.config").types(),
-							-- vim.env.VIMRUNTIME,
+							-- require("neodev.config").types(),
+							vim.env.VIMRUNTIME,
 						},
 						checkThirdParty = false,
 					},
@@ -50,7 +50,7 @@ local function config()
 	}
 	for client, setup in pairs(servers) do
 		setup = vim.tbl_deep_extend("force", {
-			capabilities = capabilities,
+			-- capabilities = capabilities,
 			on_attach = function(cli)
 				if cli.server_capabilities.inlayHintProvider then
 					vim.lsp.inlay_hint.enable()
