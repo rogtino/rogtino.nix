@@ -10,14 +10,14 @@
     "sway/workspaces"
   ],
   "modules-center": [
-    "network"
+    "cpu",
+    "network",
+    "memory"
   ],
   "modules-right": [
     "pulseaudio",
     "backlight",
     "battery",
-    "cpu",
-    "memory",
     "clock",
     "tray"
   ],

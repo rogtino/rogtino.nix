@@ -27,7 +27,6 @@ return {
 		},
 		"nvim-telescope/telescope-ui-select.nvim",
 		"LinArcX/telescope-env.nvim",
-		"olacin/telescope-gitmoji.nvim",
 		"LinArcX/telescope-ports.nvim",
 		{
 			"prochri/telescope-all-recent.nvim",
@@ -85,13 +84,6 @@ return {
 		},
 		{ "<leader>hh", ":Telescope help_tags<CR>", desc = "help" },
 		{
-			"<leader>pj",
-			function()
-				return vim.cmd.Telescope("gitmoji")
-			end,
-			desc = "pick-gitmoji",
-		},
-		{
 			"<leader>pm",
 			function()
 				return vim.cmd("Telescope man_pages sections=ALL")
@@ -137,9 +129,6 @@ return {
 		telescope.load_extension("ui-select")
 		telescope.load_extension("luasnip")
 		telescope.load_extension("env")
-		telescope.load_extension("gitmoji")
 		telescope.load_extension("ports")
-		-- telescope.load_extension("codebase")
-		-- telescope.load_extension("manix")
 	end,
 }

@@ -71,8 +71,8 @@ return {
 		"nvim-neo-tree/neo-tree.nvim",
 		config = true,
 		keys = {
-			{ "<leader>tn", "<cmd>Neotree toggle dir=./<CR>", desc = "neotree-root-toggle" },
-			{ "<leader>tr", "<cmd>Neotree reveal toggle<CR>", desc = "neotree-reveal-toggle" },
+			{ "<leader>tn", "<cmd>Neotree toggle dir=./ position=left<CR>", desc = "neotree-root-toggle" },
+			{ "<leader>tr", "<cmd>Neotree reveal toggle position=left<CR>", desc = "neotree-reveal-toggle" },
 			{ "<leader>tf", "<cmd>Neotree reveal toggle position=float<CR>", desc = "neotree-float-toggle" },
 		},
 	},
