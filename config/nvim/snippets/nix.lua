@@ -1,8 +1,8 @@
 return {
-	s(
-		"devs",
-		fmt(
-			[[
+    s(
+        'devs',
+        fmt(
+            [[
             {{
               inputs = {{
                 nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -29,13 +29,13 @@ return {
             }}
 
             ]],
-			ins_generate()
-		)
-	),
-	s(
-		"guidevs",
-		fmt(
-			[[
+            ins_generate()
+        )
+    ),
+    s(
+        'guidevs',
+        fmt(
+            [[
             {{
       inputs = {{
         nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -76,7 +76,7 @@ return {
     }}
 
         ]],
-			ins_generate()
-		)
-	),
+            ins_generate()
+        )
+    ),
 }

@@ -1,65 +1,65 @@
 return {
-	s(
-		"afn",
-		fmt(
-			[[
+    s(
+        'afn',
+        fmt(
+            [[
          async fn {}()->{}{{
             {}
          }}
          ]],
-			ins_generate()
-		)
-	),
-	s(
-		"str",
-		fmt(
-			[[
+            ins_generate()
+        )
+    ),
+    s(
+        'str',
+        fmt(
+            [[
             struct {}{{
                 {}
             }}
 
          ]],
-			ins_generate()
-		)
-	),
-	s(
-		"pstr",
-		fmt(
-			[[
+            ins_generate()
+        )
+    ),
+    s(
+        'pstr',
+        fmt(
+            [[
             pub struct {}{{
                 {}
             }}
 
          ]],
-			ins_generate()
-		)
-	),
-	s(
-		"pfn",
-		fmt(
-			[[
+            ins_generate()
+        )
+    ),
+    s(
+        'pfn',
+        fmt(
+            [[
          pub fn {}({})->{}{{
             {}
          }}
          ]],
-			ins_generate()
-		)
-	),
-	s(
-		"pafn",
-		fmt(
-			[[
+            ins_generate()
+        )
+    ),
+    s(
+        'pafn',
+        fmt(
+            [[
          pub async fn {}()->{}{{
             {}
          }}
          ]],
-			ins_generate()
-		)
-	),
-	s(
-		"modtest",
-		fmt(
-			[[
+            ins_generate()
+        )
+    ),
+    s(
+        'modtest',
+        fmt(
+            [[
             #[cfg(test)]
             mod tests{{
                 use super::*;
@@ -69,41 +69,41 @@ return {
                 }}
             }}
          ]],
-			ins_generate()
-		)
-	),
-	s(
-		"amain",
-		fmt(
-			[[
+            ins_generate()
+        )
+    ),
+    s(
+        'amain',
+        fmt(
+            [[
             async fn main(){}{{
                 {}
             }}
          ]],
-			ins_generate()
-		)
-	),
-	s(
-		"main",
-		fmt(
-			[[
+            ins_generate()
+        )
+    ),
+    s(
+        'main',
+        fmt(
+            [[
             fn main(){}{{
                 {}
             }}
          ]],
-			ins_generate()
-		)
-	),
-	s(
-		"test",
-		fmt(
-			[[
+            ins_generate()
+        )
+    ),
+    s(
+        'test',
+        fmt(
+            [[
             #[test]
             fn {}(){{
                 {}
             }}
          ]],
-			ins_generate()
-		)
-	),
+            ins_generate()
+        )
+    ),
 }

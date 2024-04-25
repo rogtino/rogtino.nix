@@ -1,13 +1,13 @@
 return {
-	s(
-		"for",
-		fmt(
-			[[
+    s(
+        'for',
+        fmt(
+            [[
         for(auto {};{};{}){{
             {0}
         }}
 	]],
-			ins_generate()
-		)
-	),
+            ins_generate()
+        )
+    ),
 }

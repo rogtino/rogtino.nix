@@ -1,15 +1,15 @@
 return {
-	s(
-		"etg",
-		fmt(
-			[[
+    s(
+        'etg',
+        fmt(
+            [[
             (
             <>
             {}
             </>
             )
         ]],
-			ins_generate()
-		)
-	),
+            ins_generate()
+        )
+    ),
 }

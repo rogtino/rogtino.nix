@@ -1,9 +1,9 @@
 return {
 
-	s(
-		"frida",
-		fmt(
-			[[
+    s(
+        'frida',
+        fmt(
+            [[
 
 function main() {{
     console.log("Script loaded successfully ")
@@ -15,20 +15,20 @@ function main() {{
 }}
 setImmediate(main)
          ]],
-			{
+            {
 
-				f(function(args)
-					return args[1][1]:match("%.([%w_]+)$") or args[1]
-				end, { 1 }),
-				i(1),
-				i(0),
-			}
-		)
-	),
-	s(
-		"choose",
-		fmt(
-			[[
+                f(function(args)
+                    return args[1][1]:match '%.([%w_]+)$' or args[1]
+                end, { 1 }),
+                i(1),
+                i(0),
+            }
+        )
+    ),
+    s(
+        'choose',
+        fmt(
+            [[
         Java.choose('com.{}', {{
             onMatch: function(instance) {{
                 console.log('instance found', instance)
@@ -39,33 +39,33 @@ setImmediate(main)
             }}
         }})
             ]],
-			ins_generate()
-		)
-	),
-	s("jstring", t("java.lang.String")),
-	s(
-		"juse",
-		fmt(
-			[[var Java{} = Java.use("{}")
+            ins_generate()
+        )
+    ),
+    s('jstring', t 'java.lang.String'),
+    s(
+        'juse',
+        fmt(
+            [[var Java{} = Java.use("{}")
 {}]],
-			{
-				f(function(args)
-					return args[1][1]:match("%.([%w_]+)$") or args[1]
-				end, { 1 }),
-				i(1),
-				i(0),
-			}
-		)
-	),
-	s(
-		"rpc",
-		fmt(
-			[[
+            {
+                f(function(args)
+                    return args[1][1]:match '%.([%w_]+)$' or args[1]
+                end, { 1 }),
+                i(1),
+                i(0),
+            }
+        )
+    ),
+    s(
+        'rpc',
+        fmt(
+            [[
         rpc.exports = {{
                 {}
         }}
     ]],
-			ins_generate()
-		)
-	),
+            ins_generate()
+        )
+    ),
 }
