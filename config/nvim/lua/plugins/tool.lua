@@ -260,7 +260,8 @@ return {
 	{
 		"williamboman/mason.nvim",
 		config = true,
-		event = "VeryLazy",
+		cmd = "Mason",
+		build = ":MasonUpdate",
 		enabled = string.find(vim.uv.os_uname().version, "NixOS") == nil,
 	},
 	-- {

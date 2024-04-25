@@ -1,5 +1,6 @@
 vim.loader.enable()
 local plugins_path = vim.fn.stdpath("data") .. "/lazy"
+vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath("data") .. "/mason/bin"
 
 local function boot(name, url)
 	local package_path = plugins_path .. "/" .. name
