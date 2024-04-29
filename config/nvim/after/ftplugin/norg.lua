@@ -1,7 +1,7 @@
 -- vim.wo.spell = true
 -- vim.bo.spelllang = "en"
 local map = function(a, b)
-    vim.keymap.set('n', a, b, { silent = true, buffer = true })
+  vim.keymap.set('n', a, b, { silent = true, buffer = true })
 end
 -- map("0", ":Neorg kanban toggle<CR>")
 -- map("1", ":Neorg gtd capture<CR>")

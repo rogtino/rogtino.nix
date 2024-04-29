@@ -19,7 +19,7 @@
 --Usage: mark (single) APL characters here and copy/paste them into,
 --for example, the APL input: input field of a try-GNU-APL window.
 local function imap(lhs, rhs)
-    vim.keymap.set('i', lhs, rhs)
+  vim.keymap.set('i', lhs, rhs)
 end
 
 imap('``', '◊')

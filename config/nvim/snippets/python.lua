@@ -1,19 +1,19 @@
 return {
-    s(
-        'main',
-        fmt(
-            [[
+  s(
+    'main',
+    fmt(
+      [[
             if __name__ == "__main__":
                 {}
 
         ]],
-            ins_generate()
-        )
-    ),
-    s(
-        'onmessage',
-        fmt(
-            [[
+      ins_generate()
+    )
+  ),
+  s(
+    'onmessage',
+    fmt(
+      [[
 def on_message(message, data):
     if message['type'] == 'send':
         print(f"[*] {{message['payload']}}")
@@ -23,13 +23,13 @@ def on_message(message, data):
 {}
 
 ]],
-            ins_generate()
-        )
-    ),
-    s(
-        'frida',
-        fmt(
-            [[
+      ins_generate()
+    )
+  ),
+  s(
+    'frida',
+    fmt(
+      [[
         import frida
 
 
@@ -55,7 +55,7 @@ def on_message(message, data):
                 for j in range(0, 10):
                     script.exports.{}({})
                     ]],
-            ins_generate()
-        )
-    ),
+      ins_generate()
+    )
+  ),
 }

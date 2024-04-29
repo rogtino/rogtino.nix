@@ -1,14 +1,14 @@
 return {
-    s(
-        'tan',
-        fmt(
-            [[
+  s(
+    'tan',
+    fmt(
+      [[
         #tangle {}
         @code {}
         {}
         @end
         ]],
-            ins_generate()
-        )
-    ),
+      ins_generate()
+    )
+  ),
 }

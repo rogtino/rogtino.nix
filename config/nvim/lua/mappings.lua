@@ -62,15 +62,15 @@ vim.keymap.set('n', '_', '<c-w>-')
 
 -- vim.keymap.set({ "o", "x" }, "ac", "<cmd>lua require('various-textobjs').multiCommentedLines()<CR>")
 vim.keymap.set('n', 'K', function()
-    local winid = require('ufo').peekFoldedLinesUnderCursor()
-    if not winid then
-        if next(vim.lsp.get_clients { bufnr = 0 }) then
-            vim.lsp.buf.hover()
-        else
-            local word = vim.fn.expand '<cword>'
-            vim.cmd('Man ' .. word)
-        end
+  local winid = require('ufo').peekFoldedLinesUnderCursor()
+  if not winid then
+    if next(vim.lsp.get_clients { bufnr = 0 }) then
+      vim.lsp.buf.hover()
+    else
+      local word = vim.fn.expand '<cword>'
+      vim.cmd('Man ' .. word)
     end
+  end
 end, { desc = 'magic K' })
 
 vim.keymap.set('t', '<esc>', [[<C-\><C-n>]])
