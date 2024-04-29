@@ -159,7 +159,7 @@ return {
       require('overseer').setup(opts)
     end,
     opts = {
-      templates = { 'builtin', 'cpp', 'run_script', 'xmake' },
+      templates = { 'builtin', 'cpp', 'run_script', 'xmake.build_xmake', 'random', 'xmake.run_xmake' },
       actions = {
         ['70vsplit'] = {
           desc = 'open terminal in a vertical split',
@@ -194,7 +194,13 @@ return {
         '<leader>rx',
         '<CMD>OverseerXmake<CR>',
         mode = 'n',
-        desc = ' run xmake(overseer)',
+        desc = ' build xmake(overseer)',
+      },
+      {
+        '<leader>ro',
+        '<CMD>OverseerRun<CR>',
+        mode = 'n',
+        desc = ' run (overseer)',
       },
     },
   },

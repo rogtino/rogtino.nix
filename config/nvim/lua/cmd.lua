@@ -59,33 +59,33 @@ vim.api.nvim_create_user_command('OverseerXmake', function()
   -- local task = overseer.new_task {
   --   name = 'run xmake',
   --   strategy = {
-  --     'orchestrator',
+  --     'toggleterm',
   --     tasks = {
   --       {
   --         'shell',
-  --         cmd = 'xmake build', -- Step 1: clean
-  --       },
-  --       {
-  --         'shell',
-  --         cmd = 'xmake run', -- Step 3: serve
+  --         cmd = 'xmake run', -- Step 1: clean
   --       },
   --     },
   --   },
   -- }
+  -- task:start()
   -- overseer.run_action(task, '70vsplit')
   overseer.run_template({ name = 'run xmake' }, function(task)
     if task == nil then
       vim.notify(('WatchRun not supported for filetype ' .. vim.bo.filetype), vim.log.levels.ERROR)
     else
-      -- BUG: why I have to run `xmake build` the first time??????
-      task:add_component {
-        'dependencies',
-        task_names = { { 'shell', cmd = 'xmake' } },
-        sequential = true,
-      }
-      task:start()
+      -- BUG: task does not wait for component to complete
+      -- task:add_component {
+      --   'dependencies',
+      --   task_names = {
+      --     { 'shell', cmd = 'xmake build -a' },
+      --     { 'shell', cmd = 'xmake run' },
+      --   },
+      --   sequential = true,
+      -- }
+      -- task:start()
       -- task:add_component { 'restart_on_save', paths = { vim.fn.expand '%:p' } }
-      overseer.run_action(task, '70vsplit')
+      overseer.run_action(task, 'open vsplit')
       vim.api.nvim_set_current_win(main_win)
     end
   end)
