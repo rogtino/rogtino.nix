@@ -6,8 +6,8 @@
   "reload_style_on_change": true,
   "modules-left": [
     "custom/powermenu",
-    "sway/mode",
-    "sway/workspaces"
+    "hyprland/submap",
+    "hyprland/workspaces"
   ],
   "modules-center": [
     "cpu",
@@ -21,7 +21,7 @@
     "clock",
     "tray"
   ],
-  "sway/mode": {
+  "hyprland/submap": {
     "format": "󰘳 {}",
     "max-length": 50
   },
@@ -86,9 +86,7 @@
     },
     "on-click": "pavucontrol"
   },
-  "sway/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": true,
+  "hyprland/workspaces": {
     "format": "{name}: {icon}",
     "format-icons": {
       "1": "",
@@ -98,8 +96,7 @@
       "5": "󰝚",
       "urgent": "",
       "focused": "",
-      "default": "",
-      "high-priority-named": ["1", "2"]
+      "default": ""
     }
   }
 }

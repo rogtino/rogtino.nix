@@ -163,7 +163,10 @@ local function config()
     confirm_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false },
     experimental = { ghost_text = true },
   }
-  require('luasnip.loaders.from_lua').lazy_load { paths = { vim.fn.stdpath 'config' .. '/snippets' } }
+  require('luasnip.loaders.from_lua').lazy_load {
+    paths = { vim.fn.stdpath 'config' .. '/snippets' },
+    default_priority = 2000,
+  }
   require('luasnip.loaders.from_vscode').lazy_load()
 end
 return {

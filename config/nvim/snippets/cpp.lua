@@ -10,4 +10,26 @@ return {
       ins_generate()
     )
   ),
+  s(
+    'if',
+    fmt(
+      [[
+      if ({}) {{
+        {}
+      }} {}
+	]],
+      ins_generate()
+    )
+  ),
+  s(
+    'ifi',
+    fmt(
+      [[
+      if ({}; {}) {{
+        {}
+      }} {}
+	]],
+      ins_generate()
+    )
+  ),
 }

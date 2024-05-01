@@ -35,6 +35,16 @@ window > box {
   padding-right: 4px;
   margin-top: 10px;
 }
+#submap {
+  padding-left: 0px;
+  padding-right: 4px;
+  margin-top: 10px;
+  animation-name: blink_red;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
 #workspaces button {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -44,7 +54,7 @@ window > box {
   color: #dfb7ff;
   background: #1a281e;
 }
-#workspaces button.focused {
+#workspaces button.active {
   color: #f34065;
 }
 #workspaces button.urgent {

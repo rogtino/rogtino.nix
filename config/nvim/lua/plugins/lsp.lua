@@ -14,6 +14,17 @@ local function config()
             --   -- require("neodev.config").types(),
             --   vim.env.VIMRUNTIME,
             -- },
+            --
+            diagnostics = {
+              globals = { 'vim' },
+            },
+            library = {
+              [vim.fn.expand '$VIMRUNTIME/lua'] = true,
+              [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
+              [vim.fn.stdpath 'data' .. '/lazy/lazy.nvim/lua/lazy'] = true,
+            },
+            maxPreload = 100000,
+            preloadFileSize = 10000,
             checkThirdParty = false,
           },
         },
@@ -67,10 +78,10 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       -- slow
-      -- {
-      --   'folke/neodev.nvim',
-      --   config = true,
-      -- },
+      {
+        'folke/neodev.nvim',
+        config = true,
+      },
       {
         'mfussenegger/nvim-lint',
         config = function()
@@ -166,7 +177,9 @@ return {
     },
     opts = {}, -- for default options, refer to the configuration section for custom setup.
   },
-  'p00f/clangd_extensions.nvim',
+  {
+    url = 'https://git.sr.ht/~p00f/clangd_extensions.nvim',
+  },
   -- BUG: polute input
   -- {
   -- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",

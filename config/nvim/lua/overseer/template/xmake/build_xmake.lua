@@ -4,7 +4,7 @@ return {
     return {
       cmd = { 'xmake' },
       components = {
-        { 'on_output_quickfix', set_diagnostics = true, open = true, close = true },
+        -- { 'on_output_quickfix', set_diagnostics = true, open = true, close = true },
         -- 'on_result_diagnostics',
         -- {
         --   'dependencies',

@@ -71,6 +71,7 @@ vim.filetype.add {
   extension = {
     lock = 'json',
     mdx = 'mdx',
+    mpp = 'cpp',
   },
 }
 

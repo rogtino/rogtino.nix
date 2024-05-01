@@ -24,7 +24,7 @@
   ],
   "custom/wallpaper": {
       "format":" ",
-      "on-click":"~/.config/bgscripts/change_bg.sh",
+      "on-click":"~/.config/hypr/scripts/change_bg.sh",
       "tooltip":false
   },
   "hyprland/submap": {

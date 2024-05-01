@@ -135,9 +135,9 @@ in {
       "alacritty" = {
         source = ../config/alacritty;
       };
-      "bgscripts" = {
-        source = ../config/bgscripts;
-      };
+      # "bgscripts" = {
+      #   source = ../config/bgscripts;
+      # };
       # BUG:cann't use
       # https://github.com/nushell/nushell/issues/10100
       # "nushell" = {

@@ -190,12 +190,12 @@ return {
         mode = 'n',
         desc = 'run script(overseer)',
       },
-      {
-        '<leader>rx',
-        '<CMD>OverseerXmake<CR>',
-        mode = 'n',
-        desc = ' build xmake(overseer)',
-      },
+      -- {
+      --   '<leader>rx',
+      --   '<CMD>OverseerXmake<CR>',
+      --   mode = 'n',
+      --   desc = ' build xmake(overseer)',
+      -- },
       {
         '<leader>ro',
         '<CMD>OverseerRun<CR>',
@@ -286,8 +286,7 @@ return {
       'nvim-telescope/telescope.nvim', -- optional
     },
     config = true,
-    -- BUG:buggy
-    -- branch = 'nightly',
+    branch = 'nightly',
     keys = {
       {
         '<leader>gn',
@@ -369,9 +368,10 @@ return {
         desc = 'load last session',
       },
     },
+    lazy = false,
     config = function()
       local config = require 'session_manager.config'
-      require('session_manager').setup { autoload_mode = config.AutoloadMode.Disabled }
+      require('session_manager').setup { autoload_mode = config.AutoloadMode.CurrentDir }
     end,
   },
   {
@@ -434,6 +434,15 @@ return {
           return lazygit:toggle()
         end,
         desc = 'lazygit',
+      },
+      {
+        '<leader>x',
+        function()
+          local Terminal = require('toggleterm.terminal').Terminal
+          local xmake = Terminal:new { cmd = 'xmake run', hidden = true, direction = 'float', close_on_exit = false }
+          return xmake:toggle()
+        end,
+        desc = 'xmake',
       },
       {
         '<leader>t1',
