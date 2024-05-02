@@ -25,6 +25,10 @@ window#waybar {
   background-color: black;
   border-top: 1px solid rgba(83, 19, 18, 0.5);
 }
+#window {
+  color: rgba(180, 254, 184, 0.9);
+  margin-top: 8px;
+}
 window > box {
   margin-left: 5px;
   margin-right: 2px;
@@ -70,15 +74,9 @@ tooltip {
 tooltip label {
   color: #d9e0ee;
 }
-#mode,
 #clock,
-#memory,
-#temperature,
-#cpu,
-#temperature,
 #backlight,
 #pulseaudio,
-#network,
 #battery,
 #tray,
 #custom-powermenu,
@@ -88,20 +86,11 @@ tooltip label {
   padding-right: 12px;
   background: #000000;
 }
-#memory {
-  color: #b5e8e0;
-}
-#cpu {
-  color: #f5c2e7;
-}
 #clock {
   color: #ff7874;
 }
 #idle_inhibitor {
   color: #ddb6f2;
-}
-#temperature {
-  color: #96cdfb;
 }
 #backlight {
   color: #f8bd96;
@@ -109,15 +98,8 @@ tooltip label {
 #pulseaudio {
   color: #f5e0dc;
 }
-#network {
-  color: #baff85;
-}
 #mode {
   color: #96cdfb;
-}
-
-#network.disconnected {
-  color: #ffffff;
 }
 #battery.charging,
 #battery.full,

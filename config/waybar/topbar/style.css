@@ -7,24 +7,24 @@
   transition-property: background-color;
   transition-duration: 0.5s;
 }
-@keyframes blink_red {
-  to {
-    background-color: #f28fad;
-    color: #1a1826;
-  }
-}
-.warning,
-.critical,
-.urgent {
-  animation-name: blink_red;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
 window#waybar {
   background-color: transparent;
+  color: #000000;
+  padding-top: 5px;
 }
+/* window#waybar.floating { */
+/*   background-color: #111111; */
+/*   color: #ffffff; */
+/* } */
+/* window#waybar.footclient { */
+/*   background-color: #111111; */
+/*   color: #ffffff; */
+/* } */
+/**/
+/* window#waybar.firefox { */
+/*   background-color: #eeeeee; */
+/*   color: #000000; */
+/* } */
 window > box {
   margin-left: 5px;
   margin-right: 5px;
@@ -38,8 +38,8 @@ window > box {
 #workspaces button {
   padding-top: 5px;
   padding-bottom: 5px;
-  padding-left: 6px;
-  padding-right: 6px;
+  padding-left: 3px;
+  padding-right: 3px;
   color: #f34065;
   background: #1a281e;
 }
@@ -60,44 +60,35 @@ tooltip {
 tooltip label {
   color: #d9e0ee;
 }
-#mode,
-#clock,
 #memory,
 #temperature,
 #cpu,
-#temperature,
-#backlight,
-#pulseaudio,
 #network,
-#battery,
-#tray,
-#custom-powermenu,
+#systemd-failed-units,
+#bluetooth,
 #custom-wallpaper {
-  margin-top: 10px;
-  padding-left: 12px;
-  padding-right: 12px;
+  margin-top: 4px;
+  padding-left: 9px;
+  padding-right: 9px;
   background: #000000;
 }
 #memory {
   color: #b5e8e0;
 }
+#bluetooth {
+  color: #a8e1ff;
+}
+#systemd-failed-units {
+  color: red;
+}
 #cpu {
   color: #f5c2e7;
-}
-#clock {
-  color: #d9e085;
 }
 #idle_inhibitor {
   color: #ddb6f2;
 }
 #temperature {
   color: #96cdfb;
-}
-#backlight {
-  color: #f8bd96;
-}
-#pulseaudio {
-  color: #f5e0dc;
 }
 #network {
   color: #abe9b3;
@@ -106,27 +97,7 @@ tooltip label {
 #network.disconnected {
   color: #ffffff;
 }
-#battery.charging,
-#battery.full,
-#battery.plugged,
-#battery.discharging {
-  color: #fae3b0;
-}
-#battery.critical:not(.charging) {
-  color: #f28fad;
-}
-#custom-powermenu {
-  color: #f43b47;
-}
 #custom-wallpaper {
-  margin-left: 8px;
-  margin-bottom: 0px;
-  border-radius: 10px;
   transition: none;
   color: #dfcdff;
-}
-#tray {
-  padding-right: 8px;
-  padding-left: 10px;
-  font-size: 4px;
 }

@@ -10,9 +10,7 @@
     "hyprland/workspaces"
   ],
   "modules-center": [
-    "cpu",
-    "network",
-    "memory"
+    "hyprland/window"
   ],
   "modules-right": [
     "pulseaudio",
@@ -29,20 +27,20 @@
     "spacing": 10,
     "icon-size": 20
   },
+  "hyprland/window": {
+    "format": "{}",
+    "rewrite": {
+      "(.*) — Mozilla Firefox": "  $1",
+      "(.*) - NVIM": " $1"
+    },
+    "separate-outputs": true
+  },
   "clock": {
     "interval": 1,
     "format": "󰥔 {:%H:%M}",
     "tooltip": true,
     "tooltip-format": "<tt><big>{calendar}</big></tt>",
     "format-alt": "󰃭 {:%Y-%m-%d}"
-  },
-  "cpu": {
-    "format": "{usage}% 󰍛",
-    "interval": 1
-  },
-  "memory": {
-    "format": "{percentage}% 󰘚",
-    "interval": 1
   },
   "backlight": {
     "format": "󰌵 {percent}%",
@@ -64,15 +62,6 @@
     "format-plugged": " {capacity}%",
     "format-alt": "{icon} {time}",
     "format-icons": ["", "", "", "", ""]
-  },
-  "network": {
-    "interval": 1,
-    "format-wifi": "  {signalStrength}%  {bandwidthUpBytes}↑ {bandwidthDownBytes}↓",
-    "format-ethernet": "  {ipaddr}/{cidr} {bandwidthUpBytes}↑ {bandwidthDownBytes}↓",
-    "tooltip-format": "{ifname} via {gwaddr} on {essid} ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
   "pulseaudio": {
     "format": "{icon} {volume}󰏰",
