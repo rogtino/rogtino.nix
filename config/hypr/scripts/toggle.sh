@@ -9,7 +9,7 @@ if [ "$HYPRGAMEMODE" = 1 ]; then
         keyword general:gaps_out 0;\
         keyword general:border_size 0;\
         keyword decoration:rounding 0"
-	notify-send "focusing"
+	notify-send -u low -t 1000 "🎃 focusing"
 	exit
 else
 	hyprctl --batch "\
@@ -20,7 +20,7 @@ else
         keyword general:gaps_out 15;\
         keyword general:border_size 2;\
         keyword decoration:rounding 2"
-	notify-send "animating"
+	notify-send -u low -t 1000 "🕹️ animating"
 	exit
 fi
 hyprctl reload

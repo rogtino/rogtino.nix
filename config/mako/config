@@ -1,0 +1,28 @@
+max-history=25
+max-visible=5
+on-button-middle=dismiss-all
+
+font=monospace 18
+background-color=#1e1e2e
+border-color=#89b4fa
+border-radius=12
+progress-color=over #313244
+
+width=270
+height=100
+margin=10
+padding=10
+format=<b>%s</b>\n<i>%b</i>
+anchor=top-right
+
+[urgency=low]
+text-color=#36CC8B
+default-timeout=5000
+
+[urgency=normal]
+text-color=#de8f78
+default-timeout=10000
+
+[urgency=critical]
+text-color=#FF5369
+default-timeout=0

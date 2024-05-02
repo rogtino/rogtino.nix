@@ -19,7 +19,7 @@
   ],
   "systemd-failed-units": {
     "hide-on-ok": false,
-    "format": "✗ {nr_failed}",
+    "format": " {nr_failed}",
     "format-ok": "󱏚",
     "system": true,
     "user": false
