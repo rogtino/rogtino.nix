@@ -1,5 +1,6 @@
 local function config()
   local lualine = require 'lualine'
+  local arrow = require 'arrow.statusline'
   local colors = {
     bg = '#202328',
     fg = '#bbc2cf',
@@ -122,6 +123,12 @@ local function config()
     -- cond = function()
     --     return vim.g.overseer_loaded
     -- end,
+  }
+  ins_right {
+    function()
+      return arrow.text_for_statusline_with_icons()
+    end,
+    color = { fg = colors.yellow },
   }
   ins_right {
     'diff',
