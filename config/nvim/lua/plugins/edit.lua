@@ -275,7 +275,7 @@ return {
     opts = {
       load = {
         ['core.defaults'] = {},
-        ['core.dirman'] = { config = { workspaces = { learn = '~/some-notes' } } },
+        ['core.dirman'] = { config = { workspaces = { learn = '~/notes' } } },
         ['core.summary'] = {},
         ['core.ui.calendar'] = {},
         ['core.concealer'] = { config = { icon_preset = 'diamond' } },
