@@ -2,6 +2,7 @@ max-history=25
 max-visible=5
 on-button-middle=dismiss-all
 
+default-timeout=1000
 font=monospace 18
 background-color=#1e1e2e
 border-color=#89b4fa
