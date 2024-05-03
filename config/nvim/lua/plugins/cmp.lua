@@ -139,6 +139,7 @@ local function config()
       fields = { cmp.ItemField.Menu, cmp.ItemField.Abbr, cmp.ItemField.Kind },
       format = lspkind.cmp_format {
         mode = 'symbol_text',
+        maxwidth = 38,
         menu = {
           -- TODO: fields should take priority before snip
           buffer = '[BUF]',
