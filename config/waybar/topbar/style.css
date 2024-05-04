@@ -7,11 +7,13 @@
   transition-property: background-color;
   transition-duration: 0.5s;
 }
+
 window#waybar {
   background-color: transparent;
   color: #000000;
   padding-top: 5px;
 }
+
 /* window#waybar.floating { */
 /*   background-color: #111111; */
 /*   color: #ffffff; */
@@ -25,16 +27,18 @@ window#waybar {
 /*   background-color: #eeeeee; */
 /*   color: #000000; */
 /* } */
-window > box {
+window>box {
   margin-left: 15px;
   margin-right: 15px;
   margin-top: 5px;
 }
+
 #workspaces {
   padding-left: 0px;
   padding-right: 4px;
   margin-top: 10px;
 }
+
 #workspaces button {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -43,23 +47,29 @@ window > box {
   color: #f34065;
   background: #1a281e;
 }
+
 #workspaces button.active {
   background-color: #dfb7ff;
   color: #1a1826;
 }
+
 #workspaces button.urgent {
   color: #1a1826;
 }
+
 #workspaces button:hover {
   background-color: #f8bd96;
   color: #1a1826;
 }
+
 tooltip {
   color: #302d41;
 }
+
 tooltip label {
   color: #d9e0ee;
 }
+
 #memory,
 #temperature,
 #cpu,
@@ -72,24 +82,31 @@ tooltip label {
   padding-right: 9px;
   background: #000000;
 }
+
 #memory {
   color: #b5e8e0;
 }
+
 #bluetooth {
   color: #a8e1ff;
 }
+
 #systemd-failed-units {
   color: red;
 }
+
 #cpu {
   color: #f5c2e7;
 }
+
 #idle_inhibitor {
   color: #ddb6f2;
 }
+
 #temperature {
   color: #96cdfb;
 }
+
 #network {
   color: #abe9b3;
 }
@@ -97,6 +114,7 @@ tooltip label {
 #network.disconnected {
   color: #ffffff;
 }
+
 #custom-wallpaper {
   transition: none;
   color: #dfcdff;

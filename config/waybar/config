@@ -43,7 +43,7 @@
     "format-alt": "󰃭 {:%Y-%m-%d}"
   },
   "backlight": {
-    "format": "󰌵 {percent}%",
+    "format": "󰛨 {percent}%",
     "on-scroll-up": "light -A 1",
     "on-scroll-down": "light -U 1"
   },
@@ -66,12 +66,12 @@
   "pulseaudio": {
     "format": "{icon} {volume}󰏰",
     "format-bluetooth": " {volume}%",
-    "format-muted": "",
+    "format-muted": "󰖁",
     "format-icons": {
       "headphone": "",
       "hands-free": "",
       "headset": "",
-      "default": ["", "", ""]
+      "default": ["󰕿", "󰖀", "󰕾"]
     },
     "on-click": "pavucontrol"
   },
