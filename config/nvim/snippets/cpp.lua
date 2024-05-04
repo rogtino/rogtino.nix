@@ -1,5 +1,15 @@
 return {
   s(
+    'unm',
+    fmt(
+      [[
+      using namespace {};
+      {}
+	]],
+      ins_generate()
+    )
+  ),
+  s(
     'for',
     fmt(
       [[
