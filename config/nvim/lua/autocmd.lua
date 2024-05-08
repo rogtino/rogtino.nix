@@ -50,6 +50,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>lm', vim.cmd.LspInfo, { desc = 'lspinfo' })
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'next diagnostic' })
     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'prev diagnostic' })
+    vim.keymap.set('n', ']]', vim.diagnostic.open_float, { desc = 'open current diagnostic' })
   end,
 })
 

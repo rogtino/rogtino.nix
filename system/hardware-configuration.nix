@@ -16,6 +16,7 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   # boot.kernelParams = ["rtw88_pci.disable_aspm=Y"];
+  # TODO:use rtw88 instead
   boot.extraModulePackages = with config.boot.kernelPackages; [rtl8821ce];
   boot.blacklistedKernelModules = ["rtw88_8821ce"];
 

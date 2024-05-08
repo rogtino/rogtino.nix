@@ -2,6 +2,7 @@ vim.g['loaded_ruby_provider'] = 0
 vim.g['loaded_perl_provider'] = 0
 local opt = vim.opt
 opt.list = true
+opt.jumpoptions = 'stack'
 opt.listchars = { tab = '> ', nbsp = '␣', trail = '•' }
 opt.guicursor = 'n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20'
 opt.fillchars = {
@@ -37,7 +38,7 @@ opt.splitright = true
 opt.termguicolors = true
 opt.showmode = false
 opt.undofile = true
-opt.laststatus = 0
+-- opt.laststatus = 0
 opt.signcolumn = 'number'
 opt.clipboard = 'unnamedplus'
 opt.numberwidth = 4

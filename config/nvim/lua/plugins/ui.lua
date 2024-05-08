@@ -69,7 +69,14 @@ return {
   },
   {
     'nvim-neo-tree/neo-tree.nvim',
-    config = true,
+    opts = {
+      close_if_last_window = false,
+      filesystem = {
+        follow_current_file = {
+          enabled = true,
+        },
+      },
+    },
     keys = {
       { '<leader>tn', '<cmd>Neotree toggle dir=./ position=left<CR>', desc = 'neotree-root-toggle' },
       { '<leader>tr', '<cmd>Neotree reveal toggle position=left<CR>', desc = 'neotree-reveal-toggle' },
@@ -254,7 +261,7 @@ return {
         command_palette = true,
         inc_rename = true,
         long_message_to_split = true,
-        lsp_doc_border = true,
+        lsp_doc_border = false,
       },
       -- cmdline = { view = "cmdline" },
     },
