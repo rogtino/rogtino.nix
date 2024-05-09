@@ -31,19 +31,18 @@ return {
 
     vim.o.laststatus = 3
     vim.o.showcmdloc = 'statusline'
+    -- vim.o.spell = true
     require('heirline').setup {
       statusline = require('plugins.heirline.statusline').statusline,
+      -- statusline = require 'plugins.heirline.example',
       winbar = require('plugins.heirline.statusline').winbar,
       tabline = require 'plugins.heirline.tabline',
-      statuscolumn = require 'plugins.heirline.statuscolumn',
+      -- statuscolumn = require 'plugins.heirline.statuscolumn',
       opts = {
         disable_winbar_cb = function(args)
-          if vim.bo[args.buf].filetype == 'neo-tree' then
-            return
-          end
           return conditions.buffer_matches({
-            buftype = { 'nofile', 'prompt', 'help', 'quickfix' },
-            filetype = { '^git.*', 'fugitive', 'Trouble', 'dashboard' },
+            buftype = { 'nofile', 'prompt', 'help', 'quickfix', 'terminal' },
+            filetype = { '^git.*', 'trouble', 'neo-tree' },
           }, args.buf)
         end,
         colors = setup_colors,
@@ -53,7 +52,7 @@ return {
 
     vim.api.nvim_create_augroup('Heirline', { clear = true })
 
-    vim.cmd [[au Heirline FileType * if index(['wipe', 'delete'], &bufhidden) >= 0 | set nobuflisted | endif]]
+    -- vim.cmd [[au Heirline FileType * if index(['wipe', 'delete'], &bufhidden) >= 0 | set nobuflisted | endif]]
 
     -- vim.cmd("au BufWinEnter * if &bt != '' | setl stc= | endif")
 
@@ -65,67 +64,68 @@ return {
     })
   end,
   dependencies = {
+    {
+      'SmiteshP/nvim-navic',
+      enabled = true,
+      event = 'BufReadPost',
+      config = function()
+        require('nvim-navic').setup {
+          -- icons = require("lspkind").symbol_map,
+          separator = '',
+          icons = {
 
-    'SmiteshP/nvim-navic',
-    enabled = true,
-    event = 'BufReadPost',
-    config = function()
-      require('nvim-navic').setup {
-        -- icons = require("lspkind").symbol_map,
-        separator = '',
-        icons = {
+            -- SymbolKind
+            File = ' ',
+            Module = ' ',
+            Namespace = ' ',
+            Package = ' ',
+            Class = ' ',
+            Method = ' ',
+            Property = ' ',
+            Field = ' ',
+            Constructor = ' ',
+            Enum = ' ',
+            Interface = ' ',
+            Function = ' ',
+            Variable = ' ',
+            Constant = ' ',
+            String = ' ',
+            Number = ' ',
+            Boolean = ' ',
+            Array = ' ',
+            Object = ' ',
+            Key = ' ',
+            Null = ' ',
+            EnumMember = ' ',
+            Struct = ' ',
+            Event = ' ',
+            Operator = ' ',
+            TypeParameter = ' ',
+            -- unique to CompletionIntemKind
+            Text = ' ',
+            Unit = ' ',
+            Value = ' ',
+            Keyword = ' ',
+            Snippet = ' ',
+            Color = ' ',
+            Reference = ' ',
+            Folder = ' ',
 
-          -- SymbolKind
-          File = ' ',
-          Module = ' ',
-          Namespace = ' ',
-          Package = ' ',
-          Class = ' ',
-          Method = ' ',
-          Property = ' ',
-          Field = ' ',
-          Constructor = ' ',
-          Enum = ' ',
-          Interface = ' ',
-          Function = ' ',
-          Variable = ' ',
-          Constant = ' ',
-          String = ' ',
-          Number = ' ',
-          Boolean = ' ',
-          Array = ' ',
-          Object = ' ',
-          Key = ' ',
-          Null = ' ',
-          EnumMember = ' ',
-          Struct = ' ',
-          Event = ' ',
-          Operator = ' ',
-          TypeParameter = ' ',
-          -- unique to CompletionIntemKind
-          Text = ' ',
-          Unit = ' ',
-          Value = ' ',
-          Keyword = ' ',
-          Snippet = ' ',
-          Color = ' ',
-          Reference = ' ',
-          Folder = ' ',
-
-          -- Others
-          Copilot = ' ',
-        },
-      }
-      vim.api.nvim_create_autocmd('LspAttach', {
-        callback = function(args)
-          local bufnr = args.buf
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
-          ---@diagnostic disable-next-line: need-check-nil
-          if not vim.tbl_contains({ 'copilot', 'ltex' }, client.name) then
-            require('nvim-navic').attach(client, bufnr)
-          end
-        end,
-      })
-    end,
+            -- Others
+            Copilot = ' ',
+          },
+        }
+        vim.api.nvim_create_autocmd('LspAttach', {
+          callback = function(args)
+            local bufnr = args.buf
+            local client = vim.lsp.get_client_by_id(args.data.client_id)
+            ---@diagnostic disable-next-line: need-check-nil
+            if not vim.tbl_contains({ 'copilot', 'ltex' }, client.name) then
+              require('nvim-navic').attach(client, bufnr)
+            end
+          end,
+        })
+      end,
+    },
   },
 }

@@ -1,8 +1,9 @@
 local conditions = require 'heirline.conditions'
+local statusline = require 'arrow.statusline'
 local utils = require 'heirline.utils'
 
 local icons = require('plugins.heirline.common').icons
-local separators = require('plugins.heirline.common').separators
+-- local separators = require('plugins.heirline.common').separators
 local dim = require('plugins.heirline.common').dim
 
 local ViMode = {
@@ -48,7 +49,7 @@ local ViMode = {
     },
   },
   provider = function(self)
-    return icons.vim .. '%2(' .. self.mode_names[self.mode] .. '%)'
+    return '👾' .. '%2(' .. self.mode_names[self.mode] .. '%)'
   end,
   --    
   hl = function(self)
@@ -62,6 +63,16 @@ local ViMode = {
       vim.cmd 'redrawstatus'
     end),
   },
+}
+
+local Arrow = {
+  condition = function()
+    return statusline.is_on_arrow_file() ~= nil
+  end,
+  provider = function()
+    return statusline.text_for_statusline_with_icons() .. ' '
+  end,
+  hl = 'ErrorMsg',
 }
 
 local FileIcon = {
@@ -135,7 +146,7 @@ local FileNameBlock = {
 
 local FileType = {
   provider = function()
-    return string.upper(vim.bo.filetype)
+    return vim.bo.filetype
   end,
   hl = 'Type',
 }
@@ -143,7 +154,7 @@ local FileType = {
 local FileEncoding = {
   provider = function()
     local enc = (vim.bo.fenc ~= '' and vim.bo.fenc) or vim.o.enc -- :h 'enc'
-    return enc ~= 'utf-8' and enc:upper()
+    return enc ~= 'utf-8' and enc:upper() .. ' '
   end,
 }
 
@@ -154,39 +165,38 @@ local FileFormat = {
   end,
 }
 
-local FileSize = {
-  provider = function()
-    -- stackoverflow, compute human readable file size
-    local suffix = { 'b', 'k', 'M', 'G', 'T', 'P', 'E' }
-    local fsize = vim.fn.getfsize(vim.api.nvim_buf_get_name(0))
-    fsize = (fsize < 0 and 0) or fsize
-    if fsize <= 0 then
-      return '0' .. suffix[1]
-    end
-    local i = math.floor((math.log(fsize) / math.log(1024)))
-    return string.format('%.2g%s', fsize / math.pow(1024, i), suffix[i])
-  end,
-}
+-- local FileSize = {
+--   provider = function()
+--     -- stackoverflow, compute human readable file size
+--     local suffix = { 'b', 'k', 'M', 'G', 'T', 'P', 'E' }
+--     local fsize = vim.fn.getfsize(vim.api.nvim_buf_get_name(0))
+--     fsize = (fsize < 0 and 0) or fsize
+--     if fsize <= 0 then
+--       return '0' .. suffix[1]
+--     end
+--     local i = math.floor((math.log(fsize) / math.log(1024)))
+--     return string.format('%.2g%s', fsize / math.pow(1024, i), suffix[i])
+--   end,
+-- }
 
-local FileLastModified = {
-  provider = function()
-    local ftime = vim.fn.getftime(vim.api.nvim_buf_get_name(0))
-    return (ftime > 0) and os.date('%c', ftime)
-  end,
-}
+-- local FileLastModified = {
+--   provider = function()
+--     local ftime = vim.fn.getftime(vim.api.nvim_buf_get_name(0))
+--     return (ftime > 0) and os.date('%c', ftime)
+--   end,
+-- }
 
 local Ruler = {
   -- %l = current line number
   -- %L = number of lines in the buffer
   -- %c = column number
   -- %P = percentage through file of displayed window
-  provider = '%7(%l/%3L%):%2c %P',
+  provider = '%5(%c:%l/%L%) %P',
 }
 
 local ScrollBar = {
   static = {
     sbar = { '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█' },
-    -- sbar = { '🭶', '🭷', '🭸', '🭹', '🭺', '🭻' },
   },
   provider = function(self)
     local curr_line = vim.api.nvim_win_get_cursor(0)[1]
@@ -200,7 +210,7 @@ local ScrollBar = {
 local LSPActive = {
   condition = conditions.lsp_attached,
   update = { 'LspAttach', 'LspDetach', 'WinEnter' },
-  provider = icons.lsp .. 'LSP',
+  provider = icons.lsp,
   -- provider  = function(self)
   --     local names = {}
   --     for i, server in pairs(vim.lsp.buf_get_active_clients({ bufnr = 0 })) do
@@ -316,25 +326,25 @@ local Diagnostics = {
   end,
   {
     provider = function(self)
-      return self.diagnostics[1] and (icons.err .. self.diagnostics[1] .. ' ')
+      return self.diagnostics[1] and (' ' .. self.diagnostics[1] .. ' ')
     end,
     hl = 'DiagnosticError',
   },
   {
     provider = function(self)
-      return self.diagnostics[2] and (icons.warn .. self.diagnostics[2] .. ' ')
+      return self.diagnostics[2] and (' ' .. self.diagnostics[2] .. ' ')
     end,
     hl = 'DiagnosticWarn',
   },
   {
     provider = function(self)
-      return self.diagnostics[3] and (icons.info .. self.diagnostics[3] .. ' ')
+      return self.diagnostics[3] and (' ' .. self.diagnostics[3] .. ' ')
     end,
     hl = 'DiagnosticInfo',
   },
   {
     provider = function(self)
-      return self.diagnostics[4] and (icons.hint .. self.diagnostics[4] .. ' ')
+      return self.diagnostics[4] and ('󰌵 ' .. self.diagnostics[4] .. ' ')
     end,
     hl = 'DiagnosticHint',
   },
@@ -347,9 +357,9 @@ local Git = {
     self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
   end,
   on_click = {
-    callback = function(self, minwid, nclicks, button)
+    callback = function()
       vim.defer_fn(function()
-        vim.cmd 'Lazygit %:p:h'
+        vim.cmd 'Neogit'
       end, 100)
     end,
     name = 'heirline_git',
@@ -358,7 +368,7 @@ local Git = {
   hl = { fg = 'orange' },
   {
     provider = function(self)
-      return ' ' .. self.status_dict.head
+      return ' ' .. self.status_dict.head
     end,
     hl = { bold = true },
   },
@@ -366,34 +376,37 @@ local Git = {
     condition = function(self)
       return self.has_changes
     end,
-    provider = '(',
+    provider = ' ',
   },
   {
     provider = function(self)
       local count = self.status_dict.added or 0
-      return count > 0 and ('+' .. count)
+      return count > 0 and (' ' .. count .. ' ')
     end,
-    hl = 'diffAdded',
+    -- hl = 'diffAdded',
+    hl = { fg = 'green' },
   },
   {
     provider = function(self)
       local count = self.status_dict.removed or 0
-      return count > 0 and ('-' .. count)
+      return count > 0 and (' ' .. count .. ' ')
     end,
-    hl = 'diffDeleted',
+    -- hl = 'diffDeleted',
+    hl = { fg = 'red' },
   },
   {
     provider = function(self)
       local count = self.status_dict.changed or 0
-      return count > 0 and ('~' .. count)
+      return count > 0 and (' ' .. count .. ' ')
     end,
-    hl = 'diffChanged',
+    -- hl = 'diffChanged',
+    hl = { fg = 'orange' },
   },
   {
     condition = function(self)
       return self.has_changes
     end,
-    provider = ')',
+    provider = ' ',
   },
 }
 
@@ -402,8 +415,8 @@ local Snippets = {
     return vim.tbl_contains({ 's', 'i' }, vim.fn.mode())
   end,
   provider = function()
-    local forward = require('luasnip').jumpable(1) and ' ' or ''
-    local backward = require('luasnip').jumpable(-1) and ' ' or ''
+    local forward = require('luasnip').jumpable(1) and ' ' or ''
+    local backward = require('luasnip').jumpable(-1) and ' ' or ''
     return backward .. forward
   end,
   hl = { fg = 'red', bold = true },
@@ -521,7 +534,6 @@ local HelpFilename = {
 }
 
 local TerminalName = {
-  -- icon = ' ', -- 
   {
     provider = function()
       local tname, _ = vim.api.nvim_buf_get_name(0):gsub('.*:', '')
@@ -535,25 +547,17 @@ local TerminalName = {
       return vim.b.term_title
     end,
   },
-  {
-    provider = function()
-      -- local id = require('terminal'):current_term_index()
-      local id = 'ID'
-      return ' ' .. (id or 'Exited')
-    end,
-    hl = { bold = true, fg = 'blue' },
-  },
 }
 
-local Spell = {
-  condition = function()
-    return vim.wo.spell
-  end,
-  provider = function()
-    return '󰓆 ' .. vim.o.spelllang .. ' '
-  end,
-  hl = { bold = true, fg = 'green' },
-}
+-- local Spell = {
+--   condition = function()
+--     return vim.wo.spell
+--   end,
+--   provider = function()
+--     return '󰓆 ' .. vim.o.spelllang .. ' '
+--   end,
+--   hl = { bold = true, fg = 'green' },
+-- }
 
 local SearchCount = {
   condition = function()
@@ -592,15 +596,15 @@ local MacroRec = {
 }
 
 -- WIP
-local VisualRange = {
-  condition = function()
-    return vim.tbl_containsvim({ 'V', 'v' }, vim.fn.mode())
-  end,
-  provider = function()
-    local start = vim.fn.getpos "'<"
-    local stop = vim.fn.getpos "'>"
-  end,
-}
+-- local VisualRange = {
+--   condition = function()
+--     return vim.tbl_containsvim({ 'V', 'v' }, vim.fn.mode())
+--   end,
+--   provider = function()
+--     local start = vim.fn.getpos "'<"
+--     local stop = vim.fn.getpos "'>"
+--   end,
+-- }
 
 local ShowCmd = {
   condition = function()
@@ -612,6 +616,7 @@ local ShowCmd = {
   end,
 }
 
+-- TODO:waiting for this
 -- local VirtualEnv = {
 --     init = function(self)
 --         if not self.timer then
@@ -638,27 +643,32 @@ ViMode = utils.surround({ '', '' }, 'bright_bg', { MacroRec, ViMode, Snipp
 local DefaultStatusline = {
   ViMode,
   Space,
-  Spell,
-  WorkDir,
-  FileNameBlock,
+  -- Spell,
+  -- WorkDir,
+  -- FileNameBlock,
   { provider = '%<' },
-  Space,
+  -- Space,
   Git,
   Space,
   Diagnostics,
   Align,
   -- { flexible = 3,   { Navic, Space }, { provider = "" } },
   Align,
+  require 'plugins.heirline.overseer',
   DAPMessages,
   LSPActive,
   -- VirtualEnv,
   Space,
   FileType,
-  { flexible = 3, { FileEncoding, Space }, { provider = '' } },
+  { flexible = 3, { FileEncoding } },
   Space,
+  Arrow,
   Ruler,
   SearchCount,
   Space,
+  FileFormat,
+  -- FileSize,
+  -- FileLastModified,
   ScrollBar,
 }
 
@@ -674,7 +684,7 @@ local SpecialStatusline = {
   condition = function()
     return conditions.buffer_matches {
       buftype = { 'nofile', 'prompt', 'help', 'quickfix' },
-      filetype = { '^git.*', 'fugitive' },
+      filetype = { '^git.*' },
     }
   end,
   FileType,
@@ -684,22 +694,23 @@ local SpecialStatusline = {
   Align,
 }
 
-local GitStatusline = {
-  condition = function()
-    return conditions.buffer_matches {
-      filetype = { '^git.*', 'fugitive' },
-    }
-  end,
-  FileType,
-  Space,
-  {
-    provider = function()
-      return vim.fn.FugitiveStatusline()
-    end,
-  },
-  Space,
-  Align,
-}
+-- local GitStatusline = {
+--   condition = function()
+--     return conditions.buffer_matches {
+--       filetype = { '^git.*', 'fugitive', 'gitcommit' },
+--     }
+--   end,
+--   FileType,
+--   Space,
+--   {
+--     provider = function()
+--       -- return vim.fn.FugitiveStatusline()
+--       return 'aksda'
+--     end,
+--   },
+--   Space,
+--   Align,
+-- }
 
 local TerminalStatusline = {
   condition = function()
@@ -751,7 +762,7 @@ local StatusLines = {
 }
 
 local CloseButton = {
-  condition = function(self)
+  condition = function()
     return not vim.bo.modified
   end,
   update = { 'WinNew', 'WinClosed', 'BufEnter' },
@@ -795,7 +806,7 @@ local WinBar = {
   --     CloseButton,
   --   }),
   -- },
-  utils.surround({ '', '' }, 'bright_bg', {
+  utils.surround({ '', '' }, nil, {
     fallthrough = false,
     {
       condition = function()
@@ -817,6 +828,7 @@ local WinBar = {
         -- condition = function()
         --   return conditions.buffer_matches { buftype = { 'TelescopePrompt' } }
         -- end,
+        WorkDir,
         FileNameBlock,
         CloseButton,
       },

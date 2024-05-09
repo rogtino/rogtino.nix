@@ -287,6 +287,7 @@ return {
     },
     config = true,
     branch = 'nightly',
+    cmd = 'Neogit',
     keys = {
       {
         '<leader>gn',

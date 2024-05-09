@@ -78,10 +78,10 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       -- slow
-      {
-        'folke/neodev.nvim',
-        config = true,
-      },
+      -- {
+      --   'folke/neodev.nvim',
+      --   config = true,
+      -- },
       {
         'mfussenegger/nvim-lint',
         config = function()
