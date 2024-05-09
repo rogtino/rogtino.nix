@@ -37,19 +37,19 @@ return {
       tabline = require 'plugins.heirline.tabline',
       statuscolumn = require 'plugins.heirline.statuscolumn',
       opts = {
-        -- disable_winbar_cb = function(args)
-        --   if vim.bo[args.buf].filetype == 'neo-tree' then
-        --     return
-        --   end
-        --   return conditions.buffer_matches({
-        --     buftype = { 'nofile', 'prompt', 'help', 'quickfix' },
-        --     filetype = { '^git.*', 'fugitive', 'Trouble', 'dashboard' },
-        --   }, args.buf)
-        -- end,
+        disable_winbar_cb = function(args)
+          if vim.bo[args.buf].filetype == 'neo-tree' then
+            return
+          end
+          return conditions.buffer_matches({
+            buftype = { 'nofile', 'prompt', 'help', 'quickfix' },
+            filetype = { '^git.*', 'fugitive', 'Trouble', 'dashboard' },
+          }, args.buf)
+        end,
         colors = setup_colors,
       },
     }
-    vim.o.statuscolumn = require('heirline').eval_statuscolumn()
+    -- vim.o.statuscolumn = require('heirline').eval_statuscolumn()
 
     vim.api.nvim_create_augroup('Heirline', { clear = true })
 

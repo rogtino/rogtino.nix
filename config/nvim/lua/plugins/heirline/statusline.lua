@@ -799,7 +799,8 @@ local WinBar = {
     fallthrough = false,
     {
       condition = function()
-        return conditions.is_not_active() and conditions.buffer_matches { buftype = { 'noice' } }
+        return conditions.is_not_active()
+        -- and conditions.buffer_matches { buftype = { 'noice' } }
       end,
       {
         hl = { fg = 'bright_fg', force = true },
@@ -813,9 +814,9 @@ local WinBar = {
       { provider = '%<' },
       Align,
       {
-        condition = function()
-          return conditions.buffer_matches { buftype = { 'TelescopePrompt' } }
-        end,
+        -- condition = function()
+        --   return conditions.buffer_matches { buftype = { 'TelescopePrompt' } }
+        -- end,
         FileNameBlock,
         CloseButton,
       },
