@@ -25,4 +25,4 @@ jobs:
       - uses: cachix/install-nix-action@v25
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Run Nix Flake Check
-        run: nix flake check -v
+        run: nix flake check -v -L
