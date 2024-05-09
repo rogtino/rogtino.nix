@@ -74,12 +74,12 @@
   (#set! conceal "I")
 )
 
-(
-  (identifier) @function
-  (#eq? @function "utils")
-  (#set! conceal "")
-  ; (#set! conceal "U")
-)
+; (
+;   (identifier) @function
+;   (#eq? @function "utils")
+;   (#set! conceal "")
+;   ; (#set! conceal "U")
+; )
 
 ; (
 ;   (dot_index_expression

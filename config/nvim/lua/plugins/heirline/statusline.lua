@@ -798,7 +798,9 @@ local WinBar = {
   utils.surround({ '', '' }, 'bright_bg', {
     fallthrough = false,
     {
-      condition = conditions.is_not_active,
+      condition = function()
+        return conditions.is_not_active() and conditions.buffer_matches { buftype = { 'noice' } }
+      end,
       {
         hl = { fg = 'bright_fg', force = true },
         FileNameBlock,
@@ -810,8 +812,13 @@ local WinBar = {
       Navic,
       { provider = '%<' },
       Align,
-      FileNameBlock,
-      CloseButton,
+      {
+        condition = function()
+          return conditions.buffer_matches { buftype = { 'TelescopePrompt' } }
+        end,
+        FileNameBlock,
+        CloseButton,
+      },
     },
   }),
 }
