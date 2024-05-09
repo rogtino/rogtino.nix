@@ -654,7 +654,7 @@ local DefaultStatusline = {
   Align,
   -- { flexible = 3,   { Navic, Space }, { provider = "" } },
   Align,
-  require 'plugins.heirline.overseer',
+  require 'plugins.heirline.seer',
   DAPMessages,
   LSPActive,
   -- VirtualEnv,
