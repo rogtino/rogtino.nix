@@ -23,16 +23,16 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 require('lazy').setup({
   { import = 'plugins' },
-  {
-    dir = '~/dev/neovim/heyoo/',
-    lazy = false,
-    -- config = function(_, opts)
-    --   print 'config'
-    -- end,
-    -- opts = function(_, opts)
-    --   print 'opts'
-    -- end,
-  },
+  -- {
+  --   dir = '~/dev/neovim/heyoo/',
+  --   lazy = false,
+  --   -- config = function(_, opts)
+  --   --   print 'config'
+  --   -- end,
+  --   -- opts = function(_, opts)
+  --   --   print 'opts'
+  --   -- end,
+  -- },
   -- {
   --   dir = '~/neovim/heyoo/',
   --   config = function()

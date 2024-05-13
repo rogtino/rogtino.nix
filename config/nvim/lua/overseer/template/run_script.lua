@@ -18,6 +18,9 @@ return {
     if vim.bo.filetype == 'lua' then
       cmd = { 'nvim', '-l', file }
     end
+    if vim.bo.filetype == 'javascript' then
+      cmd = { 'node', file }
+    end
     return {
       cmd = cmd,
       components = {
@@ -28,6 +31,6 @@ return {
     }
   end,
   condition = {
-    filetype = { 'sh', 'python', 'go', 'rust', 'lua', 'nu' },
+    filetype = { 'sh', 'python', 'go', 'rust', 'lua', 'nu', 'javascript' },
   },
 }

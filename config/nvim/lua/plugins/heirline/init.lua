@@ -120,7 +120,7 @@ return {
             local bufnr = args.buf
             local client = vim.lsp.get_client_by_id(args.data.client_id)
             ---@diagnostic disable-next-line: need-check-nil
-            if not vim.tbl_contains({ 'copilot', 'ltex' }, client.name) then
+            if not vim.tbl_contains({ 'copilot', 'ltex', 'tailwindcss', 'emmet_language_server' }, client.name) then
               require('nvim-navic').attach(client, bufnr)
             end
           end,
