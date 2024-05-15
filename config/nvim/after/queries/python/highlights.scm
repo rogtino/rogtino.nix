@@ -4,4 +4,4 @@
  (identifier)@function_definition
  )
 
-(("async" @keyword) (#set! conceal "𝒜"))
+(("async" @keyword) (#set! conceal "𝜜"))

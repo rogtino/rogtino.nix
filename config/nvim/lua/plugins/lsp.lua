@@ -57,6 +57,7 @@ local function config()
     solidity_ls = {},
     phpactor = {},
     qmlls = {},
+    -- autotools_ls = {},
     typst_lsp = { settings = { exportPdf = 'onSave' } },
   }
   for client, setup in pairs(servers) do

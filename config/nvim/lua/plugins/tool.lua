@@ -96,7 +96,7 @@ return {
             gs.next_hunk()
           end)
           return '<Ignore>'
-        end, { expr = true })
+        end, { expr = true, desc = 'next git change' })
 
         map('n', '[c', function()
           if vim.wo.diff then
@@ -106,7 +106,7 @@ return {
             gs.prev_hunk()
           end)
           return '<Ignore>'
-        end, { expr = true })
+        end, { expr = true, desc = 'previous git change' })
 
         -- Actions
         map('n', '<leader>gs', gs.stage_hunk, { desc = 'stage hunk' })

@@ -147,6 +147,7 @@ local function config()
           luasnip = '[SNIP]',
           nvim_lua = '[Lua]',
           latex_symbols = '[LaTeX]',
+          ['vim-dadbod-completion'] = '[DB]',
         },
         before = tailwind.formatter,
       },
@@ -164,6 +165,13 @@ local function config()
     confirm_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false },
     experimental = { ghost_text = true },
   }
+  cmp.setup.filetype({ 'sql' }, {
+    sources = {
+      { name = 'vim-dadbod-completion' },
+      { name = 'luasnip' },
+      { name = 'buffer' },
+    },
+  })
   require('luasnip.loaders.from_lua').lazy_load {
     paths = { vim.fn.stdpath 'config' .. '/snippets' },
     default_priority = 2000,

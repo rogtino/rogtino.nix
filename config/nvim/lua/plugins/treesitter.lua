@@ -42,7 +42,7 @@ local function config()
       'luadoc',
       'make',
       'markdown_inline',
-      -- "nu",
+      'nu',
       'sql',
       'kdl',
       'toml',
@@ -164,6 +164,8 @@ return {
     event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      { 'nushell/tree-sitter-nu', ft = 'nu' },
+      'nvim-treesitter/nvim-treesitter-context',
     },
   },
   -- { "m-demare/hlargs.nvim", config = true },
@@ -190,7 +192,6 @@ return {
     end,
     event = 'VeryLazy',
   },
-  { 'nushell/tree-sitter-nu', ft = 'nu' },
   {
     'lewis6991/satellite.nvim',
     event = 'VeryLazy',
