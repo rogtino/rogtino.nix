@@ -1,7 +1,7 @@
-local conditions = require 'heirline.conditions'
+-- local conditions = require 'heirline.conditions'
 local utils = require 'heirline.utils'
 local icons = require('plugins.heirline.common').icons
-local separators = require('plugins.heirline.common').separators
+-- local separators = require('plugins.heirline.common').separators
 
 local TablineBufnr = {
   provider = function(self)
@@ -27,18 +27,18 @@ local TablineFileName = {
 local TablineFileFlags = {
   {
     condition = function(self)
-      return vim.api.nvim_buf_get_option(self.bufnr, 'modified')
+      return vim.api.nvim_get_option_value('modified', { buf = self.bufnr })
     end,
     provider = ' ● ', --"[+]",
     hl = { fg = 'green' },
   },
   {
     condition = function(self)
-      return not vim.api.nvim_buf_get_option(self.bufnr, 'modifiable')
-        or vim.api.nvim_buf_get_option(self.bufnr, 'readonly')
+      return not vim.api.nvim_get_option_value('modifiable', { buf = self.bufnr })
+        or vim.api.nvim_get_option_value('readonly', { buf = self.bufnr })
     end,
     provider = function(self)
-      if vim.api.nvim_buf_get_option(self.bufnr, 'buftype') == 'terminal' then
+      if vim.api.nvim_get_option_value('buftype', { buf = self.bufnr }) == 'terminal' then
         return '  '
       else
         return ''
@@ -84,7 +84,7 @@ local TablineFileNameBlock = {
     end
   end,
   on_click = {
-    callback = function(self, minwid, nclicks)
+    callback = function(_, minwid, nclicks)
       if nclicks == 1 then
         vim.api.nvim_win_set_buf(0, minwid)
       elseif nclicks == 2 then
@@ -112,7 +112,7 @@ local TablineFileNameBlock = {
 local TablineCloseButton = {
   condition = function(self)
     -- return not vim.bo[self.bufnr].modified
-    return not vim.api.nvim_buf_get_option(self.bufnr, 'modified')
+    return not vim.api.nvim_get_option_value('modified', { buf = self.bufnr })
   end,
   { provider = ' ' },
   {
@@ -183,14 +183,14 @@ end, { TablinePicker, TablineFileNameBlock, TablineCloseButton })
 
 local get_bufs = function()
   return vim.tbl_filter(function(bufnr)
-    return vim.api.nvim_buf_get_option(bufnr, 'buflisted')
+    return vim.api.nvim_get_option_value('buflisted', { buf = bufnr })
   end, vim.api.nvim_list_bufs())
 end
 
 local buflist_cache = {}
 
 vim.api.nvim_create_autocmd({ 'VimEnter', 'UIEnter', 'BufAdd', 'BufDelete' }, {
-  callback = function(args)
+  callback = function(_)
     vim.schedule(function()
       local buffers = get_bufs()
       for i, v in ipairs(buffers) do
@@ -265,7 +265,7 @@ local TabLineOffset = {
     local bufnr = vim.api.nvim_win_get_buf(win)
     self.winid = win
 
-    if vim.api.nvim_buf_get_option(bufnr, 'filetype') == 'neo-tree' then
+    if vim.api.nvim_get_option_value('filetype', { buf = bufnr }) == 'neo-tree' then
       self.title = 'NeoTree'
       return true
     end
@@ -286,7 +286,7 @@ local TabLineOffset = {
 }
 
 vim.api.nvim_create_autocmd({ 'VimEnter', 'UIEnter', 'BufAdd', 'BufDelete' }, {
-  callback = function(args)
+  callback = function(_)
     local counts = {}
     local dupes = {}
     local names = vim.tbl_map(function(bufnr)

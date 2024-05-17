@@ -350,4 +350,13 @@ return {
   --         -- See sections below for detailed instructions on setting up this model.
   --     },
   -- },
+  {
+    'nvimdev/lspsaga.nvim',
+    config = true,
+    event = 'LspAttach',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter', -- optional
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
+  },
 }
