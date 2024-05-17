@@ -78,11 +78,11 @@ return {
     {
       '<leader>pb',
       function()
-        return vim.cmd.Telescope 'buffers'
+        vim.cmd.Telescope 'buffers'
       end,
       desc = 'pick-buffer',
     },
-    { '<leader>hh', ':Telescope help_tags<CR>', desc = 'help' },
+    { '<leader>hh', ':Telescope help_tags<CR>', desc = 'help', silent = true },
     {
       '<leader>pm',
       function()

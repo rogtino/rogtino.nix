@@ -65,7 +65,7 @@ vim.keymap.set('n', 'K', function()
   local winid = require('ufo').peekFoldedLinesUnderCursor()
   if not winid then
     if next(vim.lsp.get_clients { bufnr = 0 }) then
-      vim.lsp.buf.hover()
+      vim.cmd.Lspsaga 'hover_doc'
     else
       local word = vim.fn.expand '<cword>'
       vim.cmd('Man ' .. word)

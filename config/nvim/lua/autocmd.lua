@@ -31,24 +31,15 @@ vim.api.nvim_create_autocmd('FileType', {
 --   end,
 -- })
 
-vim.api.nvim_create_autocmd('LspAttach', {
-  pattern = '*',
-  group = userlspocnfig,
-  callback = function()
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'go to declaration' })
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'go to definition' })
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = 'go to implementation' })
-    vim.keymap.set('n', '<c-leftmouse>', vim.lsp.buf.declaration)
-    vim.keymap.set('n', '<c-rightmouse>', '<c-o>')
-    vim.keymap.set('n', '<rightmouse>', vim.lsp.buf.hover)
-    vim.keymap.set('n', '<leader>lc', vim.lsp.buf.code_action, { desc = 'code action' })
-    vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'rename symbol' })
-    vim.keymap.set('n', '<leader>li', vim.lsp.buf.incoming_calls, { desc = 'incoming calls' })
-    vim.keymap.set('n', '<leader>lo', vim.lsp.buf.outgoing_calls, { desc = 'outgoing calls' })
-    vim.keymap.set('n', '<leader>lm', vim.cmd.LspInfo, { desc = 'lspinfo' })
-    vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, { desc = 'open current diagnostic' })
-  end,
-})
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--   pattern = '*',
+--   group = userlspocnfig,
+--   callback = function()
+--     vim.keymap.set('n', '<c-leftmouse>', vim.lsp.buf.declaration)
+--     vim.keymap.set('n', '<c-rightmouse>', '<c-o>')
+--     vim.keymap.set('n', '<rightmouse>', vim.lsp.buf.hover)
+--   end,
+-- })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',

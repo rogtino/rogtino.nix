@@ -149,17 +149,16 @@ return {
         '<cmd>Trouble diagnostics toggle filter.buf=0 focus=true<cr>',
         desc = 'Buffer Diagnostics (Trouble)',
       },
-      {
-        '<leader>ls',
-        '<cmd>Trouble symbols toggle focus=true<cr>',
-        desc = 'Symbols (Trouble)',
-      },
-      -- TODO: use float win when it stables
-      {
-        '<leader>lf',
-        '<cmd>Trouble lsp toggle focus=true win.position=left<cr>',
-        desc = 'LSP finder (Trouble)',
-      },
+      -- {
+      --   '<leader>ls',
+      --   '<cmd>Trouble symbols toggle focus=true<cr>',
+      --   desc = 'Symbols (Trouble)',
+      -- },
+      -- {
+      --   '<leader>lf',
+      --   '<cmd>Trouble lsp toggle focus=true win.position=left<cr>',
+      --   desc = 'LSP finder (Trouble)',
+      -- },
       -- {
       -- 	"<leader>lp",
       -- 	"<cmd>Trouble lsp toggle_preview focus=true win.position=left<cr>",

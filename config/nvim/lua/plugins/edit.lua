@@ -358,5 +358,101 @@ return {
       'nvim-treesitter/nvim-treesitter', -- optional
       'nvim-tree/nvim-web-devicons', -- optional
     },
+    keys = {
+      {
+        '<leader>lpD',
+        function()
+          vim.cmd.Lspsaga 'peek_type_definition'
+        end,
+        desc = 'peek declaration',
+      },
+      {
+        '<leader>lpd',
+        function()
+          vim.cmd.Lspsaga 'peek_definition'
+        end,
+        desc = 'peek definition',
+      },
+      {
+        'gD',
+        function()
+          vim.cmd.Lspsaga 'goto_type_definition'
+        end,
+        desc = 'go to declaration',
+      },
+      {
+        'gd',
+        function()
+          vim.cmd.Lspsaga 'goto_definition'
+        end,
+        desc = 'go to definition',
+      },
+      {
+        '<leader>lc',
+        function()
+          vim.cmd.Lspsaga 'code_action'
+        end,
+        desc = 'code action',
+      },
+      {
+        '<leader>ls',
+        function()
+          vim.cmd.Lspsaga 'outline'
+        end,
+        desc = 'symbols outline',
+      },
+      {
+        '<leader>li',
+        function()
+          vim.cmd.Lspsaga 'incoming_calls'
+        end,
+        desc = 'incoming calls',
+      },
+      {
+        '<leader>lo',
+        function()
+          vim.cmd.Lspsaga 'outgoing_calls'
+        end,
+        desc = 'outgoing calls',
+      },
+      {
+        '<leader>lf',
+        function()
+          vim.cmd.Lspsaga 'finder'
+        end,
+        desc = 'lsp finder',
+      },
+      {
+        ']d',
+        function()
+          vim.cmd.Lspsaga 'diagnostic_jump_next'
+        end,
+        desc = 'next diagnostic',
+      },
+      {
+        '[d',
+        function()
+          vim.cmd.Lspsaga 'diagnostic_jump_prev'
+        end,
+        desc = 'previous diagnostic',
+      },
+      {
+        '<leader>lr',
+        function()
+          vim.cmd.Lspsaga 'rename'
+        end,
+        desc = 'rename symbol',
+      },
+      {
+        '<leader>lm',
+        vim.cmd.LspInfo,
+        desc = 'lspinfo',
+      },
+      {
+        '<leader>ld',
+        vim.diagnostic.open_float,
+        desc = 'open current diagnostic',
+      },
+    },
   },
 }

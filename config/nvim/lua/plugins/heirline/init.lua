@@ -5,7 +5,7 @@ return {
   -- to make sure all required plugins and colorschemes are loaded before setup
   event = 'UiEnter',
   config = function()
-    local conditions = require 'heirline.conditions'
+    -- local conditions = require 'heirline.conditions'
     local utils = require 'heirline.utils'
     local function setup_colors()
       return {
@@ -35,16 +35,16 @@ return {
     require('heirline').setup {
       statusline = require('plugins.heirline.statusline').statusline,
       -- statusline = require 'plugins.heirline.example',
-      winbar = require('plugins.heirline.statusline').winbar,
+      -- winbar = require('plugins.heirline.statusline').winbar,
       tabline = require 'plugins.heirline.tabline',
       -- statuscolumn = require 'plugins.heirline.statuscolumn',
       opts = {
-        disable_winbar_cb = function(args)
-          return conditions.buffer_matches({
-            buftype = { 'nofile', 'prompt', 'help', 'quickfix', 'terminal' },
-            filetype = { '^git.*', 'trouble', 'neo-tree' },
-          }, args.buf)
-        end,
+        -- disable_winbar_cb = function(args)
+        --   return conditions.buffer_matches({
+        --     buftype = { 'nofile', 'prompt', 'help', 'quickfix', 'terminal' },
+        --     filetype = { '^git.*', 'trouble', 'neo-tree' },
+        --   }, args.buf)
+        -- end,
         colors = setup_colors,
       },
     }
