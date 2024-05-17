@@ -359,11 +359,6 @@ return {
         desc = 'load session',
       },
       {
-        '<leader>ld',
-        '<cmd>SessionManager load_current_dir_session<CR>',
-        desc = 'load current session',
-      },
-      {
         '<leader>la',
         '<cmd>SessionManager load_last_session<CR>',
         desc = 'load last session',

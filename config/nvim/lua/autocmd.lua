@@ -41,16 +41,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<c-leftmouse>', vim.lsp.buf.declaration)
     vim.keymap.set('n', '<c-rightmouse>', '<c-o>')
     vim.keymap.set('n', '<rightmouse>', vim.lsp.buf.hover)
-    -- vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "previous diagnostic" })
-    -- vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "next diagnostic" })
     vim.keymap.set('n', '<leader>lc', vim.lsp.buf.code_action, { desc = 'code action' })
     vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'rename symbol' })
     vim.keymap.set('n', '<leader>li', vim.lsp.buf.incoming_calls, { desc = 'incoming calls' })
     vim.keymap.set('n', '<leader>lo', vim.lsp.buf.outgoing_calls, { desc = 'outgoing calls' })
     vim.keymap.set('n', '<leader>lm', vim.cmd.LspInfo, { desc = 'lspinfo' })
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'next diagnostic' })
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'prev diagnostic' })
-    vim.keymap.set('n', ']]', vim.diagnostic.open_float, { desc = 'open current diagnostic' })
+    vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, { desc = 'open current diagnostic' })
   end,
 })
 

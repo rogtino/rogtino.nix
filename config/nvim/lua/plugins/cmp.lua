@@ -172,6 +172,23 @@ local function config()
       { name = 'buffer' },
     },
   })
+  -- cmp.setup.cmdline('/', {
+  --   mapping = cmp.mapping.preset.cmdline(),
+  --   sources = {
+  --     { name = 'buffer' },
+  --   },
+  -- })
+
+  -- `:` cmdline setup.
+  -- cmp.setup.cmdline(':', {
+  --   mapping = cmp.mapping.preset.cmdline(),
+  --   sources = cmp.config.sources({
+  --     { name = 'path' },
+  --   }, {
+  --     { name = 'cmdline' },
+  --   }),
+  --   matching = { disallow_symbol_nonprefix_matching = false },
+  -- })
   require('luasnip.loaders.from_lua').lazy_load {
     paths = { vim.fn.stdpath 'config' .. '/snippets' },
     default_priority = 2000,
