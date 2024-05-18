@@ -108,7 +108,7 @@ return {
         path_display = { 'smart' },
         file_ignore_patterns = { '.git/', 'node_modules' },
         layout_strategy = 'center',
-        border = false,
+        border = true,
         layout_config = {
           anchor = 'N',
           preview_cutoff = 1,

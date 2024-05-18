@@ -9,29 +9,15 @@ return {
         type = 'server',
       }
       dap.set_log_level 'TRACE'
-      dap.adapters.python = { type = 'executable', command = '/usr/bin/python', args = { '-m', 'debugpy.adapter' } }
-      dap.configurations.python = {
-        {
-          type = 'python',
-          request = 'launch',
-          name = 'Launch file',
-          program = '${file}',
-          pythonPath = function()
-            local cwd = vim.fn.getcwd()
-            if vim.fn.executable((cwd .. '/venv/bin/python')) == 1 then
-              return (cwd .. '/venv/bin/python')
-            elseif vim.fn.executable((cwd .. '/.venv/bin/python')) == 1 then
-              return (cwd .. '/.venv/bin/python')
-            else
-              return '/usr/bin/python'
-            end
-          end,
-        },
+      dap.adapters.gdb = {
+        type = 'executable',
+        command = 'gdb',
+        args = { '-i', 'dap', '-n' },
       }
       dap.configurations.cpp = {
         {
           name = 'Launch',
-          type = 'codelldb',
+          type = 'gdb',
           request = 'launch',
           program = function()
             return vim.fn.input('Path to executable: ', (vim.fn.getcwd() .. '/'), 'file')
@@ -48,26 +34,32 @@ return {
       {
         '<F5>',
         ":lua require'dap'.continue()<CR>",
+        silent = true,
       },
       {
         '<F8>',
         ":lua require'dap'.step_over()<CR>",
+        silent = true,
       },
       {
         '<F7>',
         ":lua require'dap'.step_into()<CR>",
+        silent = true,
       },
+      -- {
+      --   '<F9>',
+      --   ":lua require'dap'.repl.toggle()<CR>",
+      --   silent = true,
+      -- },
       {
-        '<F9>',
-        ":lua require'dap'.repl.toggle()<CR>",
-      },
-      {
-        'do',
+        '<leader>do',
         ":lua require'dapui'.toggle()<CR>",
+        silent = true,
       },
       {
         '<F2>',
         ":lua require'persistent-breakpoints.api'.toggle_breakpoint()<CR>",
+        silent = true,
       },
     },
   },
@@ -78,13 +70,51 @@ return {
       'mfussenegger/nvim-dap',
       'nvim-neotest/nvim-nio',
       { 'theHamsta/nvim-dap-virtual-text', config = true },
+      {
+        'mfussenegger/nvim-dap-python',
+        config = function()
+          local cwd = vim.fn.getcwd()
+          if vim.fn.executable((cwd .. '/venv/bin/python')) == 1 then
+            cwd = cwd .. '/venv/bin/python'
+          elseif vim.fn.executable((cwd .. '/.venv/bin/python')) == 1 then
+            cwd = cwd .. '/.venv/bin/python'
+          else
+            cwd = '/usr/bin/python'
+          end
+          require('dap-python').setup(cwd)
+        end,
+        keys = {
+          {
+            '<leader>dm',
+            ":lua require('dap-python').test_method()<CR>",
+            silent = true,
+            ft = 'python',
+            desc = 'test method',
+          },
+          {
+            '<leader>dc',
+            ":lua require('dap-python').test_class()<CR>",
+            silent = true,
+            ft = 'python',
+            desc = 'test class',
+          },
+          {
+            '<leader>ds',
+            "<ESC>:lua require('dap-python').debug_selection()<CR>",
+            mode = 'v',
+            ft = 'python',
+            silent = true,
+            desc = 'test selection',
+          },
+        },
+      },
     },
     config = true,
   },
   -- can't lazy load it
-  -- {
-  -- 	"Weissle/persistent-breakpoints.nvim",
-  -- 	opts = { load_breakpoints_event = { "BufReadPost" } },
-  -- 	lazy = false,
-  -- },
+  {
+    'Weissle/persistent-breakpoints.nvim',
+    opts = { load_breakpoints_event = { 'BufReadPost' } },
+    lazy = false,
+  },
 }

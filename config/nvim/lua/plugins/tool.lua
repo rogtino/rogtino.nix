@@ -432,13 +432,14 @@ return {
         desc = 'lazygit',
       },
       {
-        '<leader>x',
+        '<localleader>r',
         function()
           local Terminal = require('toggleterm.terminal').Terminal
           local xmake = Terminal:new { cmd = 'xmake run', hidden = true, direction = 'float', close_on_exit = false }
           return xmake:toggle()
         end,
-        desc = 'xmake',
+        ft = 'cpp',
+        desc = 'xmake run',
       },
       {
         '<leader>t1',
