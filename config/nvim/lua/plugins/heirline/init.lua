@@ -36,7 +36,7 @@ return {
       statusline = require('plugins.heirline.statusline').statusline,
       -- statusline = require 'plugins.heirline.example',
       -- winbar = require('plugins.heirline.statusline').winbar,
-      tabline = require 'plugins.heirline.tabline',
+      -- tabline = require 'plugins.heirline.tabline',
       -- statuscolumn = require 'plugins.heirline.statuscolumn',
       opts = {
         -- disable_winbar_cb = function(args)

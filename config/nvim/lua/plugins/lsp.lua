@@ -10,19 +10,19 @@ local function config()
           completion = { callSnippet = 'Replace' },
           hint = { enable = true },
           workspace = {
-            -- library = {
-            --   -- require("neodev.config").types(),
-            --   vim.env.VIMRUNTIME,
-            -- },
-            --
+            library = {
+              require('neodev.config').types(),
+              vim.env.VIMRUNTIME,
+            },
+
             diagnostics = {
               globals = { 'vim' },
             },
-            library = {
-              [vim.fn.expand '$VIMRUNTIME/lua'] = true,
-              [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
-              [vim.fn.stdpath 'data' .. '/lazy/lazy.nvim/lua/lazy'] = true,
-            },
+            -- library = {
+            --   [vim.fn.expand '$VIMRUNTIME/lua'] = true,
+            --   [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
+            --   [vim.fn.stdpath 'data' .. '/lazy/lazy.nvim/lua/lazy'] = true,
+            -- },
             maxPreload = 100000,
             preloadFileSize = 10000,
             checkThirdParty = false,
@@ -79,10 +79,10 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       -- slow
-      -- {
-      --   'folke/neodev.nvim',
-      --   config = true,
-      -- },
+      {
+        'folke/neodev.nvim',
+        config = true,
+      },
       {
         'mfussenegger/nvim-lint',
         config = function()

@@ -16,13 +16,13 @@ local Stc = {
       end
     end,
     handlers = {
-      ['GitSigns.*'] = function(args)
+      ['GitSigns.*'] = function()
         require('gitsigns').preview_hunk_inline()
       end,
-      ['Dap.*'] = function(args)
+      ['Dap.*'] = function()
         require('dap').toggle_breakpoint()
       end,
-      ['Diagnostic.*'] = function(args)
+      ['Diagnostic.*'] = function()
         vim.diagnostic.open_float() -- { pos = args.mousepos.line - 1, relative = "mouse" })
       end,
     },
@@ -53,7 +53,7 @@ local Stc = {
     -- end,
 
     on_click = {
-      callback = function(self, ...)
+      callback = function(self)
         local mousepos = vim.fn.getmousepos()
         vim.api.nvim_win_set_cursor(0, { mousepos.line, mousepos.column })
         local sign_at_cursor = vim.fn.screenstring(mousepos.screenrow, mousepos.screencol)

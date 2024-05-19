@@ -1,8 +1,8 @@
 local M = {}
 
 local fn = vim.fn
-local api = vim.api
-local map = vim.keymap.set
+-- local api = vim.api
+-- local map = vim.keymap.set
 
 fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
 fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })

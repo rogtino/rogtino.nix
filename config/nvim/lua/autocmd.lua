@@ -1,4 +1,4 @@
-local userlspocnfig = vim.api.nvim_create_augroup('UserLspConfig', {})
+-- local userlspocnfig = vim.api.nvim_create_augroup('UserLspConfig', {})
 -- this is to fix bug: https://github.com/folke/which-key.nvim/issues/476
 vim.api.nvim_create_autocmd('FileType', {
   desc = 'Set up neorg Which-Key descriptions',
