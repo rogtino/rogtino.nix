@@ -211,6 +211,6 @@ return {
     'saadparwaiz1/cmp_luasnip',
     'onsails/lspkind.nvim',
   },
-  event = 'InsertEnter',
+  event = { 'InsertEnter', 'LspAttach' },
   config = config,
 }
