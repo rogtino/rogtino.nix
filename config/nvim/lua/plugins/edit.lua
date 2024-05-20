@@ -133,24 +133,15 @@ return {
   },
   {
     'numToStr/Comment.nvim',
-    -- init = function()
-    -- 	vim.keymap.set({ "n", "v", "o" }, "gc", "<nop>")
-    -- 	vim.keymap.set({ "n", "v", "o" }, "gcc", "<nop>")
-    -- end,
+    init = function()
+      -- disable builtins for now
+      vim.cmd.unmap 'gc'
+      vim.cmd.unmap 'gcc'
+    end,
     opts = function(_, opts)
       opts.pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()
     end,
-    -- event = "VeryLazy",
-    keys = {
-      {
-        'gc',
-        mode = {
-          'n',
-          'v',
-        },
-        desc = 'comment line',
-      },
-    },
+    event = 'VeryLazy',
     ft = { 'typescriptreact', 'javascriptreact' },
     dependencies = {
       'JoosepAlviste/nvim-ts-context-commentstring',

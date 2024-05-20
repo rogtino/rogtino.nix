@@ -35,6 +35,9 @@ return {
         'kkharji/sqlite.lua',
         lazy = true,
         config = function()
+          if string.find(vim.uv.os_uname().version, 'Windows') then
+            vim.g.sqlite_clib_path = vim.fn.expand("~/sqlite3.dll")
+          end
           if string.find(vim.uv.os_uname().version, 'NixOS') then
             local Job = require 'plenary.job'
             local sqlite3_path = vim.fn.stdpath 'config' .. '/sqlite3.path'

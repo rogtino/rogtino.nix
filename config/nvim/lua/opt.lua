@@ -63,6 +63,11 @@ opt.foldexpr = 'nvim_treesitter#foldexpr'
 -- opt.statuscolumn = "%s%C"
 opt.showbreak = '  󰘍'
 opt.shell = 'nu'
+if vim.g.iswin then
+  opt.shellcmdflag = '-c'
+  opt.shellquote = ''
+  opt.shellxquote = ''
+end
 opt.shortmess:append { I = true, r = true }
 opt.diffopt:append 'linematch:60' -- enable linematch diff algorithm
 opt.formatoptions:append 'r'

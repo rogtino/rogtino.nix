@@ -286,7 +286,7 @@ return {
       'nvim-telescope/telescope.nvim', -- optional
     },
     config = true,
-    branch = 'nightly',
+    -- branch = 'nightly',
     cmd = 'Neogit',
     keys = {
       {
@@ -390,7 +390,7 @@ return {
       persist_size = true,
       direction = 'horizontal',
       close_on_exit = true,
-      shell = vim.o.shell,
+      shell = 'nu',
       float_opts = {
         border = 'curved',
         winblend = 3,

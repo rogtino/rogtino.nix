@@ -77,10 +77,11 @@ $env.NU_PLUGIN_DIRS = [
 $env.VCPKG_ROOT = "/opt/vcpkg"
 $env.VCPKG_DOWNLOADS = "/var/cache/vcpkg"
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
-$env.PATH = ($env.PATH | split row (char esep))
 if $nu.os-info.name == "windows" {
+    $env.Path = ($env.Path | split row (char esep))
     $env.Path = ($env.Path | append '~/.local/bin' |append '~/.cargo/bin')
 } else {
+    $env.PATH = ($env.PATH | split row (char esep))
     $env.PATH = ($env.PATH | append '~/.local/bin' |prepend '~/.local/share/bob/nvim-bin'| append '~/.cargo/bin'| append '~/.local/share/solana/install/active_release/bin'|append '~/.rye/shims/' | append '~/.config/emacs/bin/' | append '/usr/bin/vendor_perl/')
     $env.PKG_CONFIG_PATH = "/usr/lib/pkgconfig:/usr/local/lib/pkgconfig"
     $env.LD_LIBRARY_PATH = "/usr/lib:/usr/local/lib/"
