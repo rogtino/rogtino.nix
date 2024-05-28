@@ -132,25 +132,31 @@ return {
     },
   },
   {
-    'numToStr/Comment.nvim',
-    init = function()
-      -- disable builtins for now
-      vim.cmd.unmap 'gc'
-      vim.cmd.unmap 'gcc'
-    end,
-    opts = function(_, opts)
-      opts.pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()
-    end,
+    'folke/ts-comments.nvim',
+    opts = {},
     event = 'VeryLazy',
-    ft = { 'typescriptreact', 'javascriptreact' },
-    dependencies = {
-      'JoosepAlviste/nvim-ts-context-commentstring',
-      opts = function(_, opts)
-        vim.g.skip_ts_context_commentstring_module = true
-        opts.enable_autocmd = false
-      end,
-    },
+    enabled = vim.fn.has 'nvim-0.10.0' == 1,
   },
+  -- {
+  --   'numToStr/Comment.nvim',
+  --   init = function()
+  --     -- disable builtins for now
+  --     vim.cmd.unmap 'gc'
+  --     vim.cmd.unmap 'gcc'
+  --   end,
+  --   opts = function(_, opts)
+  --     opts.pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()
+  --   end,
+  --   event = 'VeryLazy',
+  --   ft = { 'typescriptreact', 'javascriptreact' },
+  --   dependencies = {
+  --     'JoosepAlviste/nvim-ts-context-commentstring',
+  --     opts = function(_, opts)
+  --       vim.g.skip_ts_context_commentstring_module = true
+  --       opts.enable_autocmd = false
+  --     end,
+  --   },
+  -- },
   {
     'cshuaimin/ssr.nvim',
     keys = {
