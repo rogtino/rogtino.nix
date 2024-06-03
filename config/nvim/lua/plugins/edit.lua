@@ -178,45 +178,19 @@ return {
     end,
   },
   {
-    'kylechui/nvim-surround',
+    'echasnovski/mini.surround',
     opts = {
-      keymaps = {
-        insert = false,
-        insert_line = false,
-        normal = false,
-        normal_cur = false,
-        normal_line = false,
-        normal_cur_line = false,
-        visual = 'S',
-        visual_line = false,
-        delete = 'ds',
-        change = 'cs',
-        change_line = false,
-      },
-      surrounds = {
-        ['F'] = {
-          add = function()
-            local config = require 'nvim-surround.config'
-            local result = config.get_input 'Enter the generic type name: '
-            if result then
-              return { { result .. '<' }, { '>' } }
-            end
-          end,
-        },
+      mappings = {
+        add = 'gsa',
+        delete = 'gsd',
+        find = 'gsf',
+        find_left = 'gsF',
+        highlight = 'gsh',
+        replace = 'gsr',
+        update_n_lines = 'gsn',
       },
     },
-    keys = {
-      {
-        'ds',
-        desc = 'delete surround',
-      },
-      {
-        'cs',
-        desc = 'change surround',
-      },
-      { 'S', mode = 'x' },
-    },
-    -- event = "VeryLazy",
+    event = 'VeryLazy',
   },
   {
     'windwp/nvim-autopairs',
