@@ -227,7 +227,7 @@ return {
         cpp = { 'clang_format' },
         typescript = { 'deno_fmt' },
         go = { 'gofmt' },
-        rust = { 'rustfmt' },
+        -- rust = { 'rustfmt' },
         toml = { 'taplo' },
         typst = { 'typstfmt' },
         javascriptreact = { 'deno_fmt', 'rustywind' },

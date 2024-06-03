@@ -40,7 +40,6 @@ opt.showmode = false
 opt.undofile = true
 -- opt.laststatus = 0
 opt.signcolumn = 'number'
-opt.clipboard = 'unnamedplus'
 opt.numberwidth = 4
 opt.scrolloff = 99
 opt.softtabstop = 2
@@ -71,3 +70,15 @@ end
 opt.shortmess:append { I = true, r = true }
 opt.diffopt:append 'linematch:60' -- enable linematch diff algorithm
 opt.formatoptions:append 'r'
+-- opt.clipboard = 'unnamedplus'
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+    ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+  },
+  paste = {
+    ['+'] = require('vim.ui.clipboard.osc52').paste '+',
+    ['*'] = require('vim.ui.clipboard.osc52').paste '*',
+  },
+}

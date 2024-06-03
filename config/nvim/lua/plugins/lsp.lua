@@ -10,18 +10,8 @@ local function config()
           completion = { callSnippet = 'Replace' },
           hint = { enable = true },
           workspace = {
-            library = {
-              require('neodev.config').types(),
-              vim.env.VIMRUNTIME,
-            },
-
-            diagnostics = {
-              globals = { 'vim' },
-            },
-            -- library = {
-            --   [vim.fn.expand '$VIMRUNTIME/lua'] = true,
-            --   [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
-            --   [vim.fn.stdpath 'data' .. '/lazy/lazy.nvim/lua/lazy'] = true,
+            -- diagnostics = {
+            --   globals = { 'vim' },
             -- },
             maxPreload = 100000,
             preloadFileSize = 10000,
@@ -78,11 +68,16 @@ return {
     config = config,
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      -- slow
       {
-        'folke/neodev.nvim',
-        config = true,
+        'folke/lazydev.nvim',
+        ft = 'lua', -- only load on lua files
+        opts = {
+          library = {
+            '/luvit-meta/library', -- see below
+          },
+        },
       },
+      { 'Bilal2453/luvit-meta', lazy = true, ft = 'lua' }, -- optional `vim.uv` typings
       {
         'mfussenegger/nvim-lint',
         config = function()
@@ -112,6 +107,14 @@ return {
               vim.lsp.inlay_hint.enable()
             end
           end,
+          default_settings = {
+            -- rust-analyzer language server configuration
+            ['rust-analyzer'] = {
+              rustfmt = {
+                extraArgs = { '+nightly' },
+              },
+            },
+          },
         },
       }
     end,
@@ -136,7 +139,6 @@ return {
   },
   {
     'folke/trouble.nvim',
-    branch = 'dev', -- IMPORTANT!
     cmd = 'Trouble',
     keys = {
       {

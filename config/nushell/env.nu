@@ -92,6 +92,7 @@ if $nu.os-info.name == "windows" {
 
 $env.EDITOR = "nvim"
 $env.GOPROXY = "https://proxy.golang.com.cn,direct"
+$env.GO111MODULE = "on"
 $env.RUSTUP_DIST_SERVER = "https://rsproxy.cn"
 $env.RUSTUP_UPDATE_ROOT = "https://rsproxy.cn/rustup"
 mkdir ~/.cache/starship

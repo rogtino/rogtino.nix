@@ -121,3 +121,11 @@ vim.api.nvim_create_user_command('FormatEnable', function()
 end, {
   desc = 'Re-enable autoformat-on-save',
 })
+
+vim.api.nvim_create_user_command('Toilet', function()
+  vim.o.shell = 'bash'
+  vim.cmd '.!toilet -f future'
+  vim.o.shell = 'nu'
+end, {
+  desc = 'format current line with toilet',
+})
