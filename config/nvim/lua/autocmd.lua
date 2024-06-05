@@ -60,6 +60,7 @@ vim.filetype.add {
     lock = 'json',
     mdx = 'mdx',
     mpp = 'cpp',
+    ua = 'uiua',
   },
 }
 

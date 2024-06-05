@@ -194,7 +194,7 @@ return {
   },
   {
     'windwp/nvim-autopairs',
-    opts = { check_ts = true, disable_filetype = { 'apl', 'TelescopePrompt' } },
+    opts = { check_ts = true, disable_filetype = { 'apl', 'TelescopePrompt', 'uiua' } },
     event = 'InsertEnter',
   },
   {
