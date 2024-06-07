@@ -390,7 +390,8 @@ return {
       persist_size = true,
       direction = 'horizontal',
       close_on_exit = true,
-      shell = 'nu',
+      shell = 'fish',
+      -- shell = 'nu',
       float_opts = {
         border = 'curved',
         winblend = 3,
