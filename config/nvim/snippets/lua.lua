@@ -6,10 +6,6 @@ return {
     i(0),
     t { '', 'end' },
   }),
-  -- TODO: convert user input into toilet -f future
-  -- ##-- function node --##
-  -- ##      input        ##
-  -- ##-- function node --##
   s('regf', fmt('f( function(_, snip) return snip.captures[1] end )', {})),
   s({ trig = 'ee', wordTrig = true }, {
     t { 'else', '\t' },

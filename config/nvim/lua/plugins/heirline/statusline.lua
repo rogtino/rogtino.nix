@@ -50,7 +50,6 @@ local ViMode = {
   provider = function(self)
     return '👾' .. '%2(' .. self.mode_names[self.mode] .. '%)'
   end,
-  --    
   hl = function(self)
     local color = self:mode_color()
     return { fg = color, bold = true }
@@ -163,27 +162,6 @@ local FileFormat = {
     return fmt ~= 'unix' and fmt:upper()
   end,
 }
-
--- local FileSize = {
---   provider = function()
---     -- stackoverflow, compute human readable file size
---     local suffix = { 'b', 'k', 'M', 'G', 'T', 'P', 'E' }
---     local fsize = vim.fn.getfsize(vim.api.nvim_buf_get_name(0))
---     fsize = (fsize < 0 and 0) or fsize
---     if fsize <= 0 then
---       return '0' .. suffix[1]
---     end
---     local i = math.floor((math.log(fsize) / math.log(1024)))
---     return string.format('%.2g%s', fsize / math.pow(1024, i), suffix[i])
---   end,
--- }
-
--- local FileLastModified = {
---   provider = function()
---     local ftime = vim.fn.getftime(vim.api.nvim_buf_get_name(0))
---     return (ftime > 0) and os.date('%c', ftime)
---   end,
--- }
 
 local Ruler = {
   -- %l = current line number
@@ -465,16 +443,6 @@ local TerminalName = {
   },
 }
 
--- local Spell = {
---   condition = function()
---     return vim.wo.spell
---   end,
---   provider = function()
---     return '󰓆 ' .. vim.o.spelllang .. ' '
---   end,
---   hl = { bold = true, fg = 'green' },
--- }
-
 local SearchCount = {
   condition = function()
     return vim.v.hlsearch ~= 0 and vim.o.cmdheight == 0
@@ -510,17 +478,6 @@ local MacroRec = {
   },
   { provider = ' ' },
 }
-
--- WIP
--- local VisualRange = {
---   condition = function()
---     return vim.tbl_containsvim({ 'V', 'v' }, vim.fn.mode())
---   end,
---   provider = function()
---     local start = vim.fn.getpos "'<"
---     local stop = vim.fn.getpos "'>"
---   end,
--- }
 
 local ShowCmd = {
   condition = function()

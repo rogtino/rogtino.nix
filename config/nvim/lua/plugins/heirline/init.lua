@@ -1,11 +1,8 @@
 return {
 
   'rebelot/heirline.nvim',
-  -- You can optionally lazy-load heirline on UiEnter
-  -- to make sure all required plugins and colorschemes are loaded before setup
   event = 'UiEnter',
   config = function()
-    -- local conditions = require 'heirline.conditions'
     local utils = require 'heirline.utils'
     local function setup_colors()
       return {
@@ -31,30 +28,14 @@ return {
 
     vim.o.laststatus = 3
     vim.o.showcmdloc = 'statusline'
-    -- vim.o.spell = true
     require('heirline').setup {
       statusline = require('plugins.heirline.statusline').statusline,
-      -- statusline = require 'plugins.heirline.example',
-      -- winbar = require('plugins.heirline.statusline').winbar,
-      -- tabline = require 'plugins.heirline.tabline',
-      -- statuscolumn = require 'plugins.heirline.statuscolumn',
       opts = {
-        -- disable_winbar_cb = function(args)
-        --   return conditions.buffer_matches({
-        --     buftype = { 'nofile', 'prompt', 'help', 'quickfix', 'terminal' },
-        --     filetype = { '^git.*', 'trouble', 'neo-tree' },
-        --   }, args.buf)
-        -- end,
         colors = setup_colors,
       },
     }
-    -- vim.o.statuscolumn = require('heirline').eval_statuscolumn()
 
     vim.api.nvim_create_augroup('Heirline', { clear = true })
-
-    -- vim.cmd [[au Heirline FileType * if index(['wipe', 'delete'], &bufhidden) >= 0 | set nobuflisted | endif]]
-
-    -- vim.cmd("au BufWinEnter * if &bt != '' | setl stc= | endif")
 
     vim.api.nvim_create_autocmd('ColorScheme', {
       callback = function()

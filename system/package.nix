@@ -45,8 +45,6 @@
     deno
     virt-manager
     # neovim
-    #TODO: write a neovide-nightly-overlay
-    # rebuild everytime neovim gets update
     # neovide
     rizin
     rofi-wayland
