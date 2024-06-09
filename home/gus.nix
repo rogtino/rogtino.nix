@@ -20,7 +20,7 @@ with pkgs; let
     sumneko-lua-language-server
     rust-analyzer
     cmake-language-server
-    ruff-lsp
+    ruff
     nodePackages.bash-language-server
     # solc
   ];
@@ -45,7 +45,7 @@ with pkgs; let
     gitui
     tealdeer
     zellij
-    neovim-nightly
+    neovim
     dust
   ];
   shtools = [
@@ -214,24 +214,27 @@ in {
 
   services.hypridle = {
     enable = true;
-    ignoreDbusInhibit = false;
-    lockCmd = lib.getExe config.programs.hyprlock.package;
-    beforeSleepCmd = "${pkgs.systemd}/bin/loginctl lock-session";
-    listeners = [
-      {
-        timeout = 295;
-        onTimeout = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
-      }
-      {
-        timeout = 300;
-        onTimeout = "${lib.getExe config.programs.hyprlock.package}";
-      }
-      {
-        timeout = 600;
-        onTimeout = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
-        onResume = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
-      }
-    ];
+    settings = {
+      general = {
+        lockCmd = lib.getExe config.programs.hyprlock.package;
+        beforeSleepCmd = "${pkgs.systemd}/bin/loginctl lock-session";
+      };
+      listeners = [
+        {
+          timeout = 295;
+          onTimeout = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
+        }
+        {
+          timeout = 300;
+          onTimeout = "${lib.getExe config.programs.hyprlock.package}";
+        }
+        {
+          timeout = 600;
+          onTimeout = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
+          onResume = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
+        }
+      ];
+    };
   };
   programs = {
     ags = {
@@ -250,60 +253,62 @@ in {
     # command-not-found.enable = true;
     hyprlock = {
       enable = true;
-      backgrounds = let
-        wallpaperPath = "/home/gus/Pictures/wallpapers/03366b011ece465696cfad1e87b2ee6e.png";
-      in [
-        {
-          monitor = "eDP-1";
-          path = wallpaperPath;
-        }
-      ];
-      general = {
-        grace = 5;
-        no_fade_in = false;
-      };
-      input-fields = [
-        {
-          monitor = "eDP-1";
-          size = {
-            width = 300;
-            height = 50;
-          };
-          outline_thickness = 2;
+      settings = {
+        backgrounds = let
+          wallpaperPath = "/home/gus/Pictures/wallpapers/03366b011ece465696cfad1e87b2ee6e.png";
+        in [
+          {
+            monitor = "eDP-1";
+            path = wallpaperPath;
+          }
+        ];
+        general = {
+          grace = 5;
+          no_fade_in = false;
+        };
+        input-fields = [
+          {
+            monitor = "eDP-1";
+            size = {
+              width = 300;
+              height = 50;
+            };
+            outline_thickness = 2;
 
-          outer_color = "rgb(f5c2e7)";
-          inner_color = "rgb(1e1e2e)";
-          font_color = "rgb(cdd6f4)";
-          placeholder_text = ''
-            <span foreground="##cdd6f4">Password...</span>
-          '';
-          fade_on_empty = false;
-          dots_spacing = 0.3;
-          dots_center = true;
-        }
-      ];
-      labels = [
-        {
-          monitor = "eDP-1";
-          text = "Hi, $USER";
-          color = "rgb(1e1e2e)";
-          valign = "center";
-          halign = "center";
-          font_size = 40;
-        }
-        {
-          monitor = "eDP-1";
-          text = "$TIME";
-          color = "rgb(1e1e2e)";
-          font_size = 30;
-          position = {
-            x = 0;
-            y = 140;
-          };
-          valign = "center";
-          halign = "center";
-        }
-      ];
+            outer_color = "rgb(f5c2e7)";
+            inner_color = "rgb(1e1e2e)";
+            font_color = "rgb(cdd6f4)";
+            placeholder_text = ''
+              <span foreground="##cdd6f4">Password...</span>
+            '';
+            fade_on_empty = false;
+            dots_spacing = 0.3;
+            dots_center = true;
+          }
+        ];
+        labels = [
+          {
+            monitor = "eDP-1";
+            text = "Hi, $USER";
+            color = "rgb(1e1e2e)";
+            valign = "center";
+            halign = "center";
+            font_size = 40;
+          }
+          {
+            monitor = "eDP-1";
+            text = "$TIME";
+            color = "rgb(1e1e2e)";
+            font_size = 30;
+            position = {
+              x = 0;
+              y = 140;
+            };
+            valign = "center";
+            halign = "center";
+          }
+        ];
+      };
     };
 
     # nix-index = {

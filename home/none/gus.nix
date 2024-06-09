@@ -19,7 +19,7 @@ with pkgs; let
     sumneko-lua-language-server
     rust-analyzer
     cmake-language-server
-    ruff-lsp
+    ruff
     nodePackages.bash-language-server
     # solc
   ];

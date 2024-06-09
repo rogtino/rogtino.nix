@@ -26,7 +26,7 @@ in {
     ./hardware-configuration.nix
   ];
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.cudaSupport = true;
+  # nixpkgs.config.cudaSupport = true;
   sops.defaultSopsFile = ../secrets/mimi.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/gus/.config/sops/age/keys.txt";
@@ -145,16 +145,14 @@ in {
     xserver.enable = true;
     openssh.enable = true;
     # v2raya.enable = true;
-    xserver.displayManager = {
-      sessionPackages = [hyprland-nvidia-session];
-      gdm = {
-        enable = true;
-      };
+    displayManager.sessionPackages = [hyprland-nvidia-session];
+    xserver.displayManager.gdm = {
+      enable = true;
     };
     # desktopManager.plasma6.enable = true;
     xserver.xkb.options = "caps:swapescape";
     # Enable touchpad support (enabled default in most desktopManager).
-    xserver.libinput.enable = true;
+    libinput.enable = true;
   };
 
   # Enable sound.

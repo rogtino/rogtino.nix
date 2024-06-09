@@ -18,15 +18,10 @@
     nur.url = "github:nix-community/NUR";
     daeuniverse.url = "github:daeuniverse/flake.nix";
     hyprland.url = "github:hyprwm/Hyprland";
-    hypridle.url = "github:hyprwm/hypridle";
-    hyprlock.url = "github:hyprwm/hyprlock";
     # flake-root.url = "github:srid/flake-root";
-    nixpkgs-unfree.url = "github:numtide/nixpkgs-unfree";
-    nixpkgs-unfree.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     ags.url = "github:Aylur/ags";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = {
@@ -36,7 +31,6 @@
     home-manager,
     nur,
     sops-nix,
-    # flake-root,
     ...
   } @ inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
@@ -63,7 +57,7 @@
             ./home/none
             ./module/none
           ];
-          specialArgs = {inherit nixpkgs daeuniverse inputs;};
+          specialArgs = {inherit nixpkgs inputs;};
         };
       };
       perSystem = {

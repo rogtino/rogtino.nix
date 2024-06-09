@@ -6,8 +6,6 @@
     users.gus.imports = [
       ./gus.nix
       inputs.nix-index-database.hmModules.nix-index
-      inputs.hyprlock.homeManagerModules.default
-      inputs.hypridle.homeManagerModules.default
       inputs.ags.homeManagerModules.default
     ];
     extraSpecialArgs = {inherit inputs;};
