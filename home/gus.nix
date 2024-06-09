@@ -247,7 +247,7 @@ in {
         accountsservice
       ];
     };
-    command-not-found.enable = false;
+    # command-not-found.enable = true;
     hyprlock = {
       enable = true;
       backgrounds = let
@@ -308,7 +308,7 @@ in {
 
     # nix-index = {
     #   enable = true;
-    #   enableFishIntegration = false;
+    #   # enableFishIntegration = false;
     #   enableZshIntegration = false;
     #   enableBashIntegration = false;
     # };

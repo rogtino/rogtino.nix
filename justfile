@@ -1,4 +1,5 @@
 alias o:=update-os
+alias w:=update-wsl
 alias f:=update-flake
 alias n:=update-neovim
 alias m:=edit-mini
@@ -6,7 +7,9 @@ alias c:=clear
 alias b:=clear-boot
 
 update-os *args:
-  sudo nixos-rebuild switch {{args}}
+  sudo nixos-rebuild switch --flake .#art {{args}}
+update-wsl *args:
+  sudo nixos-rebuild switch --flake .#none {{args}}
 update-flake:
   nix flake update
 update-neovim:

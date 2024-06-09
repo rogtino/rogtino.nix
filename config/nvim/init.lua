@@ -1,6 +1,7 @@
 vim.loader.enable()
 local plugins_path = vim.fn.stdpath 'data' .. '/lazy'
 vim.g.iswin = string.find(vim.uv.os_uname().version, 'Windows')
+vim.g.isnixos = vim.fn.exists '/etc/nixos/configuration.nix'
 vim.env.PATH = vim.env.PATH .. (vim.g.iswin and ';' or ':') .. vim.fn.stdpath 'data' .. '/mason/bin'
 
 local function boot(name, url)

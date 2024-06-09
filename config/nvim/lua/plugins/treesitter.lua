@@ -1,5 +1,5 @@
 local function config()
-  if string.find(vim.uv.os_uname().version, 'Windows') then
+  if vim.g.iswin then
     require('nvim-treesitter.install').compilers = { 'cl' }
   end
   ---@diagnostic disable-next-line: missing-fields

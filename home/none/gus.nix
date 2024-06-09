@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   config,
   ...
@@ -52,6 +51,7 @@ with pkgs; let
     killall
     xz
     file
+    grc
     which
     gnused
     gnutar
@@ -73,6 +73,7 @@ with pkgs; let
     p7zip
     fd
     ripgrep
+    fzf
     glow
   ];
   link = config.lib.file.mkOutOfStoreSymlink;
@@ -122,14 +123,63 @@ in {
     ++ formatter;
 
   programs = {
-    command-not-found.enable = false;
-    # nix-index = {
-    #   enable = true;
-    #   enableFishIntegration = false;
-    #   enableZshIntegration = false;
-    #   enableBashIntegration = false;
-    # };
+    command-not-found.enable = true;
+    # TODO: try photon
+    newsboat = {
+      enable = true;
+      maxItems = 50;
+      autoReload = true;
+      urls = [{url = "https://www.zhihu.com/rss";}];
+      extraConfig = ''
+        # externel browser
+        # browser "/usr/local/bin/w3m %u"
+        # macro m set browser "/usr/local/bin/mpv %u"; open-in-browser ; set browser "/usr/local/bin/w3m %u"
+        # macro l set browser "/usr/local/bin/firefox %u"; open-in-browser ; set browser "/usr/local/bin/w3m %u"
+        # unbind keys
+        unbind-key ENTER
+        unbind-key j
+        unbind-key k
+        unbind-key J
+        unbind-key K
+        # bind keys - vim style
+        bind-key j down
+        bind-key k up
+        bind-key l open
+        bind-key h quit
+      '';
+    };
+    nix-index = {
+      enable = true;
+      # enableFishIntegration = true;
+      enableZshIntegration = false;
+      enableBashIntegration = false;
+    };
     fish.enable = true;
+    fish = {
+      interactiveShellInit = ''
+        set fish_greeting # Disable greeting
+        fzf_configure_bindings --directory=\cf
+      '';
+      shellAliases = {
+        asd = "lazygit";
+        e = "nvim";
+        zj = "zellij";
+        q = "exit";
+        az = "yazi";
+        cdtmp = "cd (mktemp -d)";
+      };
+      plugins = [
+        # Enable a plugin (here grc for colorized command output) from nixpkgs
+        {
+          name = "grc";
+          src = pkgs.fishPlugins.grc.src;
+        }
+        {
+          name = "fzf-fish";
+          src = pkgs.fishPlugins.fzf-fish.src;
+        }
+      ];
+    };
     git = {
       enable = true;
       userName = "rogtino";
