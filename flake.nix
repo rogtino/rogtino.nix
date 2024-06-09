@@ -2,6 +2,7 @@
   description = "dark art";
 
   inputs = {
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     #NOTE:https://flake.parts/best-practices-for-module-writing
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -52,6 +53,15 @@
             ./home
             ./module
             ./overlay
+          ];
+          specialArgs = {inherit nixpkgs daeuniverse inputs;};
+        };
+        nixosConfigurations.none = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./system/none
+            ./home/none
+            ./module/none
           ];
           specialArgs = {inherit nixpkgs daeuniverse inputs;};
         };
