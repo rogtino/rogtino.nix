@@ -6,13 +6,14 @@
 }: {
   # lsp stuff should be in nix develop shell
   environment.systemPackages = with pkgs; [
-    config.nur.repos.xddxdd.netease-cloud-music
+    # config.nur.repos.xddxdd.netease-cloud-music
     config.nur.repos.xddxdd.qqmusic
     # config.nur.repos.YisuiMilena.hmcl-bin
     # inputs.hyprpaper.packages.${pkgs.system}.default
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     libnotify
     mpv
+    w3m-nox
     ffmpeg
     # emacs
     nodePackages.pnpm

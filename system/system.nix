@@ -25,10 +25,6 @@ in {
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "openssl"
-  ];
   # nixpkgs.config.cudaSupport = true;
   sops.defaultSopsFile = ../secrets/mimi.yaml;
   sops.defaultSopsFormat = "yaml";
@@ -272,7 +268,4 @@ in {
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-
-  # Enable the OpenSSH daemon.
-  #disable portal to void firefox-wayland's slow startup
 }

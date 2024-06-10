@@ -1,12 +1,15 @@
 {
   lib,
-  nixpkgs,
   config,
   ...
 }: {
-  environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
+  # environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
 
   nix.nixPath = lib.mkForce ["/etc/nix/inputs"];
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "openssl"
+  ];
   nix = {
     extraOptions = ''
       !include ${config.sops.secrets."gh".path}
@@ -46,6 +49,6 @@
       ];
     };
     channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
-    registry.nixpkgs.flake = nixpkgs;
+    # registry.nixpkgs.flake = pkgs;
   };
 }

@@ -319,6 +319,35 @@ in {
     #   enableBashIntegration = false;
     # };
     fish.enable = true;
+    newsboat = {
+      enable = true;
+      maxItems = 50;
+      autoReload = true;
+      urls = [
+        {url = "https://www.ruanyifeng.com/blog/atom.xml";}
+        {url = "https://v2ex.com/index.xml";}
+        {url = "https://rsshub.app/zhihu/hotlist";}
+        {url = "https://36kr.com/feed";}
+        {url = "https://cert.360.cn/daily/feed";}
+      ];
+      extraConfig = ''
+        # externel browser
+        browser "w3m %u"
+        macro m set browser "mpv %u"; open-in-browser ; set browser "w3m %u"
+        macro l set browser "firefox %u"; open-in-browser ; set browser "w3m %u"
+        # unbind keys
+        unbind-key ENTER
+        unbind-key j
+        unbind-key k
+        unbind-key J
+        unbind-key K
+        # bind keys - vim style
+        bind-key j down
+        bind-key k up
+        bind-key l open
+        bind-key h quit
+      '';
+    };
     git = {
       enable = true;
       userName = "rogtino";

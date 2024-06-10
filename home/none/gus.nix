@@ -124,7 +124,6 @@ in {
 
   programs = {
     command-not-found.enable = true;
-    # TODO: try photon
     newsboat = {
       enable = true;
       maxItems = 50;

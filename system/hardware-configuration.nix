@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }: {
@@ -10,6 +9,7 @@
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
+  boot.supportedFilesystems = ["ntfs"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = with config.boot.kernelPackages; [rtl8821ce];
@@ -24,6 +24,10 @@
     device = "/dev/disk/by-uuid/C5BC-E7DA";
     fsType = "vfat";
     options = ["fmask=0022" "dmask=0022"];
+  };
+  fileSystems."/home/gus/son" = {
+    device = "/dev/disk/by-uuid/aa65a7cd-aa4a-49cb-b9b2-c1a09cd647af";
+    fsType = "ext4";
   };
 
   swapDevices = [];

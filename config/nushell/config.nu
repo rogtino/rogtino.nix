@@ -580,7 +580,7 @@ name: fuzzy_history
         event: [
         {
 send: ExecuteHostCommand
-        cmd: "commandline edit --insert (
+        cmd: "commandline edit (
             history
             | get command
             | reverse

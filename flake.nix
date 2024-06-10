@@ -24,7 +24,7 @@
             ./module
             ./overlay
           ];
-          specialArgs = {inherit nixpkgs daeuniverse inputs;};
+          specialArgs = {inherit inputs;};
         };
         nixosConfigurations.none = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -33,7 +33,7 @@
             ./home/none
             ./module/none
           ];
-          specialArgs = {inherit nixpkgs inputs;};
+          specialArgs = {inherit inputs;};
         };
       };
       perSystem = {
@@ -42,6 +42,13 @@
         system,
         ...
       }: {
+        _module.args.pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+          config.permittedInsecurePackages = [
+            "openssl"
+          ];
+        };
         devShells.default = pkgs.mkShell {
           name = "rogtino";
           inputsFrom = [config.treefmt.build.devShell];
