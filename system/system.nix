@@ -26,7 +26,17 @@ in {
     ./hardware-configuration.nix
   ];
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "openssl"
+  ];
   # nixpkgs.config.cudaSupport = true;
+  sops.defaultSopsFile = ../secrets/mimi.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/gus/.config/sops/age/keys.txt";
+  sops.secrets."config.dae" = {
+    owner = config.users.users.gus.name;
+  };
+  sops.secrets."gh" = {};
   users.users.gus = {
     isNormalUser = true;
     extraGroups = ["lxd" "wheel" "sudo" "libvirtd" "video" "audio" "docker"];
@@ -128,7 +138,8 @@ in {
     # emacs.enable = true;
     dae = {
       enable = true;
-      configFile = "/home/gus/example.dae";
+      # configFile = "/home/gus/example.dae";
+      configFile = config.sops.secrets."config.dae".path;
       openFirewall = {
         enable = true;
         port = 12345;

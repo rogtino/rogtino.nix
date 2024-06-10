@@ -6,15 +6,17 @@
 }: {
   environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
 
+  nix.nixPath = lib.mkForce ["/etc/nix/inputs"];
   nix = {
+    extraOptions = ''
+      !include ${config.sops.secrets."gh".path}
+    '';
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 1w";
     };
     settings = {
-      # https://github.com/NixOS/nix/issues/9574
-      nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
       # Optimise storage
       # you can alse optimise the store manually via:
       #    nix-store --optimise

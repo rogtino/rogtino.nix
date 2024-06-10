@@ -1,7 +1,7 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
 return {
-  font = wezterm.font 'Maple Mono SC NF',
+  font = wezterm.font 'monospace',
   color_scheme = 'carbonfox',
   disable_default_key_bindings = true,
   enable_tab_bar = false,
