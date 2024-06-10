@@ -7,9 +7,6 @@
   environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
 
   nix = {
-    extraOptions = ''
-      !include ${config.sops.secrets."gh".path}
-    '';
     gc = {
       automatic = true;
       dates = "weekly";
@@ -30,7 +27,7 @@
       substituters = [
         "https://mirror.sjtu.edu.cn/nix-channels/store"
         "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-        # "https://mirrors.ustc.edu.cn/nix-channels/store"
+        "https://mirrors.ustc.edu.cn/nix-channels/store"
         # "https://cuda-maintainers.cachix.org"
         "https://daeuniverse.cachix.org"
         "https://nix-community.cachix.org"

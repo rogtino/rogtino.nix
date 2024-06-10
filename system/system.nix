@@ -27,14 +27,6 @@ in {
   ];
   nixpkgs.config.allowUnfree = true;
   # nixpkgs.config.cudaSupport = true;
-  sops.defaultSopsFile = ../secrets/mimi.yaml;
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/gus/.config/sops/age/keys.txt";
-  sops.secrets."config.dae" = {
-    owner = config.users.users.gus.name;
-  };
-  sops.secrets."gh" = {};
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gus = {
     isNormalUser = true;
     extraGroups = ["lxd" "wheel" "sudo" "libvirtd" "video" "audio" "docker"];
@@ -126,7 +118,7 @@ in {
     emacs.enable = true;
     dae = {
       enable = true;
-      configFile = config.sops.secrets."config.dae".path;
+      configFile = "/home/gus/example.dae";
       openFirewall = {
         enable = true;
         port = 12345;
@@ -205,7 +197,7 @@ in {
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
   # Use the systemd-boot EFI boot loader.
   boot = {
     # supportedFilesystems = ["ntfs"];
@@ -216,8 +208,8 @@ in {
         configurationLimit = 5;
       };
     };
-    # kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_6_8;
+    # kernelPackages = pkgs.linuxPackages_latest;
   };
   systemd.extraConfig = ''
     DefaultTimeoutStopSec=5s

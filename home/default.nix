@@ -3,6 +3,7 @@
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
+    backupFileExtension = "default";
     users.gus.imports = [
       ./gus.nix
       inputs.nix-index-database.hmModules.nix-index

@@ -120,8 +120,9 @@ in {
       "nvim" = {
         source = link "/home/gus/rogtino.nix/config/nvim";
       };
-      "hypr/hyprland.conf" = {
-        source = ../config/hypr/hyprland.conf;
+      "hypr" = {
+        #source = ../config/hypr/hyprland.conf;
+        source = link "/home/gus/rogtino.nix/config/hypr";
       };
       "wezterm" = {
         source = ../config/wezterm;
@@ -175,8 +176,8 @@ in {
   # 建议将所有 GUI 软件，以及与 OS 关系不大的 CLI 软件，都通过 home.packages 安装
   home.packages = with pkgs;
     [
-      bilibili
-      qq
+      #bilibili
+      # qq
       firefox
       google-chrome
       # nix related
@@ -212,30 +213,30 @@ in {
     progressColor = "over #313244";
   };
 
-  services.hypridle = {
-    enable = true;
-    settings = {
-      general = {
-        lockCmd = lib.getExe config.programs.hyprlock.package;
-        beforeSleepCmd = "${pkgs.systemd}/bin/loginctl lock-session";
-      };
-      listeners = [
-        {
-          timeout = 295;
-          onTimeout = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
-        }
-        {
-          timeout = 300;
-          onTimeout = "${lib.getExe config.programs.hyprlock.package}";
-        }
-        {
-          timeout = 600;
-          onTimeout = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
-          onResume = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
-        }
-      ];
-    };
-  };
+  #services.hypridle = {
+  #  enable = true;
+  #  settings = {
+  #    general = {
+  #      lockCmd = lib.getExe config.programs.hyprlock.package;
+  #      beforeSleepCmd = "${pkgs.systemd}/bin/loginctl lock-session";
+  #    };
+  #    listeners = [
+  #      {
+  #        timeout = 295;
+  #        onTimeout = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
+  #      }
+  #      {
+  #        timeout = 300;
+  #        onTimeout = "${lib.getExe config.programs.hyprlock.package}";
+  #      }
+  #      {
+  #        timeout = 600;
+  #        onTimeout = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
+  #        onResume = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
+  #      }
+  #    ];
+  #  };
+  #};
   programs = {
     ags = {
       enable = true;
@@ -251,65 +252,65 @@ in {
       ];
     };
     # command-not-found.enable = true;
-    hyprlock = {
-      enable = true;
-      settings = {
-        backgrounds = let
-          wallpaperPath = "/home/gus/Pictures/wallpapers/03366b011ece465696cfad1e87b2ee6e.png";
-        in [
-          {
-            monitor = "eDP-1";
-            path = wallpaperPath;
-          }
-        ];
-        general = {
-          grace = 5;
-          no_fade_in = false;
-        };
-        input-fields = [
-          {
-            monitor = "eDP-1";
-            size = {
-              width = 300;
-              height = 50;
-            };
-            outline_thickness = 2;
+    #hyprlock = {
+    #  enable = true;
+    #  settings = {
+    #    backgrounds = let
+    #      wallpaperPath = "/home/gus/Pictures/wallpapers/03366b011ece465696cfad1e87b2ee6e.png";
+    #    in [
+    #      {
+    #        monitor = "eDP-1";
+    #        path = wallpaperPath;
+    #      }
+    #    ];
+    #    general = {
+    #      grace = 5;
+    #      no_fade_in = false;
+    #    };
+    #    input-fields = [
+    #      {
+    #        monitor = "eDP-1";
+    #        size = {
+    #          width = 300;
+    #          height = 50;
+    #        };
+    #        outline_thickness = 2;
 
-            outer_color = "rgb(f5c2e7)";
-            inner_color = "rgb(1e1e2e)";
-            font_color = "rgb(cdd6f4)";
-            placeholder_text = ''
-              <span foreground="##cdd6f4">Password...</span>
-            '';
-            fade_on_empty = false;
-            dots_spacing = 0.3;
-            dots_center = true;
-          }
-        ];
-        labels = [
-          {
-            monitor = "eDP-1";
-            text = "Hi, $USER";
-            color = "rgb(1e1e2e)";
-            valign = "center";
-            halign = "center";
-            font_size = 40;
-          }
-          {
-            monitor = "eDP-1";
-            text = "$TIME";
-            color = "rgb(1e1e2e)";
-            font_size = 30;
-            position = {
-              x = 0;
-              y = 140;
-            };
-            valign = "center";
-            halign = "center";
-          }
-        ];
-      };
-    };
+    #        outer_color = "rgb(f5c2e7)";
+    #        inner_color = "rgb(1e1e2e)";
+    #        font_color = "rgb(cdd6f4)";
+    #        placeholder_text = ''
+    #          <span foreground="##cdd6f4">Password...</span>
+    #        '';
+    #        fade_on_empty = false;
+    #        dots_spacing = 0.3;
+    #        dots_center = true;
+    #      }
+    #    ];
+    #    labels = [
+    #      {
+    #        monitor = "eDP-1";
+    #        text = "Hi, $USER";
+    #        color = "rgb(1e1e2e)";
+    #        valign = "center";
+    #        halign = "center";
+    #        font_size = 40;
+    #      }
+    #      {
+    #        monitor = "eDP-1";
+    #        text = "$TIME";
+    #        color = "rgb(1e1e2e)";
+    #        font_size = 30;
+    #        position = {
+    #          x = 0;
+    #          y = 140;
+    #        };
+    #        valign = "center";
+    #        halign = "center";
+    #      }
+    #    ];
+    #  };
+    #};
 
     # nix-index = {
     #   enable = true;

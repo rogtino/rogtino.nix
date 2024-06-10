@@ -14,10 +14,14 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
-    sops-nix.url = "github:Mic92/sops-nix";
+    # sops-nix.url = "github:Mic92/sops-nix";
     nur.url = "github:nix-community/NUR";
     daeuniverse.url = "github:daeuniverse/flake.nix";
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "https://github.com/hyprwm/Hyprland";
+      type = "git";
+      submodules = true;
+    };
     # flake-root.url = "github:srid/flake-root";
     home-manager.url = "github:nix-community/home-manager";
     ags.url = "github:Aylur/ags";
@@ -30,7 +34,6 @@
     daeuniverse,
     home-manager,
     nur,
-    sops-nix,
     ...
   } @ inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
@@ -99,7 +102,6 @@
           packages = with pkgs; [
             git
             vim
-            sops
           ];
           shellHook = ''
             ${config.pre-commit.installationScript}

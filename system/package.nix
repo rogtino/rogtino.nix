@@ -8,7 +8,7 @@
   environment.systemPackages = with pkgs; [
     config.nur.repos.rewine.electron-netease-cloud-music
     config.nur.repos.xddxdd.qqmusic
-    config.nur.repos.YisuiMilena.hmcl-bin
+    # config.nur.repos.YisuiMilena.hmcl-bin
     # inputs.hyprpaper.packages.${pkgs.system}.default
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     libnotify
@@ -17,7 +17,7 @@
     # emacs
     nodePackages.pnpm
     nodePackages_latest.prisma
-    python311Packages.torch-bin
+    # python311Packages.torch-bin
     # cudaPackages.cudatoolkit
     python312
     nodejs
