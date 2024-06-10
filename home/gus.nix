@@ -12,6 +12,7 @@ with pkgs; let
     typst-lsp
     marksman
     nodePackages_latest.typescript-language-server
+    nodePackages_latest.vscode-css-languageserver-bin
     typescript
     rustywind
     emmet-language-server
@@ -141,9 +142,9 @@ in {
       # };
       # BUG:cann't use
       # https://github.com/nushell/nushell/issues/10100
-      # "nushell" = {
-      #   source = config.lib.file.mkOutOfStoreSymlink "/home/gus/rogtino.nix/config/nushell";
-      # };
+      "nushell" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/home/gus/rogtino.nix/config/nushell";
+      };
       "zellij" = {
         source = ../config/zellij;
       };
@@ -363,11 +364,11 @@ in {
         ];
       };
     };
-    nushell = {
-      enable = true;
-      configFile.source = ../config/nushell/config.nu;
-      envFile.source = ../config/nushell/env.nu;
-    };
+    # nushell = {
+    #   enable = true;
+    #   configFile.source = ../config/nushell/config.nu;
+    #   envFile.source = ../config/nushell/env.nu;
+    # };
     bash = {
       enable = true;
       enableCompletion = true;

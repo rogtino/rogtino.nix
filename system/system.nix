@@ -46,22 +46,26 @@ in {
 
         monospace = [
           # "BlexMono Nerd Font"
-          "IBM Plex Mono"
-          "Intel One Mono"
-          "JetBrainsMonoNL Nerd Font"
-          "Maple Mono NF"
+          # "IBM Plex Mono"
+          # "Intel One Mono"
+          # "JetBrainsMonoNL Nerd Font"
+          # "Maple Mono NF"
+          # "LXGW WenKai Mono"
+          "Martian Mono"
           "Noto Color Emoji"
         ];
         sansSerif = [
           # "Noto Sans CJK HK"
           # "Source Serif Pro"
-          "Source Han Sans SC"
+          "LXGW WenKai"
+          # "Source Han Sans SC"
           # "Noto Color Emoji"
         ];
         serif = [
           # "Noto Sans CJK HK"
           # "Source Serif Pro"
-          "Source Han Sans SC"
+          "LXGW WenKai"
+          # "Source Han Sans SC"
           # "Noto Color Emoji"
         ];
       };
@@ -71,18 +75,22 @@ in {
       (nerdfonts.override {
         fonts = [
           # "Iosevka"
-          "FiraCode"
-          "JetBrainsMono"
-          # "IntOne"
+          # "FiraCode"
+          # "JetBrainsMono"
+          "IntelOneMono"
         ];
       })
+      martian-mono
+      # nerdfonts
       noto-fonts-emoji
-      ibm-plex
+      # ibm-plex
+      # intel-one-mono
       # source-serif-pro
-      source-han-sans
-      noto-fonts-cjk
-      maple-mono-SC-NF
-      intel-one-mono
+      # source-han-sans
+      fira-code
+      # noto-fonts-cjk
+      # maple-mono-SC-NF
+      lxgw-wenkai
     ];
   };
   # i18n
@@ -115,7 +123,7 @@ in {
 
   # List services that you want to enable:
   services = {
-    emacs.enable = true;
+    # emacs.enable = true;
     dae = {
       enable = true;
       configFile = "/home/gus/example.dae";
