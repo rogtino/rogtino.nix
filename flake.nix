@@ -11,8 +11,8 @@
   } @ inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        inputs.pre-commit-hooks.flakeModule
-        inputs.treefmt-nix.flakeModule
+        ./pre-commit-hooks.nix
+        ./treefmt.nix
       ];
       systems = ["x86_64-linux"];
       flake = {
@@ -42,36 +42,6 @@
         system,
         ...
       }: {
-        pre-commit = {
-          check.enable = true;
-
-          settings = {
-            excludes = ["flake.lock" "lazy-lock.json"];
-            hooks = {
-              alejandra.enable = true;
-              nil.enable = true;
-              commitizen.enable = true;
-              black.enable = true;
-              shfmt.enable = true;
-              stylua.enable = true;
-              lua-ls.enable = true;
-            };
-          };
-        };
-        treefmt.config = {
-          projectRootFile = "flake.nix";
-          programs.black.enable = true;
-          programs.alejandra.enable = true;
-          programs.prettier = {
-            enable = true;
-            excludes = ["*.yaml" "*.lock" "lazy-lock.json"];
-          };
-          programs.stylua.enable = true;
-          programs.shfmt = {
-            enable = true;
-            indent_size = 0;
-          };
-        };
         devShells.default = pkgs.mkShell {
           name = "rogtino";
           inputsFrom = [config.treefmt.build.devShell];
