@@ -35,6 +35,7 @@
     rustup
     clang
     luajit
+    uiua
     devenv
     clang-tools
     yt-dlp
@@ -44,8 +45,8 @@
     waybar
     deno
     virt-manager
-    # neovim
-    # neovide
+    neovim
+    neovide
     rizin
     rofi-wayland
     obs-studio

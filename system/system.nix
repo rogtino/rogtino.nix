@@ -91,6 +91,7 @@ in {
       # noto-fonts-cjk
       # maple-mono-SC-NF
       lxgw-wenkai
+      uiua386
     ];
   };
   # i18n

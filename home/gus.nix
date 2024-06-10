@@ -46,7 +46,6 @@ with pkgs; let
     gitui
     tealdeer
     zellij
-    neovim
     dust
   ];
   shtools = [
