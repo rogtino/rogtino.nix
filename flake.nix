@@ -64,7 +64,7 @@
           programs.alejandra.enable = true;
           programs.prettier = {
             enable = true;
-            excludes = [".yaml"];
+            excludes = ["*.yaml" "*.lock" "lazy-lock.json"];
           };
           programs.stylua.enable = true;
           programs.shfmt = {
