@@ -491,13 +491,13 @@ name: completion_previous
         mode: [emacs, vi_normal, vi_insert] # Note: You can add the same keybinding to all modes by using a list
         event: { send: menuprevious }
        }
-       {
-name: history_menu
-        modifier: control
-        keycode: char_r
-        mode: emacs
-        event: { send: menu name: history_menu }
-       }
+#        {
+# name: history_menu
+#         modifier: control
+#         keycode: char_r
+#         mode: emacs
+#         event: { send: menu name: history_menu }
+#        }
        {
 name: next_page
         modifier: control
@@ -571,6 +571,32 @@ name: fzf_files
         keycode: char_f
         mode: [emacs]
         event: [{ edit: InsertString value: "(fzf)" } { send: Enter}]
+       }
+       {
+name: fuzzy_history
+        modifier: control
+        keycode: char_r
+        mode: [emacs, vi_normal, vi_insert]
+        event: [
+        {
+send: ExecuteHostCommand
+        cmd: "commandline edit --insert (
+            history
+            | get command
+            | reverse
+            | uniq
+            | str join (char -i 0)
+            | fzf
+            --scheme history
+            --read0
+            --layout reverse
+            --height 40%
+            --query (commandline)
+            | decode utf-8
+            | str trim
+            )"
+        }
+        ]
        }
        {
 name: vars_menu

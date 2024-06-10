@@ -22,6 +22,8 @@
     python312
     nodejs
     grim
+    # vscode
+    fzf
     cachix
     aircrack-ng
     cliphist
