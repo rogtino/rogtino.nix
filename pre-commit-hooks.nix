@@ -18,7 +18,7 @@
           lua-ls.enable = true;
           prettier = {
             enable = true;
-            excludes = ["*.yaml" "*.lock" "lazy-lock.json"];
+            excludes = [".yaml" ".lock" ".yml"];
           };
         };
       };
