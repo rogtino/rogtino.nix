@@ -61,8 +61,8 @@ opt.foldmethod = 'expr'
 opt.foldexpr = 'nvim_treesitter#foldexpr'
 -- opt.statuscolumn = "%s%C"
 opt.showbreak = '  󰘍'
--- opt.shell = 'nu'
-opt.shell = 'fish'
+opt.shell = 'nu'
+-- opt.shell = 'fish'
 if vim.g.iswin then
   opt.shellcmdflag = '-c'
   opt.shellquote = ''
