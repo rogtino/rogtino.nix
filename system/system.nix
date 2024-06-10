@@ -53,6 +53,7 @@ in {
           # "LXGW WenKai Mono"
           "Martian Mono"
           "Noto Color Emoji"
+          "Uiua386"
         ];
         sansSerif = [
           # "Noto Sans CJK HK"
