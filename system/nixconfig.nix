@@ -42,6 +42,7 @@
       trusted-users = ["gus"];
     };
     channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
+    #BUG: this nixpkgs is different from final nixpkgs
     registry.nixpkgs.flake = inputs.nixpkgs;
   };
 }

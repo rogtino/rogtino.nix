@@ -180,7 +180,6 @@ in {
       #   registry = https://registry.npmmirror.com/
       # '';
     };
-    # TODO:learn gpg
     gnupg.agent = {
       enable = true;
       # enableSSHSupport = true;

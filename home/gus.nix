@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   config,
   ...
@@ -86,27 +85,27 @@ in {
       registry=https://registry.npmmirror.com
     '';
   };
-  # home.pointerCursor = {
-  #   package = pkgs.bibata-cursors;
-  #   name = "Bibata-Modern-Classic";
-  #   gtk.enable = true;
-  # };
-  # gtk = {
-  #   enable = true;
-  #   iconTheme = {
-  #     package = pkgs.papirus-icon-theme;
-  #     name = "Papirus-Dark";
-  #   };
-  #   theme = {
-  #     package = pkgs.orchis-theme;
-  #     name = "Orchis-Dark";
-  #   };
-  #   cursorTheme = {
-  #     package = pkgs.bibata-cursors;
-  #     name = "Bibata-Modern-Classic";
-  #   };
-  # };
-  #
+  home.pointerCursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    gtk.enable = true;
+  };
+  gtk = {
+    enable = true;
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
+    };
+    theme = {
+      package = pkgs.orchis-theme;
+      name = "Orchis-Dark";
+    };
+    cursorTheme = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+    };
+  };
+
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = ["qemu:///system"];
@@ -185,10 +184,6 @@ in {
       # it provides the command `nom` works just like `nix`
       # with more details log output
       nix-output-monitor
-    ]
-    ++ [
-      #BUG:seems like not being used
-      inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
     ]
     ++ shtools
     ++ tools
@@ -341,11 +336,15 @@ in {
         unbind-key k
         unbind-key J
         unbind-key K
+        unbind-key u
         # bind keys - vim style
         bind-key j down
         bind-key k up
         bind-key l open
         bind-key h quit
+        bind-key d halfpagedown
+        bind-key u halfpageup
+        bind-key U show-urls
       '';
     };
     git = {

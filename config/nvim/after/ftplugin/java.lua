@@ -1,5 +1,4 @@
 local config = {
-  -- TODO: retrive full path from extenal command,like `which ...`
   cmd = { '/usr/sbin/jdtls' },
   root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
 }

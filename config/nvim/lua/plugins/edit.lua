@@ -232,7 +232,7 @@ return {
     config = true,
     ft = { 'python', 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
   },
-  -- BUG: unable to use in nixos
+  -- BUG: have to patch include dir ourself
   {
     'vhyrro/luarocks.nvim',
     priority = 1000,

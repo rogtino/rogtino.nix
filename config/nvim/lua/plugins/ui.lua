@@ -20,8 +20,6 @@ return {
   -- 	config = true,
   -- 	event = "VeryLazy",
   -- },
-  --WARNING: wait for alacritty sixel support
-  -- https://codeberg.org/dnkl/foot/issues/481 waiting for foot
   {
     '3rd/image.nvim',
     config = true,

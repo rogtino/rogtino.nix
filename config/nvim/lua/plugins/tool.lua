@@ -65,7 +65,6 @@ return {
     },
     cmd = 'CarbonNow',
   },
-  -- NOTE:use octo if pull
   {
     'pwntester/octo.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim', 'nvim-tree/nvim-web-devicons' },
