@@ -35,31 +35,14 @@ in {
       "alacritty" = {
         source = ../config/alacritty;
       };
-      # "bgscripts" = {
-      #   source = ../config/bgscripts;
-      # };
-      # BUG:cann't use
-      # https://github.com/nushell/nushell/issues/10100
       "nushell" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/home/gus/rogtino.nix/config/nushell";
+        source = link "/home/gus/rogtino.nix/config/nushell";
       };
       "zellij" = {
         source = ../config/zellij;
       };
     };
   };
-
-  # 递归将某个文件夹中的文件，链接到 Home 目录下的指定位置
-  # home.file.".config/i3/scripts" = {
-  #   source = ./scripts;
-  #   recursive = true;   # 递归整个文件夹
-  #   executable = true;  # 将其中所有文件添加「执行」权限
-  # };
-
-  # 直接以 text 的方式，在 nix 配置文件中硬编码文件内容
-  # home.file.".xxx".text = ''
-  #     xxx
-  # '';
 
   services.mako = {
     enable = true;
@@ -70,7 +53,7 @@ in {
     ignoreTimeout = true;
     anchor = "top-right";
     output = "eDP-1";
-    font = "Maple Mono SC NF 12";
+    font = "Fira Code";
     padding = "6";
     margin = "18,21,0";
     backgroundColor = "#1a1b26";
@@ -79,30 +62,6 @@ in {
     progressColor = "over #313244";
   };
 
-  #services.hypridle = {
-  #  enable = true;
-  #  settings = {
-  #    general = {
-  #      lockCmd = lib.getExe config.programs.hyprlock.package;
-  #      beforeSleepCmd = "${pkgs.systemd}/bin/loginctl lock-session";
-  #    };
-  #    listeners = [
-  #      {
-  #        timeout = 295;
-  #        onTimeout = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
-  #      }
-  #      {
-  #        timeout = 300;
-  #        onTimeout = "${lib.getExe config.programs.hyprlock.package}";
-  #      }
-  #      {
-  #        timeout = 600;
-  #        onTimeout = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
-  #        onResume = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
-  #      }
-  #    ];
-  #  };
-  #};
   programs = {
     ags = {
       enable = true;
@@ -117,73 +76,6 @@ in {
         accountsservice
       ];
     };
-    # command-not-found.enable = true;
-    # hyprlock = {
-    #   enable = true;
-    #   settings = {
-    #     backgrounds = let
-    #       wallpaperPath = "/home/gus/Pictures/wallpapers/03366b011ece465696cfad1e87b2ee6e.png";
-    #     in [
-    #       {
-    #         monitor = "eDP-1";
-    #         path = wallpaperPath;
-    #       }
-    #     ];
-    #     general = {
-    #       grace = 5;
-    #       no_fade_in = false;
-    #     };
-    #     input-fields = [
-    #       {
-    #         monitor = "eDP-1";
-    #         size = {
-    #           width = 300;
-    #           height = 50;
-    #         };
-    #         outline_thickness = 2;
-    #
-    #         outer_color = "rgb(f5c2e7)";
-    #         inner_color = "rgb(1e1e2e)";
-    #         font_color = "rgb(cdd6f4)";
-    #         placeholder_text = ''
-    #           <span foreground="##cdd6f4">Password...</span>
-    #         '';
-    #         fade_on_empty = false;
-    #         dots_spacing = 0.3;
-    #         dots_center = true;
-    #       }
-    #     ];
-    #     labels = [
-    #       {
-    #         monitor = "eDP-1";
-    #         text = "Hi, $USER";
-    #         color = "rgb(1e1e2e)";
-    #         valign = "center";
-    #         halign = "center";
-    #         font_size = 40;
-    #       }
-    #       {
-    #         monitor = "eDP-1";
-    #         text = "$TIME";
-    #         color = "rgb(1e1e2e)";
-    #         font_size = 30;
-    #         position = {
-    #           x = 0;
-    #           y = 140;
-    #         };
-    #         valign = "center";
-    #         halign = "center";
-    #       }
-    #     ];
-    #   };
-    # };
-
-    # nix-index = {
-    #   enable = true;
-    #   # enableFishIntegration = false;
-    #   enableZshIntegration = false;
-    #   enableBashIntegration = false;
-    # };
     fish.enable = true;
     git = {
       enable = true;

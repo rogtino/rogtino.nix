@@ -3,7 +3,7 @@ title: todo description: things to be done
 authors: gus
 categories: GTD
 created: 2024-03-22T07:50:31+0800
-updated: 2024-06-11T12:24:32+0800
+updated: 2024-06-11T19:23:09+0800
 version: 1.1.1
 @end
 
@@ -19,8 +19,9 @@ version: 1.1.1
 * (x) change mappings in norg buffer
 * (-) add some useful flakes
 * ( ) yazi config
-* ( ) rewrite possible config with nix expr
+* (-) rewrite possible config with nix expr
 * (x) cache nixpkgs in github actions
 * ( ) move waybar to ags
 * ( ) create a text-obj in tailwindcss
 * (_) use foot ini
+* ( ) use color
