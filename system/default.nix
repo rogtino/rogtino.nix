@@ -1,9 +1,13 @@
 {...}: {
   imports = [
-    ./system.nix
+    ./core.nix
     ./nvidia.nix
     ./package.nix
+    ./desktop
+    ./fonts.nix
     ./nixconfig.nix
-    ./hardware-configuration.nix
+    ./sops.nix
+    ./network.nix
+    ./virtual.nix
   ];
 }

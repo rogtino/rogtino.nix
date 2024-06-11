@@ -2,79 +2,7 @@
   pkgs,
   config,
   ...
-}:
-with pkgs; let
-  lsp = [
-    nil
-    nodePackages."@astrojs/language-server"
-    nodePackages."@prisma/language-server"
-    typst-lsp
-    marksman
-    nodePackages_latest.typescript-language-server
-    nodePackages_latest.vscode-css-languageserver-bin
-    typescript
-    rustywind
-    emmet-language-server
-    nodePackages."@tailwindcss/language-server"
-    pyright
-    sumneko-lua-language-server
-    rust-analyzer
-    cmake-language-server
-    ruff
-    nodePackages.bash-language-server
-    # solc
-  ];
-  formatter = [
-    taplo
-    rustfmt
-    alejandra
-    cmake-format
-    shfmt
-    stylua
-    black
-    nodePackages_latest.prettier
-  ];
-  tools = [
-    cowsay
-    # manix
-    htop-vim
-    fastfetch
-    yazi # terminal file manager
-    commitizen
-    nodePackages.conventional-changelog-cli
-    gitui
-    tealdeer
-    zellij
-    dust
-  ];
-  shtools = [
-    zip
-    killall
-    xz
-    file
-    which
-    gnused
-    gnutar
-    gawk
-    zstd
-    gnupg
-    unzip
-    strace # system call monitoring
-    ltrace # library call monitoring
-    lsof # list open files
-    sysstat
-    lm_sensors # for `sensors` command
-    ethtool
-    pciutils # lspci
-    usbutils # lsusb
-    lolcat
-    toilet
-    bat
-    p7zip
-    fd
-    ripgrep
-    glow
-  ];
+}: let
   link = config.lib.file.mkOutOfStoreSymlink;
 in {
   home.username = "gus";
@@ -85,39 +13,9 @@ in {
       registry=https://registry.npmmirror.com
     '';
   };
-  home.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    gtk.enable = true;
-  };
-  gtk = {
-    enable = true;
-    iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus-Dark";
-    };
-    theme = {
-      package = pkgs.orchis-theme;
-      name = "Orchis-Dark";
-    };
-    cursorTheme = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
-    };
-  };
-
-  dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
-    };
-  };
   xdg = {
     enable = true;
 
-    dataFile = {
-      "fcitx5/themes".source = "${pkgs.fcitx5-rose-pine}/share/fcitx5/themes";
-    };
     configFile = {
       "nvim" = {
         source = link "/home/gus/rogtino.nix/config/nvim";
@@ -152,9 +50,6 @@ in {
     };
   };
 
-  # 直接将当前文件夹的配置文件，链接到 Home 目录下的指定位置
-  # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
-
   # 递归将某个文件夹中的文件，链接到 Home 目录下的指定位置
   # home.file.".config/i3/scripts" = {
   #   source = ./scripts;
@@ -166,32 +61,6 @@ in {
   # home.file.".xxx".text = ''
   #     xxx
   # '';
-
-  # 设置鼠标指针大小以及字体 DPI（适用于 4K 显示器）
-  #xresources.properties = {
-  #  "Xcursor.size" = 16;
-  #  "Xft.dpi" = 172;
-  #};
-
-  # 通过 home.packages 安装一些常用的软件
-  # 这些软件将仅在当前用户下可用，不会影响系统级别的配置
-  # 建议将所有 GUI 软件，以及与 OS 关系不大的 CLI 软件，都通过 home.packages 安装
-  home.packages = with pkgs;
-    [
-      bilibili
-      # qq
-      firefox
-      google-chrome
-      # nix related
-      #
-      # it provides the command `nom` works just like `nix`
-      # with more details log output
-      nix-output-monitor
-    ]
-    ++ shtools
-    ++ tools
-    ++ lsp
-    ++ formatter;
 
   services.mako = {
     enable = true;
@@ -250,65 +119,65 @@ in {
       ];
     };
     # command-not-found.enable = true;
-    #hyprlock = {
-    #  enable = true;
-    #  settings = {
-    #    backgrounds = let
-    #      wallpaperPath = "/home/gus/Pictures/wallpapers/03366b011ece465696cfad1e87b2ee6e.png";
-    #    in [
-    #      {
-    #        monitor = "eDP-1";
-    #        path = wallpaperPath;
-    #      }
-    #    ];
-    #    general = {
-    #      grace = 5;
-    #      no_fade_in = false;
-    #    };
-    #    input-fields = [
-    #      {
-    #        monitor = "eDP-1";
-    #        size = {
-    #          width = 300;
-    #          height = 50;
-    #        };
-    #        outline_thickness = 2;
-
-    #        outer_color = "rgb(f5c2e7)";
-    #        inner_color = "rgb(1e1e2e)";
-    #        font_color = "rgb(cdd6f4)";
-    #        placeholder_text = ''
-    #          <span foreground="##cdd6f4">Password...</span>
-    #        '';
-    #        fade_on_empty = false;
-    #        dots_spacing = 0.3;
-    #        dots_center = true;
-    #      }
-    #    ];
-    #    labels = [
-    #      {
-    #        monitor = "eDP-1";
-    #        text = "Hi, $USER";
-    #        color = "rgb(1e1e2e)";
-    #        valign = "center";
-    #        halign = "center";
-    #        font_size = 40;
-    #      }
-    #      {
-    #        monitor = "eDP-1";
-    #        text = "$TIME";
-    #        color = "rgb(1e1e2e)";
-    #        font_size = 30;
-    #        position = {
-    #          x = 0;
-    #          y = 140;
-    #        };
-    #        valign = "center";
-    #        halign = "center";
-    #      }
-    #    ];
-    #  };
-    #};
+    # hyprlock = {
+    #   enable = true;
+    #   settings = {
+    #     backgrounds = let
+    #       wallpaperPath = "/home/gus/Pictures/wallpapers/03366b011ece465696cfad1e87b2ee6e.png";
+    #     in [
+    #       {
+    #         monitor = "eDP-1";
+    #         path = wallpaperPath;
+    #       }
+    #     ];
+    #     general = {
+    #       grace = 5;
+    #       no_fade_in = false;
+    #     };
+    #     input-fields = [
+    #       {
+    #         monitor = "eDP-1";
+    #         size = {
+    #           width = 300;
+    #           height = 50;
+    #         };
+    #         outline_thickness = 2;
+    #
+    #         outer_color = "rgb(f5c2e7)";
+    #         inner_color = "rgb(1e1e2e)";
+    #         font_color = "rgb(cdd6f4)";
+    #         placeholder_text = ''
+    #           <span foreground="##cdd6f4">Password...</span>
+    #         '';
+    #         fade_on_empty = false;
+    #         dots_spacing = 0.3;
+    #         dots_center = true;
+    #       }
+    #     ];
+    #     labels = [
+    #       {
+    #         monitor = "eDP-1";
+    #         text = "Hi, $USER";
+    #         color = "rgb(1e1e2e)";
+    #         valign = "center";
+    #         halign = "center";
+    #         font_size = 40;
+    #       }
+    #       {
+    #         monitor = "eDP-1";
+    #         text = "$TIME";
+    #         color = "rgb(1e1e2e)";
+    #         font_size = 30;
+    #         position = {
+    #           x = 0;
+    #           y = 140;
+    #         };
+    #         valign = "center";
+    #         halign = "center";
+    #       }
+    #     ];
+    #   };
+    # };
 
     # nix-index = {
     #   enable = true;
@@ -317,59 +186,6 @@ in {
     #   enableBashIntegration = false;
     # };
     fish.enable = true;
-    newsboat = {
-      enable = true;
-      maxItems = 50;
-      autoReload = true;
-      urls = [
-        {url = "https://www.ruanyifeng.com/blog/atom.xml";}
-        {url = "https://v2ex.com/index.xml";}
-        {url = "https://rsshub.app/zhihu/hotlist";}
-        {url = "https://36kr.com/feed";}
-        {url = "https://www.reddit.com/r/neovim/.rss";}
-        {url = "https://www.reddit.com/r/rust/.rss";}
-        {url = "https://www.reddit.com/r/nixos/.rss";}
-      ];
-      extraConfig = ''
-        # externel browser
-        browser "w3m %u"
-        macro m set browser "mpv %u"; open-in-browser ; set browser "w3m %u"
-        macro f set browser "firefox %u"; open-in-browser ; set browser "w3m %u"
-        # unbind keys
-        unbind-key ENTER
-        unbind-key j
-        unbind-key k
-        unbind-key J
-        unbind-key K
-        unbind-key u
-        # bind keys - vim style
-        bind-key j down
-        bind-key k up
-        bind-key l open
-        bind-key h quit
-        bind-key d halfpagedown
-        bind-key u halfpageup
-        bind-key U show-urls
-        color background default default
-        color listnormal color255 default
-        color listfocus color238 color255 standout
-        color listnormal_unread color47 default
-        color listfocus_unread color238 color47 standout
-        color info color141 color236
-
-        # highlights
-        highlight all "---.*---" yellow
-        highlight feedlist ".*(0/0))" black
-        highlight article "(^Feed:|^Title:|^Date:|^Link:|^Author:)" cyan default bold
-        highlight article "https?://[^ ]+" yellow default
-        highlight article "\\[[0-9][0-9]*\\]" magenta default bold
-        highlight article "\\[image\\ [0-9]+\\]" green default bold
-        highlight article "\\[embedded flash: [0-9][0-9]*\\]" green default bold
-        highlight article ":.*\\(link\\)$" cyan default
-        highlight article ":.*\\(image\\)$" blue default
-        highlight article ":.*\\(embedded flash\\)$" magenta default
-      '';
-    };
     git = {
       enable = true;
       userName = "rogtino";
