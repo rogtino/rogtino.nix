@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  inputs,
   ...
 }: {
   # environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
@@ -37,6 +38,6 @@
       trusted-users = ["gus"];
     };
     channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
-    # registry.nixpkgs.flake = pkgs;
+    registry.nixpkgs.flake = inputs.nixpkgs;
   };
 }
