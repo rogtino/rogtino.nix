@@ -6,7 +6,6 @@
 }: {
   # environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
 
-  nix.nixPath = lib.mkForce ["/etc/nix/inputs"];
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "openssl-1.1.1w"
@@ -20,6 +19,7 @@
       dates = "weekly";
       options = "--delete-older-than 1w";
     };
+    nixPath = lib.mkForce ["/etc/nix/inputs"];
     settings = {
       # Optimise storage
       # you can alse optimise the store manually via:
@@ -30,6 +30,10 @@
         "nix-command"
         "flakes"
       ];
+      # Opinionated: disable global registry
+      flake-registry = "";
+      # Workaround for https://github.com/NixOS/nix/issues/9574
+      nix-path = config.nix.nixPath;
       substituters = [
         "https://mirror.sjtu.edu.cn/nix-channels/store"
         "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
