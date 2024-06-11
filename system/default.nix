@@ -9,5 +9,6 @@
     ./sops.nix
     ./network.nix
     ./virtual.nix
+    ./boot.nix
   ];
 }

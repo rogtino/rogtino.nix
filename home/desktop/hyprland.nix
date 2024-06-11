@@ -2,6 +2,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     #TODO:add a music mode?
+    #TODO:use nix to config zellij
     extraConfig = ''
       bind=$mod,S,submap,resize
 

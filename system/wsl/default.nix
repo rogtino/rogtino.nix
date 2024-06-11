@@ -1,8 +1,8 @@
 {...}: {
   imports = [
-    ./system.nix
-    ./package.nix
-    ./nixconfig.nix
     ./hardware-configuration.nix
+    ../core.nix
+    ../sops.nix
+    ../nixconfig.nix
   ];
 }

@@ -16,6 +16,7 @@
       mpv
       w3m-nox
       ffmpeg
+      playerctl
       # emacs
       nodePackages.pnpm
       nodePackages_latest.prisma

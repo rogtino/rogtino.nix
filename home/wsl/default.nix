@@ -5,8 +5,14 @@
     useUserPackages = true;
     useGlobalPkgs = true;
     users.gus.imports = [
-      ./gus.nix
+      ../devtools.nix
       inputs.nix-index-database.hmModules.nix-index
+      {
+        home.username = "gus";
+        home.homeDirectory = "/home/gus";
+        home.stateVersion = "23.11";
+        programs.home-manager.enable = true;
+      }
     ];
     extraSpecialArgs = {inherit inputs;};
   };

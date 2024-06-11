@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}
+{pkgs, ...}
 : {
   imports = [
     # Include the results of the hardware scan.
@@ -109,22 +105,6 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.11"; # Did you read the comment?
-  # Use the systemd-boot EFI boot loader.
-  boot = {
-    # supportedFilesystems = ["ntfs"];
-    loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 5;
-      };
-    };
-    kernelPackages = pkgs.linuxPackages_6_8;
-    # kernelPackages = pkgs.linuxPackages_latest;
-  };
-  systemd.extraConfig = ''
-    DefaultTimeoutStopSec=5s
-  '';
 
   environment = {
     variables = {

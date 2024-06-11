@@ -111,7 +111,7 @@ return {
           require('flash').treesitter()
         end,
         desc = 'Flash Treesitter',
-        mode = { 'n', 'o' },
+        mode = { 'n', 'o', 'x' },
       },
       -- {
       -- 	"R",

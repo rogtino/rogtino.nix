@@ -18,4 +18,6 @@ in {
   services = {
     displayManager.sessionPackages = [hyprland-nvidia-session];
   };
+
+  security.pam.services.hyprlock = {};
 }

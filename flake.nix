@@ -43,12 +43,12 @@
           ];
           specialArgs = {inherit inputs;};
         };
-        nixosConfigurations.none = nixpkgs.lib.nixosSystem {
+        nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./system/none
-            ./home/none
-            ./module/none
+            ./system/wsl
+            ./home/wsl
+            ./module/wsl
           ];
           specialArgs = {inherit inputs;};
         };
