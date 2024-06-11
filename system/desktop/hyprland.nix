@@ -1,10 +1,5 @@
-{
-  pkgs,
-  inputs,
-  ...
-}
+{pkgs, ...}
 : let
-  hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
   hyprland-nvidia-session = pkgs.writeTextFile {
     name = "hyprland-nvidia.desktop";
     destination = "/share/wayland-sessions/hyprland-nvidia.desktop";
@@ -22,10 +17,5 @@
 in {
   services = {
     displayManager.sessionPackages = [hyprland-nvidia-session];
-  };
-
-  programs.hyprland = {
-    enable = true;
-    package = hyprland;
   };
 }

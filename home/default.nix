@@ -6,7 +6,7 @@
     backupFileExtension = "default";
     users.gus.imports = [
       ./gus.nix
-      ./desktop.nix
+      ./desktop
       ./tools.nix
       ./devtools.nix
       inputs.nix-index-database.hmModules.nix-index

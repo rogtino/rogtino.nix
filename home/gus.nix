@@ -20,9 +20,8 @@ in {
       "nvim" = {
         source = link "/home/gus/rogtino.nix/config/nvim";
       };
-      "hypr" = {
-        #source = ../config/hypr/hyprland.conf;
-        source = link "/home/gus/rogtino.nix/config/hypr";
+      "hypr/scripts" = {
+        source = ./desktop/scripts;
       };
       "wezterm" = {
         source = ../config/wezterm;
