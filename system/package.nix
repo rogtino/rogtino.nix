@@ -36,8 +36,9 @@
       gnumake
       # this is super useful
       ngrok
-      cargo
-      rustup
+      # cargo
+      # rustup
+      rust-bin.stable.latest.default
       clang
       luajit
       uiua

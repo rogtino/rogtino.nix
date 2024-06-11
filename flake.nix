@@ -83,6 +83,10 @@
   inputs = {
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     #NOTE:https://flake.parts/best-practices-for-module-writing
     flake-parts.url = "github:hercules-ci/flake-parts";
     #NOTE:https://github.com/hyprwm/hyprpaper/issues/88

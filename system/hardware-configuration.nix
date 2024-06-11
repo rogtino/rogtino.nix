@@ -31,7 +31,8 @@
   };
   fileSystems."/home/gus/blk" = {
     device = "/dev/disk/by-uuid/5248FFEE48FFCEAB";
-    fsType = "ntfs";
+    fsType = "ntfs-3g";
+    options = ["rw" "uid=1000"];
   };
 
   swapDevices = [];
