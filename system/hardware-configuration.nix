@@ -29,6 +29,10 @@
     device = "/dev/disk/by-uuid/aa65a7cd-aa4a-49cb-b9b2-c1a09cd647af";
     fsType = "ext4";
   };
+  fileSystems."/home/gus/blk" = {
+    device = "/dev/disk/by-uuid/5248FFEE48FFCEAB";
+    fsType = "ntfs";
+  };
 
   swapDevices = [];
 
