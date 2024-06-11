@@ -1,10 +1,9 @@
 {
   lib,
-  nixpkgs,
-  config,
+  inputs,
   ...
 }: {
-  environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
+  environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
 
   nix = {
     gc = {
@@ -36,6 +35,6 @@
       ];
     };
     channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
-    registry.nixpkgs.flake = nixpkgs;
+    registry.nixpkgs.flake = inputs.nixpkgs;
   };
 }
