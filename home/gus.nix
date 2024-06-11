@@ -115,6 +115,9 @@ in {
   xdg = {
     enable = true;
 
+    dataFile = {
+      "fcitx5/themes".source = "${pkgs.fcitx5-rose-pine}/share/fcitx5/themes";
+    };
     configFile = {
       "nvim" = {
         source = link "/home/gus/rogtino.nix/config/nvim";
