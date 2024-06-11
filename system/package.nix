@@ -6,7 +6,7 @@
 }: {
   # lsp stuff should be in nix develop shell
   environment.systemPackages = with pkgs; [
-    # config.nur.repos.xddxdd.netease-cloud-music
+    config.nur.repos.xddxdd.netease-cloud-music
     config.nur.repos.xddxdd.qqmusic
     # config.nur.repos.YisuiMilena.hmcl-bin
     # inputs.hyprpaper.packages.${pkgs.system}.default

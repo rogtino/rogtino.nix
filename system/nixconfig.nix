@@ -8,7 +8,7 @@
   nix.nixPath = lib.mkForce ["/etc/nix/inputs"];
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
-    "openssl"
+    "openssl-1.1.1w"
   ];
   nix = {
     extraOptions = ''
