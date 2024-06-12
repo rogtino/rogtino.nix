@@ -25,7 +25,7 @@
     ignoreTimeout = true;
     anchor = "top-right";
     output = "eDP-1";
-    font = "Fira Code 18";
+    font = "Fira Code 10";
     padding = "10";
     width = 270;
     height = 100;

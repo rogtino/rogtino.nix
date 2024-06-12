@@ -2,7 +2,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
     #TODO:add a music mode?
-    #TODO:use nix to config zellij
     extraConfig = ''
       bind=$mod,S,submap,resize
 
@@ -235,8 +234,6 @@
         #TODO: autostart it
         "waybar"
         "waybar -c ~/.config/waybar/topbar/config -s ~/.config/waybar/topbar/style.css"
-        #TODO: fix it
-        "/usr/lib/polkit-kde-authentication-agent-1"
         "wlsunset -l 39.9 -L 116.3"
         "mako"
       ];

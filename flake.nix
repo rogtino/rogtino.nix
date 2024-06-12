@@ -59,13 +59,6 @@
         system,
         ...
       }: {
-        # _module.args.pkgs = import nixpkgs {
-        #   inherit system;
-        #   config.allowUnfree = true;
-        #   config.permittedInsecurePackages = [
-        #     "openssl"
-        #   ];
-        # };
         devShells.default = pkgs.mkShell {
           name = "rogtino";
           inputsFrom = [config.treefmt.build.devShell];
