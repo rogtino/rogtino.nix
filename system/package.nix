@@ -61,7 +61,6 @@
       gh
       onefetch
       cliphist
-      zathura
       mate.atril
       slurp
       swaybg

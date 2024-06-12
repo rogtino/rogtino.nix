@@ -63,7 +63,7 @@
         ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
       ];
       bind = [
-        "bind=$mod,W,exec,alacritty"
+        "bind=$mod,W,exec,foot"
         "bind=$mod,Return,exec,alacritty --class termfloat"
         "bind=$mod,F,exec,firefox"
         "bind=$mod,P,exec,grim -g $(slurp)"
@@ -197,7 +197,7 @@
       misc = {
         disable_hyprland_logo = true;
         enable_swallow = true;
-        swallow_regex = "^(Alacritty|bilibili|Google-chrome)$";
+        swallow_regex = "^(Alacritty|bilibili|Google-chrome|foot)$";
         focus_on_activate = true;
       };
       windowrule = [

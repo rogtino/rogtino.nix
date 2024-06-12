@@ -94,6 +94,8 @@ $env.GOPROXY = "https://proxy.golang.com.cn,direct"
 $env.GO111MODULE = "on"
 $env.RUSTUP_DIST_SERVER = "https://rsproxy.cn"
 $env.RUSTUP_UPDATE_ROOT = "https://rsproxy.cn/rustup"
+$env.MANPAGER = "sh -c 'col -bx | bat -l man -p'"
+$env.MANROFFOPT = "-c"
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
 zoxide init nushell | save -f ~/.zoxide.nu
