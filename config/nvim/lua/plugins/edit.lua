@@ -1,5 +1,12 @@
 return {
   {
+    'lilydjwg/fcitx.vim',
+    event = 'InsertEnter',
+    init = function()
+      vim.g.fcitx5_rime = 1
+    end,
+  },
+  {
     'nvim-pack/nvim-spectre',
     config = true,
     keys = {
