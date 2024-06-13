@@ -28,122 +28,26 @@ in
         patch = {
           # 雾凇拼音
           __include = "rime_ice_suggestion:/";
-          "switcher/save_options" = [];
+          # "switcher/save_options" = [];
 
-          # 极光拼音
           # "switcher/save_options" = ["full_shape" "ascii_punct" "simplification" "extended_charset"];
 
-          schema_list = [{schema = "rime_ice";}];
-          "menu/page_size" = 9;
-          "ascii_composer/good_old_caps_lock" = true;
-          "ascii_composer/switch_key" = {
-            "Caps_Lock" = "noop";
-            "Shift_L" = "commit_code";
-            "Shift_R" = "commit_code";
-            "Control_L" = "noop";
-            "Control_R" = "noop";
-          };
-          "switcher/hotkeys" = ["F4"];
-          "switcher/fold_options" = false;
-          "switcher/abbreviate_options" = false;
-          key_binder = {
-            bindings = [
-              {
-                when = "composing";
-                accept = "Shift+Tab";
-                send = "Shift+Left";
-              }
-              {
-                when = "composing";
-                accept = "Tab";
-                send = "Shift+Right";
-              }
-              {
-                when = "composing";
-                accept = "Alt+Left";
-                send = "Shift+Left";
-              }
-              {
-                when = "composing";
-                accept = "Alt+Right";
-                send = "Shift+Right";
-              }
-              {
-                when = "has_menu";
-                accept = "minus";
-                send = "Page_Up";
-              }
-              {
-                when = "has_menu";
-                accept = "equal";
-                send = "Page_Down";
-              }
-              {
-                when = "paging";
-                accept = "comma";
-                send = "Page_Up";
-              }
-              {
-                when = "has_menu";
-                accept = "period";
-                send = "Page_Down";
-              }
-              {
-                when = "paging";
-                accept = "bracketleft";
-                send = "Page_Up";
-              }
-              {
-                when = "has_menu";
-                accept = "bracketright";
-                send = "Page_Down";
-              }
-            ];
-          };
+          schema_list = [{schema = "double_pinyin_flypy";}];
+          # "menu/page_size" = 9;
         };
       };
-
-      # 极光拼音
-      "share/rime-data/aurora_pinyin.custom.yaml" = builtins.toJSON {
-        patch = {
-          "switches" = [
-            {
-              name = "ascii_mode";
-              reset = 1;
-            }
-          ];
-          "translator/dictionary" = "lantian_aurora_pinyin";
-          "__include" = "emoji_suggestion:/patch";
-          punctuator = {
-            import_preset = "symbols";
-            half_shape = {
-              "#" = "#";
-              "*" = "*";
-              "~" = "~";
-              "=" = "=";
-              "`" = "`";
-            };
-          };
-        };
-      };
-
-      "share/rime-data/lantian_aurora_pinyin.dict.yaml" = makeDict "lantian_aurora_pinyin" [
-        "aurora_pinyin"
-        "moegirl"
-        "zhwiki"
-      ];
 
       # 雾凇拼音
-      "share/rime-data/rime_ice.custom.yaml" = builtins.toJSON {
+      "share/rime-data/double_pinyin_flypy.custom.yaml" = builtins.toJSON {
         patch = {
           "switches" = [
             {
               name = "ascii_mode";
-              reset = 1;
+              reset = 0;
             }
             {
               name = "traditionalization";
-              reset = 0;
+              reset = 1;
             }
           ];
           "translator/dictionary" = "lantian_rime_ice";
@@ -158,48 +62,13 @@ in
         "cn_dicts/tencent"
         "cn_dicts/others"
 
-        "moegirl"
-        "zhwiki"
-      ];
-
-      # 朙月拼音
-      "share/rime-data/luna_pinyin_simp.custom.yaml" = builtins.toJSON {
-        patch = {
-          "switches" = [
-            {
-              name = "ascii_mode";
-              reset = 1;
-            }
-            {
-              name = "zh_simp";
-              reset = 1;
-            }
-          ];
-          "translator/dictionary" = "lantian_luna_pinyin_simp";
-          "__include" = "emoji_suggestion:/patch";
-          punctuator = {
-            import_preset = "symbols";
-            half_shape = {
-              "#" = "#";
-              "*" = "*";
-              "~" = "~";
-              "=" = "=";
-              "`" = "`";
-            };
-          };
-        };
-      };
-
-      "share/rime-data/lantian_luna_pinyin_simp.dict.yaml" = makeDict "lantian_luna_pinyin_simp" [
         "pinyin_simp"
-        # "moegirl"
-        # "zhwiki"
         "luna_pinyin.anime"
         "luna_pinyin.basis"
         "luna_pinyin.biaoqing"
         "luna_pinyin.chat"
         "luna_pinyin.classical"
-        # "luna_pinyin.cn_en"
+        "luna_pinyin.cn_en"
         "luna_pinyin.computer"
         "luna_pinyin.daily"
         "luna_pinyin.diet"
@@ -217,6 +86,9 @@ in
         "luna_pinyin.practical"
         "luna_pinyin.sougou"
         "luna_pinyin.website"
+
+        "moegirl"
+        "zhwiki"
       ];
     }
   )
