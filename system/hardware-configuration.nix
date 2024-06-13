@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  # pkgs,
   modulesPath,
   ...
 }: {
@@ -12,8 +13,14 @@
   boot.supportedFilesystems = ["ntfs"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
-  boot.extraModulePackages = with config.boot.kernelPackages; [rtl8821ce];
-  boot.blacklistedKernelModules = ["rtw88_8821ce"];
+  boot.extraModprobeConfig = ''
+    options rtw88_pci      disable_aspm=Y
+  '';
+  boot.kernel.sysctl = {
+    "net.ipv4.tcp_congestion_control" = "bbr";
+  };
+  # boot.extraModulePackages = with pkgs; [linuxKernel.packages.linux_6_9.rtl8821ce];
+  # boot.blacklistedKernelModules = ["rtw88_8821ce"];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/c27c0ed8-f2ac-4923-b59d-1f611e7b788e";

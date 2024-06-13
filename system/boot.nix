@@ -9,8 +9,8 @@
         configurationLimit = 5;
       };
     };
-    kernelPackages = pkgs.linuxPackages_6_8;
-    # kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelModules = ["tcp_bbr"];
   };
   systemd.extraConfig = ''
     DefaultTimeoutStopSec=5s
