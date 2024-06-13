@@ -3,6 +3,7 @@ local ex = {
   yuck = true,
   alpha = true,
   oil = true,
+  oil_preview = true,
   ssr = true,
   dapui_scopes = true,
   NeogitCommitMessage = true,

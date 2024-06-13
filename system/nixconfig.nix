@@ -26,6 +26,7 @@
       #    nix-store --optimise
       # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
       auto-optimise-store = true;
+      warn-dirty = false;
       experimental-features = [
         "nix-command"
         "flakes"
