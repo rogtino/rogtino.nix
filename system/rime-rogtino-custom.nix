@@ -40,11 +40,14 @@ in
       # 雾凇拼音
       "share/rime-data/double_pinyin_flypy.custom.yaml" = builtins.toJSON {
         patch = {
+          # NOTE:no idea why not work
+          # "style/font_point" = 15;
           "switches" = [
-            {
-              name = "ascii_mode";
-              reset = 0;
-            }
+            # {
+            #   name = "ascii_mode";
+            #   reset = 0;
+            #   states = ["中文" "西文"];
+            # }
             {
               name = "traditionalization";
               reset = 1;
