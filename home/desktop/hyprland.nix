@@ -78,6 +78,7 @@
         "bind=$mod,TAB, togglespecialworkspace"
         "bind=$mod,O,exec,~/.config/hypr/scripts/toggle.sh"
         "bind=$mod,I,exec,~/.config/hypr/scripts/scale.sh"
+        "bind=$mod,B,exec,bilibili --ozone-platform-hint=auto --enable-wayland-ime"
         "bind=$mod, h, movefocus, l"
         "bind=$mod, l, movefocus, r"
         "bind=$mod, k, movefocus, u"

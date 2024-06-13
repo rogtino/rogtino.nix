@@ -18,7 +18,7 @@ vim.keymap.set('n', '<leader>td', '<cmd>SwitchTheme dark<CR>', { desc = 'toggle 
 vim.keymap.set('n', '<leader>tl', '<cmd>SwitchTheme light<CR>', { desc = 'toggle random light theme' })
 vim.keymap.set('n', '<leader>hd', '<cmd>NoiceDismiss<CR>', { desc = 'dismiss noice' })
 vim.keymap.set('n', '<leader>hi', function()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(nil))
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {})
 end, { desc = 'toggle inlay_hint' })
 vim.keymap.set('n', '<leader>ts', '<cmd>InspectTree<CR>', { desc = 'open treesitter tree' })
 vim.keymap.set('n', '<A-j>', ':m+1<CR>')
