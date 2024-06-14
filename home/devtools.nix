@@ -159,6 +159,12 @@ in {
       "zellij" = {
         source = ../config/zellij;
       };
+      "guix" = {
+        source = mkOutOfStoreSymlink "/home/gus/rogtino.nix/config/guix";
+      };
+      "ags" = {
+        source = mkOutOfStoreSymlink "/home/gus/rogtino.nix/config/ags";
+      };
     };
   };
   programs.bat = {

@@ -9,6 +9,7 @@ local function config()
       'astro',
       'asm',
       'nasm',
+      'scheme',
       'c',
       'lua',
       'vim',

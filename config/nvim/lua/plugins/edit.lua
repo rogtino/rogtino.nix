@@ -1,5 +1,10 @@
 return {
   {
+    'Olical/conjure',
+    ft = { 'scheme', 'fennel' },
+    dependencies = { 'gpanders/nvim-parinfer', ft = 'scheme' },
+  },
+  {
     'lilydjwg/fcitx.vim',
     event = 'InsertEnter',
     init = function()

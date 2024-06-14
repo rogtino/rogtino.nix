@@ -25,6 +25,7 @@
       python312
       nodejs
       grim
+      mitscheme
       # vscode
       fzf
       cachix

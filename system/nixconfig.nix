@@ -30,6 +30,7 @@
       experimental-features = [
         "nix-command"
         "flakes"
+        "repl-flake"
       ];
       # Opinionated: disable global registry
       flake-registry = "";
