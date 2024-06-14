@@ -3,15 +3,12 @@ title: todo description: things to be done
 authors: gus
 categories: GTD
 created: 2024-03-22T07:50:31+0800
-updated: 2024-06-14T08:42:45+0800
+updated: 2024-06-14T17:05:30+0800
 version: 1.1.1
 @end
 
 
-* (-) add some useful flakes
 * (-) move waybar to ags
 * (=) use color
 * ( ) impermanence
-* (-) rime with some lua function?
-* (_) configure fcitx5 with hm
-* (=) add guix :(
+* (x) replace swaybg with swww

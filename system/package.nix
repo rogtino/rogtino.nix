@@ -46,6 +46,7 @@
       uiua
       devenv
       clang-tools
+      swww
       yt-dlp
       gcc
       sqlite
@@ -64,7 +65,6 @@
       cliphist
       mate.atril
       slurp
-      swaybg
       wlsunset
       # nodePackages.vscode-html-languageserver-bin
       wget

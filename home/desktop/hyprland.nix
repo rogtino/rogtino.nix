@@ -229,7 +229,8 @@
         layout = "master";
       };
       exec-once = [
-        "~/.config/hypr/scripts/swaybg.sh"
+        "swww-daemon"
+        "~/.config/hypr/scripts/swww.sh"
         "fcitx5"
         "wl-paste --watch cliphist store"
         #TODO: autostart it
