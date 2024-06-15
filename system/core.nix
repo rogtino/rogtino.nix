@@ -30,6 +30,7 @@
   # List services that you want to enable:
   services = {
     # emacs.enable = true;
+    gvfs.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;

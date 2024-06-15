@@ -1,5 +1,6 @@
-import { applauncher } from "./applauncher";
+import { workspace } from "workspace";
+import { applauncher } from "applauncher";
 
 App.config({
-  windows: [applauncher],
+  windows: [applauncher, workspace],
 });
