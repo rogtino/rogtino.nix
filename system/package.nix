@@ -47,6 +47,8 @@
       devenv
       clang-tools
       swww
+      bun
+      sass
       yt-dlp
       gcc
       sqlite
@@ -57,7 +59,6 @@
       neovim
       neovide
       rizin
-      rofi-wayland
       obs-studio
       cutter
       gh

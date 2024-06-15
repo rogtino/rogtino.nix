@@ -69,7 +69,7 @@
         "bind=$mod SHIFT,P,exec,hyprpicker -a"
         "bind=$mod,X,exec,playerctl -p netease-cloud-music play-pause"
         "bind=$mod,N,exec,playerctl -p netease-cloud-music next"
-        "bind=$mod,R,exec,rofi -show drun"
+        "bind=$mod,R,exec,ags -t applauncher"
         "bind=$mod SHIFT,R,exec,rofi -show run"
         "bind=$mod,A,fullscreen"
         "bind=$mod,Q,killactive"
@@ -232,6 +232,7 @@
         "swww-daemon"
         "~/.config/hypr/scripts/swww.sh"
         "fcitx5"
+        "ags"
         "wl-paste --watch cliphist store"
         #TODO: autostart it
         "waybar"
