@@ -1,3 +1,4 @@
+import GLib from "gi://GLib";
 const hyprland = await Service.import("hyprland");
 const notifications = await Service.import("notifications");
 const mpris = await Service.import("mpris");
@@ -162,12 +163,17 @@ function SysTray() {
     children: items,
   });
 }
+const ivar = Variable(GLib.get_os_info("LOGO"));
 
+const icon = Widget.Icon({
+  icon: ivar.bind(),
+  css: "font-size:22px;margin-left:8px",
+});
 // layout of the bar
 function Left() {
   return Widget.Box({
     spacing: 8,
-    children: [Workspaces(7)],
+    children: [icon, Workspaces(7)],
   });
 }
 
@@ -186,17 +192,14 @@ function Right() {
   });
 }
 
-export function Bar(monitor = 0) {
-  return Widget.Window({
-    name: `bar-${monitor}`, // name has to be unique
-    class_name: "bar",
-    monitor,
-    anchor: ["top", "left", "right"],
-    exclusivity: "exclusive",
-    child: Widget.CenterBox({
-      start_widget: Left(),
-      center_widget: Center(),
-      end_widget: Right(),
-    }),
-  });
-}
+export const Bar = Widget.Window({
+  name: `bar`, // name has to be unique
+  class_name: "bar",
+  anchor: ["top", "left", "right"],
+  exclusivity: "exclusive",
+  child: Widget.CenterBox({
+    start_widget: Left(),
+    center_widget: Center(),
+    end_widget: Right(),
+  }),
+});

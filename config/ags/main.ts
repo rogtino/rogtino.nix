@@ -3,5 +3,5 @@ import { Launcher } from "Launcher";
 
 App.config({
   style: "./style.css",
-  windows: [Bar(), Launcher],
+  windows: [Bar, Launcher],
 });
