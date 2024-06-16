@@ -11,7 +11,7 @@ with pkgs; let
     typst-lsp
     marksman
     nodePackages_latest.typescript-language-server
-    nodePackages_latest.vscode-css-languageserver-bin
+    vscode-langservers-extracted
     typescript
     rustywind
     emmet-language-server
