@@ -144,7 +144,6 @@ return {
 
   --not free :(
   --( pack :zbirenbaum/copilot.lua {:cmd :Copilot :event :InsertEnter :config true })
-  -- { "glepnir/lspsaga.nvim", branch = "main", opts = { lightbulb = { sign = false } }, event = "VeryLazy" },
   {
     'famiu/bufdelete.nvim',
     cmd = 'Bdelete',

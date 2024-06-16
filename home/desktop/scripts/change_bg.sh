@@ -8,4 +8,4 @@ img=$(fd -a "jpg|png" "$wallpapers" | shuf -n 1 --random-source=/dev/random)
 pos=$(printf "%s\n" "${pos_list[@]}" | shuf -n 1)
 tp=$(printf "%s\n" "${tp_list[@]}" | shuf -n 1)
 angle=$(od -An -N2 -i /dev/urandom | awk '{print $1%360}')
-swww img "$img" --transition-duration 2 --transition-fps 60 -t "$tp" --transition-pos "$pos" --transition-angle "$angle"
+swww img "$img" --transition-duration 2 --transition-fps 30 -t "$tp" --transition-pos "$pos" --transition-angle "$angle"

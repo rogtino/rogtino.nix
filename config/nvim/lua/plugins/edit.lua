@@ -335,7 +335,11 @@ return {
   -- },
   {
     'nvimdev/lspsaga.nvim',
-    config = true,
+    opts = {
+      lightbulb = {
+        enable = false,
+      },
+    },
     event = 'LspAttach',
     dependencies = {
       'nvim-treesitter/nvim-treesitter', -- optional

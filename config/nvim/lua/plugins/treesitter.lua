@@ -36,6 +36,7 @@ local function config()
       'cmake',
       'dart',
       'css',
+      'scss',
       'diff',
       'dockerfile',
       'go',

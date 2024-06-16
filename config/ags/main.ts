@@ -1,6 +1,6 @@
-import { workspace } from "workspace";
-import { applauncher } from "applauncher";
+import { Bar } from "Bar";
 
 App.config({
-  windows: [applauncher, workspace],
+  style: "./style.css",
+  windows: [Bar()],
 });

@@ -48,12 +48,12 @@
       clang-tools
       swww
       bun
-      sass
+      dart-sass
+      brightnessctl
       yt-dlp
       gcc
       sqlite
       wl-clipboard
-      waybar
       deno
       virt-manager
       neovim
