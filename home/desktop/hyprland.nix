@@ -69,7 +69,7 @@
         "bind=$mod SHIFT,P,exec,hyprpicker -a"
         "bind=$mod,X,exec,playerctl -p netease-cloud-music play-pause"
         "bind=$mod,N,exec,playerctl -p netease-cloud-music next"
-        "bind=$mod,R,exec,ags -t applauncher"
+        "bind=$mod,R,exec,ags -t launcher"
         "bind=$mod SHIFT,R,exec,rofi -show run"
         "bind=$mod,A,fullscreen"
         "bind=$mod,Q,killactive"

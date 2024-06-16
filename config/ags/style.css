@@ -39,7 +39,7 @@ label {
 }
 
 .workspaces label.active {
-  background-image: linear-gradient(to right, #51a4e7, #5199ff);
+  background-image: linear-gradient(to right, #f096a3, #ec7687);
   min-width: 20pt;
   min-height: 12pt;
 }

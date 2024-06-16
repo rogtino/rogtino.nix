@@ -217,19 +217,19 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         sh = { 'shfmt' },
-        javascript = { 'deno_fmt' },
+        javascript = { 'prettier' },
         java = { 'google-java-format' },
-        json = { 'deno_fmt' },
+        json = { 'prettier' },
         c = { 'clang_format' },
         css = { 'prettier' },
         cpp = { 'clang_format' },
-        typescript = { 'deno_fmt' },
+        typescript = { 'prettier' },
         go = { 'gofmt' },
         -- rust = { 'rustfmt' },
         toml = { 'taplo' },
         typst = { 'typstfmt' },
-        javascriptreact = { 'deno_fmt', 'rustywind' },
-        typescriptreact = { 'deno_fmt', 'rustywind' },
+        javascriptreact = { 'prettier', 'rustywind' },
+        typescriptreact = { 'prettier', 'rustywind' },
         python = { 'black' },
         fennel = { 'fnlfmt' },
         nix = { 'alejandra' },
@@ -243,7 +243,7 @@ return {
         if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
           return
         end
-        return { timeout_ms = 500, lsp_fallback = true }
+        return { timeout_ms = 1000, lsp_fallback = true }
       end,
     },
   },
