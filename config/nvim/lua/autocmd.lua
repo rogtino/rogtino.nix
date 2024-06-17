@@ -76,6 +76,8 @@ vim.api.nvim_create_autocmd('FileType', {
     'toggleterm',
     'NeogitCommitMessage',
     'norg',
+    'org',
+    'text',
     'markdown',
     'spectre_panel',
   },

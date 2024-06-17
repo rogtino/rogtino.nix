@@ -30,7 +30,7 @@ return {
       },
     },
     lazy = false,
-    keys = { { '<leader>o', vim.cmd.Oil, desc = 'open oil' } },
+    keys = { { '<c-e>', vim.cmd.Oil, desc = 'open oil' } },
   },
   {
     'Mythos-404/xmake.nvim',

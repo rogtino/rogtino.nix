@@ -32,7 +32,7 @@ local function config()
       'just',
       'json',
       -- 'norg',
-      'org',
+      -- 'org',
       'cmake',
       'dart',
       'css',

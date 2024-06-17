@@ -238,7 +238,7 @@
         # "waybar"
         # "waybar -c ~/.config/waybar/topbar/config -s ~/.config/waybar/topbar/style.css"
         "wlsunset -l 39.9 -L 116.3"
-        "mako"
+        # "mako"
       ];
       env = [
         "LIBVA_DRIVER_NAME,nvidia"

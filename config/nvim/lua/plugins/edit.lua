@@ -1,4 +1,63 @@
+local org_path = function(path)
+  local org_directory = '~/notes/orgfiles'
+  return ('%s/%s'):format(org_directory, path)
+end
 return {
+  {
+    'nvim-orgmode/orgmode',
+    event = 'VeryLazy',
+    ft = { 'org' },
+    dependencies = {
+      'lukas-reineke/headlines.nvim',
+      config = true,
+    },
+    opts = {
+      org_agenda_files = '~/notes/orgfiles/**/*',
+      org_default_notes_file = '~/notes/orgfiles/refile.org',
+      org_startup_indented = true,
+      org_log_into_drawer = 'LOGBOOK',
+      org_todo_keywords = { 'TODO(t)', 'PROGRESS(p)', '|', 'DONE(d)', 'REJECTED(r)' },
+      org_capture_templates = {
+        t = {
+          description = 'Refile',
+          template = '* TODO %?\nDEADLINE: %T',
+        },
+        T = {
+          description = 'Todo',
+          template = '* TODO %?\nDEADLINE: %T',
+          target = org_path 'todos.org',
+        },
+        w = {
+          description = 'Work todo',
+          template = '* TODO %?\nDEADLINE: %T',
+          target = org_path 'work.org',
+        },
+      },
+      -- notifications = {
+      --   reminder_time = { 0, 1, 5, 10 },
+      --   repeater_reminder_time = { 0, 1, 5, 10 },
+      --   deadline_warning_reminder_time = { 0 },
+      --   cron_notifier = function(tasks)
+      --     for _, task in ipairs(tasks) do
+      --       local title = string.format('%s (%s)', task.category, task.humanized_duration)
+      --       local subtitle = string.format('%s %s %s', string.rep('*', task.level), task.todo, task.title)
+      --       local date = string.format('%s: %s', task.type, task.time:to_string())
+      --
+      --       if vim.fn.executable 'notify-send' then
+      --         vim.uv.spawn('notify-send', {
+      --           args = {
+      --             -- '--icon=/home/kristijan/github/orgmode/assets/nvim-orgmode-small.png',
+      --             '--app-name=orgmode',
+      --             '--urgency=critical',
+      --             string.format('%s\n%s\n%s', title, subtitle, date),
+      --           },
+      --         })
+      --       end
+      --     end
+      --   end,
+      -- },
+    },
+  },
   {
     'Olical/conjure',
     ft = { 'scheme', 'fennel' },
@@ -307,12 +366,12 @@ return {
       'luarocks.nvim',
     },
   },
-  {
-    'nvim-orgmode/orgmode',
-    dependencies = { { 'akinsho/org-bullets.nvim', config = true } },
-    enabled = false,
-    opts = { org_agenda_files = '~/orgfiles/**/*', org_default_notes_file = '~/orgfiles/refile.org' },
-  },
+  -- {
+  --   'nvim-orgmode/orgmode',
+  --   dependencies = { { 'akinsho/org-bullets.nvim', config = true } },
+  --   enabled = false,
+  --   opts = { org_agenda_files = '~/orgfiles/**/*', org_default_notes_file = '~/orgfiles/refile.org' },
+  -- },
   -- {
   --     'archibate/genius.nvim',
   --     dependencies = {

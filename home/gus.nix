@@ -16,41 +16,6 @@
     };
   };
 
-  services.mako = {
-    enable = true;
-    icons = true;
-    maxIconSize = 64;
-    maxVisible = 3;
-    defaultTimeout = 5000;
-    ignoreTimeout = true;
-    anchor = "top-right";
-    output = "eDP-1";
-    font = "Fira Code 10";
-    padding = "10";
-    width = 270;
-    height = 100;
-    margin = "18,21,0";
-    backgroundColor = "#1e1e2e";
-    textColor = "#a9b1d6";
-    borderColor = "#89b4fa";
-    borderRadius = 12;
-    progressColor = "over #313244";
-    extraConfig = ''
-      [urgency=low]
-      text-color=#36CC8B
-      default-timeout=5000
-
-      [urgency=normal]
-      text-color=#de8f78
-      default-timeout=10000
-
-      [urgency=critical]
-      text-color=#FF5369
-      default-timeout=0
-
-    '';
-  };
-
   programs = {
     ags = {
       enable = true;
