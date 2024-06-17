@@ -16,11 +16,11 @@
   boot.extraModprobeConfig = ''
     options rtw88_pci      disable_aspm=Y
   '';
+  # boot.extraModulePackages = [config.boot.kernelPackages.rtw88];
+  # boot.blacklistedKernelModules = ["rtw88_8821ce"];
   boot.kernel.sysctl = {
     "net.ipv4.tcp_congestion_control" = "bbr";
   };
-  # boot.extraModulePackages = with pkgs; [linuxKernel.packages.linux_6_9.rtl8821ce];
-  # boot.blacklistedKernelModules = ["rtw88_8821ce"];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/c27c0ed8-f2ac-4923-b59d-1f611e7b788e";

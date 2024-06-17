@@ -4,8 +4,9 @@
       ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
                          ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))
       )
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
+;;(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+;;(load custom-file)
+(setq custom-safe-themes t)
 (set-face-attribute 'default nil :height 200)
 (electric-pair-mode t)                       ; 自动补全括号
 (add-hook 'prog-mode-hook #'show-paren-mode) ; 编程模式下，光标在括号上时高亮另一个括号
@@ -105,6 +106,7 @@
 			  ("M-A" . marginalia-cycle)))
 (use-package dashboard
   :ensure t
+  :if (display-graphic-p)
   :config
   (setq dashboard-banner-logo-title "Are you mad?") ;; 个性签名，随读者喜好设置
   (setq dashboard-projects-backend 'projectile) ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
