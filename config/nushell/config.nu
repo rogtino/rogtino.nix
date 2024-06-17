@@ -615,6 +615,7 @@ name: commands_with_description
        ]
 }
 alias e = nvim
+alias em = emacsclient
 alias asd = lazygit
 alias pa = paru --bottomup
 alias se = sudoedit nvim

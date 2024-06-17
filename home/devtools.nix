@@ -11,7 +11,7 @@ with pkgs; let
     typst-lsp
     marksman
     nodePackages_latest.typescript-language-server
-    nodePackages_latest.vscode-css-languageserver-bin
+    vscode-langservers-extracted
     typescript
     rustywind
     emmet-language-server
@@ -21,7 +21,7 @@ with pkgs; let
     rust-analyzer
     cmake-language-server
     ruff
-    nodePackages.bash-language-server
+    bash-language-server
     # solc
   ];
   formatter = [
@@ -155,6 +155,9 @@ in {
       };
       "nushell" = {
         source = mkOutOfStoreSymlink "/home/gus/rogtino.nix/config/nushell";
+      };
+      "emacs/init.el" = {
+        source = mkOutOfStoreSymlink "/home/gus/rogtino.nix/config/emacs/init.el";
       };
       "zellij" = {
         source = ../config/zellij;

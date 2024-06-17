@@ -4,7 +4,7 @@
   inputs,
   ...
 }: {
-  # environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
+  environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
