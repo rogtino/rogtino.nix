@@ -106,6 +106,7 @@ function Brightness() {
       css: "font-size:0px",
     }),
   });
+
   return Widget.Button({
     on_scroll_up: () => (bright.screen_value += 0.02),
     on_scroll_down: () => (bright.screen_value -= 0.02),
@@ -123,7 +124,7 @@ function Volume() {
     rounded: false,
     inverted: false,
     startAt: 0.75,
-    value: audio.bind("speaker").as((a) => a.volume),
+    value: audio.speaker.bind("volume"),
     child: Widget.Icon({
       icon: "",
       css: "font-size:0px",
@@ -149,8 +150,8 @@ function Battery() {
     inverted: false,
     startAt: 0.75,
     value: battery.bind("percent").as((p) => p / 100),
-    child: Widget.Label({
-      label: "",
+    child: Widget.Icon({
+      icon: "",
       css: "font-size:0px",
     }),
   });
