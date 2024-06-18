@@ -5,12 +5,13 @@ const mpris = await Service.import("mpris");
 const audio = await Service.import("audio");
 const battery = await Service.import("battery");
 const systemtray = await Service.import("systemtray");
+import bright from "service/bright";
 
 function range(length: number, start = 1) {
   return Array.from({ length }, (_, i) => i + start);
 }
 const date = Variable("", {
-  poll: [1000, 'date "+%H:%M:%S"'],
+  poll: [1000, 'date "+%H:%M"'],
 });
 const Workspaces = (ws: number) =>
   Widget.Box({
@@ -47,6 +48,7 @@ function Clock() {
   return Widget.Label({
     class_name: "clock",
     label: date.bind(),
+    css: "color:pink;font-size:16px",
   });
 }
 
@@ -126,26 +128,40 @@ function Volume() {
     children: [icon, slider],
   });
 }
-
-function BatteryLabel() {
-  const value = battery.bind("percent").as((p) => (p > 0 ? p / 100 : 0));
-  const icon = battery
-    .bind("percent")
-    .as((p) => `battery-level-${Math.floor(p / 10) * 10}-symbolic`);
-
-  return Widget.Box({
-    class_name: "battery",
-    visible: battery.bind("available"),
-    children: [
-      Widget.Icon({ icon }),
-      Widget.LevelBar({
-        widthRequest: 140,
-        vpack: "center",
-        value,
-      }),
-    ],
-  });
-}
+const bri = Widget.CircularProgress({
+  css:
+    "min-width: 40px;" + // its size is min(min-height, min-width)
+    "min-height: 40px;" +
+    "font-size: 6px;" + // to set its thickness set font-size on it
+    "margin: 4px;" + // you can set margin on it
+    "background-color: #131313;" + // set its bg color
+    "color: yellow;", // set its fg color
+  rounded: false,
+  inverted: false,
+  startAt: 0.75,
+  value: bright.bind("screen_value").as((p) => p / 100),
+  child: Widget.Label({
+    label: bright.bind("screen_value"),
+    css: "font-size:12px",
+  }),
+});
+const bat = Widget.CircularProgress({
+  css:
+    "min-width: 40px;" + // its size is min(min-height, min-width)
+    "min-height: 40px;" +
+    "font-size: 6px;" + // to set its thickness set font-size on it
+    "margin: 4px;" + // you can set margin on it
+    "background-color: #131313;" + // set its bg color
+    "color: aqua;", // set its fg color
+  rounded: false,
+  inverted: false,
+  startAt: 0.75,
+  value: battery.bind("percent").as((p) => p / 100),
+  child: Widget.Icon({
+    icon: battery.bind("icon-name"),
+    css: "font-size:12px",
+  }),
+});
 
 function SysTray() {
   const items = systemtray.bind("items").as((items) =>
@@ -173,7 +189,7 @@ const icon = Widget.Icon({
 function Left() {
   return Widget.Box({
     spacing: 8,
-    children: [icon, Workspaces(7)],
+    children: [icon, Workspaces(7), Clock()],
   });
 }
 
@@ -188,7 +204,7 @@ function Right() {
   return Widget.Box({
     hpack: "end",
     spacing: 8,
-    children: [Volume(), BatteryLabel(), Clock(), SysTray()],
+    children: [Volume(), bat, SysTray()],
   });
 }
 
