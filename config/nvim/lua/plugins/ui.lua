@@ -7,6 +7,7 @@ local ex = {
   ssr = true,
   org = true,
   orgagenda = true,
+  orghelp = true,
   dapui_scopes = true,
   NeogitCommitMessage = true,
   NeogitConsole = true,

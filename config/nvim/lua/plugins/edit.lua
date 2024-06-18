@@ -4,6 +4,18 @@ local org_path = function(path)
 end
 return {
   {
+    'chipsenkbeil/org-roam.nvim',
+    dependencies = {
+      {
+        'nvim-orgmode/orgmode',
+      },
+    },
+    opts = {
+      directory = org_path 'roam',
+    },
+    event = 'VeryLazy',
+  },
+  {
     'nvim-orgmode/orgmode',
     event = 'VeryLazy',
     ft = { 'org' },
@@ -21,11 +33,6 @@ return {
         t = {
           description = 'Refile',
           template = '* TODO %?\nDEADLINE: %T',
-        },
-        T = {
-          description = 'Todo',
-          template = '* TODO %?\nDEADLINE: %T',
-          target = org_path 'todos.org',
         },
         w = {
           description = 'Work todo',
@@ -314,11 +321,12 @@ return {
   {
     'nvim-neorg/neorg',
     cmd = 'Neorg',
-    keys = {
-      { '<leader>nn', ':Neorg workspace learn<CR>', desc = 'open workspace' },
-      { '<leader>nj', ':Neorg journal ', desc = 'journal' },
-      { '<leader>nt', ':Neorg journal today<CR>', desc = "today's journal" },
-    },
+    -- NOTE:conflict with org-roam
+    -- keys = {
+    --   { '<leader>nn', ':Neorg workspace learn<CR>', desc = 'open workspace' },
+    --   { '<leader>nj', ':Neorg journal ', desc = 'journal' },
+    --   { '<leader>nt', ':Neorg journal today<CR>', desc = "today's journal" },
+    -- },
     ft = 'norg',
     -- version = "v7.0.0",
     version = '*',

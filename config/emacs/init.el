@@ -4,8 +4,8 @@
       ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
                          ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))
       )
-;;(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-;;(load custom-file)
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
 (setq custom-safe-themes t)
 (set-face-attribute 'default nil :height 200)
 (electric-pair-mode t)                       ; 自动补全括号
@@ -166,8 +166,8 @@
 (use-package rust-mode
   :ensure t
   :functions dap-register-debug-template
-  :bind
-  ("C-c C-c" . rust-run)
+  ;;:bind
+  ;;("C-c C-c" . rust-run)
   :hook
   (rust-mode . lsp-deferred)
   :config
@@ -210,8 +210,10 @@
 (use-package nerd-icons
   :ensure t
   :custom
-  (nerd-icons-font-family "IntoneMono Nerd Font Mono")
+  (nerd-icons-font-family "IntoneMono Nerd Font")
   )
+;;(set-frame-font "IntoneMono Nerd Font-18" nil t)
+(setq default-frame-alist '((font . "IntoneMono Nerd Font-18")))
 (use-package org-roam
   :ensure t
   :after org
@@ -229,4 +231,8 @@
           ("C-c n t" . org-roam-tag-add)
           ("C-c n a" . org-roam-alias-add)
           ("C-c n l" . org-roam-buffer-toggle)))))
+(use-package treesit-auto
+  :ensure t
+  :config
+  (global-treesit-auto-mode))
 ;;; init.el ends here
