@@ -19,6 +19,7 @@
       playerctl
       # emacs
       nodePackages.pnpm
+      nodePackages.ts-node
       nodePackages_latest.prisma
       # python311Packages.torch-bin
       # cudaPackages.cudatoolkit
