@@ -232,13 +232,11 @@
         "swww-daemon"
         "~/.config/hypr/scripts/swww.sh"
         "fcitx5"
-        # "ags"
+        "ags"
         "wl-paste --watch cliphist store"
-        #TODO: autostart it
         # "waybar"
         # "waybar -c ~/.config/waybar/topbar/config -s ~/.config/waybar/topbar/style.css"
         "wlsunset -l 39.9 -L 116.3"
-        # "mako"
       ];
       env = [
         "LIBVA_DRIVER_NAME,nvidia"

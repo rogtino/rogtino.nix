@@ -1,8 +1,9 @@
+import { Application } from "types/service/applications";
+
 const { query } = await Service.import("applications");
 const WINDOW_NAME = "launcher";
 
-/** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
-const AppItem = (app) =>
+const AppItem = (app: Application) =>
   Widget.Button({
     on_clicked: () => {
       App.closeWindow(WINDOW_NAME);
@@ -13,10 +14,11 @@ const AppItem = (app) =>
       children: [
         Widget.Icon({
           icon: app.icon_name || "",
-          size: 42,
+          size: 62,
         }),
         Widget.Label({
           class_name: "title",
+          css: "font-size:32px",
           label: app.name,
           xalign: 0,
           vpack: "center",

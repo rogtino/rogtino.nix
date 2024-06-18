@@ -14,9 +14,6 @@ button:active {
   background-color: @theme_selected_bg_color;
 }
 
-button:hover {
-}
-
 label {
   font-weight: bold;
 }

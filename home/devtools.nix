@@ -165,9 +165,9 @@ in {
       "guix" = {
         source = mkOutOfStoreSymlink "/home/gus/rogtino.nix/config/guix";
       };
-      # "ags" = {
-      #   source = mkOutOfStoreSymlink "/home/gus/rogtino.nix/config/ags";
-      # };
+      "ags" = {
+        source = mkOutOfStoreSymlink "/home/gus/rogtino.nix/config/ags";
+      };
     };
   };
   programs.bat = {
