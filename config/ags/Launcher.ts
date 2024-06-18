@@ -56,7 +56,19 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
       const results = applications.filter((item) => item.visible);
       if (results[0]) {
         App.toggleWindow(WINDOW_NAME);
-        results[0].attribute.app.launch();
+        let local_app = results[0].attribute.app;
+
+        if (local_app.executable.endsWith("bilibili")) {
+          Utils.execAsync([
+            "bash",
+            "-c",
+            local_app.executable +
+              " --ozone-platform-hint=auto --enable-wayland-ime",
+          ]);
+          local_app.frequency += 1;
+        } else {
+          local_app.launch();
+        }
       }
     },
 
