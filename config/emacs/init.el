@@ -213,7 +213,7 @@
   (nerd-icons-font-family "IntoneMono Nerd Font")
   )
 ;;(set-frame-font "IntoneMono Nerd Font-18" nil t)
-(setq default-frame-alist '((font . "IntoneMono Nerd Font-18")))
+(add-to-list 'default-frame-alist '(font . "IntoneMono Nerd Font-18"))
 (use-package org-roam
   :ensure t
   :after org
