@@ -5,6 +5,9 @@
     # The store directory where the Guix service will serve to/from.
     # NOTE: most of the cached builds are assumed to be in `/gnu/store`.
     storeDir = "/gnu/store";
+    extraArgs = [
+      "--substitute-urls=https://mirror.sjtu.edu.cn/guix/"
+    ];
     gc = {
       enable = true;
       # https://guix.gnu.org/en/manual/en/html_node/Invoking-guix-gc.html
@@ -12,7 +15,6 @@
         "--delete-generations=1m"
         "--free-space=10G"
         "--optimize"
-        "--substitute-urls=https://mirror.sjtu.edu.cn/guix/"
       ];
     };
   };

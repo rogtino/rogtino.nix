@@ -34,6 +34,10 @@ return {
           description = 'Refile',
           template = '* TODO %?\nDEADLINE: %T',
         },
+        b = {
+          description = 'basic',
+          template = '* TODO %?',
+        },
         w = {
           description = 'Work todo',
           template = '* TODO %?\nDEADLINE: %T',
@@ -280,6 +284,7 @@ return {
     event = 'InsertEnter',
     opts = {
       -- configuration goes here
+      exclude = { 'org' },
     },
   },
   {
@@ -374,12 +379,6 @@ return {
       'luarocks.nvim',
     },
   },
-  -- {
-  --   'nvim-orgmode/orgmode',
-  --   dependencies = { { 'akinsho/org-bullets.nvim', config = true } },
-  --   enabled = false,
-  --   opts = { org_agenda_files = '~/orgfiles/**/*', org_default_notes_file = '~/orgfiles/refile.org' },
-  -- },
   -- {
   --     'archibate/genius.nvim',
   --     dependencies = {
