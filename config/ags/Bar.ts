@@ -137,6 +137,16 @@ function Volume() {
     child: sound,
   });
 }
+function Wallpaper() {
+  return Widget.Button({
+    on_primary_click: () =>
+      Utils.execAsync(["bash", "-c", "~/.config/hypr/scripts/change_bg.sh"]),
+    child: Widget.Label({
+      label: "󰸉",
+      css: "color:#C896FF",
+    }),
+  });
+}
 function Battery() {
   const bat = Widget.CircularProgress({
     css:
@@ -202,7 +212,7 @@ function Right() {
   return Widget.Box({
     hpack: "end",
     spacing: 8,
-    children: [Volume(), Brightness(), Battery(), SysTray()],
+    children: [Wallpaper(), Volume(), Brightness(), Battery(), SysTray()],
   });
 }
 

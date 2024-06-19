@@ -3,6 +3,7 @@ local org_path = function(path)
   return ('%s/%s'):format(org_directory, path)
 end
 return {
+  --NOTE: https://github.com/nvim-orgmode/orgmode/pull/758
   {
     'chipsenkbeil/org-roam.nvim',
     dependencies = {

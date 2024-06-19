@@ -629,7 +629,7 @@ alias cdtmp = cd (mktemp -d)
   alias pc = proxychains -q
   alias ca = cargo
   alias n = prime-run neovide
-  alias mpv = prime-run mpv
+  # alias mpv = prime-run mpv
   alias activate-python-venv = overlay use .venv/bin/activate.nu
   source ~/.cache/starship/init.nu
   source ~/.zoxide.nu
