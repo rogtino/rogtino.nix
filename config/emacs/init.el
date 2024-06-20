@@ -3,6 +3,21 @@
                          ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
 			 ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
 			 ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 (setq custom-safe-themes t)
@@ -21,10 +36,16 @@
 (scroll-bar-mode -1)                           ; （熟练后可选）关闭 Tool bar
 (when (display-graphic-p) (toggle-scroll-bar -1)) ; 图形界面时关闭滚动条
 
-(setq display-line-numbers-type 'relative)   ; （可选）显示相对行号
+    (setq display-line-numbers-type 'relative)   ; （可选）显示相对行号
 (package-initialize)
-(eval-when-compile
-  (require 'use-package))
+(straight-use-package 'use-package)
+(use-package doom-snippets
+  :after yasnippet
+  :straight (doom-snippets :type git :host github :repo "doomemacs/snippets" :files ("*.el" "*")))
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode))
 ;;; Configure directory extension.
 (use-package vertico-directory
   :after vertico
@@ -243,6 +264,9 @@
   (setq evil-want-keybinding nil)
   :config
   (define-key evil-normal-state-map (kbd "s") 'avy-goto-char-timer)
+  (evil-set-leader 'normal (kbd "SPC"))
+  (define-key evil-normal-state-map (kbd "<leader>oa") 'org-agenda)
+  (define-key evil-normal-state-map (kbd "<leader>oc") 'org-capture)
   (evil-mode 1))
 
 (use-package evil-collection
@@ -390,6 +414,8 @@
   )
 ;;(set-frame-font "IntoneMono Nerd Font-18" nil t)
 (add-to-list 'default-frame-alist '(font . "IntoneMono Nerd Font-18"))
+
+(setq org-confirm-babel-evaluate nil)
 (use-package org-modern
   :ensure t
   :init
@@ -459,4 +485,7 @@
   :ensure t
   :config
   (global-treesit-auto-mode))
+(org-babel-do-load-languages
+'org-babel-load-languages
+'((python . t)))
 ;;; init.el ends here
