@@ -38,6 +38,7 @@ with pkgs; let
     cowsay
     # manix
     htop-vim
+    btop
     fastfetch
     commitizen
     nodePackages.conventional-changelog-cli
