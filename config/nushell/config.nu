@@ -623,7 +623,6 @@ alias q = exit
 alias l = ls -al
 alias ll = ls
 alias ff = fastfetch
-  alias zz = yazi
 alias cdtmp = cd (mktemp -d)
   alias zj = zellij
   alias pc = proxychains -q
