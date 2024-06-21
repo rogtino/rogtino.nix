@@ -1,15 +1,32 @@
 local function config()
-  local cmp = require 'cmp'
-  local luasnip = require 'luasnip'
-  local lspkind = require 'lspkind'
-  local tailwind = require 'tailwindcss-colorizer-cmp'
-  local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-  local ls = luasnip
   -- local has_words_before = function()
   --   unpack = unpack or table.unpack
   --   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   --   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
   -- end
+  local cmp = require 'cmp'
+  local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+  local lspkind = require 'lspkind'
+  local luasnip = require 'luasnip'
+  local tailwind = require 'tailwindcss-colorizer-cmp'
+  local ls = luasnip
+  --- generate source for specific filetype
+  ---@param ft_name string | table
+  ---@param extra_table table
+  local function ext_source(ft_name, extra_table)
+    local tmp = {
+      { name = 'luasnip' },
+      { name = 'buffer' },
+      { name = 'path' },
+      { name = 'calc' },
+    }
+    for _, v in ipairs(extra_table) do
+      table.insert(tmp, v)
+    end
+    cmp.setup.filetype(ft_name, {
+      sources = tmp,
+    })
+  end
 
   local mapping = {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -156,13 +173,20 @@ local function config()
         mode = 'symbol',
         maxwidth = 38,
         menu = {
-          buffer = '[BUF]',
-          nvim_lsp = '[LSP]',
-          luasnip = '[LSNIP]',
+          buffer = '[Buf]',
+          nvim_lsp = '[Lsp]',
+          luasnip = '[Snip]',
           nvim_lua = '[Lua]',
           latex_symbols = '[LaTeX]',
           orgmode = '[Org]',
           ['vim-dadbod-completion'] = '[DB]',
+          calc = '[Calc]',
+          conventionalcommits = '[CC]',
+          emoji = '[Emoji]',
+          nerdfont = '[Nerd]',
+          ['cmp-tw2css'] = '[Twcss]',
+          npm = '[Npm]',
+          treesitter = '[Tree]',
         },
         before = tailwind.formatter,
       },
@@ -170,71 +194,52 @@ local function config()
     sources = cmp.config.sources({
       { name = 'luasnip' },
       { name = 'nvim_lsp' },
-      { name = 'buffer' },
       { name = 'path' },
-    }, {}),
+    }, {
+      { name = 'buffer' },
+      { name = 'calc' },
+    }),
     confirm_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false },
     experimental = { ghost_text = true },
   }
-  cmp.setup.filetype({ 'lua' }, {
-    sources = {
-      { name = 'nvim_lua' },
-      { name = 'nvim_lsp' },
-      { name = 'luasnip' },
-      { name = 'buffer' },
-      { name = 'path' },
-    },
+  -- BUG:https://github.com/davidsierradz/cmp-conventionalcommits/issues/5
+  ext_source('NeogitCommitMessage', {
+    { name = 'conventionalcommits' },
+    { name = 'emoji' },
+    { name = 'nerdfont' },
   })
-  cmp.setup.filetype({ 'toml' }, {
-    sources = {
-      { name = 'crates' },
-      { name = 'nvim_lsp' },
-      { name = 'luasnip' },
-      { name = 'buffer' },
-      { name = 'path' },
-    },
+  ext_source('lua', {
+    { name = 'nvim_lua' },
+    { name = 'nvim_lsp' },
+    { name = 'treesitter' },
   })
-  cmp.setup.filetype({ 'neorg' }, {
-    sources = {
-      { name = 'neorg' },
-      { name = 'luasnip' },
-      { name = 'buffer' },
-      { name = 'path' },
-    },
+  ext_source('scheme', {
+    { name = 'treesitter' },
   })
-  cmp.setup.filetype({ 'org' }, {
-    sources = {
-      { name = 'orgmode' },
-      { name = 'luasnip' },
-      { name = 'buffer' },
-      { name = 'path' },
-    },
+  ext_source({ 'html', 'css' }, {
+    { name = 'cmp-tw2css' },
+    { name = 'nvim_lsp' },
   })
-  cmp.setup.filetype({ 'sql' }, {
-    sources = {
-      { name = 'vim-dadbod-completion' },
-      { name = 'luasnip' },
-      { name = 'buffer' },
-      { name = 'path' },
-    },
+  ext_source('toml', {
+    { name = 'crates' },
+    { name = 'nvim_lsp' },
   })
-  -- cmp.setup.cmdline('/', {
-  --   mapping = cmp.mapping.preset.cmdline(),
-  --   sources = {
-  --     { name = 'buffer' },
-  --   },
-  -- })
-
-  -- `:` cmdline setup.
-  -- cmp.setup.cmdline(':', {
-  --   mapping = cmp.mapping.preset.cmdline(),
-  --   sources = cmp.config.sources({
-  --     { name = 'path' },
-  --   }, {
-  --     { name = 'cmdline' },
-  --   }),
-  --   matching = { disallow_symbol_nonprefix_matching = false },
-  -- })
+  ext_source('neorg', {
+    { name = 'neorg' },
+    { name = 'emoji' },
+    { name = 'nerdfont' },
+  })
+  ext_source('org', {
+    { name = 'orgmode' },
+    { name = 'emoji' },
+    { name = 'nerdfont' },
+  })
+  ext_source('sql', {
+    { name = 'vim-dadbod-completion' },
+  })
+  ext_source('json', {
+    { name = 'npm' },
+  })
   require('luasnip.loaders.from_lua').lazy_load {
     paths = { vim.fn.stdpath 'config' .. '/snippets' },
     default_priority = 2000,
@@ -242,21 +247,62 @@ local function config()
   require('luasnip.loaders.from_vscode').lazy_load()
 end
 return {
-  'hrsh7th/nvim-cmp',
+  {
+    'hrsh7th/nvim-cmp',
 
-  dependencies = {
-    'neovim/nvim-lspconfig',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-nvim-lua',
-    'rafamadriz/friendly-snippets',
-    'hrsh7th/cmp-cmdline',
-    'f3fora/cmp-spell',
-    'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip',
-    'onsails/lspkind.nvim',
+    dependencies = {
+      'neovim/nvim-lspconfig',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lua',
+      'rafamadriz/friendly-snippets',
+      -- 'f3fora/cmp-spell',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind.nvim',
+      'hrsh7th/cmp-calc',
+    },
+    event = { 'InsertEnter', 'LspAttach' },
+    config = config,
   },
-  event = { 'InsertEnter', 'LspAttach' },
-  config = config,
+  { 'davidsierradz/cmp-conventionalcommits', ft = 'NeogitCommitMessage' },
+  {
+    ft = 'NeogitCommitMessage',
+    'hrsh7th/cmp-emoji',
+    dependencies = {
+      'hrsh7th/nvim-cmp',
+    },
+  },
+  {
+    'chrisgrieser/cmp-nerdfont',
+    ft = { 'neorg', 'org', 'NeogitCommitMessage' },
+    dependencies = {
+      'hrsh7th/nvim-cmp',
+    },
+  },
+  {
+    'jcha0713/cmp-tw2css',
+    ft = { 'html', 'css' },
+    dependencies = {
+      'hrsh7th/nvim-cmp',
+    },
+  },
+  {
+    'David-Kunz/cmp-npm',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'hrsh7th/nvim-cmp',
+    },
+    event = 'BufRead package.json',
+    opts = {},
+  },
+  {
+    'ray-x/cmp-treesitter',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'hrsh7th/nvim-cmp',
+    },
+    ft = { 'lua', 'scheme' },
+  },
 }

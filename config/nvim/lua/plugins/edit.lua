@@ -14,12 +14,18 @@ return {
     opts = {
       directory = org_path 'roam',
     },
-    event = 'VeryLazy',
+    ft = 'org',
+    keys = {
+      { '<leader>n', desc = 'org roam' },
+    },
   },
   {
     'nvim-orgmode/orgmode',
-    event = 'VeryLazy',
     ft = { 'org' },
+    event = 'VeryLazy',
+    keys = {
+      { '<leader>o', desc = 'org mode' },
+    },
     dependencies = {
       'lukas-reineke/headlines.nvim',
       config = true,
