@@ -3,6 +3,7 @@
                          ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
 			 ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
 			 ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(setq org-directory (file-truename "~/notes/org/"))
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name
@@ -20,6 +21,7 @@
   (load bootstrap-file nil 'nomessage))
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
+(setq use-package-always-ensure t)
 (setq custom-safe-themes t)
 (set-face-attribute 'default nil :height 200)
 (electric-pair-mode t)                       ; 自动补全括号
@@ -73,6 +75,10 @@
   :config
   ;; Manual preview key for `affe-grep'
   (consult-customize affe-grep :preview-key "M-."))
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
 ;; Example configuration for Consult
 (use-package consult
   ;; Replace bindings. Lazily loaded due by `use-package'.
@@ -266,7 +272,7 @@
   (define-key evil-normal-state-map (kbd "s") 'avy-goto-char-timer)
   (evil-set-leader 'normal (kbd "SPC"))
   (define-key evil-normal-state-map (kbd "<leader>oa") 'org-agenda)
-  (define-key evil-normal-state-map (kbd "<leader>oc") 'org-capture)
+  (define-key evil-normal-state-map (kbd "<leader>oc") 'counsel-org-capture)
   (evil-mode 1))
 
 (use-package evil-collection
@@ -274,6 +280,16 @@
   :ensure t
   :config
   (evil-collection-init))
+(use-package evil-org
+  :after org
+  :hook
+  (org-mode . (lambda () evil-org-mode))
+  :init
+  (setq evil-org-use-additional-insert t)
+  ;;(evil-org-set-key-theme '(textobjects insert navigation additional shift todo heading))
+  :config
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
 
 (use-package rainbow-delimiters
   :ensure t
@@ -284,7 +300,7 @@
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-xcode t)
+  (load-theme 'doom-henna t)
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
@@ -354,6 +370,7 @@
 (use-package magit
   :ensure t)
 (use-package c++-mode
+  :ensure nil
   :functions 			; suppress warnings
   c-toggle-hungry-state
   :hook
@@ -463,12 +480,12 @@
   ;; mode.  Corfu commands are hidden, since they are not used via M-x. This
   ;; setting is useful beyond Corfu.
   (setq read-extended-command-predicate #'command-completion-default-include-p))
+(use-package org
+  :ensure nil)
 (use-package org-roam
-  :ensure t
   :after org
   :init
   (setq org-roam-v2-ack t) ;; Acknowledge V2 upgrade
-  (setq org-directory (file-truename "~/org/"))
   :config
   (org-roam-setup)
   :custom
@@ -488,4 +505,14 @@
 (org-babel-do-load-languages
 'org-babel-load-languages
 '((python . t)))
+(use-package git-gutter
+  :hook (prog-mode . git-gutter-mode)
+  :config
+  (setq git-gutter:update-interval 0.02))
+
+(use-package git-gutter-fringe
+  :config
+  (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
 ;;; init.el ends here

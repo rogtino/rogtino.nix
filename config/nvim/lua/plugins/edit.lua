@@ -25,6 +25,7 @@ return {
       config = true,
     },
     opts = {
+      org_startup_folded = 'inherit',
       org_agenda_files = '~/notes/orgfiles/**/*',
       org_default_notes_file = '~/notes/orgfiles/refile.org',
       org_startup_indented = true,

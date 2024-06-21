@@ -241,11 +241,16 @@ return {
       },
       routes = {
         {
+          -- filter = {
+          --   any = { { find = '%d+L, %d+B' }, { find = '; after #%d+' }, { find = '; before #%d+' } },
+          --   event = 'msg_show',
+          -- },
           filter = {
-            any = { { find = '%d+L, %d+B' }, { find = '; after #%d+' }, { find = '; before #%d+' } },
-            event = 'msg_show',
+            event = 'notify',
+            find = 'No information available',
           },
           view = 'mini',
+          opts = { skip = true },
         },
       },
       presets = {

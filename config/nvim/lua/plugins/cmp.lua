@@ -151,40 +151,71 @@ local function config()
     mapping = mapping,
     formatting = {
       expandable_indicator = true,
-      fields = { cmp.ItemField.Menu, cmp.ItemField.Abbr, cmp.ItemField.Kind },
+      fields = { cmp.ItemField.Abbr, cmp.ItemField.Kind, cmp.ItemField.Menu },
       format = lspkind.cmp_format {
-        mode = 'symbol_text',
+        mode = 'symbol',
         maxwidth = 38,
         menu = {
-          -- TODO: fields should take priority before snip
           buffer = '[BUF]',
           nvim_lsp = '[LSP]',
-          luasnip = '[SNIP]',
+          luasnip = '[LSNIP]',
           nvim_lua = '[Lua]',
           latex_symbols = '[LaTeX]',
+          orgmode = '[Org]',
           ['vim-dadbod-completion'] = '[DB]',
         },
         before = tailwind.formatter,
       },
     },
-    sources = {
+    sources = cmp.config.sources({
       { name = 'luasnip' },
       { name = 'nvim_lsp' },
-      { name = 'orgmode' },
       { name = 'buffer' },
-      { name = 'nvim_lua' },
       { name = 'path' },
-      { name = 'crates' },
-      { name = 'neorg' },
-    },
+    }, {}),
     confirm_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false },
     experimental = { ghost_text = true },
   }
+  cmp.setup.filetype({ 'lua' }, {
+    sources = {
+      { name = 'nvim_lua' },
+      { name = 'nvim_lsp' },
+      { name = 'luasnip' },
+      { name = 'buffer' },
+      { name = 'path' },
+    },
+  })
+  cmp.setup.filetype({ 'toml' }, {
+    sources = {
+      { name = 'crates' },
+      { name = 'nvim_lsp' },
+      { name = 'luasnip' },
+      { name = 'buffer' },
+      { name = 'path' },
+    },
+  })
+  cmp.setup.filetype({ 'neorg' }, {
+    sources = {
+      { name = 'neorg' },
+      { name = 'luasnip' },
+      { name = 'buffer' },
+      { name = 'path' },
+    },
+  })
+  cmp.setup.filetype({ 'org' }, {
+    sources = {
+      { name = 'orgmode' },
+      { name = 'luasnip' },
+      { name = 'buffer' },
+      { name = 'path' },
+    },
+  })
   cmp.setup.filetype({ 'sql' }, {
     sources = {
       { name = 'vim-dadbod-completion' },
       { name = 'luasnip' },
       { name = 'buffer' },
+      { name = 'path' },
     },
   })
   -- cmp.setup.cmdline('/', {
