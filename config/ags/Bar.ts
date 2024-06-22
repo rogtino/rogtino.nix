@@ -1,4 +1,3 @@
-import GLib from "gi://GLib";
 const hyprland = await Service.import("hyprland");
 const notifications = await Service.import("notifications");
 const mpris = await Service.import("mpris");
@@ -6,13 +5,11 @@ const audio = await Service.import("audio");
 const battery = await Service.import("battery");
 const systemtray = await Service.import("systemtray");
 import bright from "service/bright";
+import { LOGO, DATE } from "Var";
 
 function range(length: number, start = 1) {
   return Array.from({ length }, (_, i) => i + start);
 }
-const date = Variable("", {
-  poll: [1000, 'date "+%H:%M"'],
-});
 const Workspaces = (ws: number) =>
   Widget.Box({
     className: "workspaces",
@@ -47,8 +44,8 @@ const Workspaces = (ws: number) =>
 function Clock() {
   return Widget.Label({
     class_name: "clock",
-    label: date.bind(),
-    css: "color:pink;font-size:16px",
+    label: DATE.bind(),
+    css: "color:pink;font-size:20px;",
   });
 }
 
@@ -89,67 +86,37 @@ function Media() {
   });
 }
 
-// function Brightness() {
-//   const bri = Widget.CircularProgress({
-//     css:
-//       "min-width: 30px;" + // its size is min(min-height, min-width)
-//       "min-height: 30px;" +
-//       "font-size: 6px;" + // to set its thickness set font-size on it
-//       "background-color: @theme_bg_color;" + // set its bg color
-//       "color: pink;", // set its fg color
-//     rounded: true,
-//     inverted: false,
-//     startAt: 0.75,
-//     value: bright.bind("screen_value").as((p) => p),
-//     child: Widget.Icon({
-//       icon: "",
-//       css: "font-size:0px",
-//     }),
-//   });
-//
-//   return Widget.Button({
-//     on_scroll_up: () => (bright.screen_value += 0.02),
-//     on_scroll_down: () => (bright.screen_value -= 0.02),
-//     child: bri,
-//   });
-// }
-// function Volume() {
-//   const sound = Widget.CircularProgress({
-//     css:
-//       "min-width: 30px;" + // its size is min(min-height, min-width)
-//       "min-height: 30px;" +
-//       "font-size: 6px;" + // to set its thickness set font-size on it
-//       "background-color: @theme_bg_color;" + // set its bg color
-//       "color: green;", // set its fg color
-//     rounded: false,
-//     inverted: false,
-//     startAt: 0.75,
-//     value: audio.speaker.bind("volume"),
-//     child: Widget.Icon({
-//       icon: "",
-//       css: "font-size:0px",
-//     }),
-//   });
-//
-//   return Widget.Button({
-//     on_scroll_up: () => (audio.speaker.volume += 0.02),
-//     on_scroll_down: () => (audio.speaker.volume -= 0.02),
-//     child: sound,
-//   });
-// }
 function Brightness() {
   return Widget.Button({
+    on_scroll_up: () => (bright.screen_value += 0.02),
+    on_scroll_down: () => (bright.screen_value -= 0.02),
     child: Widget.Label({
-      label: "󰃠",
-      css: "color:#FA8B64;font-size:20px;",
+      label: bright.bind("screen_value").as((v) => `󰃠 ${Math.floor(v * 100)}%`),
+      css: "color:#FA8B64;",
     }),
   });
 }
 function Volume() {
   return Widget.Button({
+    on_scroll_up: () => (audio.speaker.volume += 0.02),
+    on_scroll_down: () => (audio.speaker.volume -= 0.02),
+    on_clicked: () => (audio.speaker.volume = audio.speaker.volume > 0 ? 0 : 1),
     child: Widget.Label({
-      label: "󰕾",
-      css: "color:#FF5AAA;font-size:20px;",
+      label: audio.speaker.bind("volume").as((v) => {
+        const percent = Math.floor(v * 100);
+        let icon: string;
+        if (percent > 100) {
+          icon = "󰕾";
+        } else if (percent > 50) {
+          icon = "󰖀";
+        } else if (percent > 0) {
+          icon = "󰕿";
+        } else {
+          icon = "󰸈";
+        }
+        return `${icon} ${percent}%`;
+      }),
+      css: "color:#FF5AAA;",
     }),
   });
 }
@@ -159,42 +126,45 @@ function Wallpaper() {
       Utils.execAsync(["bash", "-c", "~/.config/hypr/scripts/change_bg.sh"]),
     child: Widget.Label({
       label: "󰸉",
-      css: "color:#C896FF;font-size:20px;",
+      css: "color:#C896FF;",
     }),
   });
 }
 function Battery() {
   return Widget.Button({
     child: Widget.Label({
-      label: "󰁹",
-      css: "color:#77E6B4;font-size:20px;",
+      class_name: "battery",
+      label: battery.bind("percent").as((p) => {
+        if (p === 100) {
+          return "󰁹";
+        } else if (p > 90) {
+          return "󰂂";
+        } else if (p > 80) {
+          return "󰂁";
+        } else if (p > 70) {
+          return "󰂀";
+        } else if (p > 60) {
+          return "󰁿";
+        } else if (p > 50) {
+          return "󰁾";
+        } else if (p > 40) {
+          return "󰁽";
+        } else if (p > 30) {
+          return "󰁼";
+        } else if (p > 20) {
+          return "󰁺";
+        } else {
+          return "󰂃";
+        }
+      }),
+      setup: (self) => {
+        self.hook(battery, () => {
+          self.toggleClassName("charging", battery.charging === true);
+        });
+      },
     }),
   });
 }
-// function Battery() {
-//   const bat = Widget.CircularProgress({
-//     css:
-//       "min-width: 30px;" + // its size is min(min-height, min-width)
-//       "min-height: 30px;" +
-//       "font-size: 6px;" + // to set its thickness set font-size on it
-//       "margin: 4px;" + // you can set margin on it
-//       "background-color: @theme_bg_color;" + // set its bg color
-//       "color: aqua;", // set its fg color
-//     rounded: true,
-//     inverted: false,
-//     startAt: 0.75,
-//     value: battery.bind("percent").as((p) => p / 100),
-//     child: Widget.Icon({
-//       icon: "",
-//       css: "font-size:0px",
-//     }),
-//   });
-//
-//   return Widget.Button({
-//     child: bat,
-//   });
-// }
-//
 function SysTray() {
   const items = systemtray.bind("items").as((items) =>
     items.map((item) =>
@@ -211,10 +181,9 @@ function SysTray() {
     children: items,
   });
 }
-const ivar = Variable(GLib.get_os_info("LOGO")!);
 
 const icon = Widget.Icon({
-  icon: ivar.bind(),
+  icon: LOGO.bind(),
   css: "font-size:22px;margin-left:8px",
 });
 // layout of the bar
@@ -235,7 +204,8 @@ function Center() {
 function Right() {
   return Widget.Box({
     hpack: "end",
-    spacing: 8,
+    css: "font-size:20px;",
+    spacing: 4,
     children: [Wallpaper(), Volume(), Brightness(), Battery(), SysTray()],
   });
 }

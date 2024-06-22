@@ -52,3 +52,10 @@ levelbar block,
 highlight {
   min-height: 10px;
 }
+.battery {
+  color: #77e6b4;
+}
+
+.charging {
+  color: aqua;
+}
