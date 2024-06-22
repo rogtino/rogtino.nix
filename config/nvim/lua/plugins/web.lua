@@ -61,7 +61,7 @@ return {
     -- config = true,
     opts = {
       on_attach = function()
-        vim.lsp.inlay_hint.enable()
+        -- vim.lsp.inlay_hint.enable()
       end,
       settings = {
         tsserver_file_preferences = {

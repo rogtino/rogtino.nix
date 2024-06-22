@@ -89,52 +89,68 @@ function Media() {
   });
 }
 
+// function Brightness() {
+//   const bri = Widget.CircularProgress({
+//     css:
+//       "min-width: 30px;" + // its size is min(min-height, min-width)
+//       "min-height: 30px;" +
+//       "font-size: 6px;" + // to set its thickness set font-size on it
+//       "background-color: @theme_bg_color;" + // set its bg color
+//       "color: pink;", // set its fg color
+//     rounded: true,
+//     inverted: false,
+//     startAt: 0.75,
+//     value: bright.bind("screen_value").as((p) => p),
+//     child: Widget.Icon({
+//       icon: "",
+//       css: "font-size:0px",
+//     }),
+//   });
+//
+//   return Widget.Button({
+//     on_scroll_up: () => (bright.screen_value += 0.02),
+//     on_scroll_down: () => (bright.screen_value -= 0.02),
+//     child: bri,
+//   });
+// }
+// function Volume() {
+//   const sound = Widget.CircularProgress({
+//     css:
+//       "min-width: 30px;" + // its size is min(min-height, min-width)
+//       "min-height: 30px;" +
+//       "font-size: 6px;" + // to set its thickness set font-size on it
+//       "background-color: @theme_bg_color;" + // set its bg color
+//       "color: green;", // set its fg color
+//     rounded: false,
+//     inverted: false,
+//     startAt: 0.75,
+//     value: audio.speaker.bind("volume"),
+//     child: Widget.Icon({
+//       icon: "",
+//       css: "font-size:0px",
+//     }),
+//   });
+//
+//   return Widget.Button({
+//     on_scroll_up: () => (audio.speaker.volume += 0.02),
+//     on_scroll_down: () => (audio.speaker.volume -= 0.02),
+//     child: sound,
+//   });
+// }
 function Brightness() {
-  const bri = Widget.CircularProgress({
-    css:
-      "min-width: 30px;" + // its size is min(min-height, min-width)
-      "min-height: 30px;" +
-      "font-size: 6px;" + // to set its thickness set font-size on it
-      "background-color: @theme_bg_color;" + // set its bg color
-      "color: pink;", // set its fg color
-    rounded: true,
-    inverted: false,
-    startAt: 0.75,
-    value: bright.bind("screen_value").as((p) => p),
-    child: Widget.Icon({
-      icon: "",
-      css: "font-size:0px",
-    }),
-  });
-
   return Widget.Button({
-    on_scroll_up: () => (bright.screen_value += 0.02),
-    on_scroll_down: () => (bright.screen_value -= 0.02),
-    child: bri,
+    child: Widget.Label({
+      label: "󰃠",
+      css: "color:#FA8B64;font-size:20px;",
+    }),
   });
 }
 function Volume() {
-  const sound = Widget.CircularProgress({
-    css:
-      "min-width: 30px;" + // its size is min(min-height, min-width)
-      "min-height: 30px;" +
-      "font-size: 6px;" + // to set its thickness set font-size on it
-      "background-color: @theme_bg_color;" + // set its bg color
-      "color: green;", // set its fg color
-    rounded: false,
-    inverted: false,
-    startAt: 0.75,
-    value: audio.speaker.bind("volume"),
-    child: Widget.Icon({
-      icon: "",
-      css: "font-size:0px",
-    }),
-  });
-
   return Widget.Button({
-    on_scroll_up: () => (audio.speaker.volume += 0.02),
-    on_scroll_down: () => (audio.speaker.volume -= 0.02),
-    child: sound,
+    child: Widget.Label({
+      label: "󰕾",
+      css: "color:#FF5AAA;font-size:20px;",
+    }),
   });
 }
 function Wallpaper() {
@@ -143,34 +159,42 @@ function Wallpaper() {
       Utils.execAsync(["bash", "-c", "~/.config/hypr/scripts/change_bg.sh"]),
     child: Widget.Label({
       label: "󰸉",
-      css: "color:#C896FF",
+      css: "color:#C896FF;font-size:20px;",
     }),
   });
 }
 function Battery() {
-  const bat = Widget.CircularProgress({
-    css:
-      "min-width: 30px;" + // its size is min(min-height, min-width)
-      "min-height: 30px;" +
-      "font-size: 6px;" + // to set its thickness set font-size on it
-      "margin: 4px;" + // you can set margin on it
-      "background-color: @theme_bg_color;" + // set its bg color
-      "color: aqua;", // set its fg color
-    rounded: true,
-    inverted: false,
-    startAt: 0.75,
-    value: battery.bind("percent").as((p) => p / 100),
-    child: Widget.Icon({
-      icon: "",
-      css: "font-size:0px",
+  return Widget.Button({
+    child: Widget.Label({
+      label: "󰁹",
+      css: "color:#77E6B4;font-size:20px;",
     }),
   });
-
-  return Widget.Button({
-    child: bat,
-  });
 }
-
+// function Battery() {
+//   const bat = Widget.CircularProgress({
+//     css:
+//       "min-width: 30px;" + // its size is min(min-height, min-width)
+//       "min-height: 30px;" +
+//       "font-size: 6px;" + // to set its thickness set font-size on it
+//       "margin: 4px;" + // you can set margin on it
+//       "background-color: @theme_bg_color;" + // set its bg color
+//       "color: aqua;", // set its fg color
+//     rounded: true,
+//     inverted: false,
+//     startAt: 0.75,
+//     value: battery.bind("percent").as((p) => p / 100),
+//     child: Widget.Icon({
+//       icon: "",
+//       css: "font-size:0px",
+//     }),
+//   });
+//
+//   return Widget.Button({
+//     child: bat,
+//   });
+// }
+//
 function SysTray() {
   const items = systemtray.bind("items").as((items) =>
     items.map((item) =>
@@ -187,7 +211,7 @@ function SysTray() {
     children: items,
   });
 }
-const ivar = Variable(GLib.get_os_info("LOGO"));
+const ivar = Variable(GLib.get_os_info("LOGO")!);
 
 const icon = Widget.Icon({
   icon: ivar.bind(),
