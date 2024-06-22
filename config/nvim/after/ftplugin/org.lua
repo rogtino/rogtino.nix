@@ -1,1 +1,1 @@
-vim.opt.concealcursor = 'nv'
+vim.opt.concealcursor = 'v'

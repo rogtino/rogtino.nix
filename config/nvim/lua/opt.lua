@@ -3,7 +3,11 @@ vim.g['loaded_perl_provider'] = 0
 local opt = vim.opt
 opt.list = true
 opt.jumpoptions = 'stack'
-opt.listchars = { tab = '> ', nbsp = '␣', trail = '•' }
+opt.listchars = {
+  tab = '  ',
+  nbsp = '␣',
+  trail = '•',
+}
 opt.guicursor = 'n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20'
 opt.fillchars = {
   -- eob = " ",
