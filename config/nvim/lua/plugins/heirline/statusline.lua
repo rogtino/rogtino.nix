@@ -513,6 +513,18 @@ local Space = { provider = ' ' }
 
 ViMode = utils.surround({ '', '' }, 'bright_bg', { MacroRec, ViMode, Snippets, ShowCmd })
 
+local Org = {
+  condition = function()
+    return conditions.buffer_matches {
+      filetype = { '^org.*' },
+    }
+  end,
+  provider = function()
+    local orgmode = require 'orgmode'
+    -- TODO: a nil value :<
+    return orgmode.statusline()
+  end,
+}
 local DefaultStatusline = {
   ViMode,
   Space,
@@ -535,6 +547,7 @@ local DefaultStatusline = {
   -- VirtualEnv,
   Space,
   FileType,
+  -- Org,
   { flexible = 3, { FileEncoding } },
   Space,
   Arrow,

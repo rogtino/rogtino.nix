@@ -135,6 +135,7 @@ in {
       userEmail = "rogtino@proton.me";
       extraConfig = {
         # http.postBuffer = "4096M";
+        http.version = "HTTP/1.1";
         credential = {
           helper = "store";
         };

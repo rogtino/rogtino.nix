@@ -28,7 +28,7 @@ in {
           on-resume = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
         }
         {
-          timeout = timeout * 4;
+          timeout = timeout * 12;
           on-timeout = "systemctl suspend";
         }
       ];

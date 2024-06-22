@@ -32,6 +32,7 @@ return {
     },
     opts = {
       org_startup_folded = 'inherit',
+      win_split_mode = '25split',
       org_agenda_files = '~/notes/orgfiles/**/*',
       org_default_notes_file = '~/notes/orgfiles/refile.org',
       org_startup_indented = true,
