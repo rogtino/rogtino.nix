@@ -173,6 +173,7 @@ function Btc() {
 function Network() {
   return Widget.Button({
     child: Widget.Label({
+      //BUG: this does not keep update
       label: network.bind("wifi").as((w) => {
         return `󰖩 ${w.ssid} 󰒢 ${w.strength}%`;
       }),
