@@ -4,7 +4,7 @@ const battery = await Service.import("battery");
 const systemtray = await Service.import("systemtray");
 const network = await Service.import("network");
 import bright from "service/bright";
-import { LOGO, DATE, CPU, MEM, DOWN, UP } from "Var";
+import { LOGO, DATE, CPU, MEM, DOWN, UP, BTC } from "Var";
 
 function range(length: number, start = 1) {
   return Array.from({ length }, (_, i) => i + start);
@@ -149,6 +149,16 @@ function Mem() {
     }),
   });
 }
+function Btc() {
+  return Widget.Button({
+    child: Widget.Label({
+      label: BTC.bind().as((b) => {
+        return ` ${Math.floor(Number(b))} `;
+      }),
+      css: "color:#FFDC46;",
+    }),
+  });
+}
 function Network() {
   return Widget.Button({
     child: Widget.Label({
@@ -226,7 +236,7 @@ const icon = Widget.Icon({
 function Left() {
   return Widget.Box({
     spacing: 8,
-    children: [icon, Workspaces(7), Clock(), Network()],
+    children: [icon, Workspaces(7), Clock(), Btc(), Network()],
   });
 }
 

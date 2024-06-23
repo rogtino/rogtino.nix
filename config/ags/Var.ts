@@ -40,3 +40,13 @@ export const UP = Variable("", {
     },
   ],
 });
+export const BTC = Variable("", {
+  poll: [
+    60000,
+    () => {
+      return Utils.exec(
+        `nu -c "http get https://api.coindesk.com/v1/bpi/currentprice/usd.json  |get bpi.USD.rate_float"`,
+      );
+    },
+  ],
+});
