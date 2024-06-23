@@ -204,6 +204,8 @@
         "size 960 540,termfloat"
         "rounding 20,termfloat"
         "float,polkit-kde-authentication-agent-1"
+        "dimaround,xdg-desktop-portal-gtk"
+        "dimaround,polkit-gnome-authentication-agent-1"
         "opacity 1.0 override 1.0 override,firefox"
         "opacity 1.0 override 1.0 override,virt-manager"
         "opacity 1.0 override 1.0 override,Google-chrome"
