@@ -4,7 +4,7 @@ const audio = await Service.import("audio");
 const battery = await Service.import("battery");
 const systemtray = await Service.import("systemtray");
 import bright from "service/bright";
-import { LOGO, DATE, MUSIC } from "Var";
+import { LOGO, DATE } from "Var";
 
 function range(length: number, start = 1) {
   return Array.from({ length }, (_, i) => i + start);
@@ -45,24 +45,6 @@ function Clock() {
     class_name: "clock",
     label: DATE.bind(),
     css: "color:pink;font-size:20px;",
-  });
-}
-
-// we don't need dunst or any other notification daemon
-// because the Notifications module is a notification daemon itself
-function Notification() {
-  const popups = notifications.bind("popups");
-  return Widget.Box({
-    class_name: "notification",
-    visible: popups.as((p) => p.length > 0),
-    children: [
-      Widget.Icon({
-        icon: "preferences-system-notifications-symbolic",
-      }),
-      Widget.Label({
-        label: popups.as((p) => p[0]?.summary || ""),
-      }),
-    ],
   });
 }
 
@@ -177,7 +159,7 @@ function Left() {
 function Center() {
   return Widget.Box({
     spacing: 8,
-    children: [Notification()],
+    children: [],
   });
 }
 

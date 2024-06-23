@@ -1,7 +1,6 @@
 const notifications = await Service.import("notifications");
-
-/** @param {import('resource:///com/github/Aylur/ags/service/notifications.js').Notification} n */
-function NotificationIcon({ app_entry, app_icon, image }) {
+import { Notification } from "types/service/notifications";
+function NotificationIcon({ app_entry, app_icon, image }: Notification) {
   if (image) {
     return Widget.Box({
       css:
@@ -22,12 +21,12 @@ function NotificationIcon({ app_entry, app_icon, image }) {
   }
 
   return Widget.Box({
+    css: "color:#BEC8C8;",
     child: Widget.Icon(icon),
   });
 }
 
-/** @param {import('resource:///com/github/Aylur/ags/service/notifications.js').Notification} n */
-function Notification(n) {
+function Noti(n: Notification) {
   const icon = Widget.Box({
     vpack: "start",
     class_name: "icon",
@@ -35,22 +34,24 @@ function Notification(n) {
   });
 
   const title = Widget.Label({
+    css: "font-size:48px;color:pink;",
     class_name: "title",
     xalign: 0,
     justification: "left",
     hexpand: true,
     max_width_chars: 24,
-    truncate: "end",
     wrap: true,
     label: n.summary,
     use_markup: true,
   });
 
   const body = Widget.Label({
+    css: "color:#FF9669;padding:20px;",
     class_name: "body",
     hexpand: true,
     use_markup: true,
     xalign: 0,
+    max_width_chars: 24,
     justification: "left",
     label: n.body,
     wrap: true,
@@ -90,17 +91,17 @@ function Notification(n) {
 export function NotificationPopups(monitor = 0) {
   const list = Widget.Box({
     vertical: true,
-    children: notifications.popups.map(Notification),
+    children: notifications.popups.map(Noti),
   });
 
-  function onNotified(_, /** @type {number} */ id) {
+  function onNotified(_, id: number) {
     const n = notifications.getNotification(id);
     if (n) {
-      list.children = [Notification(n), ...list.children];
+      list.children = [Noti(n), ...list.children];
     }
   }
 
-  function onDismissed(_, /** @type {number} */ id) {
+  function onDismissed(_, id: number) {
     list.children.find((n) => n.attribute.id === id)?.destroy();
   }
 
@@ -114,7 +115,7 @@ export function NotificationPopups(monitor = 0) {
     class_name: "notification-popups",
     anchor: ["top", "right"],
     child: Widget.Box({
-      css: "min-width: 2px; min-height: 2px;",
+      css: "min-width: 2px; min-height: 2px;font-size:22px;background-color:#333;border-radius:30px;",
       class_name: "notifications",
       vertical: true,
       child: list,
