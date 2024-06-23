@@ -1,10 +1,10 @@
 import { MUSIC, LIGHT } from "Var";
-function Light() {
+function Lock() {
   return Widget.Box({
     vexpand: true,
     hexpand: true,
     vpack: "fill",
-    css: "text-align:center;",
+    css: "color:#F35382;",
     setup: (box) =>
       box.hook(MUSIC, () => {
         box.toggleClassName("popup", MUSIC.value);
@@ -12,7 +12,8 @@ function Light() {
 
     // vpack: "center",
     child: Widget.Label({
-      label: "Light",
+      hexpand: true,
+      label: "󰟾",
     }),
   });
 }
@@ -20,6 +21,7 @@ function Music() {
   return Widget.Box({
     vpack: "fill",
     hexpand: true,
+    css: "color:#9AFA59;",
     setup: (box) =>
       box.hook(MUSIC, () => {
         box.toggleClassName("popup", MUSIC.value);
@@ -27,7 +29,8 @@ function Music() {
 
     // vpack: "center",
     child: Widget.Label({
-      label: "Music",
+      hexpand: true,
+      label: "󰽰",
     }),
   });
 }
@@ -35,14 +38,14 @@ function PanelChild() {
   return Widget.Box(
     {
       class_name: "player",
-      css: "min-height:200px; min-width:400px;",
+      css: "min-height:200px; min-width:480px;font-size:80px;background-color:#224;border-radius:68px;",
     },
     Widget.Box(
       {
         vexpand: true,
       },
       Music(),
-      Light(),
+      Lock(),
     ),
   );
 }
@@ -50,6 +53,7 @@ function PanelChild() {
 export const Panel = Widget.Window({
   name: "panel",
   visible: false,
+  css: "background-color:transparent;",
   keymode: "exclusive",
   setup: (self) => {
     self.keybind("Escape", () => {

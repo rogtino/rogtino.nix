@@ -145,7 +145,14 @@ function Media() {
     vertical: true,
     css: "min-height: 2px; min-width: 2px;", // small hack to make it visible
     visible: true,
-    children: players.as((p) => p.map(Play)),
+    children: players.as((p) => {
+      // if (p.length === 0) {
+      //   return Widget.Label({
+      //     label: "no avaiable player",
+      //   });
+      // }
+      return p.map(Play);
+    }),
   });
 }
 
@@ -156,7 +163,7 @@ export const Player = Widget.Window({
   keymode: "exclusive",
   setup: (self) => {
     self.keybind("Escape", () => {
-      App.toggleWindow("player");
+      App.closeWindow("player");
     });
     self.keybind("l", () => {
       mpris.getPlayer("org.mpris.MediaPlayer2.netease-cloud-music")?.next();
