@@ -65,6 +65,7 @@
         "bind=$mod,W,exec,foot"
         "bind=$mod,Return,exec,alacritty --class termfloat"
         "bind=$mod,F,exec,firefox"
+        "bind=$mod,S,exec,ags -t panel"
         "bind=$mod,P,exec,grim -g $(slurp)"
         "bind=$mod SHIFT,P,exec,hyprpicker -a"
         "bind=$mod,X,exec,playerctl -p netease-cloud-music play-pause"

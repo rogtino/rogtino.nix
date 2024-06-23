@@ -1,11 +1,10 @@
 const hyprland = await Service.import("hyprland");
 const notifications = await Service.import("notifications");
-const mpris = await Service.import("mpris");
 const audio = await Service.import("audio");
 const battery = await Service.import("battery");
 const systemtray = await Service.import("systemtray");
 import bright from "service/bright";
-import { LOGO, DATE } from "Var";
+import { LOGO, DATE, MUSIC } from "Var";
 
 function range(length: number, start = 1) {
   return Array.from({ length }, (_, i) => i + start);
@@ -64,25 +63,6 @@ function Notification() {
         label: popups.as((p) => p[0]?.summary || ""),
       }),
     ],
-  });
-}
-
-function Media() {
-  const label = Utils.watch("", mpris, "player-changed", () => {
-    if (mpris.players[0]) {
-      const { track_artists, track_title } = mpris.players[0];
-      return `${track_artists.join(", ")} - ${track_title}`;
-    } else {
-      return "Nothing is playing";
-    }
-  });
-
-  return Widget.Button({
-    class_name: "media",
-    on_primary_click: () => mpris.getPlayer("")?.playPause(),
-    on_scroll_up: () => mpris.getPlayer("")?.next(),
-    on_scroll_down: () => mpris.getPlayer("")?.previous(),
-    child: Widget.Label({ label }),
   });
 }
 
@@ -197,7 +177,7 @@ function Left() {
 function Center() {
   return Widget.Box({
     spacing: 8,
-    children: [Media(), Notification()],
+    children: [Notification()],
   });
 }
 
@@ -215,6 +195,7 @@ export const Bar = Widget.Window({
   class_name: "bar",
   anchor: ["top", "left", "right"],
   exclusivity: "exclusive",
+
   child: Widget.CenterBox({
     start_widget: Left(),
     center_widget: Center(),
