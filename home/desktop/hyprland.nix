@@ -236,8 +236,6 @@
         "fcitx5"
         "ags"
         "wl-paste --watch cliphist store"
-        # "waybar"
-        # "waybar -c ~/.config/waybar/topbar/config -s ~/.config/waybar/topbar/style.css"
         "wlsunset -l 39.9 -L 116.3"
       ];
       env = [

@@ -10,9 +10,6 @@
       "wezterm" = {
         source = ../config/wezterm;
       };
-      "waybar" = {
-        source = ../config/waybar;
-      };
     };
   };
 
