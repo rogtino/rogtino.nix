@@ -1,10 +1,10 @@
 const hyprland = await Service.import("hyprland");
-const notifications = await Service.import("notifications");
 const audio = await Service.import("audio");
 const battery = await Service.import("battery");
 const systemtray = await Service.import("systemtray");
+const network = await Service.import("network");
 import bright from "service/bright";
-import { LOGO, DATE } from "Var";
+import { LOGO, DATE, CPU, MEM, DOWN, UP } from "Var";
 
 function range(length: number, start = 1) {
   return Array.from({ length }, (_, i) => i + start);
@@ -43,8 +43,8 @@ const Workspaces = (ws: number) =>
 function Clock() {
   return Widget.Label({
     class_name: "clock",
-    label: DATE.bind(),
-    css: "color:pink;font-size:20px;",
+    label: DATE.bind().as((d) => `󰥔 ${d}`),
+    css: "color:pink;",
   });
 }
 
@@ -97,33 +97,107 @@ function Battery() {
     child: Widget.Label({
       class_name: "battery",
       label: battery.bind("percent").as((p) => {
+        let icon: string;
         if (p === 100) {
-          return "󰁹";
+          icon = "󰁹";
         } else if (p > 90) {
-          return "󰂂";
+          icon = "󰂂";
         } else if (p > 80) {
-          return "󰂁";
+          icon = "󰂁";
         } else if (p > 70) {
-          return "󰂀";
+          icon = "󰂀";
         } else if (p > 60) {
-          return "󰁿";
+          icon = "󰁿";
         } else if (p > 50) {
-          return "󰁾";
+          icon = "󰁾";
         } else if (p > 40) {
-          return "󰁽";
+          icon = "󰁽";
         } else if (p > 30) {
-          return "󰁼";
+          icon = "󰁼";
         } else if (p > 20) {
-          return "󰁺";
+          icon = "󰁺";
         } else {
-          return "󰂃";
+          icon = "󰂃";
         }
+        return `${icon} ${p}%`;
       }),
       setup: (self) => {
         self.hook(battery, () => {
           self.toggleClassName("charging", battery.charging === true);
         });
       },
+    }),
+  });
+}
+function Cpu() {
+  return Widget.Button({
+    child: Widget.Label({
+      label: CPU.bind().as((c) => {
+        return `  ${Math.floor(Number(c))}%`;
+      }),
+      css: "color:#28AF96;",
+    }),
+  });
+}
+function Mem() {
+  return Widget.Button({
+    child: Widget.Label({
+      label: MEM.bind().as((c) => {
+        return `  ${Math.floor(Number(c))}%`;
+      }),
+      css: "color:#FFB446;",
+    }),
+  });
+}
+function Network() {
+  return Widget.Button({
+    child: Widget.Label({
+      label: network.bind("wifi").as((w) => {
+        return `󰖩 ${w.ssid} 󰒢 ${w.strength}%`;
+      }),
+      css: "color:#91B9FF;",
+    }),
+  });
+}
+function SpeedUp() {
+  return Widget.Button({
+    child: Widget.Label({
+      label: UP.bind().as((w) => {
+        let d = w.toString();
+        if (d.endsWith("K")) {
+          return `󰳡 ${w}/s`;
+        } else if (d.endsWith("M")) {
+          return `󱑤 ${w}/s`;
+        } else {
+          if (d.length > 3) {
+            return `󰳡 ${Math.floor(Number(d) / 1024)}K/s`;
+          } else {
+            return `󰳡 ${w}B/s`;
+          }
+        }
+      }),
+      css: "color:#C3B9FF;",
+    }),
+  });
+}
+function SpeedDown() {
+  return Widget.Button({
+    child: Widget.Label({
+      label: DOWN.bind().as((w) => {
+        let d = w.toString();
+        if (d.endsWith("K")) {
+          return `󰳛 ${w}/s`;
+        } else if (d.endsWith("M")) {
+          return `󰳛 ${w}/s`;
+        } else {
+          if (d.length > 3) {
+            return `󰳛 ${Math.floor(Number(d) / 1024)}K/s`;
+          } else {
+            return `󰳛 ${w}B/s`;
+          }
+        }
+      }),
+      css: "color:#C3B9FF;",
     }),
   });
 }
@@ -152,21 +226,20 @@ const icon = Widget.Icon({
 function Left() {
   return Widget.Box({
     spacing: 8,
-    children: [icon, Workspaces(7), Clock()],
+    children: [icon, Workspaces(7), Clock(), Network()],
   });
 }
 
 function Center() {
   return Widget.Box({
     spacing: 8,
-    children: [],
+    children: [SpeedUp(), SpeedDown(), Cpu(), Mem()],
   });
 }
 
 function Right() {
   return Widget.Box({
     hpack: "end",
-    css: "font-size:20px;",
     spacing: 4,
     children: [Wallpaper(), Volume(), Brightness(), Battery(), SysTray()],
   });
@@ -179,6 +252,7 @@ export const Bar = Widget.Window({
   exclusivity: "exclusive",
 
   child: Widget.CenterBox({
+    css: "font-size:20px;",
     start_widget: Left(),
     center_widget: Center(),
     end_widget: Right(),
