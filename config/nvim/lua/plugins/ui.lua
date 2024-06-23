@@ -84,34 +84,34 @@ return {
       fps = 60,
     },
   },
-  {
-    'akinsho/bufferline.nvim',
-    event = 'VeryLazy',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    keys = {
-      { '<leader>bo', vim.cmd.BufferLineCloseOthers, desc = 'delete other buffers' },
-      { '<leader>bp', vim.cmd.BufferLinePick, desc = "pick a buffer by buf's name" },
-      { '<leader>bd', vim.cmd.Bdelete, desc = 'delete current buffer' },
-      {
-        '<leader>ba',
-        function()
-          vim.cmd '%bd'
-        end,
-        desc = 'delete all buffers',
-      },
-      { '<s-l>', vim.cmd.BufferLineCycleNext },
-      { '<s-h>', vim.cmd.BufferLineCyclePrev },
-    },
-    opts = {
-      options = {
-        diagnostics = 'nvim_lsp',
-        diagnostics_indicator = function(count, level, _, _)
-          local icon = ((level:match 'error' and ' ') or ' ')
-          return (' ' .. icon .. count)
-        end,
-      },
-    },
-  },
+  -- {
+  --   'akinsho/bufferline.nvim',
+  --   event = 'VeryLazy',
+  --   dependencies = { 'nvim-tree/nvim-web-devicons' },
+  --   keys = {
+  --     { '<leader>bo', vim.cmd.BufferLineCloseOthers, desc = 'delete other buffers' },
+  --     { '<leader>bp', vim.cmd.BufferLinePick, desc = "pick a buffer by buf's name" },
+  --     { '<leader>bd', vim.cmd.Bdelete, desc = 'delete current buffer' },
+  --     {
+  --       '<leader>ba',
+  --       function()
+  --         vim.cmd '%bd'
+  --       end,
+  --       desc = 'delete all buffers',
+  --     },
+  --     { '<s-l>', vim.cmd.BufferLineCycleNext },
+  --     { '<s-h>', vim.cmd.BufferLineCyclePrev },
+  --   },
+  --   opts = {
+  --     options = {
+  --       diagnostics = 'nvim_lsp',
+  --       diagnostics_indicator = function(count, level, _, _)
+  --         local icon = ((level:match 'error' and ' ') or ' ')
+  --         return (' ' .. icon .. count)
+  --       end,
+  --     },
+  --   },
+  -- },
   -- no need :(
   -- {
   -- 	"folke/edgy.nvim",
@@ -283,5 +283,61 @@ return {
       plugins = { gitsigns = { enabled = true } },
     },
     cmd = 'ZenMode',
+  },
+
+  {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    opts = {
+      theme = 'hyper',
+      config = {
+        week_header = {
+          enable = true,
+        },
+        footer = { '', '', '🥰 calm and hungry', '🎯 orgorgorg' },
+        shortcut = {
+          { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+          {
+            icon = ' ',
+            icon_hl = '@variable',
+            desc = 'Files',
+            group = 'Label',
+            action = 'Telescope find_files',
+            key = 'f',
+          },
+          {
+            desc = ' org',
+            group = 'DiagnosticHint',
+            action = 'Oagenda',
+            key = 'o',
+          },
+          {
+            desc = ' capture',
+            group = 'DiagnosticError',
+            action = 'Ocapture',
+            key = 'c',
+          },
+          {
+            desc = '󰂺 roam',
+            group = 'Number',
+            action = 'Oroam',
+            key = 'r',
+          },
+          {
+            desc = '󰃨 sessoin',
+            group = '@type',
+            action = 'SessionManager load_current_dir_session',
+            key = 's',
+          },
+          {
+            desc = '󰈻 select',
+            group = '@function.method',
+            action = 'SessionManager load_session',
+            key = 'l',
+          },
+        },
+      },
+    },
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } },
   },
 }

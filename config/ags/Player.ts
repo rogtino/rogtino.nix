@@ -171,5 +171,10 @@ export const Player = Widget.Window({
     self.keybind("h", () => {
       mpris.getPlayer("org.mpris.MediaPlayer2.netease-cloud-music")?.previous();
     });
+    self.keybind("space", () => {
+      mpris
+        .getPlayer("org.mpris.MediaPlayer2.netease-cloud-music")
+        ?.playPause();
+    });
   },
 });

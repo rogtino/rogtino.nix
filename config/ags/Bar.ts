@@ -164,7 +164,7 @@ function Btc() {
   return Widget.Button({
     child: Widget.Label({
       label: BTC.bind().as((b) => {
-        return ` ${Math.floor(Number(b))} `;
+        return ` ${Math.floor(Number(b))}`;
       }),
       css: "color:#FFDC46;",
     }),

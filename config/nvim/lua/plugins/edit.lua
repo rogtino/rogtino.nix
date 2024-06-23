@@ -21,8 +21,7 @@ return {
   },
   {
     'nvim-orgmode/orgmode',
-    ft = { 'org' },
-    event = 'VeryLazy',
+    ft = { 'org', 'markdown' },
     keys = {
       { '<leader>o', desc = 'org mode' },
     },

@@ -65,6 +65,13 @@ return {
       desc = 'find files',
     },
     {
+      '<leader>b',
+      function()
+        return vim.cmd.Telescope 'buffers'
+      end,
+      desc = 'find buffers',
+    },
+    {
       '<leader>f',
       function()
         return vim.cmd.Telescope 'live_grep'
