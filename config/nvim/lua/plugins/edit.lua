@@ -516,4 +516,17 @@ return {
       },
     },
   },
+  {
+    'jackMort/ChatGPT.nvim',
+    cmd = { 'ChatGPT' },
+    opts = {
+      api_key_cmd = 'cat /run/secrets/gpt',
+    },
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+      'nvim-lua/plenary.nvim',
+      'folke/trouble.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+  },
 }

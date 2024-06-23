@@ -7,4 +7,7 @@
     owner = config.users.users.gus.name;
   };
   sops.secrets."gh" = {};
+  sops.secrets."gpt" = {
+    owner = config.users.users.gus.name;
+  };
 }

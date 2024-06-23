@@ -3,7 +3,7 @@
     enable = true;
     #TODO:add a music mode?
     extraConfig = ''
-      bind=$mod+ALT,S,submap,resize
+      bind=$mod,y,submap,resize
 
       # will start a submap called "resize"
       submap=resize
