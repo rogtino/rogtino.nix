@@ -149,6 +149,17 @@ function Mem() {
     }),
   });
 }
+function Heart() {
+  return Widget.Button({
+    on_clicked: () => {
+      Utils.exec("reboot");
+    },
+    child: Widget.Label({
+      label: " ",
+      css: "color:#FF190F;",
+    }),
+  });
+}
 function Btc() {
   return Widget.Button({
     child: Widget.Label({
@@ -251,7 +262,14 @@ function Right() {
   return Widget.Box({
     hpack: "end",
     spacing: 4,
-    children: [Wallpaper(), Volume(), Brightness(), Battery(), SysTray()],
+    children: [
+      Wallpaper(),
+      Volume(),
+      Brightness(),
+      Battery(),
+      SysTray(),
+      Heart(),
+    ],
   });
 }
 
