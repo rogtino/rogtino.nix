@@ -340,4 +340,10 @@ return {
     },
     dependencies = { { 'nvim-tree/nvim-web-devicons' } },
   },
+  {
+    'FabijanZulj/blame.nvim',
+    opts = {},
+    cmd = 'BlameToggle',
+    keys = { { '<leader>tb', vim.cmd.BlameToggle, desc = 'toggle blame' } },
+  },
 }
