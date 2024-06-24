@@ -7,10 +7,14 @@
       {url = "https://www.ruanyifeng.com/blog/atom.xml";}
       {url = "https://v2ex.com/index.xml";}
       {url = "https://rsshub.app/zhihu/hotlist";}
-      {url = "https://36kr.com/feed";}
-      {url = "https://www.reddit.com/r/neovim/.rss";}
-      {url = "https://www.reddit.com/r/rust/.rss";}
-      {url = "https://www.reddit.com/r/nixos/.rss";}
+      {url = "https://neovim.io/news.xml";}
+      {url = "https://dotfyle.com/this-week-in-neovim/rss.xml";}
+      {url = "https://weekly.howie6879.com/rss/rss.xml";}
+      {url = "https://news.ycombinator.com/rss";}
+      {url = "https://plink.anyfeeder.com/weixin/DJ00123987";}
+      {url = "https://plink.anyfeeder.com/weixin/liweitan2014";}
+      {url = "https://plink.anyfeeder.com/weixin/runliu-pub";}
+      {url = "https://plink.anyfeeder.com/weixin/eeo-com-cn";}
     ];
     extraConfig = ''
       # externel browser

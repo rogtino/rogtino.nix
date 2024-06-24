@@ -181,22 +181,29 @@ function Network() {
     }),
   });
 }
+function gen_speed(raw: string, icon: string) {
+  if (raw.endsWith("K")) {
+    if (raw.length > 4) {
+      return `${icon} ${Math.floor(Number(raw.substring(0, raw.length - 1)) / 1024)}M/s`;
+    } else {
+      return `${icon} ${raw}/s`;
+    }
+  } else if (raw.endsWith("M")) {
+    return `${icon} ${raw}/s`;
+  } else {
+    if (raw.length > 3) {
+      return `${icon} ${Math.floor(Number(raw) / 1024)}K/s`;
+    } else {
+      return `${icon} ${raw}B/s`;
+    }
+  }
+}
 function SpeedUp() {
   return Widget.Button({
     child: Widget.Label({
       label: UP.bind().as((w) => {
         let d = w.toString();
-        if (d.endsWith("K")) {
-          return `󰳡 ${w}/s`;
-        } else if (d.endsWith("M")) {
-          return `󱑤 ${w}/s`;
-        } else {
-          if (d.length > 3) {
-            return `󰳡 ${Math.floor(Number(d) / 1024)}K/s`;
-          } else {
-            return `󰳡 ${w}B/s`;
-          }
-        }
+        return gen_speed(d, "󰳡");
       }),
       css: "color:#C3B9FF;",
     }),
@@ -207,17 +214,7 @@ function SpeedDown() {
     child: Widget.Label({
       label: DOWN.bind().as((w) => {
         let d = w.toString();
-        if (d.endsWith("K")) {
-          return `󰳛 ${w}/s`;
-        } else if (d.endsWith("M")) {
-          return `󰳛 ${w}/s`;
-        } else {
-          if (d.length > 3) {
-            return `󰳛 ${Math.floor(Number(d) / 1024)}K/s`;
-          } else {
-            return `󰳛 ${w}B/s`;
-          }
-        }
+        return gen_speed(d, "󰳛");
       }),
       css: "color:#C3B9FF;",
     }),

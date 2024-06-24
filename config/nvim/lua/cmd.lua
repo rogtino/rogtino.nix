@@ -129,25 +129,3 @@ vim.api.nvim_create_user_command('Toilet', function()
 end, {
   desc = 'format current line with toilet',
 })
-
-vim.api.nvim_create_user_command('Oagenda', function()
-  local agenda = require 'orgmode.api.agenda'
-  agenda.agenda {}
-end, {
-  desc = 'open agenda',
-})
---TODO:fix theses commands
-vim.api.nvim_create_user_command('Ocapture', function()
-  require 'orgmode'
-  local key = vim.api.nvim_replace_termcodes('<leader>oc', true, false, false)
-  vim.api.nvim_feedkeys(key, 'n', true)
-end, {
-  desc = 'capture org',
-})
-
-vim.api.nvim_create_user_command('Oroam', function()
-  require 'org-roam'
-  vim.api.nvim_input '<leader>nc'
-end, {
-  desc = 'capture org',
-})

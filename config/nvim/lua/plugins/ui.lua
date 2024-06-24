@@ -306,21 +306,41 @@ return {
             key = 'f',
           },
           {
+            group = 'DiagnosticOk',
+            desc = ' git',
+            action = 'Neogit',
+            key = 'g',
+          },
+          {
             desc = ' org',
             group = 'DiagnosticHint',
-            action = 'Oagenda',
+            action = function()
+              vim.cmd 'Lazy load orgmode'
+              -- HACK: for loading org ftplugin :(
+              vim.cmd 'set ft=org'
+              vim.cmd 'set ft=dashboard'
+              vim.api.nvim_input '<space>oa'
+            end,
             key = 'o',
           },
           {
             desc = ' capture',
             group = 'DiagnosticError',
-            action = 'Ocapture',
+            action = function()
+              vim.cmd 'Lazy load orgmode'
+              vim.cmd 'set ft=org'
+              vim.cmd 'set ft=dashboard'
+              vim.api.nvim_input '<space>oc'
+            end,
             key = 'c',
           },
           {
             desc = '󰂺 roam',
             group = 'Number',
-            action = 'Oroam',
+            action = function()
+              require 'org-roam'
+              vim.api.nvim_input '<space>nc'
+            end,
             key = 'r',
           },
           {
@@ -334,6 +354,12 @@ return {
             group = '@function.method',
             action = 'SessionManager load_session',
             key = 'l',
+          },
+          {
+            desc = '󱚝 exit',
+            group = 'Special',
+            action = 'quit',
+            key = 'q',
           },
         },
       },
