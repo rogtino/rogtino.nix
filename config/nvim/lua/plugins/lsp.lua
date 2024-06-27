@@ -27,7 +27,19 @@ local function config()
     prismals = {},
     emmet_language_server = {},
     gopls = {},
-    cssls = {},
+    cssls = {
+      settings = {
+        css = { validate = true, lint = {
+          unknownAtRules = 'ignore',
+        } },
+        scss = { validate = true, lint = {
+          unknownAtRules = 'ignore',
+        } },
+        less = { validate = true, lint = {
+          unknownAtRules = 'ignore',
+        } },
+      },
+    },
     asm_lsp = {},
     marksman = {},
     -- BUG:no idea why this triggers an error in :LspInfo

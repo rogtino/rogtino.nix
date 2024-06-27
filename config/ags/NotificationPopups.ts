@@ -34,7 +34,7 @@ function Noti(n: Notification) {
   });
 
   const title = Widget.Label({
-    css: "font-size:48px;color:pink;",
+    css: "font-size:38px;color:pink;",
     class_name: "title",
     xalign: 0,
     justification: "left",
@@ -115,7 +115,7 @@ export function NotificationPopups(monitor = 0) {
     class_name: "notification-popups",
     anchor: ["top", "right"],
     child: Widget.Box({
-      css: "min-width: 2px; min-height: 2px;font-size:22px;background-color:#333;border-radius:30px;",
+      css: "min-width: 2px; min-height: 2px;font-size:15px;background-color:#333;border-radius:30px;",
       class_name: "notifications",
       vertical: true,
       child: list,

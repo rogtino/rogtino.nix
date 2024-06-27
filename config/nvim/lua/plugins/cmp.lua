@@ -8,7 +8,6 @@ local function config()
   local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
   local lspkind = require 'lspkind'
   local luasnip = require 'luasnip'
-  local tailwind = require 'tailwindcss-colorizer-cmp'
   local ls = luasnip
   --- generate source for specific filetype
   ---@param ft_name string | table
@@ -188,7 +187,6 @@ local function config()
           npm = '[Npm]',
           treesitter = '[Tree]',
         },
-        before = tailwind.formatter,
       },
     },
     sources = cmp.config.sources({

@@ -62,7 +62,8 @@ function Volume() {
   return Widget.Button({
     on_scroll_up: () => (audio.speaker.volume += 0.02),
     on_scroll_down: () => (audio.speaker.volume -= 0.02),
-    on_clicked: () => (audio.speaker.volume = audio.speaker.volume > 0 ? 0 : 1),
+    on_clicked: () =>
+      (audio.speaker.volume = audio.speaker.volume > 0 ? 0 : 0.4),
     child: Widget.Label({
       label: audio.speaker.bind("volume").as((v) => {
         const percent = Math.floor(v * 100);
@@ -184,7 +185,7 @@ function Network() {
 function gen_speed(raw: string, icon: string) {
   if (raw.endsWith("K")) {
     if (raw.length > 4) {
-      return `${icon} ${Math.floor(Number(raw.substring(0, raw.length - 1)) / 1024)}M/s`;
+      return `${icon} ${(Number(raw.substring(0, raw.length - 1)) / 1024).toFixed(2)}M/s`;
     } else {
       return `${icon} ${raw}/s`;
     }
