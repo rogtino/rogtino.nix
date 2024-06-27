@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./core.nix
+    ./theme.nix
     ./service
     ./fcitx.nix
     ./nvidia.nix

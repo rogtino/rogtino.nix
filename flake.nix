@@ -105,5 +105,6 @@
     home-manager.url = "github:nix-community/home-manager";
     ags.url = "github:Aylur/ags";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    catppuccin.url = "github:catppuccin/nix";
   };
 }

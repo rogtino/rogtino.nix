@@ -14,6 +14,7 @@ with pkgs; let
     vscode-langservers-extracted
     typescript
     rustywind
+    selene
     emmet-language-server
     nodePackages."@tailwindcss/language-server"
     pyright
@@ -38,15 +39,11 @@ with pkgs; let
     cowsay
     # manix
     htop-vim
-    btop
     fastfetch
     commitizen
     nodePackages.conventional-changelog-cli
-    gitui
-    imv
     exiftool
     tealdeer
-    zellij
     dust
   ];
   shtools = [
@@ -74,7 +71,6 @@ with pkgs; let
     p7zip
     fd
     ripgrep
-    glow
     # it provides the command `nom` works just like `nix`
     # with more details log output
     nix-output-monitor
@@ -142,6 +138,11 @@ in {
       };
       ignores = [".direnv" "node_modules"];
     };
+    bat.enable = true;
+    gitui.enable = true;
+    imv.enable = true;
+    zellij.enable = true;
+    btop.enable = true;
     zoxide = {
       enable = true;
     };
@@ -221,23 +222,6 @@ in {
       };
       "ags" = {
         source = mkOutOfStoreSymlink "/home/gus/rogtino.nix/config/ags";
-      };
-    };
-  };
-  programs.bat = {
-    enable = true;
-    config = {
-      theme = "mocha";
-    };
-    themes = {
-      mocha = {
-        src = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "bat";
-          rev = "d714cc1d358ea51bfc02550dabab693f70cccea0";
-          sha256 = "Q5B4NDrfCIK3UAMs94vdXnR42k4AXCqZz6sRn8bzmf4=";
-        };
-        file = "themes/Catppuccin Mocha.tmTheme";
       };
     };
   };

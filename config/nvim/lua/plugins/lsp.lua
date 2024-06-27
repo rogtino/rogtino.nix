@@ -27,6 +27,7 @@ local function config()
     prismals = {},
     emmet_language_server = {},
     gopls = {},
+    -- selene = {},
     cssls = {
       settings = {
         css = { validate = true, lint = {
@@ -97,7 +98,7 @@ return {
             -- markdown = { 'vale' },
             cpp = { 'clangtidy' },
             python = { 'ruff' },
-            -- lua = { "luacheck" },
+            -- lua = { 'selene' },
             -- typescriptreact = { "eslint_d" },
             -- javascript = { "eslint_d" },
             -- typescript = { "eslint_d" },

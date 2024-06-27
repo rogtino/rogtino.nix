@@ -18,6 +18,21 @@
         "type": "github"
       }
     },
+    "catppuccin": {
+      "locked": {
+        "lastModified": 1719457243,
+        "narHash": "sha256-5rOWwMAp/suWVKGavhfdyLsF2mA7Fv2DQWXlt7S+QWA=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "53967ef237edd38a5b5cc5441e9b6a44b9554977",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "daeuniverse": {
       "inputs": {
         "devshell": "devshell",
@@ -891,6 +906,7 @@
     "root": {
       "inputs": {
         "ags": "ags",
+        "catppuccin": "catppuccin",
         "daeuniverse": "daeuniverse",
         "flake-parts": "flake-parts_3",
         "home-manager": "home-manager",

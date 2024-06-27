@@ -23,9 +23,8 @@ boot('lazy.nvim', 'https://github.com/folke/lazy.nvim.git')
 -- TODO:https://github.com/CKolkey/ts-node-action add some node-action
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
-require('lazy').setup({
-  { import = 'plugins' },
-}, {
+require('lazy').setup {
+  spec = { { import = 'plugins' } },
   defaults = { lazy = true },
   ui = {
     icons = {
@@ -69,12 +68,7 @@ require('lazy').setup({
       },
     },
   },
-  -- checker = { enabled = true },
-  -- dev = {
-  --   path = "~/dev-nvim/",
-  --   patterns = { "rogtino" },
-  -- },
-})
+}
 require 'core'
 
 --TODO: vimtex autopairs octo textobject(treesitter) chatgpt nabla edgy neotest

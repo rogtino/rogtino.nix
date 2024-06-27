@@ -5,20 +5,11 @@
     ./hyprlock.nix
   ];
   home.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
     gtk.enable = true;
   };
   gtk = {
+    catppuccin.enable = true;
     enable = true;
-    iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus-Dark";
-    };
-    theme = {
-      package = pkgs.orchis-theme;
-      name = "Orchis-Dark";
-    };
     cursorTheme = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Classic";

@@ -11,6 +11,7 @@
       ./devtools.nix
       inputs.nix-index-database.hmModules.nix-index
       inputs.ags.homeManagerModules.default
+      inputs.catppuccin.homeManagerModules.catppuccin
     ];
     extraSpecialArgs = {inherit inputs;};
   };
