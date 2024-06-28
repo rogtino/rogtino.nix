@@ -28,12 +28,15 @@ with pkgs; let
   formatter = [
     taplo
     rustfmt
+    google-java-format
     alejandra
     cmake-format
     shfmt
     stylua
     black
     nodePackages_latest.prettier
+    fnlfmt
+    typstfmt
   ];
   tools = [
     cowsay
@@ -109,6 +112,7 @@ with pkgs; let
   # XDG MIME types
   associations = builtins.mapAttrs (_: v: (map (e: "${e}.desktop") v)) ({
       "application/pdf" = ["org.pwmt.zathura"];
+      "application/epub+zip" = ["org.pwmt.zathura"];
       "text/html" = browser;
       "text/plain" = ["nvim"];
       "x-scheme-handler/chrome" = ["chromium-browser"];
@@ -120,9 +124,6 @@ with pkgs; let
     // video
     // browserTypes);
 in {
-  imports = [
-    ./yazi.nix
-  ];
   programs = {
     fish.enable = true;
     git = {

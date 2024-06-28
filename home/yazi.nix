@@ -1,5 +1,11 @@
-{config, ...}: {
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}: {
   programs.yazi = {
+    package = inputs.yazi.packages.${pkgs.system}.default;
     enable = true;
     enableNushellIntegration = true;
     settings = {

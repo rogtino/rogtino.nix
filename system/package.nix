@@ -25,6 +25,7 @@
       # cudaPackages.cudatoolkit
       python312
       nodejs
+      go
       grim
       mitscheme
       # vscode

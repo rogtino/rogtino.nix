@@ -8,6 +8,7 @@
       "https://nix-community.cachix.org"
       "https://numtide.cachix.org"
       "https://hyprland.cachix.org"
+      "https://yazi.cachix.org"
       # "https://cuda-maintainers.cachix.org"
     ];
     extra-trusted-public-keys = [
@@ -15,6 +16,7 @@
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
       "daeuniverse.cachix.org-1:8hRIzkQmAKxeuYY3c/W1I7QbZimYphiPX/E7epYNTeM="
+      "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
       # "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
     ];
   };
@@ -106,5 +108,6 @@
     ags.url = "github:Aylur/ags";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     catppuccin.url = "github:catppuccin/nix";
+    yazi.url = "github:sxyazi/yazi";
   };
 }
