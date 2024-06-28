@@ -51,15 +51,23 @@
     xserver.enable = true;
     openssh.enable = true;
     # v2raya.enable = true;
-    xserver.displayManager.gdm = {
-      enable = true;
-    };
+    # xserver.displayManager.gdm = {
+    #   enable = true;
+    # };
     # desktopManager.plasma6.enable = true;
     xserver.xkb.options = "caps:swapescape";
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
   };
 
+  services.displayManager.sddm = {
+    package = pkgs.kdePackages.sddm;
+    catppuccin.enable = true;
+    catppuccin.fontSize = "18";
+    catppuccin.font = "Martian Mono";
+    catppuccin.background = "/home/gus/Pictures/wallpapers/190e4e36f72345799583c21201d06b2a.png";
+    enable = true;
+  };
   # Enable sound.
   sound.enable = true;
 

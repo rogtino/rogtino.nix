@@ -624,11 +624,11 @@ alias l = ls -al
 alias ll = ls
 alias ff = fastfetch
 alias cdtmp = cd (mktemp -d)
-  alias zj = zellij
-  alias pc = proxychains -q
-  alias ca = cargo
-  alias n = prime-run neovide
-  # alias mpv = prime-run mpv
-  alias activate-python-venv = overlay use .venv/bin/activate.nu
-  source ~/.cache/starship/init.nu
-  source ~/.zoxide.nu
+alias zj = zellij
+alias pc = proxychains -q
+alias ca = cargo
+alias n = prime-run neovide
+# alias mpv = prime-run mpv
+alias activate-python-venv = overlay use .venv/bin/activate.nu
+source ~/.cache/starship/init.nu
+source ~/.zoxide.nu
