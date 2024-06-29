@@ -106,7 +106,7 @@ return {
     config = true,
     keys = {
       {
-        '<leader>pc',
+        '<leader>c',
         function()
           vim.cmd.Colortils()
         end,

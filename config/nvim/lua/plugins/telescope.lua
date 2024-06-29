@@ -3,17 +3,6 @@ return {
     'nvim-telescope/telescope.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'benfowler/telescope-luasnip.nvim',
-      {
-        'AckslD/nvim-neoclip.lua',
-        dependencies = 'kkharji/sqlite.lua',
-        config = true,
-        -- lazy = false,
-        event = 'TextYankPost',
-        keys = {
-          { '<leader>pn', ':Telescope neoclip<CR>', desc = 'pick neoclip' },
-        },
-      },
       -- not compatiable with flake
       -- see:https://github.com/mlvzk/manix/issues/25
       -- {
@@ -23,12 +12,12 @@ return {
       -- 	},
       -- },
       {
-        'mrjones2014/tldr.nvim',
-        keys = { { '<leader>ht', ':Telescope tldr<CR>', desc = 'tldr' } },
+        'nvim-telescope/telescope-ui-select.nvim',
+        config = function()
+          local telescope = require 'telescope'
+          telescope.load_extension 'ui-select'
+        end,
       },
-      'nvim-telescope/telescope-ui-select.nvim',
-      'LinArcX/telescope-env.nvim',
-      'LinArcX/telescope-ports.nvim',
     },
     cmd = 'Telescope',
     keys = {
@@ -40,13 +29,6 @@ return {
         desc = 'find files',
       },
       {
-        '<leader>b',
-        function()
-          return vim.cmd.Telescope 'buffers'
-        end,
-        desc = 'find buffers',
-      },
-      {
         '<leader>f',
         function()
           return vim.cmd.Telescope 'live_grep'
@@ -54,18 +36,11 @@ return {
         desc = 'live grep',
       },
       {
-        '<leader>pe',
-        function()
-          return vim.cmd.Telescope 'env'
-        end,
-        desc = 'pick-env',
-      },
-      {
         '<leader>pb',
         function()
           vim.cmd.Telescope 'buffers'
         end,
-        desc = 'pick-buffer',
+        desc = 'pick buffer',
       },
       { '<leader>hh', ':Telescope help_tags<CR>', desc = 'help', silent = true },
       {
@@ -73,49 +48,42 @@ return {
         function()
           return vim.cmd 'Telescope man_pages sections=ALL'
         end,
-        desc = 'pick-man-page',
+        desc = 'pick man-page',
       },
       {
-        '<leader>sn',
+        '<leader>pn',
         function()
           return vim.cmd 'Telescope notify'
         end,
-        desc = 'search notify',
+        desc = 'pick notify',
       },
     },
-    config = function()
-      local telescope = require 'telescope'
-      telescope.setup {
-        defaults = {
-          sorting_strategy = 'ascending',
-          prompt_prefix = ' ',
-          selection_caret = ' ',
-          path_display = { 'smart' },
-          file_ignore_patterns = { '.git/', 'node_modules' },
-          layout_strategy = 'center',
-          border = true,
-          layout_config = {
-            anchor = 'N',
-            preview_cutoff = 1,
-            prompt_position = 'top',
-            width = 0.95,
-          },
+    opts = {
+      defaults = {
+        sorting_strategy = 'ascending',
+        prompt_prefix = ' ',
+        selection_caret = ' ',
+        path_display = { 'smart' },
+        file_ignore_patterns = { '.git/', 'node_modules' },
+        layout_strategy = 'center',
+        border = true,
+        layout_config = {
+          anchor = 'N',
+          preview_cutoff = 1,
+          prompt_position = 'top',
+          width = 0.95,
         },
-        pickers = {
-          find_files = { find_command = { 'rg', '--hidden', '--glob', '!.git', '--files' } },
-          live_grep = { find_command = { 'rg', '--hidden', '--glob', '!.git', '--files' } },
-        },
-        -- extensions = {
-        -- 	codebase = {
-        -- 		path = vim.fn.stdpath("config") .. "/codebase",
-        -- 	},
-        -- },
-      }
-      telescope.load_extension 'ui-select'
-      telescope.load_extension 'luasnip'
-      telescope.load_extension 'env'
-      telescope.load_extension 'ports'
-    end,
+      },
+      pickers = {
+        find_files = { find_command = { 'rg', '--hidden', '--glob', '!.git', '--files' } },
+        live_grep = { find_command = { 'rg', '--hidden', '--glob', '!.git', '--files' } },
+      },
+      -- extensions = {
+      -- 	codebase = {
+      -- 		path = vim.fn.stdpath("config") .. "/codebase",
+      -- 	},
+      -- },
+    },
   },
   {
     'prochri/telescope-all-recent.nvim',
@@ -142,6 +110,74 @@ return {
             }):sync()
           end
         end,
+      },
+    },
+  },
+
+  {
+    'AckslD/nvim-neoclip.lua',
+    dependencies = 'kkharji/sqlite.lua',
+    config = true,
+    -- lazy = false,
+    event = 'TextYankPost',
+    keys = {
+      { '<leader>pc', ':Telescope neoclip<CR>', desc = 'pick neoclip' },
+    },
+  },
+
+  {
+    'mrjones2014/tldr.nvim',
+    keys = { { '<leader>pt', ':Telescope tldr<CR>', desc = 'pick tldr' } },
+  },
+
+  {
+    'LinArcX/telescope-env.nvim',
+    config = function()
+      local telescope = require 'telescope'
+      telescope.load_extension 'env'
+    end,
+    keys = {
+      {
+        '<leader>pe',
+        function()
+          return vim.cmd.Telescope 'env'
+        end,
+        desc = 'pick env',
+      },
+    },
+  },
+
+  {
+    'LinArcX/telescope-ports.nvim',
+    config = function()
+      local telescope = require 'telescope'
+      telescope.load_extension 'ports'
+    end,
+    keys = {
+      {
+        '<leader>pp',
+        function()
+          return vim.cmd.Telescope 'ports'
+        end,
+        desc = 'pick ports',
+      },
+    },
+  },
+  {
+    'benfowler/telescope-luasnip.nvim',
+
+    config = function()
+      local telescope = require 'telescope'
+      telescope.load_extension 'luasnip'
+    end,
+    keys = {
+
+      {
+        '<leader>ps',
+        function()
+          return vim.cmd.Telescope 'luasnip'
+        end,
+        desc = 'pick snippets',
       },
     },
   },
