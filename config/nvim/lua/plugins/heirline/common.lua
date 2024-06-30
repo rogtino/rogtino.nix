@@ -1,13 +1,8 @@
 local M = {}
 
-local fn = vim.fn
 -- local api = vim.api
 -- local map = vim.keymap.set
 
-fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
-fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
-fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
-fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
 --- Blend two rgb colors using alpha
 ---@param color1 string | number first color
 ---@param color2 string | number second color
@@ -38,10 +33,10 @@ M.icons = {
   lsp = ' ', --   
   vim = ' ',
   debug = ' ',
-  err = vim.fn.sign_getdefined('DiagnosticSignError')[1].text,
-  warn = vim.fn.sign_getdefined('DiagnosticSignWarn')[1].text,
-  info = vim.fn.sign_getdefined('DiagnosticSignInfo')[1].text,
-  hint = vim.fn.sign_getdefined('DiagnosticSignHint')[1].text,
+  err = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR }),
+  warn = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN }),
+  info = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO }),
+  hint = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT }),
 }
 
 M.separators = {

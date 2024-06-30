@@ -175,10 +175,11 @@ function Network() {
   return Widget.Button({
     child: Widget.Label({
       //BUG: this does not keep update
-      label: network.bind("wifi").as((w) => {
-        return `󰖩 ${w.ssid} 󰒢 ${w.strength}%`;
+      label: network.wifi.bind("ssid").as((w) => {
+        return `󰖩 ${w}`;
+        // return `󰖩 ${w} 󰒢 ${strength}%`;
       }),
-      css: "color:#91B9FF;",
+      css: "color:#EB3C87;",
     }),
   });
 }
