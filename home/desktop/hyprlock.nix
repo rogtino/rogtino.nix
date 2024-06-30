@@ -35,7 +35,7 @@
         {
           monitor = "eDP-1";
           text = "Hi, $USER";
-          color = "rgb(1e1e2e)";
+          color = "rgb(c0caf5)";
           valign = "center";
           halign = "center";
           font_size = 40;
@@ -43,7 +43,7 @@
         {
           monitor = "eDP-1";
           text = "$TIME";
-          color = "rgb(1e1e2e)";
+          color = "rgb(c0caf5)";
           font_size = 30;
           position = {
             x = 0;

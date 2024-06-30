@@ -143,7 +143,12 @@ in {
     gitui.enable = true;
     imv.enable = true;
     zellij.enable = true;
-    btop.enable = true;
+    btop = {
+      enable = true;
+      settings = {
+        vim_keys = true;
+      };
+    };
     zoxide = {
       enable = true;
     };

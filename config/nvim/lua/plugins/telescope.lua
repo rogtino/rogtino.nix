@@ -3,6 +3,7 @@ return {
     'nvim-telescope/telescope.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
+      'prochri/telescope-all-recent.nvim',
       -- not compatiable with flake
       -- see:https://github.com/mlvzk/manix/issues/25
       -- {
@@ -89,7 +90,6 @@ return {
     'prochri/telescope-all-recent.nvim',
     config = true,
     dependencies = {
-      'nvim-telescope/telescope.nvim',
       {
         'kkharji/sqlite.lua',
         config = function()

@@ -58,7 +58,6 @@
       wl-clipboard
       deno
       virt-manager
-      neovim
       neovide
       rizin
       obs-studio
@@ -78,4 +77,8 @@
     ++ [
       inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
     ];
+  programs.neovim = {
+    enable = true;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+  };
 }
