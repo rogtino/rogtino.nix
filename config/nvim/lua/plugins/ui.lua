@@ -270,17 +270,23 @@ return {
     opts = {
       window = {
         backdrop = 0.95,
-        width = 120,
+        width = 0.8,
         height = 1,
         options = {
-          signcolumn = 'yes',
-          number = true,
-          relativenumber = true,
+          -- signcolumn = 'yes',
+          number = false,
+          relativenumber = false,
           foldcolumn = '0',
           cursorline = false,
         },
       },
-      plugins = { gitsigns = { enabled = true } },
+      plugins = {
+        gitsigns = { enabled = true },
+        alacritty = {
+          enabled = true,
+          font = '18', -- font size
+        },
+      },
     },
     cmd = 'ZenMode',
   },
