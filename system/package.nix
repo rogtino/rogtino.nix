@@ -37,6 +37,7 @@
       typst
       typst-preview
       telegram-desktop
+      yq
       gnumake
       # this is super useful
       ngrok

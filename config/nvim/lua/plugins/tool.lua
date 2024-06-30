@@ -67,8 +67,14 @@ return {
   },
   {
     'pwntester/octo.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim', 'nvim-tree/nvim-web-devicons' },
-    config = true,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'ibhagwan/fzf-lua',
+      'nvim-tree/nvim-web-devicons',
+    },
+    opts = {
+      picker = 'fzf-lua',
+    },
     cmd = 'Octo',
   },
   {
@@ -488,5 +494,11 @@ return {
         desc = 'Align with preview',
       },
     },
+  },
+  {
+    'm4xshen/hardtime.nvim',
+    dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
+    opts = {},
+    event = 'VeryLazy',
   },
 }

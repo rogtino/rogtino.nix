@@ -378,4 +378,11 @@ return {
     cmd = 'BlameToggle',
     keys = { { '<leader>tb', vim.cmd.BlameToggle, desc = 'toggle blame' } },
   },
+  {
+    'topaxi/gh-actions.nvim',
+    keys = {
+      { '<leader>gh', '<cmd>GhActions<cr>', desc = 'Open Github Actions' },
+    },
+    opts = {},
+  },
 }
