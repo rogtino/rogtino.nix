@@ -80,7 +80,7 @@ return {
   {
     'lewis6991/gitsigns.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    event = 'VeryLazy',
+    event = 'User DashboardLeave',
     opts = {
       current_line_blame = true,
       on_attach = function(bufnr)
@@ -356,6 +356,7 @@ return {
   },
   {
     'Shatur/neovim-session-manager',
+    cmd = 'SessionManager',
     keys = {
       {
         '<leader>le',
@@ -368,7 +369,7 @@ return {
         desc = 'load last session',
       },
     },
-    event = 'VeryLazy',
+    event = 'User DashboardLeave',
     config = true,
     -- config = function()
     --   local config = require 'session_manager.config'

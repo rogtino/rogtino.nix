@@ -58,7 +58,7 @@ return {
         cmp_menu = { always_update = true },
       },
     },
-    event = 'VeryLazy',
+    event = 'User DashboardLeave',
   },
   {
     'pmizio/typescript-tools.nvim',

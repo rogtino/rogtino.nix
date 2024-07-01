@@ -167,9 +167,10 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     config = config,
-    event = { 'BufReadPost', 'BufNewFile' },
+    event = { 'User DashboardLeave' },
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'chrisgrieser/nvim-various-textobjs',
       { 'nushell/tree-sitter-nu', ft = 'nu' },
       'nvim-treesitter/nvim-treesitter-context',
     },
@@ -196,13 +197,12 @@ return {
       --   { desc = 'multi Comment lines' }
       -- )
     end,
-    event = 'VeryLazy',
   },
   {
     'lewis6991/satellite.nvim',
-    event = 'VeryLazy',
+    event = 'User DashboardLeave',
   },
-  { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'VeryLazy' },
+  { 'nvim-treesitter/nvim-treesitter-textobjects' },
   {
     'Wansmer/treesj',
     keys = { {

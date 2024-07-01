@@ -12,8 +12,6 @@ wk.register({ h = { name = 'help' } }, { prefix = '<leader>' })
 wk.register({ r = { name = 'run' } }, { prefix = '<leader>' })
 wk.register({ w = { name = 'window' } }, { prefix = '<leader>' })
 
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 vim.keymap.set('n', '<leader>td', '<cmd>SwitchTheme dark<CR>', { desc = 'toggle random dark theme' })
 vim.keymap.set('n', '<leader>tl', '<cmd>SwitchTheme light<CR>', { desc = 'toggle random light theme' })
 vim.keymap.set('n', '<leader>hd', '<cmd>NoiceDismiss<CR>', { desc = 'dismiss noice' })

@@ -115,19 +115,14 @@ vim.api.nvim_create_autocmd('FileChangedShellPost', {
   end,
 })
 
--- NOTE:should I lazy load some plugins after dashboard?
---
--- vim.api.nvim_create_autocmd({ 'BufUnload' }, {
---   group = vim.api.nvim_create_augroup('RogInteral', { clear = true }),
---   callback = function(args)
---     local buftype = vim.api.nvim_get_option_value('buftype', { buf = args.buf })
---     vim.print(args)
---     vim.print(buftype)
---
---     if buftype == 'dashboard' then
---       print 'rnalsndl'
---       vim.api.nvim_exec_autocmds('User', { pattern = 'DashboardLeave', modeline = false })
---       vim.api.nvim_del_augroup_by_name 'RogInteral'
---     end
---   end,
--- })
+vim.api.nvim_create_autocmd({ 'BufUnload' }, {
+  group = vim.api.nvim_create_augroup('RogInteral', { clear = true }),
+  callback = function(args)
+    local buftype = vim.api.nvim_get_option_value('filetype', { buf = args.buf })
+
+    if buftype == 'dashboard' then
+      vim.api.nvim_exec_autocmds('User', { pattern = 'DashboardLeave', modeline = false })
+      vim.api.nvim_del_augroup_by_name 'RogInteral'
+    end
+  end,
+})

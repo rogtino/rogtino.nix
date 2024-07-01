@@ -71,7 +71,5 @@ require('lazy').setup {
 }
 require 'core'
 
---TODO: vimtex autopairs octo textobject(treesitter) chatgpt nabla edgy neotest
+--TODO: vimtex  octo  chatgpt nabla  neotest
 --TODO: conceal some text
---TODO: there are some useful textobjs like L(url textobjs)...
---draw some insparation from astronvim

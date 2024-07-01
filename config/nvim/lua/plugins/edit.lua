@@ -224,7 +224,8 @@ return {
   {
     'folke/ts-comments.nvim',
     opts = {},
-    event = 'VeryLazy',
+    event = 'User DashboardLeave',
+    ft = { 'javascriptreact', 'typescriptreact' },
     enabled = vim.fn.has 'nvim-0.10.0' == 1,
   },
   -- {
@@ -285,7 +286,7 @@ return {
   {
     'kylechui/nvim-surround',
     version = '*', -- Use for stability; omit to use `main` branch for the latest features
-    event = 'VeryLazy',
+    event = 'User DashboardLeave',
     opts = {},
   },
   {

@@ -40,7 +40,7 @@ return {
         config = true,
       },
     },
-    event = 'VeryLazy',
+    event = 'User DashboardLeave',
     opts = {
       provider_selector = function()
         return { 'treesitter', 'indent' }
@@ -57,6 +57,20 @@ return {
           jumpTop = '[',
           jumpBot = ']',
         },
+      },
+    },
+    keys = {
+      {
+        'zR',
+        function()
+          require('ufo').openAllFolds()
+        end,
+      },
+      {
+        'zM',
+        function()
+          require('ufo').closeAllFolds()
+        end,
       },
     },
   },
@@ -77,7 +91,7 @@ return {
     },
   },
   { 'stevearc/dressing.nvim', config = true, event = 'VeryLazy' },
-  { 'echasnovski/mini.cursorword', config = true, event = 'VeryLazy' },
+  { 'echasnovski/mini.cursorword', config = true, event = 'User DashboardLeave' },
   {
     'rcarriga/nvim-notify',
     opts = {
@@ -181,7 +195,7 @@ return {
     'folke/todo-comments.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
     config = true,
-    event = 'VeryLazy',
+    event = 'User DashboardLeave',
     keys = {
       {
         '<leader>st',
@@ -218,7 +232,7 @@ return {
   },
   {
     'shellRaining/hlchunk.nvim',
-    event = 'VeryLazy',
+    event = 'User DashboardLeave',
     opts = {
       blank = { exclude_filetypes = ex, enable = false },
       chunk = { enable = true, exclude_filetypes = ex },

@@ -113,7 +113,6 @@ return {
   -- can't lazy load it
   {
     'Weissle/persistent-breakpoints.nvim',
-    opts = { load_breakpoints_event = { 'BufReadPost' } },
-    lazy = false,
+    event = 'User DashboardLeave',
   },
 }

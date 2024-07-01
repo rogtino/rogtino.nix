@@ -1,7 +1,7 @@
 return {
 
   'rebelot/heirline.nvim',
-  event = 'UiEnter',
+  event = 'User DashboardLeave',
   config = function()
     local utils = require 'heirline.utils'
     local function setup_colors()
