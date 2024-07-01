@@ -110,5 +110,8 @@
     catppuccin.url = "github:catppuccin/nix";
     yazi.url = "github:sxyazi/yazi";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    zjstatus = {
+      url = "github:dj95/zjstatus";
+    };
   };
 }

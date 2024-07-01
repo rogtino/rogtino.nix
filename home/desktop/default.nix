@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./hypridle.nix
     ./hyprland.nix
@@ -15,6 +19,10 @@
     cursorTheme = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Classic";
+    };
+    theme = {
+      name = lib.mkForce "rose-pine";
+      package = lib.mkForce pkgs.rose-pine-gtk-theme;
     };
   };
 

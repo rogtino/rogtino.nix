@@ -179,7 +179,7 @@ function Network() {
         return `󰖩 ${w}`;
         // return `󰖩 ${w} 󰒢 ${strength}%`;
       }),
-      css: "color:#EB3C87;",
+      css: "color:#EB3C87;border:none;",
     }),
   });
 }
@@ -276,6 +276,7 @@ function Right() {
 export const Bar = Widget.Window({
   name: `bar`, // name has to be unique
   class_name: "bar",
+  margins: [2, 9],
   anchor: ["top", "left", "right"],
   exclusivity: "exclusive",
 
