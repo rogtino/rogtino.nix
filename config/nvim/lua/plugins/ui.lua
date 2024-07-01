@@ -318,7 +318,7 @@ return {
         shortcut = {
           { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
           {
-            icon = ' ',
+            icon = '󰛔 ',
             icon_hl = '@variable',
             desc = 'Files',
             group = 'Label',
@@ -327,8 +327,8 @@ return {
           },
           {
             group = 'DiagnosticOk',
-            desc = ' git',
-            action = 'Neogit',
+            desc = '󰯉 grep',
+            action = 'Telescope live_grep',
             key = 'g',
           },
           {
@@ -340,7 +340,7 @@ return {
             key = 'o',
           },
           {
-            desc = ' capture',
+            desc = '󰳗 capture',
             group = 'DiagnosticError',
             action = function()
               require('orgmode').capture:prompt()
