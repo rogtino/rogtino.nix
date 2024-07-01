@@ -192,8 +192,8 @@ local function config()
     sources = cmp.config.sources({
       { name = 'luasnip' },
       { name = 'nvim_lsp' },
-      { name = 'path' },
     }, {
+      { name = 'path' },
       { name = 'buffer' },
       { name = 'calc' },
     }),

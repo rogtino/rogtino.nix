@@ -321,11 +321,7 @@ return {
             desc = ' org',
             group = 'DiagnosticHint',
             action = function()
-              vim.cmd 'Lazy load orgmode'
-              -- HACK: for loading org ftplugin :(
-              vim.cmd 'set ft=org'
-              vim.cmd 'set ft=dashboard'
-              vim.api.nvim_input '<space>oa'
+              require('orgmode').agenda:prompt()
             end,
             key = 'o',
           },
@@ -333,10 +329,7 @@ return {
             desc = ' capture',
             group = 'DiagnosticError',
             action = function()
-              vim.cmd 'Lazy load orgmode'
-              vim.cmd 'set ft=org'
-              vim.cmd 'set ft=dashboard'
-              vim.api.nvim_input '<space>oc'
+              require('orgmode').capture:prompt()
             end,
             key = 'c',
           },
@@ -344,8 +337,7 @@ return {
             desc = '󰂺 roam',
             group = 'Number',
             action = function()
-              require 'org-roam'
-              vim.api.nvim_input '<space>nc'
+              require('org-roam').api.capture_node()
             end,
             key = 'r',
           },

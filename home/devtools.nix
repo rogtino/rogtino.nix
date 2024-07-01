@@ -15,6 +15,7 @@ with pkgs; let
     typescript
     rustywind
     selene
+    gopls
     emmet-language-server
     nodePackages."@tailwindcss/language-server"
     pyright
