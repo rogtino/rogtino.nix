@@ -96,6 +96,7 @@ if $nu.os-info.name == "windows" {
     $env.PKG_CONFIG_PATH = "/usr/lib/pkgconfig:/usr/local/lib/pkgconfig"
     $env.LD_LIBRARY_PATH = "/usr/lib:/usr/local/lib/"
     $env.PATH = ($env.PATH | prepend '~/.nix-profile/bin/')
+    $env.PATH = ($env.PATH | prepend '~/go/bin/')
 
 }
 

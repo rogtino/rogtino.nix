@@ -39,7 +39,8 @@ return {
       {
         '<leader>pb',
         function()
-          vim.cmd.Telescope 'buffers'
+          -- vim.cmd.Telescope 'buffers'
+          require('fzf-lua').buffers()
         end,
         desc = 'pick buffer',
       },

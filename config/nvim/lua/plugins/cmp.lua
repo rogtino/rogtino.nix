@@ -189,14 +189,13 @@ local function config()
         },
       },
     },
-    sources = cmp.config.sources({
+    sources = cmp.config.sources {
       { name = 'luasnip' },
       { name = 'nvim_lsp' },
-    }, {
       { name = 'path' },
       { name = 'buffer' },
       { name = 'calc' },
-    }),
+    },
     confirm_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false },
     experimental = { ghost_text = true },
   }

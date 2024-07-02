@@ -186,17 +186,17 @@ function Network() {
 function gen_speed(raw: string, icon: string) {
   if (raw.endsWith("K")) {
     if (raw.length > 4) {
-      return `${icon} ${(Number(raw.substring(0, raw.length - 1)) / 1024).toFixed(2)}M/s`;
+      return `${icon} ${(Number(raw.substring(0, raw.length - 1)) / 1024 / 2).toFixed(2)}M/s`;
     } else {
-      return `${icon} ${raw}/s`;
+      return `${icon} ${Math.floor(Number(raw) / 2)}/s`;
     }
   } else if (raw.endsWith("M")) {
-    return `${icon} ${raw}/s`;
+    return `${icon} ${(Number(raw) / 2).toFixed(2)}/s`;
   } else {
     if (raw.length > 3) {
-      return `${icon} ${Math.floor(Number(raw) / 1024)}K/s`;
+      return `${icon} ${Math.floor(Number(raw) / 1024 / 2)}K/s`;
     } else {
-      return `${icon} ${raw}B/s`;
+      return `${icon} ${Math.floor(Number(raw) / 2)}B/s`;
     }
   }
 }
