@@ -16,9 +16,11 @@
           shfmt.enable = true;
           stylua.enable = true;
           lua-ls.enable = true;
-          prettier = {
+          prettier.enable = false;
+          biome = {
             enable = true;
             excludes = [".yaml" ".lock" ".yml"];
+            settings.configPath = "./biome.json";
           };
         };
       };

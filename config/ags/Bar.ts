@@ -3,8 +3,8 @@ const audio = await Service.import("audio");
 const battery = await Service.import("battery");
 const systemtray = await Service.import("systemtray");
 const network = await Service.import("network");
+import { BTC, CPU, DATE, DOWN, LOGO, MEM, UP } from "Var";
 import bright from "service/bright";
-import { LOGO, DATE, CPU, MEM, DOWN, UP, BTC } from "Var";
 
 function range(length: number, start = 1) {
   return Array.from({ length }, (_, i) => i + start);
@@ -186,7 +186,11 @@ function Network() {
 function gen_speed(raw: string, icon: string) {
   if (raw.endsWith("K")) {
     if (raw.length > 4) {
-      return `${icon} ${(Number(raw.substring(0, raw.length - 1)) / 1024 / 2).toFixed(2)}M/s`;
+      return `${icon} ${(
+        Number(raw.substring(0, raw.length - 1)) /
+        1024 /
+        2
+      ).toFixed(2)}M/s`;
     } else {
       return `${icon} ${Math.floor(Number(raw) / 2)}/s`;
     }

@@ -36,7 +36,7 @@ with pkgs; let
     shfmt
     stylua
     black
-    nodePackages_latest.prettier
+    biome
     fnlfmt
     typstfmt
   ];

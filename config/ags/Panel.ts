@@ -1,4 +1,4 @@
-import { MUSIC, LIGHT } from "Var";
+import { LIGHT, MUSIC } from "Var";
 function Lock() {
   return Widget.Box({
     vexpand: true,
