@@ -10,7 +10,7 @@
       programs.alejandra.enable = true;
       programs.prettier = {
         enable = true;
-        excludes = ["*.yaml" "*.lock" "lazy-lock.json"];
+        excludes = ["*.yaml" "*.lock" "config/**/lazy-lock.json" "*.yml"];
       };
       programs.stylua.enable = true;
       programs.shfmt = {
