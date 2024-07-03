@@ -231,7 +231,7 @@ return {
         cpp = { 'clang_format' },
         typescript = { 'biome' },
         go = { 'gofmt' },
-        -- rust = { 'rustfmt' },
+        rust = { 'rustfmt' },
         toml = { 'taplo' },
         typst = { 'typstfmt' },
         javascriptreact = { 'biome', 'rustywind' },
@@ -507,6 +507,7 @@ return {
     dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
     opts = {
       max_count = 3,
+      disabled_filetypes = { 'qf', 'lazy', 'mason', 'oil', 'sagaoutline', 'trouble' },
     },
     event = 'VeryLazy',
   },

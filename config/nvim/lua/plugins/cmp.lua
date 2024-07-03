@@ -1,11 +1,6 @@
 local function config()
-  -- local has_words_before = function()
-  --   unpack = unpack or table.unpack
-  --   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  --   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
-  -- end
   local cmp = require 'cmp'
-  local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+  -- local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
   local lspkind = require 'lspkind'
   local luasnip = require 'luasnip'
   local ls = luasnip
@@ -50,17 +45,12 @@ local function config()
     ['<C-l>'] = cmp.mapping.complete(),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        if luasnip.expandable() then
-          luasnip.expand()
-        else
-          cmp.confirm {
-            select = true,
-          }
-        end
+        cmp.confirm {
+          select = true,
+          behavior = cmp.ConfirmBehavior.Replace,
+        }
       elseif luasnip.locally_jumpable(1) then
         luasnip.jump(1)
-      -- elseif has_words_before() then
-      --   cmp.complete()
       else
         fallback()
       end
@@ -72,16 +62,6 @@ local function config()
         return fallback()
       end
     end, { 'i', 's' }),
-  }
-  local border = {
-    { '╭', 'FoldColumn' },
-    { '─', 'FoldColumn' },
-    { '╮', 'FoldColumn' },
-    { '│', 'FoldColumn' },
-    { '╯', 'FoldColumn' },
-    { '─', 'FoldColumn' },
-    { '╰', 'FoldColumn' },
-    { '│', 'FoldColumn' },
   }
   -- local ts_utils = require("nvim-treesitter.ts_utils")
   luasnip.config.setup {
@@ -153,7 +133,7 @@ local function config()
   -- 	end
   -- end)
   -- If you want insert `(` after select function or method item
-  cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+  -- cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
   cmp.setup {
     snippet = {
       expand = function(args)
@@ -161,8 +141,10 @@ local function config()
       end,
     },
     window = {
-      completion = { border = border, scrollbar = true },
-      documentation = { border = border },
+      completion = {
+        scrollbar = true,
+      },
+      documentation = {},
     },
     mapping = mapping,
     formatting = {
@@ -180,7 +162,6 @@ local function config()
           orgmode = '[Org]',
           ['vim-dadbod-completion'] = '[DB]',
           calc = '[Calc]',
-          conventionalcommits = '[CC]',
           emoji = '[Emoji]',
           nerdfont = '[Nerd]',
           ['cmp-tw2css'] = '[Twcss]',
@@ -196,12 +177,10 @@ local function config()
       { name = 'buffer' },
       { name = 'calc' },
     },
-    confirm_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false },
     experimental = { ghost_text = true },
+    preselect = cmp.PreselectMode.None,
   }
-  -- BUG:https://github.com/davidsierradz/cmp-conventionalcommits/issues/5
   ext_source('NeogitCommitMessage', {
-    { name = 'conventionalcommits' },
     { name = 'emoji' },
     { name = 'nerdfont' },
   })
@@ -263,7 +242,6 @@ return {
     event = { 'InsertEnter', 'LspAttach' },
     config = config,
   },
-  { 'davidsierradz/cmp-conventionalcommits', ft = 'NeogitCommitMessage' },
   {
     ft = 'NeogitCommitMessage',
     'hrsh7th/cmp-emoji',

@@ -1,7 +1,6 @@
 {pkgs, ...}: {
-  # Use the systemd-boot EFI boot loader.
   boot = {
-    # supportedFilesystems = ["ntfs"];
+    tmp.useTmpfs = true;
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot = {

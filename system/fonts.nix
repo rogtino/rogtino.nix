@@ -12,7 +12,7 @@
         monospace = [
           # "BlexMono Nerd Font"
           # "IBM Plex Mono"
-          # "Intel One Mono"
+          "IntoneMono Nerd Font"
           # "JetBrainsMonoNL Nerd Font"
           # "Maple Mono NF"
           # "LXGW WenKai Mono"
