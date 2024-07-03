@@ -38,7 +38,7 @@ function PanelChild() {
   return Widget.Box(
     {
       class_name: "player",
-      css: "min-height:200px; min-width:480px;font-size:80px;background-color:#224;border-radius:68px;",
+      css: "min-height:200px; min-width:480px;font-size:80px;background-color:@theme_bg_color;border-radius:68px;",
     },
     Widget.Box(
       {

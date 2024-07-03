@@ -315,12 +315,16 @@ return {
           enable = true,
         },
         footer = { '', '', '🥰 calm and hungry', '🎯 orgorgorg' },
+        project = { enable = false },
         shortcut = {
-          { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
           {
-            icon = '󰛔 ',
-            icon_hl = '@variable',
-            desc = 'Files',
+            desc = '󰊳 Update',
+            group = '@property',
+            action = 'Lazy update',
+            key = 'u',
+          },
+          {
+            desc = '󰛔 Files',
             group = 'Label',
             action = 'Telescope find_files',
             key = 'f',

@@ -119,7 +119,6 @@ with pkgs; let
       "text/plain" = ["nvim"];
       "x-scheme-handler/chrome" = ["chromium-browser"];
       "inode/directory" = ["yazi"];
-      # BUG: this is probably a bug,imv can't preview gif.
       "image/gif" = ["mpv"];
     }
     // image

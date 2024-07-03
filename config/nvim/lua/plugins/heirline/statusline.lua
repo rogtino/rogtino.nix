@@ -514,15 +514,26 @@ local Space = { provider = ' ' }
 ViMode = utils.surround({ '', '' }, 'bright_bg', { MacroRec, ViMode, Snippets, ShowCmd })
 
 local Org = {
-  condition = function()
-    return conditions.buffer_matches {
-      filetype = { '^org.*' },
-    }
+  hl = 'Todo',
+  init = function(self)
+    local api = require 'orgmode.api'
+    local files = api.load()
+    local all = 0
+    local todo = 0
+    for _, file in ipairs(files) do
+      for _, headline in ipairs(file.headlines) do
+        if headline.deadline and headline.deadline:is_today() then
+          if headline.todo_type == 'DONE' then
+            todo = todo + 1
+          end
+          all = 1 + all
+        end
+      end
+    end
+    self.todo = todo .. '/' .. all
   end,
-  provider = function()
-    local orgmode = require 'orgmode'
-    -- TODO: a nil value :<
-    return orgmode.statusline()
+  provider = function(self)
+    return ' ' .. self.todo
   end,
 }
 local DefaultStatusline = {
@@ -534,6 +545,8 @@ local DefaultStatusline = {
   { provider = '%<' },
   -- Space,
   Git,
+  Space,
+  Org,
   Space,
   Diagnostics,
   Align,
@@ -547,7 +560,6 @@ local DefaultStatusline = {
   -- VirtualEnv,
   Space,
   FileType,
-  -- Org,
   { flexible = 3, { FileEncoding } },
   Space,
   Arrow,

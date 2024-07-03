@@ -10,7 +10,7 @@
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
-  boot.supportedFilesystems = ["ntfs"];
+  boot.supportedFilesystems = ["ntfs" "bcachefs"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModprobeConfig = ''
@@ -33,8 +33,9 @@
     options = ["fmask=0022" "dmask=0022"];
   };
   fileSystems."/home/gus/son" = {
-    device = "/dev/disk/by-uuid/aa65a7cd-aa4a-49cb-b9b2-c1a09cd647af";
-    fsType = "ext4";
+    device = "/dev/disk/by-uuid/d0920f9d-3ac5-4eaa-b27f-f30f88f0220e";
+    fsType = "bcachefs";
+    options = ["rw"];
   };
   fileSystems."/home/gus/blk" = {
     device = "/dev/disk/by-uuid/5248FFEE48FFCEAB";

@@ -29,7 +29,7 @@
 
   # List services that you want to enable:
   services = {
-    emacs.enable = true;
+    # emacs.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;

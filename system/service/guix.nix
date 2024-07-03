@@ -3,7 +3,6 @@
   services.guix = {
     enable = true;
     # The store directory where the Guix service will serve to/from.
-    # NOTE: most of the cached builds are assumed to be in `/gnu/store`.
     storeDir = "/gnu/store";
     extraArgs = [
       "--substitute-urls=https://mirror.sjtu.edu.cn/guix/"
