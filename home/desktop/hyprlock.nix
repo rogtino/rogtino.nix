@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       background = let
-        wallpaperPath = "/home/gus/Pictures/wallpapers/b29f2454efdc4ccb84ce2feb7fa24b83.jpg";
+        wallpaperPath = "/home/gus/Pictures/wallpapers/7e500ca1145b45e695bdadb394cc4be3.jpg";
       in [
         {
           monitor = "eDP-1";
@@ -12,14 +12,12 @@
       ];
       general = {
         no_fade_in = false;
+        grace = 0;
+        disable_loading_bar = true;
       };
-      input-fields = [
+      input-field = [
         {
-          monitor = "eDP-1";
-
-          size = "300, 50";
           outline_thickness = 2;
-
           outer_color = "rgb(f5c2e7)";
           inner_color = "rgb(1e1e2e)";
           font_color = "rgb(cdd6f4)";
@@ -31,24 +29,20 @@
           dots_center = true;
         }
       ];
-      labels = [
+      label = [
         {
-          monitor = "eDP-1";
           text = "Hi, $USER";
           color = "rgb(c0caf5)";
           valign = "center";
           halign = "center";
-          font_size = 40;
+          font_size = 70;
+          position = "0, 250";
         }
         {
-          monitor = "eDP-1";
           text = "$TIME";
           color = "rgb(c0caf5)";
-          font_size = 30;
-          position = {
-            x = 0;
-            y = 140;
-          };
+          font_size = 50;
+          position = "0, 100";
           valign = "center";
           halign = "center";
         }

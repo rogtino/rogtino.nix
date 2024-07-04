@@ -3,7 +3,7 @@
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
-    backupFileExtension = "default";
+    backupFileExtension = "backup";
     users.gus.imports = [
       ./gus.nix
       ./desktop

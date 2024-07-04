@@ -199,10 +199,10 @@ return {
       -- )
     end,
   },
-  {
-    'lewis6991/satellite.nvim',
-    event = 'User DashboardLeave',
-  },
+  -- {
+  --   'lewis6991/satellite.nvim',
+  --   event = 'User DashboardLeave',
+  -- },
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   {
     'Wansmer/treesj',
