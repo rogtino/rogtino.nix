@@ -172,7 +172,8 @@ return {
       'nvim-treesitter/nvim-treesitter-textobjects',
       'chrisgrieser/nvim-various-textobjs',
       { 'nushell/tree-sitter-nu', ft = 'nu' },
-      'nvim-treesitter/nvim-treesitter-context',
+      -- BUG:error with orgmode
+      -- 'nvim-treesitter/nvim-treesitter-context',
     },
   },
   -- { "m-demare/hlargs.nvim", config = true },

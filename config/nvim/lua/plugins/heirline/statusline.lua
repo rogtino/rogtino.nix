@@ -489,33 +489,14 @@ local ShowCmd = {
   end,
 }
 
--- TODO:waiting for this
--- local VirtualEnv = {
---     init = function(self)
---         if not self.timer then
---             self.timer = vim.loop.new_timer()
---             self.timer:start(0, 5000, function()
---                 vim.schedule_wrap(function()
---                     local path = vim.fn.split(vim.fn.system("which python"), "/")
---                     vim.notify(path)
---                     self.pythonpath = path[#path - 2]
---                 end)
---             end)
---         end
---     end,
---     provider = function(self)
---         return self.pythonpath
---     end,
--- }
-
 local Align = { provider = '%=' }
 local Space = { provider = ' ' }
 
 ViMode = utils.surround({ '', '' }, 'bright_bg', { MacroRec, ViMode, Snippets, ShowCmd })
 
 local Org = {
-  hl = 'Todo',
-  init = function(self)
+  hl = 'Special',
+  provider = function()
     local api = require 'orgmode.api'
     local files = api.load()
     local all = 0
@@ -530,11 +511,9 @@ local Org = {
         end
       end
     end
-    self.todo = todo .. '/' .. all
+    return ' ' .. todo .. '/' .. all
   end,
-  provider = function(self)
-    return ' ' .. self.todo
-  end,
+  update = { 'BufLeave', pattern = '*.org' },
 }
 local DefaultStatusline = {
   ViMode,

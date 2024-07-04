@@ -96,11 +96,9 @@ keybinds clear-defaults=true{
     }
     renametab {
         bind "Esc" { SwitchToMode "Normal"; }
-        bind "Esc" { UndoRenameTab; SwitchToMode "Tab"; }
     }
     renamepane {
         bind "Esc" { SwitchToMode "Normal"; }
-        bind "Esc" { UndoRenamePane; SwitchToMode "Pane"; }
     }
     session {
         bind "Esc" { SwitchToMode "Normal"; }
