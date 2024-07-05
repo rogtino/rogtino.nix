@@ -35,7 +35,7 @@
   fileSystems."/home/gus/son" = {
     device = "/dev/disk/by-uuid/d0920f9d-3ac5-4eaa-b27f-f30f88f0220e";
     fsType = "bcachefs";
-    options = ["rw"];
+    options = ["defaults"];
   };
   fileSystems."/home/gus/blk" = {
     device = "/dev/disk/by-uuid/5248FFEE48FFCEAB";
