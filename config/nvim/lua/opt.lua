@@ -4,7 +4,7 @@ local opt = vim.opt
 opt.list = true
 opt.jumpoptions = 'stack'
 opt.listchars = {
-  tab = '  ',
+  tab = '» ',
   nbsp = '␣',
   trail = '•',
 }

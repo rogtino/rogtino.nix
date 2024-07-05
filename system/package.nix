@@ -24,6 +24,7 @@
       # python311Packages.torch-bin
       # cudaPackages.cudatoolkit
       python312
+      python312Packages.debugpy
       nodejs
       go
       grim

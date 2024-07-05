@@ -571,6 +571,10 @@ local SpecialStatusline = {
   Space,
   HelpFilename,
   Align,
+  Ruler,
+  SearchCount,
+  Space,
+  ScrollBar,
 }
 
 -- local GitStatusline = {

@@ -54,6 +54,7 @@ return {
         '<leader>do',
         ":lua require'dapui'.toggle()<CR>",
         silent = true,
+        desc = 'dapui toggle',
       },
       {
         '<F2>',
@@ -78,7 +79,11 @@ return {
           elseif vim.fn.executable((cwd .. '/.venv/bin/python')) == 1 then
             cwd = cwd .. '/.venv/bin/python'
           else
-            cwd = '/usr/bin/python'
+            if vim.g.isnixos then
+              cwd = '/run/current-system/sw/bin/python'
+            else
+              cwd = '/usr/bin/python'
+            end
           end
           require('dap-python').setup(cwd)
         end,
@@ -113,6 +118,9 @@ return {
   -- can't lazy load it
   {
     'Weissle/persistent-breakpoints.nvim',
+    opts = {
+      load_breakpoints_event = { 'BufReadPost' },
+    },
     event = 'User DashboardLeave',
   },
 }

@@ -274,7 +274,17 @@ return {
     build = function()
       require('Trans').install()
     end,
-    config = true,
+    opts = {
+      frontend = {
+        default = {
+          animation = {
+            interval = 0,
+            open = 'fold',
+            close = 'fold',
+          },
+        },
+      },
+    },
     dependencies = 'kkharji/sqlite.lua',
   },
   {

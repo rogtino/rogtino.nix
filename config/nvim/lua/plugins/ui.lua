@@ -190,7 +190,27 @@ return {
   -- 		},
   -- 	},
   -- },
-  'folke/which-key.nvim',
+  {
+    'folke/which-key.nvim',
+    event = 'VeryLazy',
+    config = function()
+      require('which-key').setup()
+      require('which-key').register {
+        ['<leader>t'] = { name = '[T]oggle' },
+        ['<leader>b'] = { name = '[B]uffer' },
+        ['<leader>l'] = { name = '[L]sp' },
+        ['<leader>s'] = { name = '[S]earch' },
+        ['<leader>g'] = { name = '[G]it' },
+        ['<leader>h'] = { name = '[H]elp' },
+        ['<leader>r'] = { name = '[R]un' },
+        ['<leader>w'] = { name = '[W]indow' },
+        ['<leader>p'] = { name = '[P]icker' },
+        -- ['<leader>n'] = { name = '[N]ote-roam' },
+        -- ['<leader>o'] = { name = '[O]rg' },
+        ['<leader>d'] = { name = '[D]ap' },
+      }
+    end,
+  },
   {
     'folke/todo-comments.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
