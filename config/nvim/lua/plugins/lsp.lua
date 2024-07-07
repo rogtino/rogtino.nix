@@ -1,5 +1,5 @@
 local function config()
-  -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
   -- capabilities.offsetEncoding = { "utf-16" }
   local servers = {
     astro = {},
@@ -22,6 +22,17 @@ local function config()
     },
     -- ruff_lsp = {},
     pyright = {},
+    -- basedpyright = {
+    --   python = {
+    --     analysis = {
+    --       diagnosticMode = 'workspace',
+    --       useLibraryCodeForTypes = true,
+    --       diagnosticSeverityOverrides = {
+    --         reportGeneralTypeIssues = 'information',
+    --       },
+    --     },
+    --   },
+    -- },
     html = {},
     taplo = {},
     prismals = {},
@@ -64,15 +75,16 @@ local function config()
     typst_lsp = { settings = { exportPdf = 'onSave' } },
   }
   for client, setup in pairs(servers) do
-    setup = vim.tbl_deep_extend('force', {
-      -- capabilities = capabilities,
+    local cfg = {
+      capabilities = capabilities,
+      [client] = setup,
       on_attach = function(cli)
         if cli.server_capabilities.inlayHintProvider then
           vim.lsp.inlay_hint.enable()
         end
       end,
-    }, setup)
-    require('lspconfig')[client].setup(setup)
+    }
+    require('lspconfig')[client].setup(cfg)
   end
 end
 return {

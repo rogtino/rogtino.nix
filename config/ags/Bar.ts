@@ -251,7 +251,13 @@ const icon = Widget.Icon({
 function Left() {
   return Widget.Box({
     spacing: 8,
-    children: [icon, Workspaces(7), Clock(), Btc(), Network()],
+    children: [
+      icon,
+      Workspaces(7),
+      Clock(),
+      Btc(),
+      // Network(),
+    ],
   });
 }
 

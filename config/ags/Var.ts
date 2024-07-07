@@ -30,7 +30,9 @@ export const DOWN = Variable("", {
   poll: [
     2000,
     () => {
-      return Utils.execAsync(`sh -c "ifstat -p |grep wlan0 |awk '{print $6}'"`);
+      return Utils.execAsync(
+        `sh -c "ifstat -p |grep enp4s0 |awk '{print $6}'"`,
+      );
     },
   ],
 });
@@ -38,7 +40,9 @@ export const UP = Variable("", {
   poll: [
     2000,
     () => {
-      return Utils.execAsync(`sh -c "ifstat -p |grep wlan0 |awk '{print $8}'"`);
+      return Utils.execAsync(
+        `sh -c "ifstat -p |grep enp4s0 |awk '{print $8}'"`,
+      );
     },
   ],
 });

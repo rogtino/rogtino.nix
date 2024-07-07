@@ -20,6 +20,7 @@ with pkgs; let
     emmet-language-server
     nodePackages."@tailwindcss/language-server"
     pyright
+    basedpyright
     sumneko-lua-language-server
     rust-analyzer
     cmake-language-server
