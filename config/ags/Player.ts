@@ -5,7 +5,7 @@ const players = mpris.bind("players");
 const FALLBACK_ICON = "audio-x-generic-symbolic";
 const PLAY_ICON = "media-playback-start-symbolic";
 const PAUSE_ICON = "media-playback-pause-symbolic";
-const PREV_ICON = "media-skip-backward-symbolic";
+const PREV_ICON = "media-skip-backward";
 const NEXT_ICON = "media-skip-forward-symbolic";
 
 function lengthStr(length) {
@@ -22,8 +22,8 @@ function Play(player) {
     css: player.bind("cover_path").transform(
       (p) => `
             background-image: url('${p}');
-            min-width: 100px;
-    min-height: 100px;
+            min-width: 400px;
+    min-height: 400px;
     background-size: cover;
     background-position: center;
     border-radius: 13px;
@@ -36,6 +36,7 @@ function Play(player) {
     class_name: "title",
     wrap: true,
     hpack: "start",
+    css: "font-size:40px;",
     label: player.bind("track_title"),
   });
 
@@ -151,7 +152,7 @@ function Play(player) {
 function Media() {
   return Widget.Box({
     vertical: true,
-    css: "min-height: 2px; min-width: 2px;", // small hack to make it visible
+    css: "min-height: 400px; min-width: 565px;font-size:60px;", // small hack to make it visible
     visible: true,
     children: players.as((p) => {
       // if (p.length === 0) {

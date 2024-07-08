@@ -27,14 +27,8 @@ function NotificationIcon({ app_entry, app_icon, image }: Notification) {
 }
 
 function Noti(n: Notification) {
-  const icon = Widget.Box({
-    vpack: "start",
-    class_name: "icon",
-    child: NotificationIcon(n),
-  });
-
   const title = Widget.Label({
-    css: "font-size:38px;color:pink;",
+    css: "font-size:38px;color:pink;margin-left:16px;",
     class_name: "title",
     xalign: 0,
     justification: "left",
@@ -82,7 +76,7 @@ function Noti(n: Notification) {
         class_name: `notification ${n.urgency}`,
         vertical: true,
       },
-      Widget.Box([icon, Widget.Box({ vertical: true }, title, body)]),
+      Widget.Box([Widget.Box({ vertical: true }, title, body)]),
       actions,
     ),
   );
@@ -115,7 +109,7 @@ export function NotificationPopups(monitor = 0) {
     class_name: "notification-popups",
     anchor: ["top", "right"],
     child: Widget.Box({
-      css: "min-width: 2px; min-height: 2px;font-size:15px;background-color:#333;border-radius:30px;",
+      css: "min-width: 350px; min-height: 2px;font-size:18px;background-color:#333;border-radius:12px;",
       class_name: "notifications",
       vertical: true,
       child: list,
