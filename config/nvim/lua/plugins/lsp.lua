@@ -54,10 +54,11 @@ local function config()
     },
     asm_lsp = {},
     marksman = {},
+    biome = {},
     -- BUG:no idea why this triggers an error in :LspInfo
-    -- mdx_analyzer = {
-    -- 	filetypes = "mdx",
-    -- },
+    mdx_analyzer = {
+      filetypes = 'mdx',
+    },
     clangd = {
       on_attach = function()
         require('clangd_extensions.inlay_hints').setup_autocmd()
@@ -77,13 +78,13 @@ local function config()
   for client, setup in pairs(servers) do
     local cfg = {
       capabilities = capabilities,
-      [client] = setup,
       on_attach = function(cli)
         if cli.server_capabilities.inlayHintProvider then
           vim.lsp.inlay_hint.enable()
         end
       end,
     }
+    cfg = vim.tbl_deep_extend('force', cfg, setup)
     require('lspconfig')[client].setup(cfg)
   end
 end
@@ -111,10 +112,10 @@ return {
             cpp = { 'clangtidy' },
             python = { 'ruff' },
             -- lua = { 'selene' },
-            typescriptreact = { 'biomejs' },
-            javascript = { 'biomejs' },
-            typescript = { 'biomejs' },
-            javascriptreact = { 'biomejs' },
+            -- typescriptreact = { 'biomejs' },
+            -- javascript = { 'biomejs' },
+            -- typescript = { 'biomejs' },
+            -- javascriptreact = { 'biomejs' },
           }
         end,
       },

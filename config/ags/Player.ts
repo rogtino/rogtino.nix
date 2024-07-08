@@ -1,4 +1,5 @@
 const mpris = await Service.import("mpris");
+const audio = await Service.import("audio");
 const players = mpris.bind("players");
 
 const FALLBACK_ICON = "audio-x-generic-symbolic";
@@ -21,6 +22,12 @@ function Play(player) {
     css: player.bind("cover_path").transform(
       (p) => `
             background-image: url('${p}');
+            min-width: 100px;
+    min-height: 100px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 13px;
+    margin-right: 1em;
         `,
     ),
   });
@@ -120,6 +127,7 @@ function Play(player) {
   return Widget.Box(
     {
       class_name: "player",
+      css: "padding:10px;min-width:350px;",
     },
     img,
     Widget.Box(
@@ -170,6 +178,12 @@ export const Player = Widget.Window({
     });
     self.keybind("h", () => {
       mpris.getPlayer("org.mpris.MediaPlayer2.netease-cloud-music")?.previous();
+    });
+    self.keybind("j", () => {
+      audio.speaker.volume -= 0.02;
+    });
+    self.keybind("k", () => {
+      audio.speaker.volume += 0.02;
     });
     self.keybind("space", () => {
       mpris

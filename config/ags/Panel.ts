@@ -66,6 +66,8 @@ export const Panel = Widget.Window({
     });
     self.keybind("l", () => {
       LIGHT.setValue(!LIGHT.value);
+      App.closeWindow("panel");
+      App.toggleWindow("light");
     });
   },
   // child: Media(),
