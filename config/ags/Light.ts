@@ -7,7 +7,7 @@ function Lighter() {
     visible: true,
     children: [
       Widget.Label({
-        label: "󱐋",
+        label: "",
         css: "color:#FF7826;font-size:80px;",
         hpack: "center",
         vexpand: true,

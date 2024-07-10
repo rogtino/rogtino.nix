@@ -3,10 +3,10 @@ const audio = await Service.import("audio");
 const players = mpris.bind("players");
 
 const FALLBACK_ICON = "audio-x-generic-symbolic";
-const PLAY_ICON = "media-playback-start-symbolic";
-const PAUSE_ICON = "media-playback-pause-symbolic";
-const PREV_ICON = "media-skip-backward";
-const NEXT_ICON = "media-skip-forward-symbolic";
+const PLAY_ICON = "cil--media-play";
+const PAUSE_ICON = "cil--media-pause";
+const PREV_ICON = "cil--media-skip-backward";
+const NEXT_ICON = "cil--media-skip-forward";
 
 function lengthStr(length) {
   const min = Math.floor(length / 60);
@@ -36,6 +36,8 @@ function Play(player) {
     class_name: "title",
     wrap: true,
     hpack: "start",
+    max_width_chars: 36,
+    truncate: "end",
     css: "font-size:40px;",
     label: player.bind("track_title"),
   });
@@ -43,7 +45,8 @@ function Play(player) {
   const artist = Widget.Label({
     class_name: "artist",
     wrap: true,
-    hpack: "start",
+    css: "font-size:20px;margin-right:10px;margin-top:50px;",
+    hpack: "end",
     label: player.bind("track_artists").transform((a) => a.join(", ")),
   });
 
@@ -67,7 +70,7 @@ function Play(player) {
     class_name: "position",
     hpack: "start",
     setup: (self) => {
-      const update = (_, time) => {
+      const update = (_: unknown, time?: number) => {
         self.label = lengthStr(time || player.position);
         self.visible = player.length > 0;
       };
@@ -80,7 +83,7 @@ function Play(player) {
   const lengthLabel = Widget.Label({
     class_name: "length",
     hpack: "end",
-    visible: player.bind("length").transform((l) => l > 0),
+    visible: player.bind("length").as((l) => l > 0),
     label: player.bind("length").transform(lengthStr),
   });
 
@@ -160,7 +163,7 @@ function Media() {
       //     label: "no avaiable player",
       //   });
       // }
-      return p.map(Play);
+      return p.filter((i) => i.bus_name.includes("music")).map(Play);
     }),
   });
 }
