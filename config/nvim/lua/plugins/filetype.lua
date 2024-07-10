@@ -7,7 +7,7 @@ return {
     'mfussenegger/nvim-jdtls',
     ft = 'java',
   },
-  { 'kaarmu/typst.vim', ft = 'typst' },
+  -- { 'kaarmu/typst.vim', ft = 'typst' },
   {
     'chomosuke/typst-preview.nvim',
     ft = 'typst',

@@ -73,7 +73,13 @@ local function config()
     phpactor = {},
     qmlls = {},
     -- autotools_ls = {},
-    typst_lsp = { settings = { exportPdf = 'onSave' } },
+    -- typst_lsp = { settings = { exportPdf = 'onSave' } },
+    tinymist = {
+      settings = {
+        exportPdf = 'onType',
+        outputPath = '$root/target/$dir/$name',
+      },
+    },
   }
   for client, setup in pairs(servers) do
     local cfg = {

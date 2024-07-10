@@ -9,7 +9,7 @@ with pkgs; let
     nil
     nodePackages."@astrojs/language-server"
     nodePackages."@prisma/language-server"
-    typst-lsp
+    # typst-lsp
     marksman
     nodePackages_latest.typescript-language-server
     vscode-langservers-extracted

@@ -9,6 +9,7 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "openssl-1.1.1w"
+    "electron-11.5.0"
   ];
   nix = {
     extraOptions = ''
@@ -40,6 +41,7 @@
         "https://mirror.sjtu.edu.cn/nix-channels/store"
         "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
         "https://mirrors.ustc.edu.cn/nix-channels/store"
+        "https://cache.nixos.org"
       ];
       trusted-users = ["gus"];
     };

@@ -9,6 +9,7 @@
     [
       config.nur.repos.xddxdd.netease-cloud-music
       config.nur.repos.xddxdd.qqmusic
+      config.nur.repos.xddxdd.baidunetdisk
       config.nur.repos.xddxdd.qbittorrent-enhanced-edition
       # config.nur.repos.YisuiMilena.hmcl-bin
       # inputs.hyprpaper.packages.${pkgs.system}.default
@@ -38,7 +39,7 @@
       cliphist
       just
       typst
-      typst-preview
+      tinymist
       telegram-desktop
       yq
       gnumake

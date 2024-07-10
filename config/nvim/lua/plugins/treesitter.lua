@@ -28,6 +28,7 @@ local function config()
       'proto',
       'html',
       'javascript',
+      'typst',
       'java',
       'just',
       'json',
