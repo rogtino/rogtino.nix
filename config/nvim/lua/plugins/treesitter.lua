@@ -60,7 +60,6 @@ local function config()
       'gitignore',
       'markdown',
     },
-    autotag = { enable = true },
     -- move = {
     -- 	enable = true,
     -- 	set_jumps = true, -- whether to set jumps in the jumplist
@@ -186,7 +185,11 @@ return {
   -- 		-- scroll = { enable = true },
   -- 	},
   -- },
-  { 'windwp/nvim-ts-autotag', ft = { 'typescriptreact', 'javascriptreact', 'html' } },
+  {
+    'windwp/nvim-ts-autotag',
+    ft = { 'typescriptreact', 'javascriptreact', 'html' },
+    config = true,
+  },
   {
     'chrisgrieser/nvim-various-textobjs',
     opts = function(_, opts)
