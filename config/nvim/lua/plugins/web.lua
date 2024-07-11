@@ -60,29 +60,29 @@ return {
     },
     event = 'User DashboardLeave',
   },
-  {
-    'pmizio/typescript-tools.nvim',
-    ft = { 'typescriptreact', 'javascriptreact', 'javascript', 'typescript' },
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    -- config = true,
-    opts = {
-      on_attach = function()
-        -- vim.lsp.inlay_hint.enable()
-      end,
-      settings = {
-        tsserver_file_preferences = {
-          includeInlayParameterNameHints = 'all',
-          -- includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          -- includeInlayFunctionParameterTypeHints = true,
-          -- includeInlayVariableTypeHints = true,
-          -- includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-          -- includeInlayPropertyDeclarationTypeHints = true,
-          -- includeInlayFunctionLikeReturnTypeHints = true,
-          -- includeInlayEnumMemberValueHints = true,
-        },
-      },
-    },
-  },
+  -- {
+  --   'pmizio/typescript-tools.nvim',
+  --   ft = { 'typescriptreact', 'javascriptreact', 'javascript', 'typescript' },
+  --   dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+  --   -- config = true,
+  --   opts = {
+  --     on_attach = function()
+  --       -- vim.lsp.inlay_hint.enable()
+  --     end,
+  --     settings = {
+  --       tsserver_file_preferences = {
+  --         includeInlayParameterNameHints = 'all',
+  --         -- includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+  --         -- includeInlayFunctionParameterTypeHints = true,
+  --         -- includeInlayVariableTypeHints = true,
+  --         -- includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+  --         -- includeInlayPropertyDeclarationTypeHints = true,
+  --         -- includeInlayFunctionLikeReturnTypeHints = true,
+  --         -- includeInlayEnumMemberValueHints = true,
+  --       },
+  --     },
+  --   },
+  -- },
 
   {
     'ziontee113/icon-picker.nvim',

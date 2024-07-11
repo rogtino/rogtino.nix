@@ -21,8 +21,8 @@ local function config()
       },
     },
     -- ruff_lsp = {},
-    pyright = {},
-    -- basedpyright = {
+    -- pyright = {},
+    basedpyright = {},
     --   python = {
     --     analysis = {
     --       diagnosticMode = 'workspace',
@@ -39,6 +39,7 @@ local function config()
     emmet_language_server = {},
     gopls = {},
     -- selene = {},
+    vtsls = {},
     cssls = {
       settings = {
         css = { validate = true, lint = {

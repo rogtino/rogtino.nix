@@ -92,12 +92,12 @@ return {
   },
   { 'stevearc/dressing.nvim', config = true, event = 'VeryLazy' },
   { 'echasnovski/mini.cursorword', config = true, event = 'User DashboardLeave' },
-  {
-    'rcarriga/nvim-notify',
-    opts = {
-      fps = 60,
-    },
-  },
+  -- {
+  --   'rcarriga/nvim-notify',
+  --   opts = {
+  --     fps = 60,
+  --   },
+  -- },
   -- {
   --   'akinsho/bufferline.nvim',
   --   event = 'VeryLazy',
@@ -260,45 +260,45 @@ return {
       indent = { support_filetypes = { python = true }, enable = false },
     },
   },
-  {
-    'folke/noice.nvim',
-    opts = {
-      lsp = {
-        override = {
-          ['cmp.entry.get_documentation'] = true,
-          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-          ['vim.lsp.util.stylize_markdown'] = true,
-        },
-        hover = {
-          silent = true,
-        },
-      },
-      routes = {
-        {
-          -- filter = {
-          --   any = { { find = '%d+L, %d+B' }, { find = '; after #%d+' }, { find = '; before #%d+' } },
-          --   event = 'msg_show',
-          -- },
-          filter = {
-            event = 'notify',
-            find = 'No information available',
-          },
-          view = 'mini',
-          opts = { skip = true },
-        },
-      },
-      presets = {
-        bottom_search = true,
-        command_palette = true,
-        inc_rename = true,
-        long_message_to_split = true,
-        lsp_doc_border = false,
-      },
-      -- cmdline = { view = 'cmdline' },
-    },
-    event = 'VeryLazy',
-    dependencies = { 'MunifTanjim/nui.nvim' },
-  },
+  -- {
+  --   'folke/noice.nvim',
+  --   opts = {
+  --     lsp = {
+  --       override = {
+  --         ['cmp.entry.get_documentation'] = true,
+  --         ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+  --         ['vim.lsp.util.stylize_markdown'] = true,
+  --       },
+  --       hover = {
+  --         silent = true,
+  --       },
+  --     },
+  --     routes = {
+  --       {
+  --         -- filter = {
+  --         --   any = { { find = '%d+L, %d+B' }, { find = '; after #%d+' }, { find = '; before #%d+' } },
+  --         --   event = 'msg_show',
+  --         -- },
+  --         filter = {
+  --           event = 'notify',
+  --           find = 'No information available',
+  --         },
+  --         view = 'mini',
+  --         opts = { skip = true },
+  --       },
+  --     },
+  --     presets = {
+  --       bottom_search = true,
+  --       command_palette = true,
+  --       inc_rename = true,
+  --       long_message_to_split = true,
+  --       lsp_doc_border = false,
+  --     },
+  --     -- cmdline = { view = 'cmdline' },
+  --   },
+  --   event = 'VeryLazy',
+  --   dependencies = { 'MunifTanjim/nui.nvim' },
+  -- },
   {
     'folke/zen-mode.nvim',
     opts = {

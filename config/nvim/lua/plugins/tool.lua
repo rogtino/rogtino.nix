@@ -292,7 +292,7 @@ return {
     config = true,
     cmd = 'Mason',
     build = ':MasonUpdate',
-    enabled = not vim.g.isnixos,
+    enabled = vim.g.isnixos == 0,
   },
   -- {
   -- 	dir = "~/dev-nvim/tslt.nvim",

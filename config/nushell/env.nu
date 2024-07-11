@@ -97,6 +97,9 @@ if $nu.os-info.name == "windows" {
     $env.LD_LIBRARY_PATH = "/usr/lib:/usr/local/lib/"
     $env.PATH = ($env.PATH | prepend '~/.nix-profile/bin/')
     $env.PATH = ($env.PATH | prepend '~/go/bin/')
+    $env.PATH = ($env.PATH | prepend '~/go/bin/')
+    $env.PNPM_HOME = $"($env.HOME)/.local/share/pnpm"
+    $env.PATH = ($env.PATH | prepend $env.PNPM_HOME )
 
 }
 
