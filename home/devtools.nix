@@ -26,6 +26,8 @@ with pkgs; let
     cmake-language-server
     ruff
     bash-language-server
+    deadnix
+    statix
     # solc
   ];
   formatter = [

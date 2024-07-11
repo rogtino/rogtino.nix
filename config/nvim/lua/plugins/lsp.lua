@@ -116,6 +116,7 @@ return {
           require('lint')['linters_by_ft'] = {
             -- markdown = { 'vale' },
             cpp = { 'clangtidy' },
+            nix = { 'statix', 'deadnix' },
             python = { 'ruff' },
             -- lua = { 'selene' },
             -- typescriptreact = { 'biomejs' },

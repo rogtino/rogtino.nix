@@ -29,7 +29,7 @@ return {
   },
   {
     'nvim-orgmode/orgmode',
-    ft = { 'org' },
+    ft = { 'org', 'norg' },
     keys = {
       { '<leader>o', desc = 'org mode' },
     },
