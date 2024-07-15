@@ -32,18 +32,18 @@ return {
     lazy = false,
     keys = { { '<c-e>', vim.cmd.Oil, desc = 'open oil' } },
   },
-  {
-    'Mythos-404/xmake.nvim',
-    lazy = true,
-    event = 'BufReadPost xmake.lua',
-    opts = {
-      compile_command = {
-        lsp = 'clangd',
-        dir = '.',
-      },
-    },
-    dependencies = { 'MunifTanjim/nui.nvim' },
-  },
+  -- {
+  --   'Mythos-404/xmake.nvim',
+  --   lazy = true,
+  --   event = 'BufReadPost xmake.lua',
+  --   opts = {
+  --     compile_command = {
+  --       lsp = 'clangd',
+  --       dir = '.',
+  --     },
+  --   },
+  --   dependencies = { 'MunifTanjim/nui.nvim' },
+  -- },
   {
     'mbbill/undotree',
     keys = { { '<leader>tu', vim.cmd.UndotreeToggle, desc = 'toggle undo tree' } },
@@ -156,6 +156,7 @@ return {
   },
   -- "mong8se/actually.nvim",
   -- { "chrisgrieser/nvim-early-retirement", config = true, event = "VeryLazy" },
+  -- { 'Civitasv/cmake-tools.nvim', config = true, cmd = { 'CMakeGenerate', 'CMakeBuild', 'CMakeRun', 'CMakeRunTest' } },
   {
     'stevearc/overseer.nvim',
     config = function(_, opts)
@@ -512,13 +513,13 @@ return {
       },
     },
   },
-  {
-    'm4xshen/hardtime.nvim',
-    dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
-    opts = {
-      max_count = 3,
-      disabled_filetypes = { 'qf', 'lazy', 'mason', 'oil', 'sagaoutline', 'trouble' },
-    },
-    event = 'VeryLazy',
-  },
+  -- {
+  --   'm4xshen/hardtime.nvim',
+  --   dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
+  --   opts = {
+  --     max_count = 3,
+  --     disabled_filetypes = { 'qf', 'lazy', 'mason', 'oil', 'sagaoutline', 'trouble' },
+  --   },
+  --   event = 'VeryLazy',
+  -- },
 }

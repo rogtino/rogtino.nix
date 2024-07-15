@@ -169,6 +169,7 @@ local function config()
     },
     experimental = { ghost_text = true },
     preselect = cmp.PreselectMode.None,
+    sorting = require 'cmp.config.default'().sorting,
   }
   ext_source('NeogitCommitMessage', {
     { name = 'emoji' },
@@ -202,6 +203,7 @@ local function config()
   })
   ext_source('sql', {
     { name = 'vim-dadbod-completion' },
+    { name = 'buffer' },
   })
   ext_source('json', {
     { name = 'npm' },

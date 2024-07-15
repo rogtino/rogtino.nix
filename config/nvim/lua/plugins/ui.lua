@@ -194,20 +194,21 @@ return {
     'folke/which-key.nvim',
     event = 'VeryLazy',
     config = function()
-      require('which-key').setup()
-      require('which-key').register {
-        ['<leader>t'] = { name = '[T]oggle' },
-        ['<leader>b'] = { name = '[B]uffer' },
-        ['<leader>l'] = { name = '[L]sp' },
-        ['<leader>s'] = { name = '[S]earch' },
-        ['<leader>g'] = { name = '[G]it' },
-        ['<leader>h'] = { name = '[H]elp' },
-        ['<leader>r'] = { name = '[R]un' },
-        ['<leader>w'] = { name = '[W]indow' },
-        ['<leader>p'] = { name = '[P]icker' },
-        -- ['<leader>n'] = { name = '[N]ote-roam' },
-        -- ['<leader>o'] = { name = '[O]rg' },
-        ['<leader>d'] = { name = '[D]ap' },
+      require('which-key').setup { preset = 'classic' }
+      require('which-key').add {
+        { '<leader>t', group = '[T]oggle', icon = '' },
+        { '<leader>b', group = '[B]uffer', icon = '󰆠' },
+        { '<leader>l', group = '[L]sp', icon = '󱁤' },
+        -- TODO: combine overlaps between search and picker
+        { '<leader>s', group = '[S]earch', icon = '' },
+        { '<leader>g', group = '[G]it', icon = '󰊢' },
+        { '<leader>h', group = '[H]elp', icon = '󰋖' },
+        { '<leader>r', group = '[R]un', icon = '' },
+        { '<leader>w', group = '[W]indow', icon = '' },
+        { '<leader>p', group = '[P]icker', icon = '󰛔' },
+        { '<leader>d', group = '[D]ap', icon = '' },
+        { '<leader>n', group = '[N]ote-roam', icon = '󰂺' },
+        { '<leader>o', group = '[O]rg', icon = '' },
       }
     end,
   },
