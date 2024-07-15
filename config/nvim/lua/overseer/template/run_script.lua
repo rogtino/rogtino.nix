@@ -25,6 +25,7 @@ return {
       cmd = cmd,
       components = {
         { 'on_output_quickfix', set_diagnostics = true },
+        { 'restart_on_save', paths = { vim.fn.expand '%:p' } },
         'on_result_diagnostics',
         'default',
       },

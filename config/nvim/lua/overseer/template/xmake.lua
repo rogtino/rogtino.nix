@@ -1,15 +1,13 @@
 return {
-  name = 'random',
+  name = 'xmake',
   builder = function()
     return {
-      cmd = { 'just' },
-      args = { 'test' },
+      cmd = 'xmake',
+      args = { 'run' },
       components = {
-        -- { 'on_output_quickfix', set_diagnostics = true, open = true },
-        -- 'on_result_diagnostics',
         {
           'dependencies',
-          task_names = { { 'shell', cmd = 'just run' } },
+          task_names = { { 'shell', cmd = 'xmake build' } },
           sequential = true,
         },
         { 'restart_on_save', paths = { vim.fn.expand '%:p' } },
@@ -18,6 +16,6 @@ return {
     }
   end,
   condition = {
-    filetype = { 'python' },
+    filetype = { 'cpp' },
   },
 }

@@ -209,6 +209,7 @@ return {
         { '<leader>d', group = '[D]ap', icon = '' },
         { '<leader>n', group = '[N]ote-roam', icon = '󰂺' },
         { '<leader>o', group = '[O]rg', icon = '' },
+        { '<leader>rg', group = '[G]en', icon = '' },
       }
     end,
   },

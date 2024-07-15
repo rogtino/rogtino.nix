@@ -35,6 +35,7 @@ vim.api.nvim_create_user_command('LuaSnipEdit', function()
   require('luasnip.loaders').edit_snippet_files()
 end, {})
 
+--TODO: generate this inside flake
 vim.api.nvim_create_user_command('FindSqlite3', function()
   vim.system({ vim.fn.stdpath 'config' .. '/locate-sqlite3.nu' }):wait()
 end, {})
@@ -51,57 +52,6 @@ vim.api.nvim_create_user_command('ToUnix', function()
     end,
   }):sync()
   vim.api.nvim_buf_set_lines(0, 0, -1, true, res)
-end, {})
-
-vim.api.nvim_create_user_command('OverseerXmake', function()
-  local overseer = require 'overseer'
-  local main_win = vim.api.nvim_get_current_win()
-  -- local task = overseer.new_task {
-  --   name = 'run xmake',
-  --   strategy = {
-  --     'toggleterm',
-  --     tasks = {
-  --       {
-  --         'shell',
-  --         cmd = 'xmake run', -- Step 1: clean
-  --       },
-  --     },
-  --   },
-  -- }
-  -- task:start()
-  -- overseer.run_action(task, '70vsplit')
-  overseer.run_template({ name = 'run xmake' }, function(task)
-    if task == nil then
-      vim.notify(('WatchRun not supported for filetype ' .. vim.bo.filetype), vim.log.levels.ERROR)
-    else
-      -- BUG: task does not wait for component to complete
-      -- task:add_component {
-      --   'dependencies',
-      --   task_names = {
-      --     { 'shell', cmd = 'xmake build -a' },
-      --     { 'shell', cmd = 'xmake run' },
-      --   },
-      --   sequential = true,
-      -- }
-      -- task:start()
-      -- task:add_component { 'restart_on_save', paths = { vim.fn.expand '%:p' } }
-      overseer.run_action(task, 'open vsplit')
-      vim.api.nvim_set_current_win(main_win)
-    end
-  end)
-end, {})
-vim.api.nvim_create_user_command('OverseerRunScript', function()
-  local overseer = require 'overseer'
-  local main_win = vim.api.nvim_get_current_win()
-  overseer.run_template({ name = 'run script' }, function(task)
-    if task == nil then
-      return vim.notify(('WatchRun not supported for filetype ' .. vim.bo.filetype), vim.log.levels.ERROR)
-    else
-      task:add_component { 'restart_on_save', paths = { vim.fn.expand '%:p' } }
-      overseer.run_action(task, '70vsplit')
-      vim.api.nvim_set_current_win(main_win)
-    end
-  end)
 end, {})
 
 vim.api.nvim_create_user_command('FormatDisable', function(args)

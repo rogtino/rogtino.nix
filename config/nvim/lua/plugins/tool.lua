@@ -164,48 +164,73 @@ return {
       require('overseer').setup(opts)
     end,
     opts = {
-      templates = { 'builtin', 'cpp', 'run_script', 'xmake.build_xmake', 'random', 'xmake.run_xmake' },
-      actions = {
-        ['70vsplit'] = {
-          desc = 'open terminal in a vertical split',
-          condition = function(task)
-            local bufnr = task:get_bufnr()
-            return bufnr and vim.api.nvim_buf_is_valid(bufnr)
-          end,
-          run = function(task)
-            local util = require 'overseer.util'
-            vim.cmd [[70vsplit]]
-            util.set_term_window_opts()
-            vim.api.nvim_win_set_buf(0, task:get_bufnr())
-            util.scroll_to_end(0)
-          end,
+      templates = { 'builtin', 'cmake', 'run_script', 'xmake' },
+      task_list = {
+        bindings = {
+
+          ['K'] = 'ScrollOutputUp',
+          ['J'] = 'ScrollOutputDown',
         },
       },
+      -- actions = {
+      --   ['70vsplit'] = {
+      --     desc = 'open terminal in a vertical split',
+      --     condition = function(task)
+      --       local bufnr = task:get_bufnr()
+      --       return bufnr and vim.api.nvim_buf_is_valid(bufnr)
+      --     end,
+      --     run = function(task)
+      --       local util = require 'overseer.util'
+      --       vim.cmd [[70vsplit]]
+      --       util.set_term_window_opts()
+      --       vim.api.nvim_win_set_buf(0, task:get_bufnr())
+      --       util.scroll_to_end(0)
+      --     end,
+      --   },
+      -- },
     },
     keys = {
       {
         '<leader>ra',
         vim.cmd.OverseerQuickAction,
         mode = 'n',
-        desc = 'run quickAction(overseer)',
+        desc = 'run QuickAction',
       },
       {
-        '<leader>rs',
-        vim.cmd.OverseerRunScript,
+        '<leader>rb',
+        '<CMD>OverseerBuild<CR>',
         mode = 'n',
-        desc = 'run script(overseer)',
+        desc = 'run Build',
       },
-      -- {
-      --   '<leader>rx',
-      --   '<CMD>OverseerXmake<CR>',
-      --   mode = 'n',
-      --   desc = ' build xmake(overseer)',
-      -- },
+      {
+        '<leader>rt',
+        '<CMD>OverseerToggle<CR>',
+        mode = 'n',
+        desc = 'run Toggle',
+      },
+      {
+        '<leader>rk',
+        '<CMD>OverseerTaskAction<CR>',
+        mode = 'n',
+        desc = 'run TaskAction',
+      },
+      {
+        '<leader>ri',
+        '<CMD>OverseerInfo<CR>',
+        mode = 'n',
+        desc = 'run info',
+      },
+      {
+        '<leader>rc',
+        '<CMD>OverseerRunCmd<CR>',
+        mode = 'n',
+        desc = 'run Cmd',
+      },
       {
         '<leader>ro',
         '<CMD>OverseerRun<CR>',
         mode = 'n',
-        desc = ' run (overseer)',
+        desc = 'run Overseer',
       },
     },
   },

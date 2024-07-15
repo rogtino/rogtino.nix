@@ -162,25 +162,25 @@ return {
     opts = { snippet_engine = 'luasnip' },
     keys = {
       {
-        '<leader>rf',
+        '<leader>rgf',
         ':Neogen func<cr>',
         desc = 'neogen function',
         mode = { 'n' },
       },
       {
-        '<leader>rt',
+        '<leader>rgt',
         ':Neogen type<cr>',
         desc = 'neogen type',
         mode = { 'n' },
       },
       {
-        '<leader>ri',
+        '<leader>rga',
         ':Neogen file<cr>',
         desc = 'neogen file',
         mode = { 'n' },
       },
       {
-        '<leader>rc',
+        '<leader>rgc',
         ':Neogen class<cr>',
         desc = 'neogen class',
         mode = { 'n' },
