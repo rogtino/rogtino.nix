@@ -355,7 +355,7 @@ return {
             group = 'DiagnosticOk',
             desc = '󰯉 grep',
             action = 'Telescope live_grep',
-            key = 'g',
+            key = 'a',
           },
           {
             desc = ' org',

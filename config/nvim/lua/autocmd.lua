@@ -11,36 +11,6 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
--- vim.api.nvim_create_autocmd('RecordingEnter', {
---   callback = function()
---     vim.notify('󰻃 record to ' .. vim.fn.reg_recording(), vim.log.levels.INFO, {
---       title = 'Recording',
---       render = 'compact',
---       stages = 'fade',
---     })
---   end,
--- })
---
--- vim.api.nvim_create_autocmd('RecordingLeave', {
---   callback = function()
---     vim.notify('󰻃 bye ~', vim.log.levels.INFO, {
---       title = 'Recording',
---       render = 'compact',
---       stages = 'fade',
---     })
---   end,
--- })
-
--- vim.api.nvim_create_autocmd('LspAttach', {
---   pattern = '*',
---   group = userlspocnfig,
---   callback = function()
---     vim.keymap.set('n', '<c-leftmouse>', vim.lsp.buf.declaration)
---     vim.keymap.set('n', '<c-rightmouse>', '<c-o>')
---     vim.keymap.set('n', '<rightmouse>', vim.lsp.buf.hover)
---   end,
--- })
-
 vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
   callback = function()
@@ -80,6 +50,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'text',
     'markdown',
     'spectre_panel',
+    'nu',
   },
   callback = function()
     vim.keymap.set('n', 'q', vim.cmd.quit, { buffer = true })

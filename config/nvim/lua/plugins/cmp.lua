@@ -125,6 +125,7 @@ local function config()
   }
   -- cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
   cmp.setup {
+
     snippet = {
       expand = function(args)
         return luasnip.lsp_expand(args.body)
@@ -157,12 +158,13 @@ local function config()
           ['cmp-tw2css'] = '[Twcss]',
           npm = '[Npm]',
           treesitter = '[Tree]',
+          cmdline = '[Cmd]',
         },
       },
     },
     sources = cmp.config.sources {
-      { name = 'luasnip' },
-      { name = 'nvim_lsp' },
+      { name = 'luasnip', priority = 10 },
+      { name = 'nvim_lsp', priority = 9 },
       { name = 'path' },
       { name = 'buffer' },
       { name = 'calc' },
@@ -176,8 +178,9 @@ local function config()
     { name = 'nerdfont' },
   })
   ext_source('lua', {
-    { name = 'nvim_lua' },
-    { name = 'nvim_lsp' },
+    { name = 'nvim_lua', priority = 11 },
+    { name = 'nvim_lsp', priority = 9 },
+    { name = 'luasnip', priority = 10 },
     { name = 'treesitter' },
   })
   ext_source('scheme', {
@@ -189,7 +192,6 @@ local function config()
   })
   ext_source('toml', {
     { name = 'crates' },
-    { name = 'nvim_lsp' },
   })
   ext_source('neorg', {
     { name = 'neorg' },
@@ -203,10 +205,23 @@ local function config()
   })
   ext_source('sql', {
     { name = 'vim-dadbod-completion' },
-    { name = 'buffer' },
   })
   ext_source('json', {
     { name = 'npm' },
+  })
+  cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' },
+    },
+  })
+
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources {
+      { name = 'path' },
+      { name = 'cmdline' },
+    },
   })
   require('luasnip.loaders.from_lua').lazy_load {
     paths = { vim.fn.stdpath 'config' .. '/snippets' },
@@ -235,8 +250,12 @@ return {
     config = config,
   },
   {
-    ft = 'NeogitCommitMessage',
+    'hrsh7th/cmp-cmdline',
+    keys = ':',
+  },
+  {
     'hrsh7th/cmp-emoji',
+    ft = 'NeogitCommitMessage',
     dependencies = {
       'hrsh7th/nvim-cmp',
     },

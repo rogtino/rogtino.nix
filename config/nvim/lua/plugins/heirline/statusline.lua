@@ -209,14 +209,12 @@ local LSPActive = {
 local Diagnostics = {
   condition = conditions.has_diagnostics,
   update = { 'DiagnosticChanged', 'BufEnter' },
-  on_click = {
-    callback = function()
-      require('trouble').toggle { mode = 'document_diagnostics' }
-    end,
-    name = 'heirline_diagnostics',
-  },
   init = function(self)
-    self.diagnostics = vim.diagnostic.count()
+    if vim.diagnostic.is_enabled() then
+      self.diagnostics = vim.diagnostic.count()
+    else
+      self.diagnostics = {}
+    end
   end,
   {
     provider = function(self)
