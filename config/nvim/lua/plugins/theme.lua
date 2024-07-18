@@ -2,7 +2,6 @@ return {
   {
     'folke/tokyonight.nvim',
     lazy = true,
-    priority = 1000,
   },
   {
     'nyoom-engineering/oxocarbon.nvim',
@@ -44,5 +43,6 @@ return {
   {
     'scottmckendry/cyberdream.nvim',
     lazy = true,
+    priority = 1000,
   },
 }

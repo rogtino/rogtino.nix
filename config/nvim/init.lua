@@ -34,6 +34,11 @@ require('lazy').setup {
       not_loaded = '',
     },
   },
+  change_detection = {
+    -- automatically check for config file changes and reload the ui
+    enabled = true,
+    notify = false, -- get a notification when changes are found
+  },
   performance = {
     rtp = {
       reset = true, -- reset the runtime path to $VIMRUNTIME and your config directory

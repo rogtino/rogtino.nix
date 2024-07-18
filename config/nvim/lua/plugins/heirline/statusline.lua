@@ -493,24 +493,46 @@ local Space = { provider = ' ' }
 ViMode = utils.surround({ '', '' }, 'bright_bg', { MacroRec, ViMode, Snippets, ShowCmd })
 
 local Org = {
-  hl = 'Special',
-  provider = function()
-    local api = require 'orgmode.api'
-    local files = api.load()
-    local all = 0
-    local todo = 0
-    for _, file in ipairs(files) do
-      for _, headline in ipairs(file.headlines) do
-        if headline.deadline and headline.deadline:is_today() then
-          if headline.todo_type == 'DONE' then
-            todo = todo + 1
+  {
+    hl = 'Special',
+    provider = function()
+      local api = require 'orgmode.api'
+      local files = api.load()
+      local today_all = 0
+      local today_todo = 0
+      for _, file in ipairs(files) do
+        for _, headline in ipairs(file.headlines) do
+          if headline.deadline and headline.deadline:is_today() then
+            if headline.todo_type == 'DONE' then
+              today_todo = today_todo + 1
+            end
+            today_all = 1 + today_all
           end
-          all = 1 + all
         end
       end
-    end
-    return ' ' .. todo .. '/' .. all
-  end,
+      return ' ' .. today_todo .. '/' .. today_all
+    end,
+  },
+  Space,
+
+  {
+    hl = 'DiagnosticError',
+    provider = function()
+      local api = require 'orgmode.api'
+      local files = api.load()
+      local undone = 0
+      for _, file in ipairs(files) do
+        for _, headline in ipairs(file.headlines) do
+          if headline.deadline and headline.deadline:is_past 'day' then
+            if headline.todo_type ~= 'DONE' then
+              undone = undone + 1
+            end
+          end
+        end
+      end
+      return ' ' .. undone
+    end,
+  },
   update = { 'BufLeave', pattern = '*.org' },
 }
 local DefaultStatusline = {
@@ -560,7 +582,7 @@ local InactiveStatusline = {
 local SpecialStatusline = {
   condition = function()
     return conditions.buffer_matches {
-      buftype = { 'nofile', 'prompt', 'help', 'quickfix' },
+      buftype = { 'nofile', 'prompt', 'help', 'quickfix', 'text' },
       filetype = { '^git.*' },
     }
   end,

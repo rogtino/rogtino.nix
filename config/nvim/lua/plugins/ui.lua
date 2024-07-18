@@ -90,7 +90,8 @@ return {
       { '<leader>tf', '<cmd>Neotree reveal toggle position=float<CR>', desc = 'neotree-float-toggle' },
     },
   },
-  { 'stevearc/dressing.nvim', config = true, event = 'VeryLazy' },
+  -- TODO: lazyload it with some plugins or event
+  { 'stevearc/dressing.nvim', config = true },
   { 'echasnovski/mini.cursorword', config = true, event = 'User DashboardLeave' },
   -- {
   --   'rcarriga/nvim-notify',

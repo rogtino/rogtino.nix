@@ -32,6 +32,6 @@ vim.g.all_colors = {
     'dawnfox',
   },
 }
-local theme = 'tokyonight-night'
+local theme = 'cyberdream'
 vim.g.current_theme = theme
 vim.cmd.colorscheme(theme)
