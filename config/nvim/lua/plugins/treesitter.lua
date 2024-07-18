@@ -20,6 +20,7 @@ local function config()
       'rust',
       'cpp',
       'fennel',
+      'http',
       'nix',
       'python',
       'bash',

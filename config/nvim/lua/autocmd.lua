@@ -31,6 +31,7 @@ vim.filetype.add {
     mdx = 'mdx',
     mpp = 'cpp',
     ua = 'uiua',
+    http = 'http',
   },
 }
 

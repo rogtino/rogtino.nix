@@ -546,4 +546,9 @@ return {
   --   },
   --   event = 'VeryLazy',
   -- },
+  {
+    'mistweaverco/kulala.nvim',
+    opts = {},
+    ft = 'http',
+  },
 }
