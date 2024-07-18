@@ -99,6 +99,7 @@ return {
         mode = 'n',
       },
     },
+    dependencies = 'nvim-telescope/telescope.nvim',
   },
   {
     'max397574/colortils.nvim',

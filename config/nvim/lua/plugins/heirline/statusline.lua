@@ -184,31 +184,31 @@ local ScrollBar = {
   hl = { fg = 'blue', bg = 'bright_bg' },
 }
 
--- local LSPActive = {
---   condition = conditions.lsp_attached,
---   update = { 'LspAttach', 'LspDetach', 'WinEnter' },
---   provider = function()
---     local names = {}
---     for _, server in pairs(vim.lsp.get_clients { bufnr = 0 }) do
---       table.insert(names, server.name)
---     end
---     return icons.lsp .. '[' .. #names .. ']'
---   end,
---   hl = { fg = 'green', bold = true },
---   on_click = {
---     name = 'heirline_LSP',
---     callback = function()
---       vim.schedule(function()
---         vim.cmd 'LspInfo'
---       end)
---     end,
---   },
--- }
+local LSPActive = {
+  condition = conditions.lsp_attached,
+  update = { 'LspAttach', 'LspDetach', 'WinEnter' },
+  provider = function()
+    local names = {}
+    for _, server in pairs(vim.lsp.get_clients { bufnr = 0 }) do
+      table.insert(names, server.name)
+    end
+    return icons.lsp .. '[' .. unpack(names) .. ']'
+  end,
+  hl = { fg = 'green', bold = true },
+  on_click = {
+    name = 'heirline_LSP',
+    callback = function()
+      vim.schedule(function()
+        vim.cmd 'LspInfo'
+      end)
+    end,
+  },
+}
 
 local LspProgress = {
-  hl = { fg = 'green', bold = true },
+  hl = { fg = 'pink', bold = true },
   provider = function()
-    return require('lsp-progress').progress()
+    return ' ' .. string.sub(require('lsp-progress').progress() or '', 8)
   end,
   update = {
     'User',
@@ -559,13 +559,13 @@ local DefaultStatusline = {
   Diagnostics,
   Align,
   -- { flexible = 3,   { Navic, Space }, { provider = "" } },
-  -- LSPActive,
-  -- Space,
+  LSPActive,
+  Space,
   LspProgress,
   Align,
   require 'plugins.heirline.seer',
   DAPMessages,
-  WorkDir,
+  -- WorkDir,
   -- FileNameBlock,
   -- VirtualEnv,
   Space,
