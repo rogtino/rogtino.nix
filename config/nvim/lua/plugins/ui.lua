@@ -28,7 +28,7 @@ return {
     '3rd/image.nvim',
     config = true,
     ft = { 'markdown', 'norg' },
-    enabled = false,
+    enabled = vim.g.isnixos == 0,
     dependencies = { 'luarocks.nvim' },
   },
   {
