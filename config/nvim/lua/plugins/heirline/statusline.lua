@@ -184,28 +184,40 @@ local ScrollBar = {
   hl = { fg = 'blue', bg = 'bright_bg' },
 }
 
-local LSPActive = {
-  condition = conditions.lsp_attached,
-  update = { 'LspAttach', 'LspDetach', 'WinEnter' },
-  provider = icons.lsp,
-  -- provider  = function(self)
-  --     local names = {}
-  --     for i, server in pairs(vim.lsp.buf_get_active_clients({ bufnr = 0 })) do
-  --         table.insert(names, server.name)
-  --     end
-  --     return " [" .. table.concat(names, " ") .. "]"
-  -- end,
+-- local LSPActive = {
+--   condition = conditions.lsp_attached,
+--   update = { 'LspAttach', 'LspDetach', 'WinEnter' },
+--   provider = function()
+--     local names = {}
+--     for _, server in pairs(vim.lsp.get_clients { bufnr = 0 }) do
+--       table.insert(names, server.name)
+--     end
+--     return icons.lsp .. '[' .. #names .. ']'
+--   end,
+--   hl = { fg = 'green', bold = true },
+--   on_click = {
+--     name = 'heirline_LSP',
+--     callback = function()
+--       vim.schedule(function()
+--         vim.cmd 'LspInfo'
+--       end)
+--     end,
+--   },
+-- }
+
+local LspProgress = {
   hl = { fg = 'green', bold = true },
-  on_click = {
-    name = 'heirline_LSP',
-    callback = function()
-      vim.schedule(function()
-        vim.cmd 'LspInfo'
-      end)
-    end,
+  provider = function()
+    return require('lsp-progress').progress()
+  end,
+  update = {
+    'User',
+    pattern = 'LspProgressStatusUpdated',
+    callback = vim.schedule_wrap(function()
+      vim.cmd 'redrawstatus'
+    end),
   },
 }
-
 local Diagnostics = {
   condition = conditions.has_diagnostics,
   update = { 'DiagnosticChanged', 'BufEnter' },
@@ -381,7 +393,7 @@ local DAPMessages = {
 
 local WorkDir = {
   init = function(self)
-    self.icon = (vim.fn.haslocaldir(0) == 1 and 'l' or 'g') .. ' ' .. icons.dir
+    self.icon = icons.dir
     local cwd = vim.fn.getcwd(0)
     self.cwd = vim.fn.fnamemodify(cwd, ':~')
     if not conditions.width_percent_below(#self.cwd, 0.27) then
@@ -408,9 +420,6 @@ local WorkDir = {
       local trail = self.cwd:sub(-1) == '/' and '' or '/'
       return self.icon .. cwd .. trail .. ' '
     end,
-  },
-  {
-    provider = '',
   },
 }
 
@@ -550,12 +559,14 @@ local DefaultStatusline = {
   Diagnostics,
   Align,
   -- { flexible = 3,   { Navic, Space }, { provider = "" } },
-  WorkDir,
-  FileNameBlock,
+  -- LSPActive,
+  -- Space,
+  LspProgress,
   Align,
   require 'plugins.heirline.seer',
   DAPMessages,
-  LSPActive,
+  WorkDir,
+  -- FileNameBlock,
   -- VirtualEnv,
   Space,
   FileType,

@@ -57,9 +57,9 @@ local function config()
     marksman = {},
     biome = {},
     -- BUG:no idea why this triggers an error in :LspInfo
-    mdx_analyzer = {
-      filetypes = 'mdx',
-    },
+    -- mdx_analyzer = {
+    --   filetypes = 'mdx',
+    -- },
     clangd = {},
     tailwindcss = {},
     bashls = {},
@@ -210,6 +210,10 @@ return {
   },
   {
     url = 'https://git.sr.ht/~p00f/clangd_extensions.nvim',
+  },
+  {
+    'linrongbin16/lsp-progress.nvim',
+    opts = {},
   },
   -- BUG: polute input
   -- {

@@ -84,6 +84,7 @@ return {
         },
       },
     },
+    cmd = 'Neotree',
     keys = {
       { '<leader>tn', '<cmd>Neotree toggle dir=./ position=left<CR>', desc = 'neotree-root-toggle' },
       { '<leader>tr', '<cmd>Neotree reveal toggle position=left<CR>', desc = 'neotree-reveal-toggle' },

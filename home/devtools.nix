@@ -164,6 +164,12 @@ in {
     # 启用 starship，这是一个漂亮的 shell 提示符
     starship = {
       enable = true;
+      settings = {
+        character = {
+          success_symbol = "";
+          error_symbol = "";
+        };
+      };
     };
 
     lazygit = {

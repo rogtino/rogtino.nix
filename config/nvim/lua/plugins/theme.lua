@@ -30,6 +30,7 @@ return {
     'catppuccin/nvim',
     name = 'catppuccin',
     lazy = true,
+    priority = 1000,
   },
   {
     'rose-pine/neovim',
@@ -43,6 +44,5 @@ return {
   {
     'scottmckendry/cyberdream.nvim',
     lazy = true,
-    priority = 1000,
   },
 }
