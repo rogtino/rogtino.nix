@@ -86,12 +86,11 @@ return {
     },
     cmd = 'Neotree',
     keys = {
-      { '<leader>tn', '<cmd>Neotree toggle dir=./ position=left<CR>', desc = 'neotree-root-toggle' },
-      { '<leader>tr', '<cmd>Neotree reveal toggle position=left<CR>', desc = 'neotree-reveal-toggle' },
-      { '<leader>tf', '<cmd>Neotree reveal toggle position=float<CR>', desc = 'neotree-float-toggle' },
+      { '<leader>ee', '<cmd>Neotree toggle dir=./ position=left<CR>', desc = 'neotree-root-toggle' },
+      { '<leader>er', '<cmd>Neotree reveal toggle position=left<CR>', desc = 'neotree-reveal-toggle' },
+      { '<leader>ef', '<cmd>Neotree reveal toggle position=float<CR>', desc = 'neotree-float-toggle' },
     },
   },
-  -- TODO: lazyload it with some plugins or event
   { 'stevearc/dressing.nvim', config = true },
   { 'echasnovski/mini.cursorword', config = true, event = 'User DashboardLeave' },
   -- {
@@ -212,6 +211,7 @@ return {
         { '<leader>n', group = '[N]ote-roam', icon = '󰂺' },
         { '<leader>o', group = '[O]rg', icon = '' },
         { '<leader>rg', group = '[G]en', icon = '' },
+        { '<leader>e', group = 'N[e]otree', icon = '' },
       }
     end,
   },

@@ -13,7 +13,6 @@ return {
   {
     'stevearc/oil.nvim',
     opts = {
-
       use_default_keymaps = true,
       keymaps = {
         ['<TAB>'] = 'actions.select',
@@ -159,10 +158,11 @@ return {
   -- { 'Civitasv/cmake-tools.nvim', config = true, cmd = { 'CMakeGenerate', 'CMakeBuild', 'CMakeRun', 'CMakeRunTest' } },
   {
     'stevearc/overseer.nvim',
-    config = function(_, opts)
-      vim.g.overseer_loaded = true
-      require('overseer').setup(opts)
-    end,
+    -- config = function(_, opts)
+    --   vim.g.overseer_loaded = true
+    --   require('overseer').setup(opts)
+    -- end,
+    dependencies = { 'stevearc/dressing.nvim' },
     opts = {
       templates = { 'builtin', 'cmake', 'run_script', 'xmake' },
       task_list = {
@@ -288,13 +288,12 @@ return {
     'JuanZoran/Trans.nvim',
     keys = {
       {
-        'mm',
+        '<leader>z',
         '<Cmd>Translate<CR>',
         mode = { 'n', 'x' },
         desc = '󰊿 Translate',
       },
-      { 'mk', '<Cmd>TransPlay<CR>', mode = { 'n', 'x' }, desc = ' autoplay' },
-      { 'mi', '<Cmd>TranslateInput<CR>', desc = '󰊿 Translate From Input' },
+      -- { 'mi', '<Cmd>TranslateInput<CR>', desc = '󰊿 Translate From Input' },
     },
     build = function()
       require('Trans').install()

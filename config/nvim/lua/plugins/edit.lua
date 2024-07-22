@@ -98,6 +98,12 @@ return {
     end,
   },
   {
+    'MagicDuck/grug-far.nvim',
+    opts = {},
+    cmd = 'GrugFar',
+    keys = { { '<leader>sf', vim.cmd.GrugFar, desc = 'open-grugfar' } },
+  },
+  {
     'nvim-pack/nvim-spectre',
     config = true,
     keys = {
