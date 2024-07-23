@@ -351,13 +351,13 @@ return {
             desc = '󰛔 Files',
             group = 'Label',
             action = 'Telescope find_files',
-            key = 'f',
+            key = 's',
           },
           {
             group = 'DiagnosticOk',
             desc = '󰯉 grep',
             action = 'Telescope live_grep',
-            key = 'a',
+            key = 'f',
           },
           {
             desc = ' org',
@@ -379,7 +379,7 @@ return {
             desc = '󰂺 roam',
             group = 'Number',
             action = function()
-              require('org-roam').api.capture_node()
+              require('org-roam').api.find_node()
             end,
             key = 'r',
           },
@@ -387,7 +387,7 @@ return {
             desc = '󰃨 sessoin',
             group = '@type',
             action = 'SessionManager load_current_dir_session',
-            key = 's',
+            key = 'e',
           },
           {
             desc = '󰈻 select',

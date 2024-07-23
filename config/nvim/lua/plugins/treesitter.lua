@@ -4,7 +4,7 @@ local function config()
   end
   ---@diagnostic disable-next-line: missing-fields
   require('nvim-treesitter.configs').setup {
-    ignore_install = { 'javascript' },
+    -- ignore_install = {},
     ensure_installed = {
       'astro',
       'asm',
