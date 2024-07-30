@@ -8,7 +8,7 @@ if vim.g.neovide then
   if vim.g.iswin then
     vim.o['guifont'] = 'MartianMono_Nerd_Font,Noto_Color_Emoji'
   else
-    vim.o['guifont'] = 'monospace'
+    vim.o['guifont'] = 'monospace:h8'
   end
   vim.o.scrolloff = 0
   -- vim.o['guifont'] = 'IntoneMono_Nerd_Font,Noto_Color_Emoji:h18'
