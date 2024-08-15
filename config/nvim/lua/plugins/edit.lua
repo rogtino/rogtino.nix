@@ -405,7 +405,7 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-neorg/neorg-telescope',
-      'luarocks.nvim',
+      -- 'luarocks.nvim',
     },
   },
   -- {

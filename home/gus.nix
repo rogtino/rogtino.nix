@@ -34,7 +34,11 @@
         accountsservice
       ];
     };
-    kitty.enable = true;
+    kitty = {
+      enable = true;
+      font.size = 16;
+      font.name = "monospace";
+    };
     foot = {
       enable = true;
       settings = {

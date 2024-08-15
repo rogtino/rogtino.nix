@@ -1,4 +1,4 @@
-import bright from "service/bright";
+import bright from "./service/bright";
 
 function Lighter() {
   return Widget.Box({

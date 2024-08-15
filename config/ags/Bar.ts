@@ -3,8 +3,8 @@ const audio = await Service.import("audio");
 const battery = await Service.import("battery");
 const systemtray = await Service.import("systemtray");
 const network = await Service.import("network");
-import { BTC, CPU, DATE, DOWN, LOGO, MEM, UP } from "Var";
-import bright from "service/bright";
+import { BTC, CPU, DATE, DOWN, LOGO, MEM, UP } from "./Var";
+import bright from "./service/bright";
 
 function range(length: number, start = 1) {
   return Array.from({ length }, (_, i) => i + start);
@@ -43,7 +43,7 @@ const Workspaces = (ws: number) =>
 function Clock() {
   return Widget.Label({
     class_name: "clock",
-    label: DATE.bind().as((d) => `󰥔 ${d}`),
+    label: DATE.bind().as((d) => `󰥔  ${d}`),
     css: "color:pink;",
   });
 }
@@ -53,7 +53,9 @@ function Brightness() {
     on_scroll_up: () => (bright.screen_value += 0.02),
     on_scroll_down: () => (bright.screen_value -= 0.02),
     child: Widget.Label({
-      label: bright.bind("screen_value").as((v) => `󰃠 ${Math.floor(v * 100)}%`),
+      label: bright
+        .bind("screen_value")
+        .as((v) => `󰃠  ${Math.floor(v * 100)}%`),
       css: "color:#FA8B64;",
     }),
   });
@@ -69,13 +71,13 @@ function Volume() {
         const percent = Math.floor(v * 100);
         let icon: string;
         if (percent > 100) {
-          icon = "󰕾";
+          icon = "󰕾 ";
         } else if (percent > 50) {
-          icon = "󰖀";
+          icon = "󰖀 ";
         } else if (percent > 0) {
-          icon = "󰕿";
+          icon = "󰕿 ";
         } else {
-          icon = "󰸈";
+          icon = "󰸈 ";
         }
         return `${icon} ${percent}%`;
       }),
@@ -88,7 +90,7 @@ function Wallpaper() {
     on_primary_click: () =>
       Utils.execAsync(["bash", "-c", "~/.config/hypr/scripts/change_bg.sh"]),
     child: Widget.Label({
-      label: "󰸉",
+      label: "󰸉 ",
       css: "color:#C896FF;",
     }),
   });
@@ -117,10 +119,12 @@ function Battery() {
           icon = "󰁼";
         } else if (p > 20) {
           icon = "󰁺";
-        } else {
+        } else if (p >= 0) {
           icon = "󰂃";
+        } else {
+          icon = "󰚥";
         }
-        return `${icon} ${p}%`;
+        return icon == "󰚥" ? icon : `${icon} ${p}%`;
       }),
       setup: (self) => {
         self.hook(battery, () => {
@@ -209,7 +213,7 @@ function SpeedUp() {
     child: Widget.Label({
       label: UP.bind().as((w) => {
         let d = w.toString();
-        return gen_speed(d, "󰳡");
+        return gen_speed(d, "󰕒 ");
       }),
       css: "color:#C3B9FF;",
     }),
@@ -220,7 +224,7 @@ function SpeedDown() {
     child: Widget.Label({
       label: DOWN.bind().as((w) => {
         let d = w.toString();
-        return gen_speed(d, "󰳛");
+        return gen_speed(d, "󰇚 ");
       }),
       css: "color:#C3B9FF;",
     }),
@@ -271,7 +275,7 @@ function Center() {
 function Right() {
   return Widget.Box({
     hpack: "end",
-    spacing: 4,
+    spacing: 8,
     children: [
       Wallpaper(),
       Volume(),

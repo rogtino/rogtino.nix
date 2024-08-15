@@ -31,7 +31,7 @@ export const DOWN = Variable("", {
     2000,
     () => {
       return Utils.execAsync(
-        `sh -c "ifstat -p |grep enp4s0 |awk '{print $6}'"`,
+        `sh -c "ifstat -p |grep enp1s0 |awk '{print $6}'"`,
       );
     },
   ],
@@ -41,7 +41,7 @@ export const UP = Variable("", {
     2000,
     () => {
       return Utils.execAsync(
-        `sh -c "ifstat -p |grep enp4s0 |awk '{print $8}'"`,
+        `sh -c "ifstat -p |grep enp1s0 |awk '{print $8}'"`,
       );
     },
   ],

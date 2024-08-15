@@ -8,7 +8,7 @@ with pkgs; let
   lsp = [
     nil
     nodePackages."@astrojs/language-server"
-    nodePackages."@prisma/language-server"
+    # nodePackages."@prisma/language-server"
     # typst-lsp
     marksman
     nodePackages_latest.typescript-language-server
@@ -286,10 +286,10 @@ in {
 
   home.packages = with pkgs;
     [
-      bilibili
+      #bilibili
       # qq
       firefox
-      google-chrome
+      # google-chrome
       # nix related
       #
     ]

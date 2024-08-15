@@ -33,7 +33,7 @@ local function config()
       'java',
       'just',
       'json',
-      -- 'norg',
+      'norg',
       -- 'org',
       'cmake',
       'dart',

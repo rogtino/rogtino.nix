@@ -1,16 +1,21 @@
 {pkgs, ...}: {
   imports = [
     ./polkit-agent.nix
-    ./guix.nix
+    # ./guix.nix
     ./power.nix
   ];
-  services.gvfs.enable = true;
-  services.displayManager.sddm = {
-    package = pkgs.kdePackages.sddm;
-    catppuccin.enable = true;
-    catppuccin.fontSize = "18";
-    catppuccin.font = "Martian Mono";
-    catppuccin.background = "/home/gus/Pictures/wallpapers/190e4e36f72345799583c21201d06b2a.png";
-    enable = true;
+  services = {
+    gvfs.enable = true;
+    displayManager.defaultSession = "hyprland";
+    displayManager.sddm = {
+      package = pkgs.kdePackages.sddm;
+      catppuccin = {
+        enable = true;
+        fontSize = "18";
+        font = "Martian Mono";
+        background = "/home/gus/Pictures/wallpapers/4d5b121d880511ebb6edd017c2d2eca2.png";
+      };
+      enable = true;
+    };
   };
 }

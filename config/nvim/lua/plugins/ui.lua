@@ -29,7 +29,7 @@ return {
     config = true,
     ft = { 'markdown', 'norg' },
     enabled = vim.g.isnixos == 0,
-    dependencies = { 'luarocks.nvim' },
+    -- dependencies = { 'luarocks.nvim' },
   },
   {
     'kevinhwang91/nvim-ufo',
@@ -354,14 +354,14 @@ return {
             key = 's',
           },
           {
-            group = 'DiagnosticOk',
+            group = 'WarningMsg',
             desc = '󰯉 grep',
             action = 'Telescope live_grep',
             key = 'f',
           },
           {
             desc = ' org',
-            group = 'DiagnosticHint',
+            group = 'Define',
             action = function()
               require('orgmode').agenda:prompt()
             end,
@@ -369,7 +369,7 @@ return {
           },
           {
             desc = '󰳗 capture',
-            group = 'DiagnosticError',
+            group = 'Statement',
             action = function()
               require('orgmode').capture:prompt()
             end,

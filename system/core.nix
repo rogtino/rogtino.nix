@@ -28,44 +28,68 @@
   time.timeZone = "Asia/Shanghai";
 
   # List services that you want to enable:
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
   services = {
     # emacs.enable = true;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      jack.enable = true;
-      wireplumber.enable = true;
-      extraConfig.pipewire."92-low-latency" = {
-        "context.properties" = {
-          "default.clock.rate" = 44100;
-          "default.clock.quantum" = 512;
-          "default.clock.min-quantum" = 512;
-          "default.clock.max-quantum" = 512;
-        };
-      };
-    };
-    # mpd.enable = true;
-    # blueman.enable = true;
-    xserver.enable = true;
-    openssh.enable = true;
-    # v2raya.enable = true;
-    # xserver.displayManager.gdm = {
+    # pipewire = {
     #   enable = true;
+    #   alsa.enable = true;
+    #   alsa.support32Bit = true;
+    #   pulse.enable = true;
+    #   jack.enable = true;
+    #   wireplumber.enable = true;
+    #   extraConfig.pipewire."92-low-latency" = {
+    #     "context.properties" = {
+    #       "default.clock.rate" = 44100;
+    #       "default.clock.quantum" = 512;
+    #       "default.clock.min-quantum" = 512;
+    #       "default.clock.max-quantum" = 512;
+    #     };
+    #   };
     # };
-    # desktopManager.plasma6.enable = true;
-    xserver.xkb.options = "caps:swapescape";
+    openssh.enable = true;
+    blueman.enable = true;
+    xserver = {
+      # mpd.enable = true;
+      enable = true;
+      # v2raya.enable = true;
+      # xserver.displayManager.gdm = {
+      #   enable = true;
+      # };
+      # desktopManager.plasma6.enable = true;
+      desktopManager.gnome.enable = true;
+      xkb.options = "caps:swapescape";
+    };
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
   };
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      gnome-photos
+      gnome-tour
+      cheese
+      gnome-terminal
+      gedit # text editor
+      epiphany # web browser
+      geary # email reader
+      evince # document viewer
+      totem # video player
+    ])
+    ++ (with pkgs.gnome; [
+      gnome-music
+      gnome-characters
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+    ]);
 
-  # Enable sound.
-  sound.enable = true;
-
-  security.sudo.wheelNeedsPassword = false;
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
+  security = {
+    sudo.wheelNeedsPassword = false;
+    rtkit.enable = true;
+    polkit.enable = true;
+  };
 
   programs = {
     ssh.startAgent = true;
@@ -114,9 +138,9 @@
     };
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
-      PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
-      PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
-      PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
+      # PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
+      # PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
+      # PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
       PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING = "1";
     };
   };

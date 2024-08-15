@@ -22,7 +22,7 @@
       # emacs
       pnpm
       nodePackages.ts-node
-      nodePackages_latest.prisma
+      # nodePackages_latest.prisma
       # python311Packages.torch-bin
       # cudaPackages.cudatoolkit
       python312
@@ -66,7 +66,7 @@
       neovide
       rizin
       obs-studio
-      cutter
+      #cutter
       gh
       onefetch
       cliphist
@@ -76,6 +76,8 @@
       # nodePackages.vscode-html-languageserver-bin
       wget
       flameshot
+      imagemagick
+      luajitPackages.magick
       # nvtop
       # daeuniverse.packages.x86_64-linux.daed
     ]

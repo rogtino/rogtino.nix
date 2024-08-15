@@ -36,7 +36,8 @@
 in {
   i18n = {
     inputMethod = {
-      enabled = "fcitx5";
+      type = "fcitx5";
+      enable = true;
       #TODO:disable rime in wsl
       fcitx5 = {
         waylandFrontend = true;
@@ -44,6 +45,7 @@ in {
           fcitx5-gtk
           libsForQt5.fcitx5-qt
           fcitx5-rime-with-addons
+          fcitx5-rose-pine
         ];
       };
     };

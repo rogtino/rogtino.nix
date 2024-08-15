@@ -90,7 +90,7 @@
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -112,6 +112,10 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     zjstatus = {
       url = "github:dj95/zjstatus";
+    };
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }

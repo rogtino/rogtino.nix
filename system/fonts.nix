@@ -12,11 +12,11 @@
         monospace = [
           # "BlexMono Nerd Font"
           # "IBM Plex Mono"
-          "IntoneMono Nerd Font"
           # "JetBrainsMonoNL Nerd Font"
           # "Maple Mono NF"
           # "LXGW WenKai Mono"
           "Martian Mono"
+          "IntoneMono Nerd Font"
           "Noto Color Emoji"
           "Uiua386"
         ];

@@ -4,7 +4,6 @@
     ./theme.nix
     ./service
     ./fcitx.nix
-    ./nvidia.nix
     ./package.nix
     ./desktop
     ./fonts.nix

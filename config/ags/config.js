@@ -56,6 +56,7 @@ try {
   await import(`file://${main}`);
 } catch (error) {
   console.error(error);
+  console.error("hello");
   App.quit();
 }
 

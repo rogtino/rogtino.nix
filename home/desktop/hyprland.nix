@@ -62,7 +62,7 @@
         ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
       ];
       bind = [
-        "bind=$mod,W,exec,foot"
+        "bind=$mod,W,exec,kitty"
         "bind=$mod,Return,exec,alacritty --class termfloat"
         "bind=$mod,F,exec,firefox"
         "bind=$mod,S,exec,ags -t panel"
@@ -239,7 +239,6 @@
         "wlsunset -l 39.9 -L 116.3"
       ];
       env = [
-        "LIBVA_DRIVER_NAME,nvidia"
         "XDG_SESSION_TYPE,wayland"
         "GDK_BACKEND,wayland,x11,*"
         "QT_QPA_PLATFORM,wayland;xcb"
@@ -249,8 +248,6 @@
         "QT_QPA_PLATFORM,wayland;xcb"
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         "QT_QPA_PLATFORMTHEME,qt5ct"
-        "GBM_BACKEND,nvidia-drm"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         "WLR_NO_HARDWARE_CURSORS,1"
         "NVD_BACKEND,direct"
         "ELECTRON_OZONE_PLATFORM_HINT,auto"
