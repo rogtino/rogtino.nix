@@ -14,7 +14,7 @@
     package = pkgs.bibata-cursors;
   };
   gtk = {
-    catppuccin.enable = true;
+    # catppuccin.enable = true;
     enable = true;
     cursorTheme = {
       package = pkgs.bibata-cursors;

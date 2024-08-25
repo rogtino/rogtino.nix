@@ -172,6 +172,42 @@ in {
       };
     };
 
+    tmux = {
+      enable = true;
+      plugins = with pkgs; [
+        tmuxPlugins.sensible
+        tmuxPlugins.yank
+        tmuxPlugins.extrakto
+        tmuxPlugins.vim-tmux-navigator
+        tmuxPlugins.resurrect
+      ];
+      extraConfig = ''
+        set -g @catppuccin_flavour 'mocha'
+        set -g @resurrect-strategy-nvim 'session'
+        set -g default-terminal 'tmux-256color'
+        set -g base-index 1
+        set -g pane-base-index 1
+        set -g renumber-windows on
+
+        unbind C-b
+        set -g prefix C-q
+
+        set-window-option -g mode-keys vi
+        bind-key -T copy-mode-vi v send-keys -X begin-selection
+        bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+        bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+
+        bind C-l send-keys 'C-l'
+        set -g allow-passthrough on
+
+        set -ga update-environment TERM
+        set -ga update-environment TERM_PROGRAM
+        bind c new-window -c "#{pane_current_path}"
+        bind '"' split-window -c "#{pane_current_path}"
+        bind % split-window -h -c "#{pane_current_path}"
+      '';
+    };
+
     lazygit = {
       enable = true;
       settings = {
