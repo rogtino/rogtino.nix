@@ -85,9 +85,17 @@
     ++ [
       inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
     ];
-  programs.neovim = {
-    enable = true;
-    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+  programs = {
+    neovim = {
+      enable = true;
+      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    };
+    wireshark.enable = true;
+    nh = {
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 4d --keep 3";
+      flake = "/home/gus/rogtino.nix/";
+    };
   };
-  programs.wireshark.enable = true;
 }

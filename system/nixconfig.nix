@@ -16,7 +16,7 @@
       !include ${config.sops.secrets."gh".path}
     '';
     gc = {
-      automatic = true;
+      # automatic = true;
       dates = "weekly";
       options = "--delete-older-than 1w";
     };
