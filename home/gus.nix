@@ -1,10 +1,10 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  home.username = "gus";
-  home.homeDirectory = "/home/gus";
+{pkgs, ...}: {
+  home = {
+    username = "gus";
+    homeDirectory = "/home/gus";
+
+    stateVersion = "23.11";
+  };
   xdg = {
     enable = true;
     configFile = {
@@ -16,10 +16,11 @@
       };
     };
   };
-
-  catppuccin.flavor = "mocha";
-  catppuccin.enable = true;
-  catppuccin.accent = "rosewater";
+  catppuccin = {
+    flavor = "mocha";
+    enable = true;
+    accent = "rosewater";
+  };
   programs = {
     ags = {
       enable = true;
@@ -65,8 +66,20 @@
     };
   };
 
-  home.stateVersion = "23.11";
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  dconf = {
+    enable = true;
+    settings."org/gnome/shell" = {
+      disable-user-extensions = false;
+      enabled-extensions = with pkgs.gnomeExtensions; [
+        blur-my-shell.extensionUuid
+        gsconnect.extensionUuid
+        kimpanel.extensionUuid
+        system-monitor.extensionUuid
+        window-list.extensionUuid
+        workspace-indicator.extensionUuid
+      ];
+    };
+  };
 }

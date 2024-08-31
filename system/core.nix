@@ -58,32 +58,11 @@
       #   enable = true;
       # };
       # desktopManager.plasma6.enable = true;
-      desktopManager.gnome.enable = true;
       xkb.options = "caps:swapescape";
     };
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
   };
-  environment.gnome.excludePackages =
-    (with pkgs; [
-      gnome-photos
-      gnome-tour
-      cheese
-      gnome-terminal
-      gedit # text editor
-      epiphany # web browser
-      geary # email reader
-      evince # document viewer
-      totem # video player
-    ])
-    ++ (with pkgs.gnome; [
-      gnome-music
-      gnome-characters
-      tali # poker game
-      iagno # go game
-      hitori # sudoku game
-      atomix # puzzle game
-    ]);
 
   security = {
     sudo.wheelNeedsPassword = false;

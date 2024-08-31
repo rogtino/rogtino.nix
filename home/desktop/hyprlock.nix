@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       background = let
-        wallpaperPath = "/home/gus/Pictures/wallpapers/7e500ca1145b45e695bdadb394cc4be3.jpg";
+        wallpaperPath = "/home/gus/Pictures/wallpapers/672f973cecf341eba21b874362384bc6.jpg";
       in [
         {
           monitor = "eDP-1";
