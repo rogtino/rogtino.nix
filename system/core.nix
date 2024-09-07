@@ -28,29 +28,21 @@
   time.timeZone = "Asia/Shanghai";
   hardware = {
     # List services that you want to enable:
-    pulseaudio.enable = true;
-    pulseaudio.support32Bit = true;
+    pulseaudio.enable = false;
+    # pulseaudio.support32Bit = true;
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
   };
   services = {
     # emacs.enable = true;
-    # pipewire = {
-    #   enable = true;
-    #   alsa.enable = true;
-    #   alsa.support32Bit = true;
-    #   pulse.enable = true;
-    #   jack.enable = true;
-    #   wireplumber.enable = true;
-    #   extraConfig.pipewire."92-low-latency" = {
-    #     "context.properties" = {
-    #       "default.clock.rate" = 44100;
-    #       "default.clock.quantum" = 512;
-    #       "default.clock.min-quantum" = 512;
-    #       "default.clock.max-quantum" = 512;
-    #     };
-    #   };
-    # };
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+      wireplumber.enable = true;
+    };
     openssh.enable = true;
     blueman.enable = true;
     xserver = {
