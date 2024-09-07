@@ -345,13 +345,13 @@ return {
     ft = { 'python', 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
   },
   -- BUG: have to patch include dir ourself
-  {
-    'vhyrro/luarocks.nvim',
-    priority = 1000,
-    opts = {
-      rocks = { 'magick' },
-    },
-  },
+  -- {
+  --   'vhyrro/luarocks.nvim',
+  --   priority = 1000,
+  --   opts = {
+  --     rocks = { 'magick' },
+  --   },
+  -- },
   {
     'nvim-neorg/neorg',
     cmd = 'Neorg',

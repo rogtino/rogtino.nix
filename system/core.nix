@@ -26,10 +26,13 @@
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
-
-  # List services that you want to enable:
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
+  hardware = {
+    # List services that you want to enable:
+    pulseaudio.enable = true;
+    pulseaudio.support32Bit = true;
+    bluetooth.enable = true;
+    bluetooth.powerOnBoot = true;
+  };
   services = {
     # emacs.enable = true;
     # pipewire = {

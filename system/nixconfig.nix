@@ -8,8 +8,8 @@
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
-    "openssl-1.1.1w"
-    "electron-11.5.0"
+    # "openssl-1.1.1w"
+    # "electron-11.5.0"
   ];
   nix = {
     extraOptions = ''
