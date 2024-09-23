@@ -94,7 +94,7 @@ if $nu.os-info.name == "windows" {
     $env.PATH = ($env.PATH | split row (char esep))
     $env.PATH = ($env.PATH | append '~/.local/bin' |prepend '~/.local/share/bob/nvim-bin'| append '~/.cargo/bin'| append '~/.local/share/solana/install/active_release/bin'|append '~/.rye/shims/' | append '~/.config/emacs/bin/' | append '/usr/bin/vendor_perl/')
     $env.PKG_CONFIG_PATH = "/usr/lib/pkgconfig:/usr/local/lib/pkgconfig"
-    $env.LD_LIBRARY_PATH = "/usr/lib:/usr/local/lib/"
+    # $env.LD_LIBRARY_PATH = "/usr/lib:/usr/local/lib/"
     $env.PATH = ($env.PATH | prepend '~/.nix-profile/bin/')
     $env.PATH = ($env.PATH | prepend '~/go/bin/')
     $env.PATH = ($env.PATH | prepend '~/go/bin/')
