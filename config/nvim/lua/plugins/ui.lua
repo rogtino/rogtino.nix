@@ -351,13 +351,19 @@ return {
           {
             desc = '󰛔 Files',
             group = 'Label',
-            action = 'Telescope find_files',
+            action = function()
+              vim.cmd.Lazy 'load nvim-treesitter'
+              vim.cmd.Telescope 'find_files'
+            end,
             key = 's',
           },
           {
             group = 'WarningMsg',
             desc = '󰯉 grep',
-            action = 'Telescope live_grep',
+            action = function()
+              vim.cmd.Lazy 'load nvim-treesitter'
+              vim.cmd.Telescope 'live_grep'
+            end,
             key = 'f',
           },
           {
