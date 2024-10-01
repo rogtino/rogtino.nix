@@ -9,6 +9,13 @@ return {
     dependencies = {
       {
         'nvim-orgmode/orgmode',
+        opts = {
+          mappings = {
+            org = {
+              org_toggle_checkbox = '<enter>',
+            },
+          },
+        },
       },
     },
     opts = {

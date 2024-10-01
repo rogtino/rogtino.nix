@@ -19,7 +19,7 @@ in {
           on-timeout = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
         }
         {
-          timeout = timeout;
+          inherit timeout;
           on-timeout = "${lib.getExe config.programs.hyprlock.package}";
         }
         {

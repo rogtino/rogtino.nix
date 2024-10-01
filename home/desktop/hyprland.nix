@@ -126,6 +126,7 @@
       input = {
         kb_options = "caps:swapescape";
         follow_mouse = 1;
+        sensitivity = 1;
         touchpad = {
           natural_scroll = 1;
           scroll_factor = 0.18;
@@ -220,14 +221,12 @@
         "fullscreen,mpv"
       ];
       general = {
-        sensitivity = 1.3;
         gaps_in = 5;
         gaps_out = 15;
         border_size = 2;
         "col.inactive_border" = "rgb(313244)";
         "col.active_border" = "rgb(6666cc)";
         resize_on_border = true;
-        apply_sens_to_raw = 0;
         layout = "master";
       };
       exec-once = [

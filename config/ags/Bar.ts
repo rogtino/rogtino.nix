@@ -191,9 +191,7 @@ function gen_speed(raw: string, icon: string) {
   if (raw.endsWith("K")) {
     if (raw.length > 4) {
       return `${icon} ${(
-        Number(raw.substring(0, raw.length - 1)) /
-        1024 /
-        2
+        Number(raw.substring(0, raw.length - 1)) / 1024 / 2
       ).toFixed(2)}M/s`;
     } else {
       return `${icon} ${Math.floor(Number(raw) / 2)}/s`;

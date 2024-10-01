@@ -1,4 +1,4 @@
-{...}: {
+_: {
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -6,7 +6,7 @@
         wallpaperPath = "/home/gus/Pictures/wallpapers/672f973cecf341eba21b874362384bc6.jpg";
       in [
         {
-          monitor = "eDP-1";
+          # monitor = "eDP-1";
           path = wallpaperPath;
         }
       ];
@@ -32,7 +32,7 @@
       label = [
         {
           text = "Hi, $USER";
-          color = "rgb(c0caf5)";
+          color = "rgb(B5462D)";
           valign = "center";
           halign = "center";
           font_size = 70;
@@ -40,7 +40,7 @@
         }
         {
           text = "$TIME";
-          color = "rgb(c0caf5)";
+          color = "rgb(B5462D)";
           font_size = 50;
           position = "0, 100";
           valign = "center";

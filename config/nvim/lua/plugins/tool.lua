@@ -80,6 +80,7 @@ return {
     'lewis6991/gitsigns.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     event = 'User DashboardLeave',
+    ft = 'org',
     opts = {
       current_line_blame = true,
       on_attach = function(bufnr)

@@ -2,7 +2,7 @@
   imports = [
     inputs.daeuniverse.nixosModules.dae
     inputs.daeuniverse.nixosModules.daed
-    inputs.lix-module.nixosModules.default
+    # inputs.lix-module.nixosModules.default
     inputs.nur.nixosModules.nur
     inputs.sops-nix.nixosModules.sops
     inputs.catppuccin.nixosModules.catppuccin
