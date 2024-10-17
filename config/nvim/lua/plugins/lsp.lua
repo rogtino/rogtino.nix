@@ -40,6 +40,7 @@ local function config()
     gopls = {},
     -- selene = {},
     vtsls = {},
+    zls = {},
     cssls = {
       settings = {
         css = { validate = true, lint = {

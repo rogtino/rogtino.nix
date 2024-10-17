@@ -1,6 +1,6 @@
 {
   pkgs,
-  config,
+  # config,
   inputs,
   ...
 }: {
@@ -10,7 +10,6 @@
       # config.nur.repos.xddxdd.netease-cloud-music
       # config.nur.repos.xddxdd.qqmusic
       # config.nur.repos.xddxdd.baidunetdisk
-      config.nur.repos.xddxdd.qbittorrent-enhanced-edition
       # config.nur.repos.YisuiMilena.hmcl-bin
       # inputs.hyprpaper.packages.${pkgs.system}.default
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -19,6 +18,7 @@
       mpv
       w3m-nox
       ffmpeg
+      qbittorrent-enhanced
       playerctl
       # emacs
       pnpm
@@ -70,7 +70,6 @@
       #cutter
       gh
       onefetch
-      cliphist
       mate.atril
       slurp
       wlsunset

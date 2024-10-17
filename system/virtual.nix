@@ -1,4 +1,4 @@
-{...}: {
+_: {
   virtualisation = {
     # TODO:enable dark theme
     # vmware.host.enable = true;
@@ -7,7 +7,7 @@
       qemu.ovmf.enable = true;
       qemu.swtpm.enable = true;
     };
-    lxd.enable = true;
+    incus.enable = true;
     docker = {
       enable = true;
       daemon.settings = {

@@ -1,5 +1,31 @@
 return {
   s(
+    'buildPhase',
+    fmt(
+      [[
+  buildPhase = ''
+    runHook preBuild
+    {}
+    runHook postBuild
+  '';
+  ]],
+      ins_generate()
+    )
+  ),
+  s(
+    'installPhase',
+    fmt(
+      [[
+  installPhase = ''
+    runHook preInstall
+    {}
+    runHook postInstall
+  '';
+  ]],
+      ins_generate()
+    )
+  ),
+  s(
     'devs',
     fmt(
       [[

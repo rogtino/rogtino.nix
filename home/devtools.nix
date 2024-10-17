@@ -7,6 +7,7 @@
 with pkgs; let
   lsp = [
     nil
+    zls
     nodePackages."@astrojs/language-server"
     # nodePackages."@prisma/language-server"
     # typst-lsp
@@ -161,12 +162,11 @@ in {
       nix-direnv.enable = true;
     };
 
-    # 启用 starship，这是一个漂亮的 shell 提示符
     starship = {
       enable = true;
       settings = {
         character = {
-          success_symbol = "";
+          success_symbol = "󰯉";
           error_symbol = "";
         };
       };
@@ -177,14 +177,19 @@ in {
       plugins = with pkgs; [
         tmuxPlugins.sensible
         tmuxPlugins.yank
+        #BUG: https://github.com/NixOS/nixpkgs/pull/338786 waiting for update
         tmuxPlugins.extrakto
         tmuxPlugins.vim-tmux-navigator
         tmuxPlugins.resurrect
+        tmuxPlugins.tmux-fzf
+        tmuxPlugins.fzf-tmux-url
+        tmuxPlugins.fingers
       ];
       extraConfig = ''
         set -g @catppuccin_flavour 'mocha'
         set -g @resurrect-strategy-nvim 'session'
-        set -g default-terminal 'tmux-256color'
+        set -g @fingers-key f
+        TMUX_fZF_LAUNCH_KEY="C-f"
         set -g base-index 1
         set -g pane-base-index 1
         set -g renumber-windows on
@@ -197,14 +202,20 @@ in {
         bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
         bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
 
-        bind C-l send-keys 'C-l'
         set -g allow-passthrough on
 
         set -ga update-environment TERM
         set -ga update-environment TERM_PROGRAM
         bind c new-window -c "#{pane_current_path}"
-        bind '"' split-window -c "#{pane_current_path}"
-        bind % split-window -h -c "#{pane_current_path}"
+        bind v split-window -c "#{pane_current_path}"
+        bind s split-window -h -c "#{pane_current_path}"
+        bind c-p previous-window
+        bind c-n next-window
+        bind a last-window
+        bind j resize-pane -D 10
+        bind k resize-pane -U 10
+        bind l resize-pane -R 10
+        bind h resize-pane -L 10
       '';
     };
 

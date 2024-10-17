@@ -6,7 +6,7 @@
   ];
   users.users.gus = {
     isNormalUser = true;
-    extraGroups = ["lxd" "wheel" "sudo" "libvirtd" "video" "audio" "docker"];
+    extraGroups = ["incus-admin" "wheel" "sudo" "libvirtd" "video" "audio" "docker"];
     shell = pkgs.nushell;
     password = ";'";
   };

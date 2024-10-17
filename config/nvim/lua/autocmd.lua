@@ -99,3 +99,13 @@ vim.api.nvim_create_autocmd({ 'BufUnload' }, {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd({ 'VimEnter' }, {
+  callback = function(args)
+    local buftype = vim.api.nvim_get_option_value('filetype', { buf = args.buf })
+
+    if buftype ~= 'dashboard' then
+      vim.api.nvim_exec_autocmds('User', { pattern = 'DashboardLeave', modeline = false })
+    end
+  end,
+})
