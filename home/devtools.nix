@@ -315,6 +315,7 @@ in {
       "nvim" = {
         source = mkOutOfStoreSymlink "/home/gus/rogtino.nix/config/nvim";
       };
+      "nix-extra/sqlite3.path".text = "${pkgs.sqlite.out}/lib/libsqlite3.so";
       "nushell" = {
         source = mkOutOfStoreSymlink "/home/gus/rogtino.nix/config/nushell";
       };

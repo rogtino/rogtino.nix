@@ -35,11 +35,6 @@ vim.api.nvim_create_user_command('LuaSnipEdit', function()
   require('luasnip.loaders').edit_snippet_files()
 end, {})
 
---TODO: generate this inside flake
-vim.api.nvim_create_user_command('FindSqlite3', function()
-  vim.system({ vim.fn.stdpath 'config' .. '/locate-sqlite3.nu' }):wait()
-end, {})
-
 vim.api.nvim_create_user_command('ToUnix', function()
   local Job = require 'plenary.job'
   local buf_name = vim.api.nvim_buf_get_name(0)

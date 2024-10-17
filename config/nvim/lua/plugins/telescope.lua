@@ -99,7 +99,7 @@ return {
           end
           if vim.g.isnixos then
             local Job = require 'plenary.job'
-            local sqlite3_path = vim.fn.stdpath 'config' .. '/sqlite3.path'
+            local sqlite3_path = vim.fn.fnamemodify(vim.fn.stdpath 'config', ':h') .. '/nix-extra/sqlite3.path'
             Job:new({
               command = 'cat',
               args = { sqlite3_path },
