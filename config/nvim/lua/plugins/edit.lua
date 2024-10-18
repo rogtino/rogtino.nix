@@ -208,13 +208,15 @@ return {
       'F',
       't',
       'T',
+      '/',
+      '?',
       {
         's',
         function()
           require('flash').jump()
         end,
         desc = 'Flash',
-        mode = { 'n' },
+        mode = { 'n', 'x' },
       },
       {
         'S',
@@ -222,30 +224,29 @@ return {
           require('flash').treesitter()
         end,
         desc = 'Flash Treesitter',
-        mode = { 'n' },
+        mode = { 'n', 'x' },
       },
-      -- {
-      -- 	"R",
-      -- 	mode = { "o", "x" },
-      -- 	function()
-      -- 		require("flash").treesitter_search()
-      -- 	end,
-      -- 	desc = "Treesitter Search",
-      -- },
-      -- {
-      -- 	"r",
-      -- 	function()
-      -- 		require("flash").remote()
-      -- 	end,
-      -- 	desc = "Remote Flash",
-      -- 	mode = "o",
-      -- },
+      {
+        'R',
+        mode = { 'o', 'x' },
+        function()
+          require('flash').treesitter_search()
+        end,
+        desc = 'Treesitter Search',
+      },
+      {
+        'r',
+        function()
+          require('flash').remote()
+        end,
+        desc = 'Remote Flash',
+        mode = 'o',
+      },
     },
   },
   {
     'folke/ts-comments.nvim',
     opts = {},
-    event = 'User DashboardLeave',
     ft = { 'javascriptreact', 'typescriptreact' },
     enabled = vim.fn.has 'nvim-0.10.0' == 1,
   },
