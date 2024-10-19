@@ -183,40 +183,8 @@ in {
         tmuxPlugins.resurrect
         tmuxPlugins.tmux-fzf
         tmuxPlugins.fzf-tmux-url
-        tmuxPlugins.fingers
       ];
-      extraConfig = ''
-        set -g @catppuccin_flavour 'mocha'
-        set -g @resurrect-strategy-nvim 'session'
-        set -g @fingers-key f
-        TMUX_fZF_LAUNCH_KEY="C-f"
-        set -g base-index 1
-        set -g pane-base-index 1
-        set -g renumber-windows on
-
-        unbind C-b
-        set -g prefix C-q
-
-        set-window-option -g mode-keys vi
-        bind-key -T copy-mode-vi v send-keys -X begin-selection
-        bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
-        bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
-
-        set -g allow-passthrough on
-
-        set -ga update-environment TERM
-        set -ga update-environment TERM_PROGRAM
-        bind c new-window -c "#{pane_current_path}"
-        bind v split-window -c "#{pane_current_path}"
-        bind s split-window -h -c "#{pane_current_path}"
-        bind c-p previous-window
-        bind c-n next-window
-        bind a last-window
-        bind j resize-pane -D 10
-        bind k resize-pane -U 10
-        bind l resize-pane -R 10
-        bind h resize-pane -L 10
-      '';
+      extraConfig = builtins.readFile ../config/tmux/tmux.conf.common;
     };
 
     lazygit = {

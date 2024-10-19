@@ -1,0 +1,31 @@
+set -g @catppuccin_flavour 'mocha'
+set -g @resurrect-strategy-vim 'session'
+set -g @resurrect-strategy-nvim 'session'
+set -g default-terminal 'tmux-256color'
+set -g base-index 1
+set -g pane-base-index 1
+set -g renumber-windows on
+set -g @extrakto_key f
+
+TMUX_FZF_LAUNCH_KEY="C-f"
+unbind C-b
+set -g prefix C-q
+
+set-window-option -g mode-keys vi
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+
+bind C-l send-keys 'C-l'
+set -g allow-passthrough on
+
+set -ga update-environment TERM
+set -ga update-environment TERM_PROGRAM
+bind c new-window -c "#{pane_current_path}"
+bind s split-window -c "#{pane_current_path}"
+bind v split-window -h -c "#{pane_current_path}"
+bind a last-window
+bind j resize-pane -D 10
+bind k resize-pane -U 10
+bind l resize-pane -R 10
+bind h resize-pane -L 10
