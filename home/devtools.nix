@@ -174,16 +174,20 @@ in {
 
     tmux = {
       enable = true;
-      plugins = with pkgs; [
-        tmuxPlugins.sensible
-        tmuxPlugins.yank
-        #BUG: https://github.com/NixOS/nixpkgs/pull/338786 waiting for update
-        tmuxPlugins.extrakto
-        tmuxPlugins.vim-tmux-navigator
-        tmuxPlugins.resurrect
-        tmuxPlugins.tmux-fzf
-        tmuxPlugins.fzf-tmux-url
+      plugins = with pkgs.tmuxPlugins; [
+        yank
+        {
+          plugin = extrakto;
+          extraConfig = ''
+            set -g @extrakto_key "f"
+          '';
+        }
+        vim-tmux-navigator
+        resurrect
+        tmux-fzf
+        fzf-tmux-url
       ];
+      #BUG:https://github.com/nix-community/home-manager/issues/3555
       extraConfig = builtins.readFile ../config/tmux/tmux.conf.common;
     };
 
