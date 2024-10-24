@@ -94,104 +94,40 @@ return {
   },
   { 'stevearc/dressing.nvim', config = true },
   { 'echasnovski/mini.cursorword', config = true, event = 'User DashboardLeave' },
-  -- {
-  --   'rcarriga/nvim-notify',
-  --   opts = {
-  --     fps = 60,
-  --   },
-  -- },
-  -- {
-  --   'akinsho/bufferline.nvim',
-  --   event = 'VeryLazy',
-  --   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  --   keys = {
-  --     { '<leader>bo', vim.cmd.BufferLineCloseOthers, desc = 'delete other buffers' },
-  --     { '<leader>bp', vim.cmd.BufferLinePick, desc = "pick a buffer by buf's name" },
-  --     { '<leader>bd', vim.cmd.Bdelete, desc = 'delete current buffer' },
-  --     {
-  --       '<leader>ba',
-  --       function()
-  --         vim.cmd '%bd'
-  --       end,
-  --       desc = 'delete all buffers',
-  --     },
-  --     { '<s-l>', vim.cmd.BufferLineCycleNext },
-  --     { '<s-h>', vim.cmd.BufferLineCyclePrev },
-  --   },
-  --   opts = {
-  --     options = {
-  --       diagnostics = 'nvim_lsp',
-  --       diagnostics_indicator = function(count, level, _, _)
-  --         local icon = ((level:match 'error' and ' ') or ' ')
-  --         return (' ' .. icon .. count)
-  --       end,
-  --     },
-  --   },
-  -- },
-  -- no need :(
-  -- {
-  -- 	"folke/edgy.nvim",
-  -- 	event = "VeryLazy",
-  -- 	opts = {
-  -- 		bottom = {
-  -- 			{
-  -- 				filter = function(_, win)
-  -- 					return (vim.api.nvim_win_get_config(win).relative == "")
-  -- 				end,
-  -- 				ft = "toggleterm",
-  -- 				size = { height = 0.4 },
-  -- 			},
-  -- 			{
-  -- 				filter = function(buf)
-  -- 					return not vim.b[buf].lazyterm_cmd
-  -- 				end,
-  -- 				ft = "lazyterm",
-  -- 				size = { height = 0.4 },
-  -- 				title = "LazyTerm",
-  -- 			},
-  -- 			"Trouble",
-  -- 			{ ft = "qf", title = "QuickFix" },
-  -- 			{
-  -- 				filter = function(buf)
-  -- 					return (vim.bo[buf].buftype == "help")
-  -- 				end,
-  -- 				ft = "help",
-  -- 				size = { height = 20 },
-  -- 			},
-  -- 			{ ft = "spectre_panel", size = { height = 0.4 } },
-  -- 		},
-  -- 		left = {
-  -- 			{
-  -- 				filter = function(buf)
-  -- 					return (vim.b[buf].neo_tree_source == "filesystem")
-  -- 				end,
-  -- 				ft = "neo-tree",
-  -- 				size = { height = 0.5 },
-  -- 				title = "Neo-Tree",
-  -- 			},
-  -- 			{
-  -- 				filter = function(buf)
-  -- 					return (vim.b[buf].neo_tree_source == "git_status")
-  -- 				end,
-  -- 				ft = "neo-tree",
-  -- 				open = "Neotree position=right git_status",
-  -- 				pinned = true,
-  -- 				title = "Neo-Tree Git",
-  -- 			},
-  -- 			{
-  -- 				filter = function(buf)
-  -- 					return (vim.b[buf].neo_tree_source == "buffers")
-  -- 				end,
-  -- 				ft = "neo-tree",
-  -- 				open = "Neotree position=top buffers",
-  -- 				pinned = true,
-  -- 				title = "Neo-Tree Buffers",
-  -- 			},
-  -- 			{ ft = "Outline", open = "Lspsaga outline", pinned = true },
-  -- 			"neo-tree",
-  -- 		},
-  -- 	},
-  -- },
+  {
+    'rcarriga/nvim-notify',
+    opts = {
+      fps = 60,
+    },
+  },
+  {
+    'akinsho/bufferline.nvim',
+    event = 'User DashboardLeave',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    keys = {
+      { '<leader>bo', vim.cmd.BufferLineCloseOthers, desc = 'delete other buffers' },
+      { '<leader>bp', vim.cmd.BufferLinePick, desc = "pick a buffer by buf's name" },
+      { '<leader>bd', vim.cmd.Bdelete, desc = 'delete current buffer' },
+      {
+        '<leader>ba',
+        function()
+          vim.cmd '%bd'
+        end,
+        desc = 'delete all buffers',
+      },
+      { '<s-l>', vim.cmd.BufferLineCycleNext },
+      { '<s-h>', vim.cmd.BufferLineCyclePrev },
+    },
+    opts = {
+      options = {
+        diagnostics = 'nvim_lsp',
+        diagnostics_indicator = function(count, level, _, _)
+          local icon = ((level:match 'error' and ' ') or ' ')
+          return (' ' .. icon .. count)
+        end,
+      },
+    },
+  },
   {
     'folke/which-key.nvim',
     event = 'VeryLazy',
@@ -265,45 +201,45 @@ return {
       indent = { support_filetypes = { python = true }, enable = false },
     },
   },
-  -- {
-  --   'folke/noice.nvim',
-  --   opts = {
-  --     lsp = {
-  --       override = {
-  --         ['cmp.entry.get_documentation'] = true,
-  --         ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-  --         ['vim.lsp.util.stylize_markdown'] = true,
-  --       },
-  --       hover = {
-  --         silent = true,
-  --       },
-  --     },
-  --     routes = {
-  --       {
-  --         -- filter = {
-  --         --   any = { { find = '%d+L, %d+B' }, { find = '; after #%d+' }, { find = '; before #%d+' } },
-  --         --   event = 'msg_show',
-  --         -- },
-  --         filter = {
-  --           event = 'notify',
-  --           find = 'No information available',
-  --         },
-  --         view = 'mini',
-  --         opts = { skip = true },
-  --       },
-  --     },
-  --     presets = {
-  --       bottom_search = true,
-  --       command_palette = true,
-  --       inc_rename = true,
-  --       long_message_to_split = true,
-  --       lsp_doc_border = false,
-  --     },
-  --     -- cmdline = { view = 'cmdline' },
-  --   },
-  --   event = 'VeryLazy',
-  --   dependencies = { 'MunifTanjim/nui.nvim' },
-  -- },
+  {
+    'folke/noice.nvim',
+    opts = {
+      lsp = {
+        override = {
+          ['cmp.entry.get_documentation'] = true,
+          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+          ['vim.lsp.util.stylize_markdown'] = true,
+        },
+        hover = {
+          silent = true,
+        },
+      },
+      routes = {
+        {
+          -- filter = {
+          --   any = { { find = '%d+L, %d+B' }, { find = '; after #%d+' }, { find = '; before #%d+' } },
+          --   event = 'msg_show',
+          -- },
+          filter = {
+            event = 'notify',
+            find = 'No information available',
+          },
+          view = 'mini',
+          opts = { skip = true },
+        },
+      },
+      presets = {
+        bottom_search = true,
+        command_palette = true,
+        inc_rename = true,
+        long_message_to_split = true,
+        lsp_doc_border = false,
+      },
+      cmdline = { view = 'cmdline' },
+    },
+    event = 'VeryLazy',
+    dependencies = { 'MunifTanjim/nui.nvim' },
+  },
   {
     'folke/zen-mode.nvim',
     opts = {
