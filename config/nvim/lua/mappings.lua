@@ -1,4 +1,6 @@
 vim.keymap.set('n', '<leader>td', '<cmd>SwitchTheme dark<CR>', { desc = 'toggle random dark theme' })
+vim.keymap.set('n', 'j', 'gj')
+vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('n', '<leader>tl', '<cmd>SwitchTheme light<CR>', { desc = 'toggle random light theme' })
 vim.keymap.set('n', '<leader>hd', '<cmd>NoiceDismiss<CR>', { desc = 'dismiss noice' })
 vim.keymap.set('n', '<leader>hi', function()
